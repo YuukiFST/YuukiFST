@@ -12,11 +12,11 @@ Hi! I'm a Systems for Internet student and a self-taught learner. I love to read
 - English learning
 - Watching AI-related videos
 
-## What I'm learning:
-[![Learning](https://skillicons.dev/icons?i=docker,kubernetes)](https://skillicons.dev)
-
 ## Languages I use:
 [![Languages](https://skillicons.dev/icons?i=py,go)](https://skillicons.dev)
 
+## What I'm learning:
+[![Learning](https://skillicons.dev/icons?i=docker,kubernetes)](https://skillicons.dev)
+
 ## Tools and Technologies:
-[![Tools](https://skillicons.dev/icons?i=gcp,postgres,idea,git,neovim,arch&perline=3)](https://skillicons.dev)
+[![Tools](https://skillicons.dev/icons?i=postgres,idea,git,neovim,arch&perline=3)](https://skillicons.dev)
