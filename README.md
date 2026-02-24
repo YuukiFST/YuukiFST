@@ -13,7 +13,7 @@ Hi! I'm a Systems for Internet student and a self-taught learner. I love to read
 - Watching AI-related videos
 
 ## 🚀 What I'm learning:
-[![My Skills](https://skillicons.dev/icons?i=java,go,py&theme=dark)](https://skillicons.dev)<br><br>
+[![My Skills]([https://skillicons.dev/icons?i=java,go,py&theme=dark)](https://skillicons.dev)]<br><br>
 
 ## 🛠️ Tools and Technologies:
 [![My Skills](https://skillicons.dev/icons?i=neovim,docker,arch,git,github,idea,linux,obsidian,postgres&theme=dark)](https://skillicons.dev)<br><br>
