@@ -7,14 +7,13 @@ Hi! I'm a Systems for Internet student and a self-taught learner. I love to read
 - Software Architecture
 - Technical Books
 
-One of my favorite hobbies is learning new programming languages. Here is a list of the ones I know (in no particular order):
-- Python
-- Go
-- Java
-- C
-
 ## What I make for fun...
-- Programs that interact with the Windows system
 - LLM learning
 - English learning
 - Watching AI-related videos
+
+## 🚀 What I'm learning:
+[![My Skills](https://skillicons.dev/icons?i=py,go,java)](https://skillicons.dev)<br><br>
+
+## 🛠️ Tools and Technologies:
+[![My Skills](https://skillicons.dev/icons?i=zed,neovim,docker,postgres)](https://skillicons.dev)<br><br>
