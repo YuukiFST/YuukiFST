@@ -16,7 +16,7 @@ Hi! I'm a Systems for Internet student and a self-taught learner. I love to read
 [![Learning](https://skillicons.dev/icons?i=docker,kubernetes,grafana,prometheus,redis,kafka)](https://skillicons.dev)<br><br>
 
 ## Tools and Technologies:
-[![Tools](https://skillicons.dev/icons?i=py,go,postgres,idea,git,arch,neovim,vscode,windows&theme=dark)](https://skillicons.dev)<br><br>
+[![Tools](https://skillicons.dev/icons?i=py,go,postgres,idea,git,neovim,vscode,arch,windows&theme=dark)](https://skillicons.dev)<br><br>
 
 
 
