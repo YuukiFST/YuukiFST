@@ -19,5 +19,5 @@ Hi! I'm a Systems for Internet student and a self-taught learner. I love to read
 [![Tools](https://skillicons.dev/icons?i=py,go,postgres,idea,git,neovim,vscode,arch,windows&theme=dark)](https://skillicons.dev)<br><br>
 
 
-
+Portfolio: https://fausto-yuuki.vercel.app/
 
