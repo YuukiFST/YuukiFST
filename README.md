@@ -16,9 +16,9 @@ Hi! I'm a Systems for Internet student and a self-taught learner. I love to read
 [![Learning](https://skillicons.dev/icons?i=docker,kubernetes,grafana,prometheus,redis,kafka)](https://skillicons.dev)<br><br>
 
 ## What I Use:
-[![What I Use](https://skillicons.dev/icons?i=arch,git,postgres,zed,react,typescript,nextjs&theme=dark)](https://skillicons.dev)<br><br>
+[![What I Use](https://skillicons.dev/icons?i=arch,git,postgres,zed,react,typescript,nextjs,docker&theme=dark)](https://skillicons.dev)<br><br>
 
 ## What I Know:
-[![What I Know](https://skillicons.dev/icons?i=py,go,idea,neovim,vscode,windows&theme=dark)](https://skillicons.dev)<br><br>
+[![What I Know](https://skillicons.dev/icons?i=py,go,idea,neovim,vscode,windows,django,prisma,supabase,visualstudio&theme=dark)](https://skillicons.dev)<br><br>
 
 Portfolio: https://fausto-yuuki.vercel.app/
