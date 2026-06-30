@@ -8,9 +8,8 @@ Hi! I'm a Systems for Internet student and a self-taught learner. I love to read
 - Technical Books
 
 ## What I make for fun...
-- LLM learning
+- LLM learning (it's for for me😅​)
 - English learning
-- Watching AI-related videos
 
 ## What I Use:
 [![What I Use](https://skillicons.dev/icons?i=typescript,react,nextjs,git,postgres,docker,arch&theme=dark)](https://skillicons.dev)<br><br>
