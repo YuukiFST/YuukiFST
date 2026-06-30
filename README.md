@@ -1,5 +1,5 @@
 ## About Me:
-Hi! I'm a Systems for Internet student and a self-taught learner. I love to read technical books like Refactoring and Design Patterns, listen to music, study English, and I am constantly learning about LLMs and watching AI content.
+Hi! I'm a Systems for Internet student and a self-taught learner. I love to read technical books like Refactoring and Design Patterns, listen to music, study English, and I am constantly learning about LLMs and Agents.
 
 ## Talk to me about...
 - Large Language Models
@@ -19,6 +19,6 @@ Hi! I'm a Systems for Internet student and a self-taught learner. I love to read
 [![What I Know](https://skillicons.dev/icons?i=py,go,django,prisma,supabase,idea,neovim,vscode,visualstudio,windows&theme=dark)](https://skillicons.dev)<br><br>
 
 ## What I'm learning:
-[![Learning](https://skillicons.dev/icons?i=docker,kubernetes,grafana,prometheus,redis,kafka)](https://skillicons.dev)<br><br>
+[![Learning](https://skillicons.dev/icons?i=kubernetes,grafana,prometheus,redis,kafka)](https://skillicons.dev)<br><br>
 
 Portfolio: https://fausto-yuuki.vercel.app/
