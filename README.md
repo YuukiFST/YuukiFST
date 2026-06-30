@@ -12,13 +12,13 @@ Hi! I'm a Systems for Internet student and a self-taught learner. I love to read
 - English learning
 - Watching AI-related videos
 
-## What I'm learning:
-[![Learning](https://skillicons.dev/icons?i=docker,kubernetes,grafana,prometheus,redis,kafka)](https://skillicons.dev)<br><br>
-
 ## What I Use:
-[![What I Use](https://skillicons.dev/icons?i=arch,git,postgres,zed,react,typescript,nextjs,docker&theme=dark)](https://skillicons.dev)<br><br>
+[![What I Use](https://skillicons.dev/icons?i=typescript,react,nextjs,git,postgres,docker,arch&theme=dark)](https://skillicons.dev)<br><br>
 
 ## What I Know:
-[![What I Know](https://skillicons.dev/icons?i=py,go,idea,neovim,vscode,windows,django,prisma,supabase,visualstudio&theme=dark)](https://skillicons.dev)<br><br>
+[![What I Know](https://skillicons.dev/icons?i=py,go,django,prisma,supabase,idea,neovim,vscode,visualstudio,windows&theme=dark)](https://skillicons.dev)<br><br>
+
+## What I'm learning:
+[![Learning](https://skillicons.dev/icons?i=docker,kubernetes,grafana,prometheus,redis,kafka)](https://skillicons.dev)<br><br>
 
 Portfolio: https://fausto-yuuki.vercel.app/
