@@ -11,11 +11,9 @@ Hi! I'm a Systems for Internet student and a self-taught learner. I love to read
 - LLM learning (it's fun for me😅​)
 - English learning
 
-## What I Use:
-[![What I Use](https://skillicons.dev/icons?i=typescript,react,nextjs,git,postgres,docker,arch&theme=dark)](https://skillicons.dev)<br><br>
 
 ## What I Know:
-[![What I Know](https://skillicons.dev/icons?i=py,go,django,prisma,supabase,idea,neovim,vscode,visualstudio,windows&theme=dark)](https://skillicons.dev)<br><br>
+[![What I Know](https://skillicons.dev/icons?i=py,go,django,typescript,react,nextjs,git,postgres,docker,prisma,supabase,idea,neovim,vscode,visualstudio,arch&theme=dark,windows&theme=dark)](https://skillicons.dev)<br><br>
 
 ## What I'm learning:
 [![Learning](https://skillicons.dev/icons?i=kubernetes,grafana,prometheus,redis,kafka)](https://skillicons.dev)<br><br>
