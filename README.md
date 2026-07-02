@@ -1,21 +1,27 @@
-## About Me:
-Hi! I'm a Systems for Internet student and a self-taught learner. I love to read technical books like Refactoring and Design Patterns, listen to music, study English, and I am constantly learning about LLMs and Agents.
+## About Me
 
-## Talk to me about...
-- Large Language Models
-- Artificial Intelligence
-- Software Architecture
-- Technical Books
+Hi! I'm a Systems for Internet student and a self-taught learner. I love reading technical books like *Refactoring* and *Design Patterns*, listening to music, studying English, and I'm constantly learning about LLMs and AI Agents.
 
-## What I make for fun...
-- LLM learning (it's fun for me😅​)
-- English learning
+## 💬 Talk to me about...
 
+* Large Language Models
+* Artificial Intelligence
+* Software Architecture
+* Technical Books
 
-## What I Know:
-[![What I Know](https://skillicons.dev/icons?i=py,go,django,typescript,react,nextjs,git,postgres,docker,prisma,supabase,idea,neovim,vscode,visualstudio,arch&theme=dark,windows&theme=dark)](https://skillicons.dev)<br><br>
+## 🎯 What I make for fun...
 
-## What I'm learning:
-[![Learning](https://skillicons.dev/icons?i=kubernetes,grafana,prometheus,redis,kafka)](https://skillicons.dev)<br><br>
+* LLM learning (it's fun for me 😅)
+* English learning
 
-Portfolio: https://fausto-yuuki.vercel.app/
+## 🛠️ What I Know
+
+[![What I Know](https://skillicons.dev/icons?i=py,go,django,typescript,react,nextjs,git,postgres,docker,prisma,supabase,idea,neovim,vscode,visualstudio,arch,windows\&theme=dark)](https://skillicons.dev)
+
+## 📚 What I'm learning
+
+[![Learning](https://skillicons.dev/icons?i=kubernetes,grafana,prometheus,redis,kafka\&theme=dark)](https://skillicons.dev)
+
+## 🌐 Portfolio
+
+https://fausto-yuuki.vercel.app/
