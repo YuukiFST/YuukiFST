@@ -8,7 +8,7 @@ Hi! I'm a Systems for Internet student and a self-taught learner. I love to read
 - Technical Books
 
 ## What I make for fun...
-- LLM learning (it's for for me😅​)
+- LLM learning (it's fun for me😅​)
 - English learning
 
 ## What I Use:
