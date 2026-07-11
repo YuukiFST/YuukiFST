@@ -18,18 +18,57 @@ size-adjust: 109%;
 .delColor {fill: #dc322f;}
 .cursor {fill: #6c71c4;}
 text, tspan {white-space: pre;}
+
+@keyframes ascii-pulse {
+  0%, 100% { opacity: 0.55; fill: #268bd2; }
+  50% { opacity: 1; fill: #268bd2; }
+}
+@keyframes cursor-blink {
+  0%, 45% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+@keyframes scanline {
+  0% { transform: translateY(32px); opacity: 0; }
+  8% { opacity: 0.12; }
+  92% { opacity: 0.12; }
+  100% { transform: translateY(188px); opacity: 0; }
+}
+.ascii-line {
+  fill: #268bd2;
+  animation: ascii-pulse 2.8s ease-in-out infinite;
+}
+.ascii-row-0 { animation-delay: 0.00s; }
+.ascii-row-1 { animation-delay: 0.18s; }
+.ascii-row-2 { animation-delay: 0.36s; }
+.ascii-row-3 { animation-delay: 0.54s; }
+.ascii-row-4 { animation-delay: 0.72s; }
+.cursor { animation: cursor-blink 1.05s step-end infinite; }
+#ascii-scanline {
+  fill: url(#scanline-gradient);
+  animation: scanline 5s linear infinite;
+}
+
 </style>
+<defs>
+<linearGradient id="scanline-gradient" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#fdf6e3" stop-opacity="0"/>
+<stop offset="45%" stop-color="#268bd2" stop-opacity="0.35"/>
+<stop offset="55%" stop-color="#268bd2" stop-opacity="0.35"/>
+<stop offset="100%" stop-color="#fdf6e3" stop-opacity="0"/>
+</linearGradient>
+</defs>
 <rect width="985px" height="540px" fill="#fdf6e3" rx="12"/>
 <rect x="1" y="1" width="983px" height="538px" fill="none" stroke="#93a1a1" stroke-width="2" rx="12"/>
+<rect id="ascii-scanline" x="12" y="0" width="290" height="24" opacity="0"/>
 <text x="15" y="30" fill="#657b83" class="ascii">
-<tspan x="15" y="40" fill="#268bd2">#   # #   # #   # #   # ### </tspan>
-<tspan x="15" y="60" fill="#268bd2"> # #  #   # #   # #  #   #  </tspan>
-<tspan x="15" y="80" fill="#268bd2">  #   #   # #   # ###    #  </tspan>
-<tspan x="15" y="100" fill="#268bd2">  #   #   # #   # #  #   #  </tspan>
-<tspan x="15" y="120" fill="#268bd2">  #    ###   ###  #   # ### </tspan>
-<tspan x="15" y="140" fill="#268bd2">                            </tspan>
-<tspan x="15" y="160" fill="#268bd2">                            </tspan>
-<tspan x="15" y="180" fill="#268bd2">                            </tspan>
+<tspan x="15" y="40" class="ascii-line ascii-row-0">#   # #   # #   # #   # ### </tspan>
+<tspan x="15" y="60" class="ascii-line ascii-row-1"> # #  #   # #   # #  #   #  </tspan>
+<tspan x="15" y="80" class="ascii-line ascii-row-2">  #   #   # #   # ###    #  </tspan>
+<tspan x="15" y="100" class="ascii-line ascii-row-3">  #   #   # #   # #  #   #  </tspan>
+<tspan x="15" y="120" class="ascii-line ascii-row-4">  #    ###   ###  #   # ### </tspan>
+<tspan x="15" y="140" class="ascii-line">                            </tspan>
+<tspan x="15" y="160" class="ascii-line">                            </tspan>
+<tspan x="15" y="180" class="ascii-line">                            </tspan>
 </text>
 <text x="300" y="30" fill="#657b83">
 <tspan x="300" y="30"><tspan class="dim">Last login: Sat Jul 11 2026 from 127.0.0.1 — </tspan><tspan class="value" id="age_data">3 years, 9 months, 0 days</tspan><tspan class="dim" id="age_data_dots"></tspan><tspan class="dim"> on GitHub</tspan></tspan>
@@ -48,7 +87,7 @@ text, tspan {white-space: pre;}
 <tspan x="300" y="340"><tspan class="dim"> </tspan><tspan class="key">portfolio</tspan><tspan class="dim">  → </tspan><tspan class="value">fausto-yuuki.vercel.app</tspan></tspan>
 <tspan x="300" y="360"><tspan class="dim"> </tspan><tspan class="key">linkedin</tspan><tspan class="dim">   → </tspan><tspan class="value">fausto-yuuki</tspan></tspan>
 <tspan x="300" y="400"><tspan class="prompt-host">yuuki@github</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">git shortlog -sn --all | head -1</tspan></tspan>
-<tspan x="300" y="420"><tspan class="dim">   </tspan><tspan class="value" id="commit_data">488</tspan><tspan class="dim" id="commit_data_dots"></tspan><tspan class="dim">  YuukiFST</tspan></tspan>
+<tspan x="300" y="420"><tspan class="dim">   </tspan><tspan class="value" id="commit_data">490</tspan><tspan class="dim" id="commit_data_dots"></tspan><tspan class="dim">  YuukiFST</tspan></tspan>
 <tspan x="300" y="460"><tspan class="prompt-host">yuuki@github</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">gh api graphql --field query=contributions</tspan></tspan>
 <tspan x="300" y="480"><tspan class="dim">  </tspan><tspan class="value" id="contrib_data">29</tspan><tspan class="dim" id="contrib_data_dots"></tspan><tspan class="dim"> contributions</tspan></tspan>
 <tspan x="300" y="520"><tspan class="prompt-host">yuuki@github</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command"/><tspan class="cursor">█</tspan></tspan>

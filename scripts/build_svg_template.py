@@ -60,11 +60,52 @@ def esc(text: str) -> str:
     return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
+def animation_styles(theme: dict) -> str:
+    ascii_color = theme["ascii"]
+    accent = theme["prompt_host"]
+    row_rules = "\n".join(
+        f".ascii-row-{index} {{ animation-delay: {index * 0.18:.2f}s; }}"
+        for index in range(len(ASCII_LOGO))
+        if ASCII_LOGO[index].strip()
+    )
+    return f"""
+@keyframes ascii-pulse {{
+  0%, 100% {{ opacity: 0.55; fill: {ascii_color}; }}
+  50% {{ opacity: 1; fill: {accent}; }}
+}}
+@keyframes cursor-blink {{
+  0%, 45% {{ opacity: 1; }}
+  50%, 100% {{ opacity: 0; }}
+}}
+@keyframes scanline {{
+  0% {{ transform: translateY(32px); opacity: 0; }}
+  8% {{ opacity: 0.12; }}
+  92% {{ opacity: 0.12; }}
+  100% {{ transform: translateY(188px); opacity: 0; }}
+}}
+.ascii-line {{
+  fill: {ascii_color};
+  animation: ascii-pulse 2.8s ease-in-out infinite;
+}}
+{row_rules}
+.cursor {{ animation: cursor-blink 1.05s step-end infinite; }}
+#ascii-scanline {{
+  fill: url(#scanline-gradient);
+  animation: scanline 5s linear infinite;
+}}
+"""
+
+
 def ascii_block(theme: dict, x: int = 15, y_start: int = 40) -> str:
     rows = []
     for index, line in enumerate(ASCII_LOGO):
         y = y_start + index * 20
-        rows.append(f'<tspan x="{x}" y="{y}" fill="{theme["ascii"]}">{esc(line)}</tspan>')
+        if line.strip():
+            rows.append(
+                f'<tspan x="{x}" y="{y}" class="ascii-line ascii-row-{index}">{esc(line)}</tspan>'
+            )
+        else:
+            rows.append(f'<tspan x="{x}" y="{y}" class="ascii-line">{esc(line)}</tspan>')
     return "\n".join(rows)
 
 
@@ -144,6 +185,7 @@ def tty_block(theme: dict) -> str:
 
 def build_svg(theme_name: str) -> str:
     theme = THEMES[theme_name]
+    scanline = theme["prompt_host"]
     return f'''<?xml version='1.0' encoding='UTF-8'?>
 <svg xmlns="http://www.w3.org/2000/svg" font-family="ConsolasFallback,Consolas,monospace" width="985px" height="{SVG_HEIGHT}px" font-size="16px">
 <style>
@@ -164,9 +206,19 @@ size-adjust: 109%;
 .delColor {{fill: {theme["delete"]};}}
 .cursor {{fill: {theme["cursor"]};}}
 text, tspan {{white-space: pre;}}
+{animation_styles(theme)}
 </style>
+<defs>
+<linearGradient id="scanline-gradient" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="{theme["bg"]}" stop-opacity="0"/>
+<stop offset="45%" stop-color="{scanline}" stop-opacity="0.35"/>
+<stop offset="55%" stop-color="{scanline}" stop-opacity="0.35"/>
+<stop offset="100%" stop-color="{theme["bg"]}" stop-opacity="0"/>
+</linearGradient>
+</defs>
 <rect width="985px" height="{SVG_HEIGHT}px" fill="{theme["bg"]}" rx="12"/>
 <rect x="1" y="1" width="983px" height="{SVG_HEIGHT - 2}px" fill="none" stroke="{theme["border"]}" stroke-width="2" rx="12"/>
+<rect id="ascii-scanline" x="12" y="0" width="290" height="24" opacity="0"/>
 <text x="15" y="30" fill="{theme["fg"]}" class="ascii">
 {ascii_block(theme)}
 </text>
