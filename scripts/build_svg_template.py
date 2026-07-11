@@ -54,41 +54,68 @@ THEMES = {
 }
 
 SVG_HEIGHT = 540
+SCAN_TOP = 24
+SCAN_BOTTOM = SVG_HEIGHT - 24
+SCAN_DURATION_S = 5
+
+TTY_ROW_Y = [30, 70, 90, 110, 130, 150, 170, 190, 220, 240, 260, 280, 320, 340, 360, 400, 420, 460, 480, 520]
+ASCII_ROW_Y = [40 + index * 20 for index in range(len(ASCII_LOGO))]
+ALL_ROW_Y = sorted(set(TTY_ROW_Y + ASCII_ROW_Y))
 
 
 def esc(text: str) -> str:
     return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
+def scan_pass_percent(y: int) -> float:
+    span = SCAN_BOTTOM - SCAN_TOP
+    return max(1.0, min(98.0, ((y - SCAN_TOP) / span) * 100))
+
+
+def row_fade_keyframe(y: int) -> str:
+    start = scan_pass_percent(y)
+    fade_end = min(start + 2.5, 99.5)
+    hold_end = min(fade_end + 0.2, 99.9)
+    return f"""@keyframes row-fade-{y} {{
+  0%, {start - 0.6:.1f}% {{ opacity: 1; }}
+  {start:.1f}%, {fade_end:.1f}% {{ opacity: 0.1; }}
+  {hold_end:.1f}%, 99.9% {{ opacity: 0.1; }}
+  100% {{ opacity: 1; }}
+}}"""
+
+
 def animation_styles(theme: dict) -> str:
+    row_keyframes = "\n".join(row_fade_keyframe(y) for y in ALL_ROW_Y)
+    row_rules = "\n".join(
+        f".row-y-{y} {{ animation: row-fade-{y} {SCAN_DURATION_S}s linear infinite; }}"
+        for y in ALL_ROW_Y
+    )
     return f"""
-@keyframes terminal-pulse {{
-  0%, 100% {{ opacity: 0.55; }}
-  50% {{ opacity: 1; }}
-}}
+{row_keyframes}
 @keyframes cursor-blink {{
   0%, 45% {{ opacity: 1; }}
   50%, 100% {{ opacity: 0; }}
 }}
 @keyframes scanline {{
-  0% {{ transform: translateY(12px); opacity: 0; }}
-  8% {{ opacity: 0.1; }}
-  92% {{ opacity: 0.1; }}
-  100% {{ transform: translateY({SVG_HEIGHT - 12}px); opacity: 0; }}
+  0% {{ transform: translateY({SCAN_TOP}px); opacity: 0; }}
+  3% {{ opacity: 0.22; }}
+  97% {{ opacity: 0.22; }}
+  100% {{ transform: translateY({SCAN_BOTTOM}px); opacity: 0; }}
 }}
 .terminal-row {{
-  animation: terminal-pulse 2.8s ease-in-out infinite;
+  opacity: 1;
 }}
+{row_rules}
 .cursor {{ animation: cursor-blink 1.05s step-end infinite; }}
 #terminal-scanline {{
   fill: url(#scanline-gradient);
-  animation: scanline 5s linear infinite;
+  animation: scanline {SCAN_DURATION_S}s linear infinite;
 }}
 """
 
 
-def row_delay(y: int) -> str:
-    return f"{max(0, y - 30) * 0.035:.2f}s"
+def row_class(y: int) -> str:
+    return f"terminal-row row-y-{y}"
 
 
 def ascii_block(theme: dict, x: int = 15, y_start: int = 40) -> str:
@@ -96,8 +123,7 @@ def ascii_block(theme: dict, x: int = 15, y_start: int = 40) -> str:
     for index, line in enumerate(ASCII_LOGO):
         y = y_start + index * 20
         rows.append(
-            f'<tspan x="{x}" y="{y}" class="terminal-row" '
-            f'style="animation-delay:{row_delay(y)}" fill="{theme["ascii"]}">'
+            f'<tspan x="{x}" y="{y}" class="{row_class(y)}" fill="{theme["ascii"]}">'
             f"{esc(line)}</tspan>"
         )
     return "\n".join(rows)
@@ -173,10 +199,7 @@ def tty_block(theme: dict) -> str:
 
     rows = []
     for y, content in lines:
-        rows.append(
-            f'<tspan x="300" y="{y}" class="terminal-row" '
-            f'style="animation-delay:{row_delay(y)}">{content}</tspan>'
-        )
+        rows.append(f'<tspan x="300" y="{y}" class="{row_class(y)}">{content}</tspan>')
     return "\n".join(rows)
 
 
@@ -215,7 +238,7 @@ text, tspan {{white-space: pre;}}
 </defs>
 <rect width="985px" height="{SVG_HEIGHT}px" fill="{theme["bg"]}" rx="12"/>
 <rect x="1" y="1" width="983px" height="{SVG_HEIGHT - 2}px" fill="none" stroke="{theme["border"]}" stroke-width="2" rx="12"/>
-<rect id="terminal-scanline" x="12" y="0" width="961" height="24" opacity="0"/>
+<rect id="terminal-scanline" x="12" y="0" width="961" height="28" opacity="0"/>
 <text x="15" y="30" fill="{theme["fg"]}" class="ascii">
 {ascii_block(theme)}
 </text>
