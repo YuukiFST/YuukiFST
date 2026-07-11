@@ -21,19 +21,21 @@ ASCII_LOGO = [
 THEMES = {
     "dark": {
         "file": "dark_mode.svg",
-        "bg": "#1a1a2e",
-        "fg": "#bbc2cf",
-        "border": "#3d3d5c",
-        "prompt_host": "#51afef",
-        "prompt_path": "#98be65",
-        "command": "#bbc2cf",
-        "key": "#ff6c6b",
-        "value": "#a9a1e1",
-        "dim": "#5b6268",
-        "add": "#98be65",
-        "delete": "#ff6c6b",
-        "cursor": "#a9a1e1",
-        "ascii": "#7aa2f7",
+        # Omarchy Vantablack (ghostty.conf / colors.toml)
+        "bg": "#000000",
+        "fg": "#ffffff",
+        "border": "#404040",
+        "prompt_host": "#8d8d8d",
+        "prompt_path": "#ececec",
+        "command": "#ffffff",
+        "key": "#b6b6b6",
+        "value": "#cecece",
+        "dim": "#5c5c5c",
+        "add": "#ffffff",
+        "delete": "#a4a4a4",
+        "cursor": "#ffffff",
+        "ascii": "#8d8d8d",
+        "font": "FantasqueSansM Nerd Font,ConsolasFallback,Consolas,monospace",
     },
     "light": {
         "file": "light_mode.svg",
@@ -50,6 +52,7 @@ THEMES = {
         "delete": "#dc322f",
         "cursor": "#6c71c4",
         "ascii": "#268bd2",
+        "font": "ConsolasFallback,Consolas,monospace",
     },
 }
 
@@ -176,8 +179,8 @@ def tty_block(theme: dict) -> str:
         (90, f'<tspan class="key">yuuki@github</tspan><tspan class="dim"> ─────────────────────────────</tspan>'),
         (110, info_row("OS", "Omarchy")),
         (130, info_row("Host", "São Benedito / IFMT")),
-        (150, info_row("Shell", "zsh")),
-        (170, info_row("Editor", "Doom Emacs")),
+        (150, info_row("Shell", "bash")),
+        (170, info_row("Terminal", "Ghostty")),
         (190, info_row("Role", "Fullstack")),
         (220, stack_row("Backend", "Python, Django, Go, tRPC, Prisma")),
         (240, stack_row("Frontend", "React, Next.js, TypeScript, Tailwind, shadcn/ui")),
@@ -206,8 +209,9 @@ def tty_block(theme: dict) -> str:
 def build_svg(theme_name: str) -> str:
     theme = THEMES[theme_name]
     scanline = theme["prompt_host"]
+    font = theme.get("font", "ConsolasFallback,Consolas,monospace")
     return f'''<?xml version='1.0' encoding='UTF-8'?>
-<svg xmlns="http://www.w3.org/2000/svg" font-family="ConsolasFallback,Consolas,monospace" width="985px" height="{SVG_HEIGHT}px" font-size="16px">
+<svg xmlns="http://www.w3.org/2000/svg" font-family="{font}" width="985px" height="{SVG_HEIGHT}px" font-size="16px">
 <style>
 @font-face {{
 src: local('Consolas'), local('Consolas Bold');

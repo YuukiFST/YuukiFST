@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<svg xmlns="http://www.w3.org/2000/svg" font-family="ConsolasFallback,Consolas,monospace" width="985px" height="540px" font-size="16px">
+<svg xmlns="http://www.w3.org/2000/svg" font-family="FantasqueSansM Nerd Font,ConsolasFallback,Consolas,monospace" width="985px" height="540px" font-size="16px">
 <style>
 @font-face {
 src: local('Consolas'), local('Consolas Bold');
@@ -8,15 +8,15 @@ font-display: swap;
 -webkit-size-adjust: 109%;
 size-adjust: 109%;
 }
-.prompt-host {fill: #51afef;}
-.prompt-path {fill: #98be65;}
-.command {fill: #bbc2cf;}
-.key {fill: #ff6c6b;}
-.value {fill: #a9a1e1;}
-.dim {fill: #5b6268;}
-.addColor {fill: #98be65;}
-.delColor {fill: #ff6c6b;}
-.cursor {fill: #a9a1e1;}
+.prompt-host {fill: #8d8d8d;}
+.prompt-path {fill: #ececec;}
+.command {fill: #ffffff;}
+.key {fill: #b6b6b6;}
+.value {fill: #cecece;}
+.dim {fill: #5c5c5c;}
+.addColor {fill: #ffffff;}
+.delColor {fill: #a4a4a4;}
+.cursor {fill: #ffffff;}
 text, tspan {white-space: pre;}
 
 @keyframes row-fade-30 {
@@ -237,33 +237,33 @@ text, tspan {white-space: pre;}
 </style>
 <defs>
 <linearGradient id="scanline-gradient" x1="0" y1="0" x2="0" y2="1">
-<stop offset="0%" stop-color="#1a1a2e" stop-opacity="0"/>
-<stop offset="45%" stop-color="#51afef" stop-opacity="0.35"/>
-<stop offset="55%" stop-color="#51afef" stop-opacity="0.35"/>
-<stop offset="100%" stop-color="#1a1a2e" stop-opacity="0"/>
+<stop offset="0%" stop-color="#000000" stop-opacity="0"/>
+<stop offset="45%" stop-color="#8d8d8d" stop-opacity="0.35"/>
+<stop offset="55%" stop-color="#8d8d8d" stop-opacity="0.35"/>
+<stop offset="100%" stop-color="#000000" stop-opacity="0"/>
 </linearGradient>
 </defs>
-<rect width="985px" height="540px" fill="#1a1a2e" rx="12"/>
-<rect x="1" y="1" width="983px" height="538px" fill="none" stroke="#3d3d5c" stroke-width="2" rx="12"/>
+<rect width="985px" height="540px" fill="#000000" rx="12"/>
+<rect x="1" y="1" width="983px" height="538px" fill="none" stroke="#404040" stroke-width="2" rx="12"/>
 <rect id="terminal-scanline" x="12" y="0" width="961" height="28" opacity="0"/>
-<text x="15" y="30" fill="#bbc2cf" class="ascii">
-<tspan x="15" y="40" class="terminal-row row-y-40" fill="#7aa2f7">#   # #   # #   # #   # ### </tspan>
-<tspan x="15" y="60" class="terminal-row row-y-60" fill="#7aa2f7"> # #  #   # #   # #  #   #  </tspan>
-<tspan x="15" y="80" class="terminal-row row-y-80" fill="#7aa2f7">  #   #   # #   # ###    #  </tspan>
-<tspan x="15" y="100" class="terminal-row row-y-100" fill="#7aa2f7">  #   #   # #   # #  #   #  </tspan>
-<tspan x="15" y="120" class="terminal-row row-y-120" fill="#7aa2f7">  #    ###   ###  #   # ### </tspan>
-<tspan x="15" y="140" class="terminal-row row-y-140" fill="#7aa2f7">                            </tspan>
-<tspan x="15" y="160" class="terminal-row row-y-160" fill="#7aa2f7">                            </tspan>
-<tspan x="15" y="180" class="terminal-row row-y-180" fill="#7aa2f7">                            </tspan>
+<text x="15" y="30" fill="#ffffff" class="ascii">
+<tspan x="15" y="40" class="terminal-row row-y-40" fill="#8d8d8d">#   # #   # #   # #   # ### </tspan>
+<tspan x="15" y="60" class="terminal-row row-y-60" fill="#8d8d8d"> # #  #   # #   # #  #   #  </tspan>
+<tspan x="15" y="80" class="terminal-row row-y-80" fill="#8d8d8d">  #   #   # #   # ###    #  </tspan>
+<tspan x="15" y="100" class="terminal-row row-y-100" fill="#8d8d8d">  #   #   # #   # #  #   #  </tspan>
+<tspan x="15" y="120" class="terminal-row row-y-120" fill="#8d8d8d">  #    ###   ###  #   # ### </tspan>
+<tspan x="15" y="140" class="terminal-row row-y-140" fill="#8d8d8d">                            </tspan>
+<tspan x="15" y="160" class="terminal-row row-y-160" fill="#8d8d8d">                            </tspan>
+<tspan x="15" y="180" class="terminal-row row-y-180" fill="#8d8d8d">                            </tspan>
 </text>
-<text x="300" y="30" fill="#bbc2cf">
+<text x="300" y="30" fill="#ffffff">
 <tspan x="300" y="30" class="terminal-row row-y-30"><tspan class="dim">Last login: Sat Jul 11 2026 from 127.0.0.1 — </tspan><tspan class="value" id="age_data">3 years, 9 months, 0 days</tspan><tspan class="dim" id="age_data_dots"></tspan><tspan class="dim"> on GitHub</tspan></tspan>
 <tspan x="300" y="70" class="terminal-row row-y-70"><tspan class="prompt-host">yuuki@github</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">fastfetch --logo custom</tspan></tspan>
 <tspan x="300" y="90" class="terminal-row row-y-90"><tspan class="key">yuuki@github</tspan><tspan class="dim"> ─────────────────────────────</tspan></tspan>
 <tspan x="300" y="110" class="terminal-row row-y-110"><tspan class="dim"> </tspan><tspan class="key">OS      </tspan><tspan class="dim">· </tspan><tspan class="value">Omarchy</tspan></tspan>
 <tspan x="300" y="130" class="terminal-row row-y-130"><tspan class="dim"> </tspan><tspan class="key">Host    </tspan><tspan class="dim">· </tspan><tspan class="value">São Benedito / IFMT</tspan></tspan>
-<tspan x="300" y="150" class="terminal-row row-y-150"><tspan class="dim"> </tspan><tspan class="key">Shell   </tspan><tspan class="dim">· </tspan><tspan class="value">zsh</tspan></tspan>
-<tspan x="300" y="170" class="terminal-row row-y-170"><tspan class="dim"> </tspan><tspan class="key">Editor  </tspan><tspan class="dim">· </tspan><tspan class="value">Doom Emacs</tspan></tspan>
+<tspan x="300" y="150" class="terminal-row row-y-150"><tspan class="dim"> </tspan><tspan class="key">Shell   </tspan><tspan class="dim">· </tspan><tspan class="value">bash</tspan></tspan>
+<tspan x="300" y="170" class="terminal-row row-y-170"><tspan class="dim"> </tspan><tspan class="key">Terminal</tspan><tspan class="dim">· </tspan><tspan class="value">Ghostty</tspan></tspan>
 <tspan x="300" y="190" class="terminal-row row-y-190"><tspan class="dim"> </tspan><tspan class="key">Role    </tspan><tspan class="dim">· </tspan><tspan class="value">Fullstack</tspan></tspan>
 <tspan x="300" y="220" class="terminal-row row-y-220"><tspan class="dim"> » </tspan><tspan class="key">Backend:    </tspan><tspan class="value">Python, Django, Go, tRPC, Prisma</tspan></tspan>
 <tspan x="300" y="240" class="terminal-row row-y-240"><tspan class="dim"> » </tspan><tspan class="key">Frontend:   </tspan><tspan class="value">React, Next.js, TypeScript, Tailwind, shadcn/ui</tspan></tspan>
@@ -273,9 +273,9 @@ text, tspan {white-space: pre;}
 <tspan x="300" y="340" class="terminal-row row-y-340"><tspan class="dim"> </tspan><tspan class="key">portfolio</tspan><tspan class="dim">  → </tspan><tspan class="value">fausto-yuuki.vercel.app</tspan></tspan>
 <tspan x="300" y="360" class="terminal-row row-y-360"><tspan class="dim"> </tspan><tspan class="key">linkedin</tspan><tspan class="dim">   → </tspan><tspan class="value">fausto-yuuki</tspan></tspan>
 <tspan x="300" y="400" class="terminal-row row-y-400"><tspan class="prompt-host">yuuki@github</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">git shortlog -sn --all | head -1</tspan></tspan>
-<tspan x="300" y="420" class="terminal-row row-y-420"><tspan class="dim">   </tspan><tspan class="value" id="commit_data">492</tspan><tspan class="dim" id="commit_data_dots"></tspan><tspan class="dim">  YuukiFST</tspan></tspan>
+<tspan x="300" y="420" class="terminal-row row-y-420"><tspan class="dim">   </tspan><tspan class="value" id="commit_data">0</tspan><tspan class="dim" id="commit_data_dots"></tspan><tspan class="dim">  YuukiFST</tspan></tspan>
 <tspan x="300" y="460" class="terminal-row row-y-460"><tspan class="prompt-host">yuuki@github</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">gh api graphql --field query=contributions</tspan></tspan>
-<tspan x="300" y="480" class="terminal-row row-y-480"><tspan class="dim">  </tspan><tspan class="value" id="contrib_data">29</tspan><tspan class="dim" id="contrib_data_dots"></tspan><tspan class="dim"> contributions</tspan></tspan>
-<tspan x="300" y="520" class="terminal-row row-y-520"><tspan class="prompt-host">yuuki@github</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command"/><tspan class="cursor">█</tspan></tspan>
+<tspan x="300" y="480" class="terminal-row row-y-480"><tspan class="dim">  </tspan><tspan class="value" id="contrib_data">0</tspan><tspan class="dim" id="contrib_data_dots"></tspan><tspan class="dim"> contributions</tspan></tspan>
+<tspan x="300" y="520" class="terminal-row row-y-520"><tspan class="prompt-host">yuuki@github</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command"></tspan><tspan class="cursor">█</tspan></tspan>
 </text>
 </svg>
