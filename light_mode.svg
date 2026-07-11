@@ -22,38 +22,37 @@ text, tspan {white-space: pre;}
 <rect width="985px" height="540px" fill="#fdf6e3" rx="12"/>
 <rect x="1" y="1" width="983px" height="538px" fill="none" stroke="#93a1a1" stroke-width="2" rx="12"/>
 <text x="15" y="30" fill="#657b83" class="ascii">
-<tspan x="15" y="30" fill="#268bd2">            .---.            </tspan>
-<tspan x="15" y="50" fill="#268bd2">        .--:+*****+:--.        </tspan>
-<tspan x="15" y="70" fill="#268bd2">     .-+***++++++++***+-.     </tspan>
-<tspan x="15" y="90" fill="#268bd2">   .:=**++++++++++++++++=:    </tspan>
-<tspan x="15" y="110" fill="#268bd2">  :=+*++++++++++++++++++*+=:  </tspan>
-<tspan x="15" y="130" fill="#268bd2"> .=*++++++++++++++++++++++*=. </tspan>
-<tspan x="15" y="150" fill="#268bd2"> -++++++++++++++++++++++++++++- </tspan>
-<tspan x="15" y="170" fill="#268bd2"> -++++++++++++++++++++++++++++- </tspan>
-<tspan x="15" y="190" fill="#268bd2"> .=*++++++++++++++++++++++*=. </tspan>
-<tspan x="15" y="210" fill="#268bd2">  :=+*++++++++++++++++++*+=:  </tspan>
-<tspan x="15" y="230" fill="#268bd2">   .:=**++++++++++++++++=:    </tspan>
-<tspan x="15" y="250" fill="#268bd2">     .-+***++++++++***+-.     </tspan>
-<tspan x="15" y="270" fill="#268bd2">        `--:+*****+:--`        </tspan>
-<tspan x="15" y="290" fill="#268bd2">            `---`            </tspan>
+<tspan x="15" y="30" fill="#268bd2">                @@@               </tspan>
+<tspan x="15" y="50" fill="#268bd2">               @@@@@              </tspan>
+<tspan x="15" y="70" fill="#268bd2">              @@@@@@@             </tspan>
+<tspan x="15" y="90" fill="#268bd2">             @@@   @@@            </tspan>
+<tspan x="15" y="110" fill="#268bd2">            @@@     @@@           </tspan>
+<tspan x="15" y="130" fill="#268bd2">           @@@       @@@          </tspan>
+<tspan x="15" y="150" fill="#268bd2">            @@@     @@@           </tspan>
+<tspan x="15" y="170" fill="#268bd2">             @@@   @@@            </tspan>
+<tspan x="15" y="190" fill="#268bd2">              @@@@@               </tspan>
+<tspan x="15" y="210" fill="#268bd2">               @@@                </tspan>
+<tspan x="15" y="230" fill="#268bd2">                @                 </tspan>
+<tspan x="15" y="250" fill="#268bd2">                                  </tspan>
+<tspan x="15" y="270" fill="#268bd2">                                  </tspan>
 </text>
 <text x="300" y="30" fill="#657b83">
-<tspan x="300" y="30"><tspan class="dim">Last login: Sat Jul 11 2026 from 127.0.0.1 — </tspan><tspan class="value" id="age_data">3 years, 9 months, 0 days</tspan><tspan class="dim" id="age_data_dots"></tspan><tspan class="dim">on GitHub</tspan></tspan>
-<tspan x="300" y="70"><tspan class="prompt-host">yuuki@github</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">fastfetch --logo arch</tspan></tspan>
+<tspan x="300" y="30"><tspan class="dim">Last login: Sat Jul 11 2026 from 127.0.0.1 — </tspan><tspan class="value" id="age_data">3 years, 9 months, 0 days</tspan><tspan class="dim" id="age_data_dots"></tspan><tspan class="dim"> on GitHub</tspan></tspan>
+<tspan x="300" y="70"><tspan class="prompt-host">yuuki@github</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">fastfetch --logo custom</tspan></tspan>
 <tspan x="300" y="90"><tspan class="key">yuuki@github</tspan><tspan class="dim"> ─────────────────────────────</tspan></tspan>
-<tspan x="300" y="110"><tspan class="dim"> </tspan><tspan class="key">OS</tspan><tspan class="dim"> ····· </tspan><tspan class="value">Arch Linux, WSL 2</tspan></tspan>
+<tspan x="300" y="110"><tspan class="dim"> </tspan><tspan class="key">OS</tspan><tspan class="dim"> ····· </tspan><tspan class="value">Omarchy, WSL 2</tspan></tspan>
 <tspan x="300" y="130"><tspan class="dim"> </tspan><tspan class="key">Host</tspan><tspan class="dim"> ·· </tspan><tspan class="value">São Benedito / IFMT</tspan></tspan>
 <tspan x="300" y="150"><tspan class="dim"> </tspan><tspan class="key">Shell</tspan><tspan class="dim"> · </tspan><tspan class="value">zsh</tspan></tspan>
 <tspan x="300" y="170"><tspan class="dim"> </tspan><tspan class="key">Editor</tspan><tspan class="dim">  </tspan><tspan class="value">Doom Emacs</tspan></tspan>
 <tspan x="300" y="190"><tspan class="dim"> </tspan><tspan class="key">Stack</tspan><tspan class="dim"> · </tspan><tspan class="value">Python, Go, PostgreSQL, TypeScript</tspan></tspan>
-<tspan x="300" y="210"><tspan class="dim"> </tspan><tspan class="key">Focus</tspan><tspan class="dim"> · </tspan><tspan class="value">Backend, Data, AI Agents</tspan></tspan>
+<tspan x="300" y="210"><tspan class="dim"> </tspan><tspan class="key">Focus</tspan><tspan class="dim"> · </tspan><tspan class="value">Fullstack, Data, AI Agents</tspan></tspan>
 <tspan x="300" y="250"><tspan class="prompt-host">yuuki@github</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">cat ~/links</tspan></tspan>
 <tspan x="300" y="270"><tspan class="dim"> </tspan><tspan class="key">portfolio</tspan><tspan class="dim">  → </tspan><tspan class="value">fausto-yuuki.vercel.app</tspan></tspan>
 <tspan x="300" y="290"><tspan class="dim"> </tspan><tspan class="key">linkedin</tspan><tspan class="dim">   → </tspan><tspan class="value">fausto-yuuki</tspan></tspan>
 <tspan x="300" y="330"><tspan class="prompt-host">yuuki@github</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">git shortlog -sn --all | head -1</tspan></tspan>
-<tspan x="300" y="350"><tspan class="dim">   </tspan><tspan class="value" id="commit_data">478</tspan><tspan class="dim" id="commit_data_dots"></tspan><tspan class="dim"> YuukiFST</tspan></tspan>
+<tspan x="300" y="350"><tspan class="dim">   </tspan><tspan class="value" id="commit_data">479</tspan><tspan class="dim" id="commit_data_dots"></tspan><tspan class="dim"> YuukiFST</tspan></tspan>
 <tspan x="300" y="390"><tspan class="prompt-host">yuuki@github</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">cloc --sum-reports .</tspan></tspan>
-<tspan x="300" y="410"><tspan class="dim">  </tspan><tspan class="value" id="loc_data">257,413</tspan><tspan class="dim" id="loc_data_dots"></tspan><tspan class="dim">lines | +</tspan><tspan class="addColor" id="loc_add">395,893</tspan><tspan class="dim"> / -</tspan><tspan class="delColor" id="loc_del">138,480</tspan><tspan class="dim" id="loc_del_dots"></tspan></tspan>
+<tspan x="300" y="410"><tspan class="dim">  </tspan><tspan class="value" id="loc_data">257,640</tspan><tspan class="dim" id="loc_data_dots"></tspan><tspan class="dim">lines | +</tspan><tspan class="addColor" id="loc_add">396,233</tspan><tspan class="dim"> / -</tspan><tspan class="delColor" id="loc_del">138,593</tspan><tspan class="dim" id="loc_del_dots"></tspan></tspan>
 <tspan x="300" y="450"><tspan class="prompt-host">yuuki@github</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">ls ~/repos | wc -l</tspan></tspan>
 <tspan x="300" y="470"><tspan class="dim"> </tspan><tspan class="value" id="repo_data">24</tspan><tspan class="dim" id="repo_data_dots"></tspan><tspan class="dim">repos (</tspan><tspan class="value" id="contrib_data">29</tspan><tspan class="dim"> contributed)</tspan></tspan>
 <tspan x="300" y="510"><tspan class="prompt-host">yuuki@github</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command"/><tspan class="cursor">█</tspan></tspan>

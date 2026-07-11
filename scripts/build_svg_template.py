@@ -7,21 +7,20 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
-ARCH_LOGO = [
-    "            .---.            ",
-    "        .--:+*****+:--.        ",
-    "     .-+***++++++++***+-.     ",
-    "   .:=**++++++++++++++++=:    ",
-    "  :=+*++++++++++++++++++*+=:  ",
-    " .=*++++++++++++++++++++++*=. ",
-    " -++++++++++++++++++++++++++++- ",
-    " -++++++++++++++++++++++++++++- ",
-    " .=*++++++++++++++++++++++*=. ",
-    "  :=+*++++++++++++++++++*+=:  ",
-    "   .:=**++++++++++++++++=:    ",
-    "     .-+***++++++++***+-.     ",
-    "        `--:+*****+:--`        ",
-    "            `---`            ",
+ASCII_LOGO = [
+    "                @@@               ",
+    "               @@@@@              ",
+    "              @@@@@@@             ",
+    "             @@@   @@@            ",
+    "            @@@     @@@           ",
+    "           @@@       @@@          ",
+    "            @@@     @@@           ",
+    "             @@@   @@@            ",
+    "              @@@@@               ",
+    "               @@@                ",
+    "                @                 ",
+    "                                  ",
+    "                                  ",
 ]
 
 THEMES = {
@@ -66,7 +65,7 @@ def esc(text: str) -> str:
 
 def ascii_block(theme: dict, x: int = 15, y_start: int = 30) -> str:
     rows = []
-    for index, line in enumerate(ARCH_LOGO):
+    for index, line in enumerate(ASCII_LOGO):
         y = y_start + index * 20
         rows.append(f'<tspan x="{x}" y="{y}" fill="{theme["ascii"]}">{esc(line)}</tspan>')
     return "\n".join(rows)
@@ -86,17 +85,17 @@ def tty_block(theme: dict) -> str:
             30,
             f'<tspan class="dim">Last login: Sat Jul 11 2026 from 127.0.0.1 — </tspan>'
             f'<tspan class="value" id="age_data">3 years, 9 months, 0 days</tspan>'
-            f'<tspan class="dim" id="age_data_dots"> </tspan>'
-            f'<tspan class="dim">on GitHub</tspan>',
+            f'<tspan class="dim" id="age_data_dots"></tspan>'
+            f'<tspan class="dim"> on GitHub</tspan>',
         ),
-        (70, prompt(theme, "fastfetch --logo arch")),
+        (70, prompt(theme, "fastfetch --logo custom")),
         (90, f'<tspan class="key">yuuki@github</tspan><tspan class="dim"> ─────────────────────────────</tspan>'),
-        (110, f'<tspan class="dim"> </tspan><tspan class="key">OS</tspan><tspan class="dim"> ····· </tspan><tspan class="value">Arch Linux, WSL 2</tspan>'),
+        (110, f'<tspan class="dim"> </tspan><tspan class="key">OS</tspan><tspan class="dim"> ····· </tspan><tspan class="value">Omarchy, WSL 2</tspan>'),
         (130, f'<tspan class="dim"> </tspan><tspan class="key">Host</tspan><tspan class="dim"> ·· </tspan><tspan class="value">São Benedito / IFMT</tspan>'),
         (150, f'<tspan class="dim"> </tspan><tspan class="key">Shell</tspan><tspan class="dim"> · </tspan><tspan class="value">zsh</tspan>'),
         (170, f'<tspan class="dim"> </tspan><tspan class="key">Editor</tspan><tspan class="dim">  </tspan><tspan class="value">Doom Emacs</tspan>'),
         (190, f'<tspan class="dim"> </tspan><tspan class="key">Stack</tspan><tspan class="dim"> · </tspan><tspan class="value">Python, Go, PostgreSQL, TypeScript</tspan>'),
-        (210, f'<tspan class="dim"> </tspan><tspan class="key">Focus</tspan><tspan class="dim"> · </tspan><tspan class="value">Backend, Data, AI Agents</tspan>'),
+        (210, f'<tspan class="dim"> </tspan><tspan class="key">Focus</tspan><tspan class="dim"> · </tspan><tspan class="value">Fullstack, Data, AI Agents</tspan>'),
         (250, prompt(theme, "cat ~/links")),
         (270, f'<tspan class="dim"> </tspan><tspan class="key">portfolio</tspan><tspan class="dim">  → </tspan><tspan class="value">fausto-yuuki.vercel.app</tspan>'),
         (290, f'<tspan class="dim"> </tspan><tspan class="key">linkedin</tspan><tspan class="dim">   → </tspan><tspan class="value">fausto-yuuki</tspan>'),
