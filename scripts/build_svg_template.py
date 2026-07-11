@@ -59,8 +59,8 @@ THEMES = {
 SVG_HEIGHT = 540
 SCAN_DURATION_S = 18
 SCANLINE_HEIGHT = 28
-FADE_DELAY_AFTER_SCAN_PCT = 1.0
-FADE_WINDOW_PCT = 8.0
+SCAN_MARGIN = 10
+FADE_WINDOW_PCT = 3.0
 FADED_OPACITY = 0.1
 
 TTY_ROW_Y = [30, 70, 90, 110, 130, 150, 170, 190, 220, 240, 260, 280, 320, 340, 360, 400, 420, 460, 480, 520]
@@ -68,8 +68,8 @@ ASCII_ROW_Y = [40 + index * 20 for index in range(len(ASCII_LOGO))]
 ALL_ROW_Y = sorted(set(TTY_ROW_Y + ASCII_ROW_Y))
 FIRST_ROW_Y = min(ALL_ROW_Y)
 LAST_ROW_Y = max(ALL_ROW_Y)
-SCAN_START = FIRST_ROW_Y - SCANLINE_HEIGHT // 2
-SCAN_END = LAST_ROW_Y - SCANLINE_HEIGHT // 2
+SCAN_START = FIRST_ROW_Y - SCANLINE_HEIGHT - SCAN_MARGIN
+SCAN_END = LAST_ROW_Y + SCAN_MARGIN
 SCAN_SPAN = SCAN_END - SCAN_START
 
 
@@ -77,17 +77,18 @@ def esc(text: str) -> str:
     return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
-def scan_clear_percent(y: int) -> float:
-    """Timeline % when scanline band has moved past this row."""
-    clear_at = y + SCANLINE_HEIGHT // 2
-    return max(0.0, min(98.0, ((clear_at - SCAN_START) / SCAN_SPAN) * 100))
+def scan_arrival_percent(y: int) -> float:
+    """Timeline % when scanline bottom edge reaches row baseline."""
+    arrival_translate = y - SCANLINE_HEIGHT
+    return max(0.0, min(98.0, ((arrival_translate - SCAN_START) / SCAN_SPAN) * 100))
 
 
 def row_fade_keyframe(y: int) -> str:
-    fade_start = min(scan_clear_percent(y) + FADE_DELAY_AFTER_SCAN_PCT, 94.0)
-    fade_end = min(fade_start + FADE_WINDOW_PCT, 99.5)
+    hit = scan_arrival_percent(y)
+    lead = max(0.0, hit - 0.3)
+    fade_end = min(hit + FADE_WINDOW_PCT, 99.5)
     return f"""@keyframes row-fade-{y} {{
-  0%, {fade_start:.1f}% {{ opacity: 1; }}
+  0%, {lead:.1f}% {{ opacity: 1; }}
   {fade_end:.1f}% {{ opacity: {FADED_OPACITY}; }}
   {fade_end:.1f}%, 99.9% {{ opacity: {FADED_OPACITY}; }}
   100% {{ opacity: 1; }}
@@ -100,6 +101,7 @@ def animation_styles(theme: dict) -> str:
         f".row-y-{y} {{ animation: row-fade-{y} {SCAN_DURATION_S}s linear infinite; }}"
         for y in ALL_ROW_Y
     )
+    visible_at = max(0.6, scan_arrival_percent(FIRST_ROW_Y) - 0.2)
     return f"""
 {row_keyframes}
 @keyframes cursor-blink {{
@@ -108,7 +110,7 @@ def animation_styles(theme: dict) -> str:
 }}
 @keyframes scanline {{
   0% {{ transform: translateY({SCAN_START}px); opacity: 0; }}
-  0.5% {{ opacity: 0.22; }}
+  {visible_at:.1f}% {{ opacity: 0.22; }}
   99.5% {{ opacity: 0.22; }}
   100% {{ transform: translateY({SCAN_END}px); opacity: 0; }}
 }}
@@ -242,8 +244,8 @@ text, tspan {{white-space: pre;}}
 <defs>
 <linearGradient id="scanline-gradient" x1="0" y1="0" x2="0" y2="1">
 <stop offset="0%" stop-color="{theme["bg"]}" stop-opacity="0"/>
-<stop offset="45%" stop-color="{scanline}" stop-opacity="0.35"/>
-<stop offset="55%" stop-color="{scanline}" stop-opacity="0.35"/>
+<stop offset="47%" stop-color="{scanline}" stop-opacity="0.4"/>
+<stop offset="53%" stop-color="{scanline}" stop-opacity="0.4"/>
 <stop offset="100%" stop-color="{theme["bg"]}" stop-opacity="0"/>
 </linearGradient>
 </defs>

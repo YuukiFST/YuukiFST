@@ -20,171 +20,171 @@ size-adjust: 109%;
 text, tspan {white-space: pre;}
 
 @keyframes row-fade-30 {
-  0%, 6.7% { opacity: 1; }
-  14.7% { opacity: 0.1; }
-  14.7%, 99.9% { opacity: 0.1; }
+  0%, 1.6% { opacity: 1; }
+  4.9% { opacity: 0.1; }
+  4.9%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-40 {
-  0%, 8.8% { opacity: 1; }
-  16.8% { opacity: 0.1; }
-  16.8%, 99.9% { opacity: 0.1; }
+  0%, 3.4% { opacity: 1; }
+  6.7% { opacity: 0.1; }
+  6.7%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-60 {
-  0%, 12.8% { opacity: 1; }
-  20.8% { opacity: 0.1; }
-  20.8%, 99.9% { opacity: 0.1; }
+  0%, 7.1% { opacity: 1; }
+  10.4% { opacity: 0.1; }
+  10.4%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-70 {
-  0%, 14.9% { opacity: 1; }
-  22.9% { opacity: 0.1; }
-  22.9%, 99.9% { opacity: 0.1; }
+  0%, 9.0% { opacity: 1; }
+  12.3% { opacity: 0.1; }
+  12.3%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-80 {
-  0%, 16.9% { opacity: 1; }
-  24.9% { opacity: 0.1; }
-  24.9%, 99.9% { opacity: 0.1; }
+  0%, 10.9% { opacity: 1; }
+  14.2% { opacity: 0.1; }
+  14.2%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-90 {
-  0%, 19.0% { opacity: 1; }
-  27.0% { opacity: 0.1; }
-  27.0%, 99.9% { opacity: 0.1; }
+  0%, 12.7% { opacity: 1; }
+  16.0% { opacity: 0.1; }
+  16.0%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-100 {
-  0%, 21.0% { opacity: 1; }
+  0%, 14.6% { opacity: 1; }
+  17.9% { opacity: 0.1; }
+  17.9%, 99.9% { opacity: 0.1; }
+  100% { opacity: 1; }
+}
+@keyframes row-fade-110 {
+  0%, 16.4% { opacity: 1; }
+  19.7% { opacity: 0.1; }
+  19.7%, 99.9% { opacity: 0.1; }
+  100% { opacity: 1; }
+}
+@keyframes row-fade-120 {
+  0%, 18.3% { opacity: 1; }
+  21.6% { opacity: 0.1; }
+  21.6%, 99.9% { opacity: 0.1; }
+  100% { opacity: 1; }
+}
+@keyframes row-fade-130 {
+  0%, 20.1% { opacity: 1; }
+  23.4% { opacity: 0.1; }
+  23.4%, 99.9% { opacity: 0.1; }
+  100% { opacity: 1; }
+}
+@keyframes row-fade-140 {
+  0%, 22.0% { opacity: 1; }
+  25.3% { opacity: 0.1; }
+  25.3%, 99.9% { opacity: 0.1; }
+  100% { opacity: 1; }
+}
+@keyframes row-fade-150 {
+  0%, 23.9% { opacity: 1; }
+  27.2% { opacity: 0.1; }
+  27.2%, 99.9% { opacity: 0.1; }
+  100% { opacity: 1; }
+}
+@keyframes row-fade-160 {
+  0%, 25.7% { opacity: 1; }
   29.0% { opacity: 0.1; }
   29.0%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
-@keyframes row-fade-110 {
-  0%, 23.0% { opacity: 1; }
-  31.0% { opacity: 0.1; }
-  31.0%, 99.9% { opacity: 0.1; }
-  100% { opacity: 1; }
-}
-@keyframes row-fade-120 {
-  0%, 25.1% { opacity: 1; }
-  33.1% { opacity: 0.1; }
-  33.1%, 99.9% { opacity: 0.1; }
-  100% { opacity: 1; }
-}
-@keyframes row-fade-130 {
-  0%, 27.1% { opacity: 1; }
-  35.1% { opacity: 0.1; }
-  35.1%, 99.9% { opacity: 0.1; }
-  100% { opacity: 1; }
-}
-@keyframes row-fade-140 {
-  0%, 29.2% { opacity: 1; }
-  37.2% { opacity: 0.1; }
-  37.2%, 99.9% { opacity: 0.1; }
-  100% { opacity: 1; }
-}
-@keyframes row-fade-150 {
-  0%, 31.2% { opacity: 1; }
-  39.2% { opacity: 0.1; }
-  39.2%, 99.9% { opacity: 0.1; }
-  100% { opacity: 1; }
-}
-@keyframes row-fade-160 {
-  0%, 33.2% { opacity: 1; }
-  41.2% { opacity: 0.1; }
-  41.2%, 99.9% { opacity: 0.1; }
-  100% { opacity: 1; }
-}
 @keyframes row-fade-170 {
-  0%, 35.3% { opacity: 1; }
-  43.3% { opacity: 0.1; }
-  43.3%, 99.9% { opacity: 0.1; }
+  0%, 27.6% { opacity: 1; }
+  30.9% { opacity: 0.1; }
+  30.9%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-180 {
-  0%, 37.3% { opacity: 1; }
-  45.3% { opacity: 0.1; }
-  45.3%, 99.9% { opacity: 0.1; }
+  0%, 29.4% { opacity: 1; }
+  32.7% { opacity: 0.1; }
+  32.7%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-190 {
-  0%, 39.4% { opacity: 1; }
-  47.4% { opacity: 0.1; }
-  47.4%, 99.9% { opacity: 0.1; }
+  0%, 31.3% { opacity: 1; }
+  34.6% { opacity: 0.1; }
+  34.6%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-220 {
-  0%, 45.5% { opacity: 1; }
-  53.5% { opacity: 0.1; }
-  53.5%, 99.9% { opacity: 0.1; }
+  0%, 36.9% { opacity: 1; }
+  40.2% { opacity: 0.1; }
+  40.2%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-240 {
-  0%, 49.6% { opacity: 1; }
-  57.6% { opacity: 0.1; }
-  57.6%, 99.9% { opacity: 0.1; }
+  0%, 40.6% { opacity: 1; }
+  43.9% { opacity: 0.1; }
+  43.9%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-260 {
-  0%, 53.7% { opacity: 1; }
-  61.7% { opacity: 0.1; }
-  61.7%, 99.9% { opacity: 0.1; }
+  0%, 44.3% { opacity: 1; }
+  47.6% { opacity: 0.1; }
+  47.6%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-280 {
-  0%, 57.7% { opacity: 1; }
-  65.7% { opacity: 0.1; }
-  65.7%, 99.9% { opacity: 0.1; }
+  0%, 48.0% { opacity: 1; }
+  51.3% { opacity: 0.1; }
+  51.3%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-320 {
-  0%, 65.9% { opacity: 1; }
-  73.9% { opacity: 0.1; }
-  73.9%, 99.9% { opacity: 0.1; }
+  0%, 55.5% { opacity: 1; }
+  58.8% { opacity: 0.1; }
+  58.8%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-340 {
-  0%, 70.0% { opacity: 1; }
-  78.0% { opacity: 0.1; }
-  78.0%, 99.9% { opacity: 0.1; }
+  0%, 59.2% { opacity: 1; }
+  62.5% { opacity: 0.1; }
+  62.5%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-360 {
-  0%, 74.1% { opacity: 1; }
-  82.1% { opacity: 0.1; }
-  82.1%, 99.9% { opacity: 0.1; }
+  0%, 62.9% { opacity: 1; }
+  66.2% { opacity: 0.1; }
+  66.2%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-400 {
-  0%, 82.2% { opacity: 1; }
-  90.2% { opacity: 0.1; }
-  90.2%, 99.9% { opacity: 0.1; }
+  0%, 70.3% { opacity: 1; }
+  73.6% { opacity: 0.1; }
+  73.6%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-420 {
-  0%, 86.3% { opacity: 1; }
-  94.3% { opacity: 0.1; }
-  94.3%, 99.9% { opacity: 0.1; }
+  0%, 74.0% { opacity: 1; }
+  77.3% { opacity: 0.1; }
+  77.3%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-460 {
-  0%, 94.0% { opacity: 1; }
-  99.5% { opacity: 0.1; }
-  99.5%, 99.9% { opacity: 0.1; }
+  0%, 81.5% { opacity: 1; }
+  84.8% { opacity: 0.1; }
+  84.8%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-480 {
-  0%, 94.0% { opacity: 1; }
-  99.5% { opacity: 0.1; }
-  99.5%, 99.9% { opacity: 0.1; }
+  0%, 85.2% { opacity: 1; }
+  88.5% { opacity: 0.1; }
+  88.5%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-520 {
-  0%, 94.0% { opacity: 1; }
-  99.5% { opacity: 0.1; }
-  99.5%, 99.9% { opacity: 0.1; }
+  0%, 92.6% { opacity: 1; }
+  95.9% { opacity: 0.1; }
+  95.9%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes cursor-blink {
@@ -192,10 +192,10 @@ text, tspan {white-space: pre;}
   50%, 100% { opacity: 0; }
 }
 @keyframes scanline {
-  0% { transform: translateY(16px); opacity: 0; }
-  0.5% { opacity: 0.22; }
+  0% { transform: translateY(-8px); opacity: 0; }
+  1.7% { opacity: 0.22; }
   99.5% { opacity: 0.22; }
-  100% { transform: translateY(506px); opacity: 0; }
+  100% { transform: translateY(530px); opacity: 0; }
 }
 .terminal-row {
   opacity: 1;
@@ -238,8 +238,8 @@ text, tspan {white-space: pre;}
 <defs>
 <linearGradient id="scanline-gradient" x1="0" y1="0" x2="0" y2="1">
 <stop offset="0%" stop-color="#fdf6e3" stop-opacity="0"/>
-<stop offset="45%" stop-color="#268bd2" stop-opacity="0.35"/>
-<stop offset="55%" stop-color="#268bd2" stop-opacity="0.35"/>
+<stop offset="47%" stop-color="#268bd2" stop-opacity="0.4"/>
+<stop offset="53%" stop-color="#268bd2" stop-opacity="0.4"/>
 <stop offset="100%" stop-color="#fdf6e3" stop-opacity="0"/>
 </linearGradient>
 </defs>
@@ -273,7 +273,7 @@ text, tspan {white-space: pre;}
 <tspan x="300" y="340" class="terminal-row row-y-340"><tspan class="dim"> </tspan><tspan class="key">portfolio</tspan><tspan class="dim">  → </tspan><tspan class="value">fausto-yuuki.vercel.app</tspan></tspan>
 <tspan x="300" y="360" class="terminal-row row-y-360"><tspan class="dim"> </tspan><tspan class="key">linkedin</tspan><tspan class="dim">   → </tspan><tspan class="value">fausto-yuuki</tspan></tspan>
 <tspan x="300" y="400" class="terminal-row row-y-400"><tspan class="prompt-host">yuuki@github</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">git shortlog -sn --all | head -1</tspan></tspan>
-<tspan x="300" y="420" class="terminal-row row-y-420"><tspan class="dim">   </tspan><tspan class="value" id="commit_data">497</tspan><tspan class="dim" id="commit_data_dots"></tspan><tspan class="dim">  YuukiFST</tspan></tspan>
+<tspan x="300" y="420" class="terminal-row row-y-420"><tspan class="dim">   </tspan><tspan class="value" id="commit_data">498</tspan><tspan class="dim" id="commit_data_dots"></tspan><tspan class="dim">  YuukiFST</tspan></tspan>
 <tspan x="300" y="460" class="terminal-row row-y-460"><tspan class="prompt-host">yuuki@github</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">gh api graphql --field query=contributions</tspan></tspan>
 <tspan x="300" y="480" class="terminal-row row-y-480"><tspan class="dim">  </tspan><tspan class="value" id="contrib_data">29</tspan><tspan class="dim" id="contrib_data_dots"></tspan><tspan class="dim"> contributions</tspan></tspan>
 <tspan x="300" y="520" class="terminal-row row-y-520"><tspan class="prompt-host">yuuki@github</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command"/><tspan class="cursor">█</tspan></tspan>
