@@ -59,9 +59,11 @@ THEMES = {
 SVG_HEIGHT = 540
 SCAN_TOP = 24
 SCAN_BOTTOM = SVG_HEIGHT - 24
-SCAN_DURATION_S = 12
-FADE_WINDOW_PCT = 5.0
-FADE_PRE_BUFFER_PCT = 1.2
+SCAN_DURATION_S = 18
+SCANLINE_HEIGHT = 28
+FADE_DELAY_AFTER_SCAN_PCT = 2.0
+FADE_WINDOW_PCT = 8.0
+FADED_OPACITY = 0.1
 
 TTY_ROW_Y = [30, 70, 90, 110, 130, 150, 170, 190, 220, 240, 260, 280, 320, 340, 360, 400, 420, 460, 480, 520]
 ASCII_ROW_Y = [40 + index * 20 for index in range(len(ASCII_LOGO))]
@@ -72,19 +74,20 @@ def esc(text: str) -> str:
     return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
-def scan_pass_percent(y: int) -> float:
+def scan_clear_percent(y: int) -> float:
+    """Timeline % when scanline band has moved past this row."""
     span = SCAN_BOTTOM - SCAN_TOP
-    return max(1.0, min(98.0, ((y - SCAN_TOP) / span) * 100))
+    clear_at_y = y + SCANLINE_HEIGHT
+    return max(1.0, min(98.0, ((clear_at_y - SCAN_TOP) / span) * 100))
 
 
 def row_fade_keyframe(y: int) -> str:
-    start = scan_pass_percent(y)
-    fade_end = min(start + FADE_WINDOW_PCT, 99.5)
-    hold_end = min(fade_end + 0.4, 99.9)
+    fade_start = min(scan_clear_percent(y) + FADE_DELAY_AFTER_SCAN_PCT, 94.0)
+    fade_end = min(fade_start + FADE_WINDOW_PCT, 99.5)
     return f"""@keyframes row-fade-{y} {{
-  0%, {start - FADE_PRE_BUFFER_PCT:.1f}% {{ opacity: 1; }}
-  {start:.1f}%, {fade_end:.1f}% {{ opacity: 0.1; }}
-  {hold_end:.1f}%, 99.9% {{ opacity: 0.1; }}
+  0%, {fade_start:.1f}% {{ opacity: 1; }}
+  {fade_end:.1f}% {{ opacity: {FADED_OPACITY}; }}
+  {fade_end:.1f}%, 99.9% {{ opacity: {FADED_OPACITY}; }}
   100% {{ opacity: 1; }}
 }}"""
 
