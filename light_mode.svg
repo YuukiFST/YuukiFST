@@ -20,153 +20,153 @@ size-adjust: 109%;
 text, tspan {white-space: pre;}
 
 @keyframes row-fade-30 {
-  0%, 8.9% { opacity: 1; }
-  16.9% { opacity: 0.1; }
-  16.9%, 99.9% { opacity: 0.1; }
+  0%, 6.7% { opacity: 1; }
+  14.7% { opacity: 0.1; }
+  14.7%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-40 {
-  0%, 10.9% { opacity: 1; }
-  18.9% { opacity: 0.1; }
-  18.9%, 99.9% { opacity: 0.1; }
+  0%, 8.8% { opacity: 1; }
+  16.8% { opacity: 0.1; }
+  16.8%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-60 {
-  0%, 15.0% { opacity: 1; }
-  23.0% { opacity: 0.1; }
-  23.0%, 99.9% { opacity: 0.1; }
+  0%, 12.8% { opacity: 1; }
+  20.8% { opacity: 0.1; }
+  20.8%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-70 {
-  0%, 17.0% { opacity: 1; }
-  25.0% { opacity: 0.1; }
-  25.0%, 99.9% { opacity: 0.1; }
+  0%, 14.9% { opacity: 1; }
+  22.9% { opacity: 0.1; }
+  22.9%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-80 {
-  0%, 19.1% { opacity: 1; }
-  27.1% { opacity: 0.1; }
-  27.1%, 99.9% { opacity: 0.1; }
+  0%, 16.9% { opacity: 1; }
+  24.9% { opacity: 0.1; }
+  24.9%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-90 {
-  0%, 21.1% { opacity: 1; }
-  29.1% { opacity: 0.1; }
-  29.1%, 99.9% { opacity: 0.1; }
+  0%, 19.0% { opacity: 1; }
+  27.0% { opacity: 0.1; }
+  27.0%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-100 {
-  0%, 23.1% { opacity: 1; }
-  31.1% { opacity: 0.1; }
-  31.1%, 99.9% { opacity: 0.1; }
+  0%, 21.0% { opacity: 1; }
+  29.0% { opacity: 0.1; }
+  29.0%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-110 {
-  0%, 25.2% { opacity: 1; }
-  33.2% { opacity: 0.1; }
-  33.2%, 99.9% { opacity: 0.1; }
+  0%, 23.0% { opacity: 1; }
+  31.0% { opacity: 0.1; }
+  31.0%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-120 {
-  0%, 27.2% { opacity: 1; }
-  35.2% { opacity: 0.1; }
-  35.2%, 99.9% { opacity: 0.1; }
+  0%, 25.1% { opacity: 1; }
+  33.1% { opacity: 0.1; }
+  33.1%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-130 {
+  0%, 27.1% { opacity: 1; }
+  35.1% { opacity: 0.1; }
+  35.1%, 99.9% { opacity: 0.1; }
+  100% { opacity: 1; }
+}
+@keyframes row-fade-140 {
   0%, 29.2% { opacity: 1; }
   37.2% { opacity: 0.1; }
   37.2%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
-@keyframes row-fade-140 {
-  0%, 31.3% { opacity: 1; }
-  39.3% { opacity: 0.1; }
-  39.3%, 99.9% { opacity: 0.1; }
-  100% { opacity: 1; }
-}
 @keyframes row-fade-150 {
-  0%, 33.3% { opacity: 1; }
-  41.3% { opacity: 0.1; }
-  41.3%, 99.9% { opacity: 0.1; }
+  0%, 31.2% { opacity: 1; }
+  39.2% { opacity: 0.1; }
+  39.2%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-160 {
+  0%, 33.2% { opacity: 1; }
+  41.2% { opacity: 0.1; }
+  41.2%, 99.9% { opacity: 0.1; }
+  100% { opacity: 1; }
+}
+@keyframes row-fade-170 {
   0%, 35.3% { opacity: 1; }
   43.3% { opacity: 0.1; }
   43.3%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
-@keyframes row-fade-170 {
-  0%, 37.4% { opacity: 1; }
-  45.4% { opacity: 0.1; }
-  45.4%, 99.9% { opacity: 0.1; }
+@keyframes row-fade-180 {
+  0%, 37.3% { opacity: 1; }
+  45.3% { opacity: 0.1; }
+  45.3%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
-@keyframes row-fade-180 {
+@keyframes row-fade-190 {
   0%, 39.4% { opacity: 1; }
   47.4% { opacity: 0.1; }
   47.4%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
-@keyframes row-fade-190 {
-  0%, 41.4% { opacity: 1; }
-  49.4% { opacity: 0.1; }
-  49.4%, 99.9% { opacity: 0.1; }
-  100% { opacity: 1; }
-}
 @keyframes row-fade-220 {
-  0%, 47.5% { opacity: 1; }
-  55.5% { opacity: 0.1; }
-  55.5%, 99.9% { opacity: 0.1; }
+  0%, 45.5% { opacity: 1; }
+  53.5% { opacity: 0.1; }
+  53.5%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-240 {
-  0%, 51.6% { opacity: 1; }
-  59.6% { opacity: 0.1; }
-  59.6%, 99.9% { opacity: 0.1; }
+  0%, 49.6% { opacity: 1; }
+  57.6% { opacity: 0.1; }
+  57.6%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-260 {
-  0%, 55.7% { opacity: 1; }
-  63.7% { opacity: 0.1; }
-  63.7%, 99.9% { opacity: 0.1; }
+  0%, 53.7% { opacity: 1; }
+  61.7% { opacity: 0.1; }
+  61.7%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-280 {
-  0%, 59.7% { opacity: 1; }
-  67.7% { opacity: 0.1; }
-  67.7%, 99.9% { opacity: 0.1; }
+  0%, 57.7% { opacity: 1; }
+  65.7% { opacity: 0.1; }
+  65.7%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-320 {
-  0%, 67.9% { opacity: 1; }
-  75.9% { opacity: 0.1; }
-  75.9%, 99.9% { opacity: 0.1; }
+  0%, 65.9% { opacity: 1; }
+  73.9% { opacity: 0.1; }
+  73.9%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-340 {
-  0%, 71.9% { opacity: 1; }
-  79.9% { opacity: 0.1; }
-  79.9%, 99.9% { opacity: 0.1; }
+  0%, 70.0% { opacity: 1; }
+  78.0% { opacity: 0.1; }
+  78.0%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-360 {
-  0%, 76.0% { opacity: 1; }
-  84.0% { opacity: 0.1; }
-  84.0%, 99.9% { opacity: 0.1; }
+  0%, 74.1% { opacity: 1; }
+  82.1% { opacity: 0.1; }
+  82.1%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-400 {
-  0%, 84.1% { opacity: 1; }
-  92.1% { opacity: 0.1; }
-  92.1%, 99.9% { opacity: 0.1; }
+  0%, 82.2% { opacity: 1; }
+  90.2% { opacity: 0.1; }
+  90.2%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-420 {
-  0%, 88.2% { opacity: 1; }
-  96.2% { opacity: 0.1; }
-  96.2%, 99.9% { opacity: 0.1; }
+  0%, 86.3% { opacity: 1; }
+  94.3% { opacity: 0.1; }
+  94.3%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-460 {
@@ -192,10 +192,10 @@ text, tspan {white-space: pre;}
   50%, 100% { opacity: 0; }
 }
 @keyframes scanline {
-  0% { transform: translateY(24px); opacity: 0; }
-  3% { opacity: 0.22; }
-  97% { opacity: 0.22; }
-  100% { transform: translateY(516px); opacity: 0; }
+  0% { transform: translateY(16px); opacity: 0; }
+  0.5% { opacity: 0.22; }
+  99.5% { opacity: 0.22; }
+  100% { transform: translateY(506px); opacity: 0; }
 }
 .terminal-row {
   opacity: 1;
@@ -273,9 +273,9 @@ text, tspan {white-space: pre;}
 <tspan x="300" y="340" class="terminal-row row-y-340"><tspan class="dim"> </tspan><tspan class="key">portfolio</tspan><tspan class="dim">  → </tspan><tspan class="value">fausto-yuuki.vercel.app</tspan></tspan>
 <tspan x="300" y="360" class="terminal-row row-y-360"><tspan class="dim"> </tspan><tspan class="key">linkedin</tspan><tspan class="dim">   → </tspan><tspan class="value">fausto-yuuki</tspan></tspan>
 <tspan x="300" y="400" class="terminal-row row-y-400"><tspan class="prompt-host">yuuki@github</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">git shortlog -sn --all | head -1</tspan></tspan>
-<tspan x="300" y="420" class="terminal-row row-y-420"><tspan class="dim">   </tspan><tspan class="value" id="commit_data">0</tspan><tspan class="dim" id="commit_data_dots"></tspan><tspan class="dim">  YuukiFST</tspan></tspan>
+<tspan x="300" y="420" class="terminal-row row-y-420"><tspan class="dim">   </tspan><tspan class="value" id="commit_data">497</tspan><tspan class="dim" id="commit_data_dots"></tspan><tspan class="dim">  YuukiFST</tspan></tspan>
 <tspan x="300" y="460" class="terminal-row row-y-460"><tspan class="prompt-host">yuuki@github</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">gh api graphql --field query=contributions</tspan></tspan>
-<tspan x="300" y="480" class="terminal-row row-y-480"><tspan class="dim">  </tspan><tspan class="value" id="contrib_data">0</tspan><tspan class="dim" id="contrib_data_dots"></tspan><tspan class="dim"> contributions</tspan></tspan>
-<tspan x="300" y="520" class="terminal-row row-y-520"><tspan class="prompt-host">yuuki@github</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command"></tspan><tspan class="cursor">█</tspan></tspan>
+<tspan x="300" y="480" class="terminal-row row-y-480"><tspan class="dim">  </tspan><tspan class="value" id="contrib_data">29</tspan><tspan class="dim" id="contrib_data_dots"></tspan><tspan class="dim"> contributions</tspan></tspan>
+<tspan x="300" y="520" class="terminal-row row-y-520"><tspan class="prompt-host">yuuki@github</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command"/><tspan class="cursor">█</tspan></tspan>
 </text>
 </svg>

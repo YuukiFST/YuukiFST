@@ -57,17 +57,20 @@ THEMES = {
 }
 
 SVG_HEIGHT = 540
-SCAN_TOP = 24
-SCAN_BOTTOM = SVG_HEIGHT - 24
 SCAN_DURATION_S = 18
 SCANLINE_HEIGHT = 28
-FADE_DELAY_AFTER_SCAN_PCT = 2.0
+FADE_DELAY_AFTER_SCAN_PCT = 1.0
 FADE_WINDOW_PCT = 8.0
 FADED_OPACITY = 0.1
 
 TTY_ROW_Y = [30, 70, 90, 110, 130, 150, 170, 190, 220, 240, 260, 280, 320, 340, 360, 400, 420, 460, 480, 520]
 ASCII_ROW_Y = [40 + index * 20 for index in range(len(ASCII_LOGO))]
 ALL_ROW_Y = sorted(set(TTY_ROW_Y + ASCII_ROW_Y))
+FIRST_ROW_Y = min(ALL_ROW_Y)
+LAST_ROW_Y = max(ALL_ROW_Y)
+SCAN_START = FIRST_ROW_Y - SCANLINE_HEIGHT // 2
+SCAN_END = LAST_ROW_Y - SCANLINE_HEIGHT // 2
+SCAN_SPAN = SCAN_END - SCAN_START
 
 
 def esc(text: str) -> str:
@@ -76,9 +79,8 @@ def esc(text: str) -> str:
 
 def scan_clear_percent(y: int) -> float:
     """Timeline % when scanline band has moved past this row."""
-    span = SCAN_BOTTOM - SCAN_TOP
-    clear_at_y = y + SCANLINE_HEIGHT
-    return max(1.0, min(98.0, ((clear_at_y - SCAN_TOP) / span) * 100))
+    clear_at = y + SCANLINE_HEIGHT // 2
+    return max(0.0, min(98.0, ((clear_at - SCAN_START) / SCAN_SPAN) * 100))
 
 
 def row_fade_keyframe(y: int) -> str:
@@ -105,10 +107,10 @@ def animation_styles(theme: dict) -> str:
   50%, 100% {{ opacity: 0; }}
 }}
 @keyframes scanline {{
-  0% {{ transform: translateY({SCAN_TOP}px); opacity: 0; }}
-  3% {{ opacity: 0.22; }}
-  97% {{ opacity: 0.22; }}
-  100% {{ transform: translateY({SCAN_BOTTOM}px); opacity: 0; }}
+  0% {{ transform: translateY({SCAN_START}px); opacity: 0; }}
+  0.5% {{ opacity: 0.22; }}
+  99.5% {{ opacity: 0.22; }}
+  100% {{ transform: translateY({SCAN_END}px); opacity: 0; }}
 }}
 .terminal-row {{
   opacity: 1;
@@ -247,7 +249,7 @@ text, tspan {{white-space: pre;}}
 </defs>
 <rect width="985px" height="{SVG_HEIGHT}px" fill="{theme["bg"]}" rx="12"/>
 <rect x="1" y="1" width="983px" height="{SVG_HEIGHT - 2}px" fill="none" stroke="{theme["border"]}" stroke-width="2" rx="12"/>
-<rect id="terminal-scanline" x="12" y="0" width="961" height="28" opacity="0"/>
+<rect id="terminal-scanline" x="12" y="0" width="961" height="{SCANLINE_HEIGHT}" opacity="0"/>
 <text x="15" y="30" fill="{theme["fg"]}" class="ascii">
 {ascii_block(theme)}
 </text>
