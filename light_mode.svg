@@ -22,19 +22,14 @@ text, tspan {white-space: pre;}
 <rect width="985px" height="540px" fill="#fdf6e3" rx="12"/>
 <rect x="1" y="1" width="983px" height="538px" fill="none" stroke="#93a1a1" stroke-width="2" rx="12"/>
 <text x="15" y="30" fill="#657b83" class="ascii">
-<tspan x="15" y="40" fill="#268bd2">     ###               ###      </tspan>
-<tspan x="15" y="60" fill="#268bd2">      ####             ####     </tspan>
-<tspan x="15" y="80" fill="#268bd2">       #####           #####    </tspan>
-<tspan x="15" y="100" fill="#268bd2">        #####         #####     </tspan>
-<tspan x="15" y="120" fill="#268bd2">         #####       #####      </tspan>
-<tspan x="15" y="140" fill="#268bd2">          #####     #####       </tspan>
-<tspan x="15" y="160" fill="#268bd2">           #####   #####        </tspan>
-<tspan x="15" y="180" fill="#268bd2">            ##### #####         </tspan>
-<tspan x="15" y="200" fill="#268bd2">             #######            </tspan>
-<tspan x="15" y="220" fill="#268bd2">              #####             </tspan>
-<tspan x="15" y="240" fill="#268bd2">               ###              </tspan>
-<tspan x="15" y="260" fill="#268bd2">                #               </tspan>
-<tspan x="15" y="280" fill="#268bd2">                                </tspan>
+<tspan x="15" y="40" fill="#268bd2">#   # #   # #   # #   # ### </tspan>
+<tspan x="15" y="60" fill="#268bd2"> # #  #   # #   # #  #   #  </tspan>
+<tspan x="15" y="80" fill="#268bd2">  #   #   # #   # ###    #  </tspan>
+<tspan x="15" y="100" fill="#268bd2">  #   #   # #   # #  #   #  </tspan>
+<tspan x="15" y="120" fill="#268bd2">  #    ###   ###  #   # ### </tspan>
+<tspan x="15" y="140" fill="#268bd2">                            </tspan>
+<tspan x="15" y="160" fill="#268bd2">                            </tspan>
+<tspan x="15" y="180" fill="#268bd2">                            </tspan>
 </text>
 <text x="300" y="30" fill="#657b83">
 <tspan x="300" y="30"><tspan class="dim">Last login: Sat Jul 11 2026 from 127.0.0.1 — </tspan><tspan class="value" id="age_data">3 years, 9 months, 0 days</tspan><tspan class="dim" id="age_data_dots"></tspan><tspan class="dim"> on GitHub</tspan></tspan>
@@ -53,7 +48,7 @@ text, tspan {white-space: pre;}
 <tspan x="300" y="340"><tspan class="dim"> </tspan><tspan class="key">portfolio</tspan><tspan class="dim">  → </tspan><tspan class="value">fausto-yuuki.vercel.app</tspan></tspan>
 <tspan x="300" y="360"><tspan class="dim"> </tspan><tspan class="key">linkedin</tspan><tspan class="dim">   → </tspan><tspan class="value">fausto-yuuki</tspan></tspan>
 <tspan x="300" y="400"><tspan class="prompt-host">yuuki@github</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">git shortlog -sn --all | head -1</tspan></tspan>
-<tspan x="300" y="420"><tspan class="dim">   </tspan><tspan class="value" id="commit_data">485</tspan><tspan class="dim" id="commit_data_dots"></tspan><tspan class="dim">  YuukiFST</tspan></tspan>
+<tspan x="300" y="420"><tspan class="dim">   </tspan><tspan class="value" id="commit_data">488</tspan><tspan class="dim" id="commit_data_dots"></tspan><tspan class="dim">  YuukiFST</tspan></tspan>
 <tspan x="300" y="460"><tspan class="prompt-host">yuuki@github</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">gh api graphql --field query=contributions</tspan></tspan>
 <tspan x="300" y="480"><tspan class="dim">  </tspan><tspan class="value" id="contrib_data">29</tspan><tspan class="dim" id="contrib_data_dots"></tspan><tspan class="dim"> contributions</tspan></tspan>
 <tspan x="300" y="520"><tspan class="prompt-host">yuuki@github</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command"/><tspan class="cursor">█</tspan></tspan>
