@@ -61,51 +61,45 @@ def esc(text: str) -> str:
 
 
 def animation_styles(theme: dict) -> str:
-    ascii_color = theme["ascii"]
-    accent = theme["prompt_host"]
-    row_rules = "\n".join(
-        f".ascii-row-{index} {{ animation-delay: {index * 0.18:.2f}s; }}"
-        for index in range(len(ASCII_LOGO))
-        if ASCII_LOGO[index].strip()
-    )
     return f"""
-@keyframes ascii-pulse {{
-  0%, 100% {{ opacity: 0.55; fill: {ascii_color}; }}
-  50% {{ opacity: 1; fill: {accent}; }}
+@keyframes terminal-pulse {{
+  0%, 100% {{ opacity: 0.55; }}
+  50% {{ opacity: 1; }}
 }}
 @keyframes cursor-blink {{
   0%, 45% {{ opacity: 1; }}
   50%, 100% {{ opacity: 0; }}
 }}
 @keyframes scanline {{
-  0% {{ transform: translateY(32px); opacity: 0; }}
-  8% {{ opacity: 0.12; }}
-  92% {{ opacity: 0.12; }}
-  100% {{ transform: translateY(188px); opacity: 0; }}
+  0% {{ transform: translateY(12px); opacity: 0; }}
+  8% {{ opacity: 0.1; }}
+  92% {{ opacity: 0.1; }}
+  100% {{ transform: translateY({SVG_HEIGHT - 12}px); opacity: 0; }}
 }}
-.ascii-line {{
-  fill: {ascii_color};
-  animation: ascii-pulse 2.8s ease-in-out infinite;
+.terminal-row {{
+  animation: terminal-pulse 2.8s ease-in-out infinite;
 }}
-{row_rules}
 .cursor {{ animation: cursor-blink 1.05s step-end infinite; }}
-#ascii-scanline {{
+#terminal-scanline {{
   fill: url(#scanline-gradient);
   animation: scanline 5s linear infinite;
 }}
 """
 
 
+def row_delay(y: int) -> str:
+    return f"{max(0, y - 30) * 0.035:.2f}s"
+
+
 def ascii_block(theme: dict, x: int = 15, y_start: int = 40) -> str:
     rows = []
     for index, line in enumerate(ASCII_LOGO):
         y = y_start + index * 20
-        if line.strip():
-            rows.append(
-                f'<tspan x="{x}" y="{y}" class="ascii-line ascii-row-{index}">{esc(line)}</tspan>'
-            )
-        else:
-            rows.append(f'<tspan x="{x}" y="{y}" class="ascii-line">{esc(line)}</tspan>')
+        rows.append(
+            f'<tspan x="{x}" y="{y}" class="terminal-row" '
+            f'style="animation-delay:{row_delay(y)}" fill="{theme["ascii"]}">'
+            f"{esc(line)}</tspan>"
+        )
     return "\n".join(rows)
 
 
@@ -179,7 +173,10 @@ def tty_block(theme: dict) -> str:
 
     rows = []
     for y, content in lines:
-        rows.append(f'<tspan x="300" y="{y}">{content}</tspan>')
+        rows.append(
+            f'<tspan x="300" y="{y}" class="terminal-row" '
+            f'style="animation-delay:{row_delay(y)}">{content}</tspan>'
+        )
     return "\n".join(rows)
 
 
@@ -218,7 +215,7 @@ text, tspan {{white-space: pre;}}
 </defs>
 <rect width="985px" height="{SVG_HEIGHT}px" fill="{theme["bg"]}" rx="12"/>
 <rect x="1" y="1" width="983px" height="{SVG_HEIGHT - 2}px" fill="none" stroke="{theme["border"]}" stroke-width="2" rx="12"/>
-<rect id="ascii-scanline" x="12" y="0" width="290" height="24" opacity="0"/>
+<rect id="terminal-scanline" x="12" y="0" width="961" height="24" opacity="0"/>
 <text x="15" y="30" fill="{theme["fg"]}" class="ascii">
 {ascii_block(theme)}
 </text>
