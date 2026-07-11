@@ -1,14 +1,17 @@
 #!/usr/bin/env bash
+# Delega para my-harness-config (fonte canonica dos hooks).
 set -euo pipefail
 
-ROOT="$(git rev-parse --show-toplevel)"
-HOOKS_SRC="$ROOT/.githooks"
-HOOKS_DST="$ROOT/.git/hooks"
-
-for hook in commit-msg prepare-commit-msg forbidden-patterns.sh; do
-  install -m 755 "$HOOKS_SRC/$hook" "$HOOKS_DST/$hook" 2>/dev/null || {
-    cp "$HOOKS_SRC/$hook" "$HOOKS_DST/$hook"
-    chmod 755 "$HOOKS_DST/$hook"
-  }
-  echo "ok $hook"
+for candidate in \
+  "${MY_HARNESS_CONFIG:-}" \
+  "$HOME/Projects/my-harness-config" \
+  "$HOME/Developer/my-harness-config" \
+  "$HOME/repos/my-harness-config" \
+  "$HOME/my-harness-config"; do
+  if [[ -n "$candidate" && -x "$candidate/scripts/install-git-hooks.sh" ]]; then
+    exec "$candidate/scripts/install-git-hooks.sh" "$@"
+  fi
 done
+
+echo "ERRO: clone my-harness-config e defina MY_HARNESS_CONFIG ou use um caminho padrao." >&2
+exit 1
