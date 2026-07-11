@@ -316,19 +316,15 @@ def stars_counter(data):
     return total_stars
 
 
-def svg_overwrite(filename, age_data, commit_data, repo_data, contrib_data, loc_data):
+def svg_overwrite(filename, age_data, commit_data, contrib_data):
     """
-    Parse SVG files and update elements with age, commits, repositories, and lines written
+    Parse SVG files and update age, commits, and contributions.
     """
     tree = etree.parse(filename)
     root = tree.getroot()
     justify_format(root, 'age_data', age_data)
     justify_format(root, 'commit_data', commit_data)
-    justify_format(root, 'repo_data', repo_data)
     justify_format(root, 'contrib_data', contrib_data)
-    justify_format(root, 'loc_data', loc_data[2])
-    justify_format(root, 'loc_add', loc_data[0])
-    justify_format(root, 'loc_del', loc_data[1])
     tree.write(filename, encoding='utf-8', xml_declaration=True)
 
 
@@ -452,18 +448,15 @@ if __name__ == '__main__':
     total_loc, loc_time = perf_counter(loc_query, ['OWNER', 'COLLABORATOR', 'ORGANIZATION_MEMBER'], 7)
     formatter('LOC (cached)', loc_time) if total_loc[-1] else formatter('LOC (no cache)', loc_time)
     commit_data, commit_time = perf_counter(commit_counter, 7)
-    repo_data, repo_time = perf_counter(graph_repos_stars, 'repos', ['OWNER'])
     contrib_data, contrib_time = perf_counter(graph_repos_stars, 'repos', ['OWNER', 'COLLABORATOR', 'ORGANIZATION_MEMBER'])
 
-    for index in range(len(total_loc)-1): total_loc[index] = '{:,}'.format(total_loc[index]) # format added, deleted, and total LOC
-
-    svg_overwrite('dark_mode.svg', age_data, commit_data, repo_data, contrib_data, total_loc[:-1])
-    svg_overwrite('light_mode.svg', age_data, commit_data, repo_data, contrib_data, total_loc[:-1])
+    svg_overwrite('dark_mode.svg', age_data, commit_data, contrib_data)
+    svg_overwrite('light_mode.svg', age_data, commit_data, contrib_data)
 
     # move cursor to override 'Calculation times:' with 'Total function time:' and the total function time, then move cursor back
-    print('\033[F\033[F\033[F\033[F\033[F\033[F',
-        '{:<21}'.format('Total function time:'), '{:>11}'.format('%.4f' % (user_time + age_time + loc_time + commit_time + repo_time + contrib_time)),
-        ' s \033[E\033[E\033[E\033[E\033[E\033[E', sep='')
+    print('\033[F\033[F\033[F\033[F\033[F',
+        '{:<21}'.format('Total function time:'), '{:>11}'.format('%.4f' % (user_time + age_time + loc_time + commit_time + contrib_time)),
+        ' s \033[E\033[E\033[E\033[E\033[E', sep='')
 
     print('Total GitHub GraphQL API calls:', '{:>3}'.format(sum(QUERY_COUNT.values())))
     for funct_name, count in QUERY_COUNT.items(): print('{:<28}'.format('   ' + funct_name + ':'), '{:>6}'.format(count))

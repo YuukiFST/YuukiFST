@@ -18,7 +18,10 @@ ASCII_LOGO = [
     "             #                 ",
     "             #                 ",
     "             #                 ",
-    "                                ",
+    "             #                 ",
+    "             #                 ",
+    "             #                 ",
+    "             #                 ",
     "                                ",
 ]
 
@@ -57,7 +60,7 @@ THEMES = {
     },
 }
 
-SVG_HEIGHT = 600
+SVG_HEIGHT = 540
 
 
 def esc(text: str) -> str:
@@ -86,6 +89,15 @@ def info_row(label: str, value: str) -> str:
         f'<tspan class="key">{esc(f"{label:<8}")}</tspan>'
         f'<tspan class="dim">· </tspan>'
         f'<tspan class="value">{esc(value)}</tspan>'
+    )
+
+
+def stat_line(value_id: str, suffix: str, indent: str = "    ") -> str:
+    return (
+        f'<tspan class="dim">{esc(indent)}</tspan>'
+        f'<tspan class="value" id="{value_id}">0</tspan>'
+        f'<tspan class="dim" id="{value_id}_dots"></tspan>'
+        f'<tspan class="dim">{esc(suffix)}</tspan>'
     )
 
 
@@ -121,37 +133,11 @@ def tty_block(theme: dict) -> str:
         (340, f'<tspan class="dim"> </tspan><tspan class="key">portfolio</tspan><tspan class="dim">  → </tspan><tspan class="value">fausto-yuuki.vercel.app</tspan>'),
         (360, f'<tspan class="dim"> </tspan><tspan class="key">linkedin</tspan><tspan class="dim">   → </tspan><tspan class="value">fausto-yuuki</tspan>'),
         (400, prompt(theme, "git shortlog -sn --all | head -1")),
+        (420, stat_line("commit_data", "  YuukiFST", "   ")),
+        (460, prompt(theme, "gh api graphql --field query=contributions")),
+        (480, stat_line("contrib_data", " contributions", "  ")),
         (
-            420,
-            f'<tspan class="dim">   </tspan>'
-            f'<tspan class="value" id="commit_data">0</tspan>'
-            f'<tspan class="dim" id="commit_data_dots"></tspan>'
-            f'<tspan class="dim"> YuukiFST</tspan>',
-        ),
-        (460, prompt(theme, "cloc --sum-reports .")),
-        (
-            480,
-            f'<tspan class="dim">  </tspan>'
-            f'<tspan class="value" id="loc_data">0</tspan>'
-            f'<tspan class="dim" id="loc_data_dots"></tspan>'
-            f'<tspan class="dim">lines | +</tspan>'
-            f'<tspan class="addColor" id="loc_add">0</tspan>'
-            f'<tspan class="dim"> / -</tspan>'
-            f'<tspan class="delColor" id="loc_del">0</tspan>'
-            f'<tspan class="dim" id="loc_del_dots"></tspan>',
-        ),
-        (520, prompt(theme, "ls ~/repos | wc -l")),
-        (
-            540,
-            f'<tspan class="dim"> </tspan>'
-            f'<tspan class="value" id="repo_data">0</tspan>'
-            f'<tspan class="dim" id="repo_data_dots"></tspan>'
-            f'<tspan class="dim">repos (</tspan>'
-            f'<tspan class="value" id="contrib_data">0</tspan>'
-            f'<tspan class="dim"> contributed)</tspan>',
-        ),
-        (
-            580,
+            520,
             f'{prompt(theme, "")}'
             f'<tspan class="cursor">█</tspan>',
         ),
