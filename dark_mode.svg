@@ -200,38 +200,38 @@ text, tspan {white-space: pre;}
 .terminal-row {
   opacity: 1;
 }
-.row-y-30 { animation: row-fade-30 18s linear infinite; }
-.row-y-40 { animation: row-fade-40 18s linear infinite; }
-.row-y-60 { animation: row-fade-60 18s linear infinite; }
-.row-y-70 { animation: row-fade-70 18s linear infinite; }
-.row-y-80 { animation: row-fade-80 18s linear infinite; }
-.row-y-90 { animation: row-fade-90 18s linear infinite; }
-.row-y-100 { animation: row-fade-100 18s linear infinite; }
-.row-y-110 { animation: row-fade-110 18s linear infinite; }
-.row-y-120 { animation: row-fade-120 18s linear infinite; }
-.row-y-130 { animation: row-fade-130 18s linear infinite; }
-.row-y-140 { animation: row-fade-140 18s linear infinite; }
-.row-y-150 { animation: row-fade-150 18s linear infinite; }
-.row-y-160 { animation: row-fade-160 18s linear infinite; }
-.row-y-170 { animation: row-fade-170 18s linear infinite; }
-.row-y-180 { animation: row-fade-180 18s linear infinite; }
-.row-y-190 { animation: row-fade-190 18s linear infinite; }
-.row-y-220 { animation: row-fade-220 18s linear infinite; }
-.row-y-240 { animation: row-fade-240 18s linear infinite; }
-.row-y-260 { animation: row-fade-260 18s linear infinite; }
-.row-y-280 { animation: row-fade-280 18s linear infinite; }
-.row-y-320 { animation: row-fade-320 18s linear infinite; }
-.row-y-340 { animation: row-fade-340 18s linear infinite; }
-.row-y-360 { animation: row-fade-360 18s linear infinite; }
-.row-y-400 { animation: row-fade-400 18s linear infinite; }
-.row-y-420 { animation: row-fade-420 18s linear infinite; }
-.row-y-460 { animation: row-fade-460 18s linear infinite; }
-.row-y-480 { animation: row-fade-480 18s linear infinite; }
-.row-y-520 { animation: row-fade-520 18s linear infinite; }
+.row-y-30 { animation: row-fade-30 26s linear infinite; }
+.row-y-40 { animation: row-fade-40 26s linear infinite; }
+.row-y-60 { animation: row-fade-60 26s linear infinite; }
+.row-y-70 { animation: row-fade-70 26s linear infinite; }
+.row-y-80 { animation: row-fade-80 26s linear infinite; }
+.row-y-90 { animation: row-fade-90 26s linear infinite; }
+.row-y-100 { animation: row-fade-100 26s linear infinite; }
+.row-y-110 { animation: row-fade-110 26s linear infinite; }
+.row-y-120 { animation: row-fade-120 26s linear infinite; }
+.row-y-130 { animation: row-fade-130 26s linear infinite; }
+.row-y-140 { animation: row-fade-140 26s linear infinite; }
+.row-y-150 { animation: row-fade-150 26s linear infinite; }
+.row-y-160 { animation: row-fade-160 26s linear infinite; }
+.row-y-170 { animation: row-fade-170 26s linear infinite; }
+.row-y-180 { animation: row-fade-180 26s linear infinite; }
+.row-y-190 { animation: row-fade-190 26s linear infinite; }
+.row-y-220 { animation: row-fade-220 26s linear infinite; }
+.row-y-240 { animation: row-fade-240 26s linear infinite; }
+.row-y-260 { animation: row-fade-260 26s linear infinite; }
+.row-y-280 { animation: row-fade-280 26s linear infinite; }
+.row-y-320 { animation: row-fade-320 26s linear infinite; }
+.row-y-340 { animation: row-fade-340 26s linear infinite; }
+.row-y-360 { animation: row-fade-360 26s linear infinite; }
+.row-y-400 { animation: row-fade-400 26s linear infinite; }
+.row-y-420 { animation: row-fade-420 26s linear infinite; }
+.row-y-460 { animation: row-fade-460 26s linear infinite; }
+.row-y-480 { animation: row-fade-480 26s linear infinite; }
+.row-y-520 { animation: row-fade-520 26s linear infinite; }
 .cursor { animation: cursor-blink 1.05s step-end infinite; }
 #terminal-scanline {
   fill: url(#scanline-gradient);
-  animation: scanline 18s linear infinite;
+  animation: scanline 26s linear infinite;
 }
 
 </style>
@@ -273,7 +273,7 @@ text, tspan {white-space: pre;}
 <tspan x="300" y="340" class="terminal-row row-y-340"><tspan class="dim"> </tspan><tspan class="key">portfolio</tspan><tspan class="dim">  → </tspan><tspan class="value">fausto-yuuki.vercel.app</tspan></tspan>
 <tspan x="300" y="360" class="terminal-row row-y-360"><tspan class="dim"> </tspan><tspan class="key">linkedin</tspan><tspan class="dim">   → </tspan><tspan class="value">fausto-yuuki</tspan></tspan>
 <tspan x="300" y="400" class="terminal-row row-y-400"><tspan class="prompt-host">yuuki@github</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">git shortlog -sn --all | head -1</tspan></tspan>
-<tspan x="300" y="420" class="terminal-row row-y-420"><tspan class="dim">   </tspan><tspan class="value" id="commit_data">498</tspan><tspan class="dim" id="commit_data_dots"></tspan><tspan class="dim">  YuukiFST</tspan></tspan>
+<tspan x="300" y="420" class="terminal-row row-y-420"><tspan class="dim">   </tspan><tspan class="value" id="commit_data">499</tspan><tspan class="dim" id="commit_data_dots"></tspan><tspan class="dim">  YuukiFST</tspan></tspan>
 <tspan x="300" y="460" class="terminal-row row-y-460"><tspan class="prompt-host">yuuki@github</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">gh api graphql --field query=contributions</tspan></tspan>
 <tspan x="300" y="480" class="terminal-row row-y-480"><tspan class="dim">  </tspan><tspan class="value" id="contrib_data">29</tspan><tspan class="dim" id="contrib_data_dots"></tspan><tspan class="dim"> contributions</tspan></tspan>
 <tspan x="300" y="520" class="terminal-row row-y-520"><tspan class="prompt-host">yuuki@github</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command"/><tspan class="cursor">█</tspan></tspan>
