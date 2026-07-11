@@ -8,19 +8,18 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 ASCII_LOGO = [
-    "                @@@               ",
-    "               @@@@@              ",
-    "              @@@@@@@             ",
-    "             @@@   @@@            ",
-    "            @@@     @@@           ",
-    "           @@@       @@@          ",
-    "            @@@     @@@           ",
-    "             @@@   @@@            ",
-    "              @@@@@               ",
-    "               @@@                ",
-    "                @                 ",
-    "                                  ",
-    "                                  ",
+    "       ###       ###           ",
+    "        ###     ###            ",
+    "         ###   ###             ",
+    "          ### ###              ",
+    "           #####               ",
+    "             #                 ",
+    "             #                 ",
+    "             #                 ",
+    "             #                 ",
+    "             #                 ",
+    "                                ",
+    "                                ",
 ]
 
 THEMES = {
@@ -58,12 +57,14 @@ THEMES = {
     },
 }
 
+SVG_HEIGHT = 600
+
 
 def esc(text: str) -> str:
     return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
-def ascii_block(theme: dict, x: int = 15, y_start: int = 30) -> str:
+def ascii_block(theme: dict, x: int = 15, y_start: int = 40) -> str:
     rows = []
     for index, line in enumerate(ASCII_LOGO):
         y = y_start + index * 20
@@ -79,6 +80,23 @@ def prompt(theme: dict, command: str) -> str:
     )
 
 
+def info_row(label: str, value: str) -> str:
+    return (
+        f'<tspan class="dim"> </tspan>'
+        f'<tspan class="key">{esc(f"{label:<8}")}</tspan>'
+        f'<tspan class="dim">· </tspan>'
+        f'<tspan class="value">{esc(value)}</tspan>'
+    )
+
+
+def stack_row(label: str, value: str) -> str:
+    return (
+        f'<tspan class="dim"> » </tspan>'
+        f'<tspan class="key">{esc(f"{label + ':':<12}")}</tspan>'
+        f'<tspan class="value">{esc(value)}</tspan>'
+    )
+
+
 def tty_block(theme: dict) -> str:
     lines: list[tuple[int, str]] = [
         (
@@ -90,47 +108,50 @@ def tty_block(theme: dict) -> str:
         ),
         (70, prompt(theme, "fastfetch --logo custom")),
         (90, f'<tspan class="key">yuuki@github</tspan><tspan class="dim"> ─────────────────────────────</tspan>'),
-        (110, f'<tspan class="dim"> </tspan><tspan class="key">OS</tspan><tspan class="dim"> ····· </tspan><tspan class="value">Omarchy, WSL 2</tspan>'),
-        (130, f'<tspan class="dim"> </tspan><tspan class="key">Host</tspan><tspan class="dim"> ·· </tspan><tspan class="value">São Benedito / IFMT</tspan>'),
-        (150, f'<tspan class="dim"> </tspan><tspan class="key">Shell</tspan><tspan class="dim"> · </tspan><tspan class="value">zsh</tspan>'),
-        (170, f'<tspan class="dim"> </tspan><tspan class="key">Editor</tspan><tspan class="dim">  </tspan><tspan class="value">Doom Emacs</tspan>'),
-        (190, f'<tspan class="dim"> </tspan><tspan class="key">Stack</tspan><tspan class="dim"> · </tspan><tspan class="value">Python, Go, PostgreSQL, TypeScript</tspan>'),
-        (210, f'<tspan class="dim"> </tspan><tspan class="key">Focus</tspan><tspan class="dim"> · </tspan><tspan class="value">Fullstack, Data, AI Agents</tspan>'),
-        (250, prompt(theme, "cat ~/links")),
-        (270, f'<tspan class="dim"> </tspan><tspan class="key">portfolio</tspan><tspan class="dim">  → </tspan><tspan class="value">fausto-yuuki.vercel.app</tspan>'),
-        (290, f'<tspan class="dim"> </tspan><tspan class="key">linkedin</tspan><tspan class="dim">   → </tspan><tspan class="value">fausto-yuuki</tspan>'),
-        (330, prompt(theme, "git shortlog -sn --all | head -1")),
+        (110, info_row("OS", "Omarchy")),
+        (130, info_row("Host", "São Benedito / IFMT")),
+        (150, info_row("Shell", "zsh")),
+        (170, info_row("Editor", "Doom Emacs")),
+        (190, info_row("Role", "Fullstack")),
+        (220, stack_row("Backend", "Python, Django, Go")),
+        (240, stack_row("Frontend", "React, Next.js, TypeScript, JavaScript, HTML5, CSS3, shadcn/ui")),
+        (260, stack_row("Databases", "PostgreSQL, Neon, Supabase")),
+        (280, stack_row("DevOps", "Docker, Git, Linux, Cloudinary")),
+        (320, prompt(theme, "cat ~/links")),
+        (340, f'<tspan class="dim"> </tspan><tspan class="key">portfolio</tspan><tspan class="dim">  → </tspan><tspan class="value">fausto-yuuki.vercel.app</tspan>'),
+        (360, f'<tspan class="dim"> </tspan><tspan class="key">linkedin</tspan><tspan class="dim">   → </tspan><tspan class="value">fausto-yuuki</tspan>'),
+        (400, prompt(theme, "git shortlog -sn --all | head -1")),
         (
-            350,
+            420,
             f'<tspan class="dim">   </tspan>'
             f'<tspan class="value" id="commit_data">0</tspan>'
-            f'<tspan class="dim" id="commit_data_dots"> </tspan>'
+            f'<tspan class="dim" id="commit_data_dots"></tspan>'
             f'<tspan class="dim"> YuukiFST</tspan>',
         ),
-        (390, prompt(theme, "cloc --sum-reports .")),
+        (460, prompt(theme, "cloc --sum-reports .")),
         (
-            410,
+            480,
             f'<tspan class="dim">  </tspan>'
             f'<tspan class="value" id="loc_data">0</tspan>'
-            f'<tspan class="dim" id="loc_data_dots"> </tspan>'
+            f'<tspan class="dim" id="loc_data_dots"></tspan>'
             f'<tspan class="dim">lines | +</tspan>'
             f'<tspan class="addColor" id="loc_add">0</tspan>'
             f'<tspan class="dim"> / -</tspan>'
             f'<tspan class="delColor" id="loc_del">0</tspan>'
             f'<tspan class="dim" id="loc_del_dots"></tspan>',
         ),
-        (450, prompt(theme, "ls ~/repos | wc -l")),
+        (520, prompt(theme, "ls ~/repos | wc -l")),
         (
-            470,
+            540,
             f'<tspan class="dim"> </tspan>'
             f'<tspan class="value" id="repo_data">0</tspan>'
-            f'<tspan class="dim" id="repo_data_dots"> </tspan>'
+            f'<tspan class="dim" id="repo_data_dots"></tspan>'
             f'<tspan class="dim">repos (</tspan>'
             f'<tspan class="value" id="contrib_data">0</tspan>'
             f'<tspan class="dim"> contributed)</tspan>',
         ),
         (
-            510,
+            580,
             f'{prompt(theme, "")}'
             f'<tspan class="cursor">█</tspan>',
         ),
@@ -145,7 +166,7 @@ def tty_block(theme: dict) -> str:
 def build_svg(theme_name: str) -> str:
     theme = THEMES[theme_name]
     return f'''<?xml version='1.0' encoding='UTF-8'?>
-<svg xmlns="http://www.w3.org/2000/svg" font-family="ConsolasFallback,Consolas,monospace" width="985px" height="540px" font-size="16px">
+<svg xmlns="http://www.w3.org/2000/svg" font-family="ConsolasFallback,Consolas,monospace" width="985px" height="{SVG_HEIGHT}px" font-size="16px">
 <style>
 @font-face {{
 src: local('Consolas'), local('Consolas Bold');
@@ -165,8 +186,8 @@ size-adjust: 109%;
 .cursor {{fill: {theme["cursor"]};}}
 text, tspan {{white-space: pre;}}
 </style>
-<rect width="985px" height="540px" fill="{theme["bg"]}" rx="12"/>
-<rect x="1" y="1" width="983px" height="538px" fill="none" stroke="{theme["border"]}" stroke-width="2" rx="12"/>
+<rect width="985px" height="{SVG_HEIGHT}px" fill="{theme["bg"]}" rx="12"/>
+<rect x="1" y="1" width="983px" height="{SVG_HEIGHT - 2}px" fill="none" stroke="{theme["border"]}" stroke-width="2" rx="12"/>
 <text x="15" y="30" fill="{theme["fg"]}" class="ascii">
 {ascii_block(theme)}
 </text>
@@ -177,8 +198,8 @@ text, tspan {{white-space: pre;}}
 
 
 def main() -> None:
-    for theme_name, theme in THEMES.items():
-        path = ROOT / theme["file"]
+    for theme_name in THEMES:
+        path = ROOT / THEMES[theme_name]["file"]
         path.write_text(build_svg(theme_name), encoding="utf-8")
         print(f"Wrote {path.name}")
 
