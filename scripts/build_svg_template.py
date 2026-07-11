@@ -59,7 +59,9 @@ THEMES = {
 SVG_HEIGHT = 540
 SCAN_TOP = 24
 SCAN_BOTTOM = SVG_HEIGHT - 24
-SCAN_DURATION_S = 5
+SCAN_DURATION_S = 12
+FADE_WINDOW_PCT = 5.0
+FADE_PRE_BUFFER_PCT = 1.2
 
 TTY_ROW_Y = [30, 70, 90, 110, 130, 150, 170, 190, 220, 240, 260, 280, 320, 340, 360, 400, 420, 460, 480, 520]
 ASCII_ROW_Y = [40 + index * 20 for index in range(len(ASCII_LOGO))]
@@ -77,10 +79,10 @@ def scan_pass_percent(y: int) -> float:
 
 def row_fade_keyframe(y: int) -> str:
     start = scan_pass_percent(y)
-    fade_end = min(start + 2.5, 99.5)
-    hold_end = min(fade_end + 0.2, 99.9)
+    fade_end = min(start + FADE_WINDOW_PCT, 99.5)
+    hold_end = min(fade_end + 0.4, 99.9)
     return f"""@keyframes row-fade-{y} {{
-  0%, {start - 0.6:.1f}% {{ opacity: 1; }}
+  0%, {start - FADE_PRE_BUFFER_PCT:.1f}% {{ opacity: 1; }}
   {start:.1f}%, {fade_end:.1f}% {{ opacity: 0.1; }}
   {hold_end:.1f}%, 99.9% {{ opacity: 0.1; }}
   100% {{ opacity: 1; }}
