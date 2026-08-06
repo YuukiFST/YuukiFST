@@ -2,9 +2,15 @@ import datetime
 from dateutil import relativedelta
 import requests
 import os
+import sys
 from lxml import etree
 import time
 import hashlib
+
+# Heatmap geometry lives with the layout, not here — importing it keeps the grid
+# this script draws aligned with the placeholder the template ships.
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'scripts'))
+from build_svg_template import HEAT_CELL, HEAT_MONTHS_Y, HEAT_PITCH, HEAT_WEEKS, HEAT_X
 
 # Fine-grained personal access token with All Repositories access:
 # Account permissions: read:Followers, read:Starring, read:Watching
@@ -316,9 +322,92 @@ def stars_counter(data):
     return total_stars
 
 
-def svg_overwrite(filename, age_data, commit_data, loc_data):
+def graph_contribution_calendar():
     """
-    Parse SVG files and update age, commits, and lines of code.
+    Uses GitHub's GraphQL v4 API to return the last 53 weeks of the contribution
+    calendar as a list of weeks, each a list of daily counts (Sunday first).
+    """
+    query_count('graph_commits')
+    end_date = datetime.datetime.now(datetime.timezone.utc)
+    start_date = end_date - datetime.timedelta(weeks=HEAT_WEEKS)
+    query = '''
+    query($start_date: DateTime!, $end_date: DateTime!, $login: String!) {
+        user(login: $login) {
+            contributionsCollection(from: $start_date, to: $end_date) {
+                contributionCalendar {
+                    weeks {
+                        contributionDays {
+                            contributionCount
+                            date
+                        }
+                    }
+                }
+            }
+        }
+    }'''
+    variables = {
+        'start_date': start_date.strftime('%Y-%m-%dT%H:%M:%SZ'),
+        'end_date': end_date.strftime('%Y-%m-%dT%H:%M:%SZ'),
+        'login': USER_NAME,
+    }
+    request = simple_request(graph_contribution_calendar.__name__, query, variables)
+    weeks = request.json()['data']['user']['contributionsCollection']['contributionCalendar']['weeks']
+    return weeks[-HEAT_WEEKS:]
+
+
+def heat_level(count, peak):
+    """
+    Buckets a daily contribution count into one of the 5 heatmap shades
+    """
+    if count == 0 or peak == 0:
+        return 0
+    for level, threshold in enumerate((0.25, 0.5, 0.75), start=1):
+        if count <= peak * threshold:
+            return level
+    return 4
+
+
+def heatmap_overwrite(root, weeks):
+    """
+    Redraws the contribution grid and its month labels from the real calendar.
+    The template only ships an empty grid, so this is what gives it data.
+    """
+    grid = root.find(".//*[@id='heatmap']")
+    labels = root.find(".//*[@id='heatmap_months']")
+    if grid is None or labels is None:
+        return
+    peak = max((day['contributionCount'] for week in weeks for day in week['contributionDays']), default=0)
+
+    for child in list(grid):
+        grid.remove(child)
+    for child in list(labels):
+        labels.remove(child)
+
+    for week_index, week in enumerate(weeks):
+        for day_index, day in enumerate(week['contributionDays']):
+            cell = etree.SubElement(grid, '{http://www.w3.org/2000/svg}rect')
+            cell.set('class', 'lvl' + str(heat_level(day['contributionCount'], peak)))
+            cell.set('x', str(week_index * HEAT_PITCH))
+            cell.set('y', str(day_index * HEAT_PITCH))
+            cell.set('width', str(HEAT_CELL))
+            cell.set('height', str(HEAT_CELL))
+            cell.set('rx', '2')
+
+    previous_month = None
+    for week_index, week in enumerate(weeks):
+        month = datetime.datetime.strptime(week['contributionDays'][0]['date'], '%Y-%m-%d').month
+        if month == previous_month:
+            continue
+        previous_month = month
+        label = etree.SubElement(labels, '{http://www.w3.org/2000/svg}tspan')
+        label.set('x', str(HEAT_X + week_index * HEAT_PITCH))
+        label.set('y', str(HEAT_MONTHS_Y))
+        label.text = datetime.date(2000, month, 1).strftime('%b')
+
+
+def svg_overwrite(filename, age_data, commit_data, loc_data, weeks):
+    """
+    Parse SVG files and update age, commits, lines of code and the heatmap.
     loc_data is [added, deleted, net] from loc_query()
     """
     tree = etree.parse(filename)
@@ -328,6 +417,7 @@ def svg_overwrite(filename, age_data, commit_data, loc_data):
     justify_format(root, 'loc_data', loc_data[2])
     justify_format(root, 'loc_add', loc_data[0])
     justify_format(root, 'loc_del', loc_data[1])
+    heatmap_overwrite(root, weeks)
     tree.write(filename, encoding='utf-8', xml_declaration=True)
 
 
@@ -451,9 +541,11 @@ if __name__ == '__main__':
     total_loc, loc_time = perf_counter(loc_query, ['OWNER', 'COLLABORATOR', 'ORGANIZATION_MEMBER'], 7)
     formatter('LOC (cached)', loc_time) if total_loc[-1] else formatter('LOC (no cache)', loc_time)
     commit_data, commit_time = perf_counter(commit_counter, 7)
+    calendar_data, calendar_time = perf_counter(graph_contribution_calendar)
+    formatter('contribution calendar', calendar_time)
 
-    svg_overwrite('dark_mode.svg', age_data, commit_data, total_loc[:-1])
-    svg_overwrite('light_mode.svg', age_data, commit_data, total_loc[:-1])
+    svg_overwrite('dark_mode.svg', age_data, commit_data, total_loc[:-1], calendar_data)
+    svg_overwrite('light_mode.svg', age_data, commit_data, total_loc[:-1], calendar_data)
 
     # move cursor to override 'Calculation times:' with 'Total function time:' and the total function time, then move cursor back
     print('\033[F\033[F\033[F\033[F',
