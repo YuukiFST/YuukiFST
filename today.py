@@ -16,9 +16,6 @@ from build_svg_template import (
     HEAT_PITCH,
     HEAT_WEEKS,
     HEAT_X,
-    LANG_BAR_W,
-    LANG_NAME_COLS,
-    LANG_ROWS,
 )
 
 # Fine-grained personal access token with All Repositories access:
@@ -400,69 +397,6 @@ def calendar_metrics(weeks):
     return current, longest, peak
 
 
-def graph_languages():
-    """
-    Uses GitHub's GraphQL v4 API to return my language breakdown by bytes
-    across every repository I own, as ([(name, bytes, linguist color)] sorted
-    largest first, repository count). Forks are excluded — not my code.
-    """
-    query_count('graph_repos_stars')
-    query = '''
-    query($login: String!) {
-        user(login: $login) {
-            repositories(first: 100, ownerAffiliations: [OWNER], isFork: false) {
-                nodes {
-                    languages(first: 12, orderBy: {field: SIZE, direction: DESC}) {
-                        edges {
-                            size
-                            node { name color }
-                        }
-                    }
-                }
-            }
-        }
-    }'''
-    request = simple_request(graph_languages.__name__, query, {'login': USER_NAME})
-    repos = request.json()['data']['user']['repositories']['nodes']
-    totals, colors = {}, {}
-    for repo in repos:
-        for edge in repo['languages']['edges']:
-            name = edge['node']['name']
-            totals[name] = totals.get(name, 0) + edge['size']
-            colors[name] = edge['node']['color'] or '#7ebae4'
-    ranked = sorted(totals.items(), key=lambda item: item[1], reverse=True)
-    return [(name, size, colors[name]) for name, size in ranked], len(repos)
-
-
-def lang_overwrite(root, languages, repo_count, net_loc):
-    """
-    Fills the tokei pane: language name, share bar scaled to the largest
-    language, the percentage of all bytes I have written, and the totals line.
-    """
-    total = sum(size for __, size, __ in languages) or 1
-    top = languages[:LANG_ROWS]
-    largest = top[0][1] if top else 1
-    for index in range(LANG_ROWS):
-        name_node = root.find(".//*[@id='lang_" + str(index) + "_name']")
-        bar = root.find(".//*[@id='lang_" + str(index) + "_bar']")
-        pct = root.find(".//*[@id='lang_" + str(index) + "_pct']")
-        if name_node is None or bar is None or pct is None:
-            continue
-        if index >= len(top):
-            name_node.text = ''
-            pct.text = ''
-            bar.set('width', '0')
-            continue
-        name, size, color = top[index]
-        name_node.text = name[:LANG_NAME_COLS]
-        bar.set('width', str(round(max(2, LANG_BAR_W * size / largest), 1)))
-        bar.set('fill', color)
-        pct.text = '{:.1f}%'.format(100 * size / total)
-    # kept short on purpose: the left pane clips at the divider
-    find_and_replace(root, 'lang_summary', '{:,} lines · {} langs · {} repos'.format(
-        net_loc, len(languages), repo_count))
-
-
 def heatmap_overwrite(root, weeks):
     """
     Redraws the contribution grid and its month labels from the real calendar.
@@ -503,10 +437,10 @@ def heatmap_overwrite(root, weeks):
         label.text = datetime.date(2000, month, 1).strftime('%b')
 
 
-def svg_overwrite(filename, age_data, commit_data, loc_data, weeks, languages, repo_count):
+def svg_overwrite(filename, age_data, commit_data, loc_data, weeks):
     """
     Parse SVG files and update age, commits, lines of code, streak metrics, the
-    heatmap and the language breakdown.
+    heatmap.
     loc_data is [added, deleted, net] from loc_query()
     """
     tree = etree.parse(filename)
@@ -524,7 +458,6 @@ def svg_overwrite(filename, age_data, commit_data, loc_data, weeks, languages, r
     find_and_replace(root, 'peak_data', '{} contributions on {}'.format(
         peak['contributionCount'], peak['date']))
     heatmap_overwrite(root, weeks)
-    lang_overwrite(root, languages, repo_count, loc_data[2])
     tree.write(filename, encoding='utf-8', xml_declaration=True)
 
 
@@ -650,11 +583,8 @@ if __name__ == '__main__':
     commit_data, commit_time = perf_counter(commit_counter, 7)
     calendar_data, calendar_time = perf_counter(graph_contribution_calendar)
     formatter('contribution calendar', calendar_time)
-    (language_data, repo_count), language_time = perf_counter(graph_languages)
-    formatter('language breakdown', language_time)
-
-    svg_overwrite('dark_mode.svg', age_data, commit_data, total_loc[:-1], calendar_data, language_data, repo_count)
-    svg_overwrite('light_mode.svg', age_data, commit_data, total_loc[:-1], calendar_data, language_data, repo_count)
+    svg_overwrite('dark_mode.svg', age_data, commit_data, total_loc[:-1], calendar_data)
+    svg_overwrite('light_mode.svg', age_data, commit_data, total_loc[:-1], calendar_data)
 
     # move cursor to override 'Calculation times:' with 'Total function time:' and the total function time, then move cursor back
     print('\033[F\033[F\033[F\033[F',

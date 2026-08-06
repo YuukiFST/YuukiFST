@@ -2,25 +2,25 @@
 """Generate dark_mode.svg and light_mode.svg — tmux/NixOS session profile.
 
 Layout is a two-pane tmux window:
-  left pane  — NixOS snowflake logo, tokei language breakdown
+  left pane  — NixOS snowflake logo, the flake that declares this profile
   right pane — fastfetch output, links, git stats, contribution heatmap
 
-Every panel is real data. Nothing here is decoration for its own sake: the bars
-are bytes per language across my repositories, and the grid is the real
-contribution calendar.
+Nothing here is decoration for its own sake: the flake is Nix that evaluates,
+the grid is the real contribution calendar, and every number is measured.
 
 Animation is a session replay: the loop opens on the finished session, holds
 it, clears, and reprints every row on its own cue. Nothing ever dims. The
 reveal, the typing masks and the carets are all fail-safe — a renderer that
 ignores CSS animation shows the finished session, never a blank window.
 
-today.py fills in the placeholders on every run: the stat numbers, the
-contribution calendar, and the language rows.
+today.py fills in the placeholders on every run: the stat numbers and the
+contribution calendar.
 """
 
 from __future__ import annotations
 
 import datetime
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -73,7 +73,13 @@ THEMES = {
         "logo_1": "#7ebae4",
         "logo_2": "#5277c3",
         "sheen_opacity": "0.75",
-        "lang_track": "#141c28",
+        "nix_kw": "#7ebae4",
+        "nix_attr": "#cecece",
+        "nix_str": "#28c840",
+        "scan_color": "#ffffff",
+        "scan_opacity": "0.05",
+        "vignette": "#000000",
+        "vignette_opacity": "0.32",
         "heat": ["#10161f", "#1b3a5c", "#2b5d8f", "#4a8ec2", "#7ebae4"],
         "titlebar": "#0d1117",
         "titlebar_text": "#8b949e",
@@ -102,7 +108,13 @@ THEMES = {
         "logo_1": "#5277c3",
         "logo_2": "#2f4f96",
         "sheen_opacity": "0.6",
-        "lang_track": "#e3dcc6",
+        "nix_kw": "#268bd2",
+        "nix_attr": "#073642",
+        "nix_str": "#859900",
+        "scan_color": "#586e75",
+        "scan_opacity": "0.06",
+        "vignette": "#586e75",
+        "vignette_opacity": "0.14",
         "heat": ["#eee8d5", "#b8d2ea", "#7aa9d6", "#4380bd", "#1f5a94"],
         "titlebar": "#eee8d5",
         "titlebar_text": "#657b83",
@@ -125,28 +137,53 @@ CHAR_W = 9.6
 PANE_CHAR_W = 6.6
 PROMPT_LEN = len("yuuki@nixos:~$ ")
 
-PANE_X = 292
+PANE_X = 330
 ASCII_X = 15
 ASCII_FONT_SIZE = 10
 ASCII_LINE_H = 12
 ASCII_Y_START = 80
 PANE_TEXT_X = 15
 PANE_FONT_SIZE = 11
-TTY_X = 300
+TTY_X = 338
 
-# tokei-style language breakdown: label, byte-share bar, percentage
-LANG_HEADER_Y = 350
-LANG_Y_START = 388
-LANG_LINE_H = 38
-LANG_ROWS = 8
-LANG_BAR_X = 100
-LANG_BAR_W = 126
-LANG_BAR_H = 12
-LANG_PCT_X = 277
-LANG_NAME_COLS = 12
-LANG_SUMMARY_Y = 712
-LANG_GROW_S = 0.55
-LANG_ROW_STEP_S = 0.12
+# flake.nix listing in the left pane
+NIX_HEADER_Y = 334
+NIX_Y_START = 356
+NIX_LINE_H = 14
+NIX_PRINT_S = 0.045
+
+# the profile as a flake: kept under 46 columns so it clears the pane divider
+FLAKE = '''{
+  description = "fausto yuuki · fullstack";
+
+  inputs.nixpkgs.url =
+    "github:NixOS/nixpkgs/nixos-unstable";
+
+  outputs = { self, nixpkgs }:
+    let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in {
+      profile = {
+        role  = "fullstack";
+        since = "2022-10-11";
+        host  = "são benedito / ifmt";
+      };
+
+      devShells.${system}.default =
+        pkgs.mkShell {
+          packages = with pkgs; [
+            python3 nodejs go postgresql
+            docker git neovim
+          ];
+        };
+    };
+}'''
+
+# systemd-style spinner that resolves into [  OK  ]
+SPIN_FRAMES = "▖▘▝▗"  # Block Elements — Consolas has these, Braille it does not
+SPIN_FRAME_S = 0.12
+SPIN_S = 0.72
 
 HEAT_CELL = 9
 HEAT_GAP = 2
@@ -248,27 +285,68 @@ def typing_css() -> str:
     return "\n".join(blocks)
 
 
-def langbar_css(session: Session) -> str:
-    """Language bars fill from the left on their row's cue.
+NIX_TOKEN = re.compile(
+    r'(?P<str>"[^"]*")'
+    r"|(?P<kw>\b(?:let|in|with|inherit|rec|self|nixpkgs|pkgs|import)\b)"
+    r"|(?P<punct>\$\{|[{}\[\]();=:.,])"
+)
 
-    Base state is the measured width, so a renderer without CSS animation shows
-    the finished breakdown.
+
+def nix_highlight(line: str) -> str:
+    """Colour one line of Nix — strings, keywords, punctuation, everything else."""
+    parts: list[str] = []
+    position = 0
+    for match in NIX_TOKEN.finditer(line):
+        if match.start() > position:
+            parts.append(f'<tspan class="nix-attr">{esc(line[position:match.start()])}</tspan>')
+        parts.append(f'<tspan class="nix-{match.lastgroup}">{esc(match.group())}</tspan>')
+        position = match.end()
+    if position < len(line):
+        parts.append(f'<tspan class="nix-attr">{esc(line[position:])}</tspan>')
+    return "".join(parts)
+
+
+def spinner_overlays(session: Session, theme: dict) -> str:
+    """The spinner that turns over each boot line before its [  OK  ] lands.
+
+    Absolutely positioned so it never shifts the row it sits in, and hidden by
+    default — a renderer without animation shows the settled [  OK  ] alone.
     """
-    blocks = [".lang-bar {transform-origin: left center; transform-box: fill-box;}"]
-    clear_pct = HOLD_BEFORE_S / LOOP_S * 100
-    for index in range(LANG_ROWS):
-        cue = session.cues[f"lang_{index}"]
-        start_pct = (HOLD_BEFORE_S + cue) / LOOP_S * 100
-        end_pct = min((HOLD_BEFORE_S + cue + LANG_GROW_S) / LOOP_S * 100, 99.7)
-        blocks.append(
-            f"@keyframes lg{index} {{\n"
-            f"  0%, {clear_pct:.2f}% {{ transform: scaleX(1); }}\n"
-            f"  {clear_pct + 0.01:.2f}%, {start_pct:.2f}% {{ transform: scaleX(0); animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }}\n"
-            f"  {end_pct:.2f}%, 100% {{ transform: scaleX(1); }}\n"
-            f"}}\n"
-            f".lg{index} {{ animation: lg{index} {LOOP_S}s linear infinite; }}"
+    parts = []
+    for index, (y, cue) in enumerate(session.spinners):
+        glyphs = []
+        for frame, glyph in enumerate(SPIN_FRAMES):
+            slots = [
+                slot
+                for slot in range(round(SPIN_S / SPIN_FRAME_S))
+                if slot % len(SPIN_FRAMES) == frame
+            ]
+            times, values = ["0"], ["0"]
+            for slot in slots:
+                start = (HOLD_BEFORE_S + cue + slot * SPIN_FRAME_S) / LOOP_S
+                stop = start + SPIN_FRAME_S / LOOP_S
+                times += [f"{start - 0.0005:.5f}", f"{start:.5f}", f"{stop:.5f}", f"{stop + 0.0005:.5f}"]
+                values += ["0", "1", "1", "0"]
+            times.append("1")
+            values.append("0")
+            glyphs.append(
+                f'<tspan x="{TTY_X + 3 * CHAR_W:.1f}" y="{y}" opacity="0">{glyph}'
+                f'<animate attributeName="opacity" values="{";".join(values)}" '
+                f'keyTimes="{";".join(times)}" dur="{LOOP_S}s" repeatCount="indefinite"/>'
+                f"</tspan>"
+            )
+        parts.append(
+            f'<text class="spinner" fill="{theme["prompt_host"]}">{"".join(glyphs)}</text>'
         )
-    return "\n".join(blocks)
+    return "\n".join(parts)
+
+
+def crt_overlay(theme: dict) -> str:
+    """Scanlines drifting down the glass, plus the vignette of a curved tube."""
+    return (
+        f'<rect x="1" y="1" width="983" height="{SVG_HEIGHT - 2}" rx="12" fill="url(#scanlines)"/>'
+        f'<rect x="1" y="1" width="983" height="{SVG_HEIGHT - 2}" rx="12" fill="url(#vignette)"/>'
+    )
 
 
 def heatwave_css() -> str:
@@ -280,11 +358,10 @@ def heatwave_css() -> str:
     )
 
 
-def animation_styles(session: Session) -> str:
+def animation_styles() -> str:
     return f"""
 {REVEAL.css()}
 {typing_css()}
-{langbar_css(session)}
 {heatwave_css()}
 @keyframes cursor-blink {{
   0%, 45% {{ opacity: 1; }}
@@ -299,15 +376,6 @@ def prompt(command: str) -> str:
         f'<tspan class="prompt-host">yuuki@nixos</tspan>'
         f'<tspan class="prompt-path">:~$</tspan> '
         f'<tspan class="command">{esc(command)}</tspan>'
-    )
-
-
-def boot_row(unit: str) -> str:
-    return (
-        f'<tspan class="dim">[</tspan>'
-        f'<tspan class="ok">  OK  </tspan>'
-        f'<tspan class="dim">] </tspan>'
-        f'<tspan class="value">{esc(unit)}</tspan>'
     )
 
 
@@ -374,6 +442,7 @@ class Session:
         self.logo: list[str] = []
         self.pane: list[str] = []
         self.cues: dict[str, float] = {}
+        self.spinners: list[tuple[int, float]] = []
 
     def _tspan(self, x: int, y: int, content: str, seconds: float, element_id: str = "") -> str:
         ident = f' id="{element_id}"' if element_id else ""
@@ -388,6 +457,19 @@ class Session:
     def output(self, y: int, content: str, step: float = PRINT_ROW_S) -> None:
         self.tty.append(self._tspan(TTY_X, y, content, self.clock))
         self.clock += step
+
+    def boot(self, y: int, unit: str, step: float = 0.18) -> None:
+        """A systemd line: the unit name spins, then its [  OK  ] settles."""
+        self.spinners.append((y, self.clock))
+        settled = REVEAL.at(self.clock + SPIN_S)
+        self.output(
+            y,
+            f'<tspan class="dim">[</tspan>'
+            f'<tspan class="ok reveal {settled}">  OK  </tspan>'
+            f'<tspan class="dim">] </tspan>'
+            f'<tspan class="value">{esc(unit)}</tspan>',
+            step,
+        )
 
     def command(self, y: int, text: str, left_pane: bool = False) -> None:
         """Prompt appears, then the command types itself in."""
@@ -407,30 +489,20 @@ class Session:
             self.clock += PRINT_LOGO_S
         self.mark("logo_done")
 
-    def lang_pane(self) -> None:
-        """Language breakdown: the command, one cue per bar, then the totals."""
-        self.command(LANG_HEADER_Y, "tokei ~/github --sort code", left_pane=True)
-        for index in range(LANG_ROWS):
-            self.mark(f"lang_{index}")
-            self.clock += LANG_ROW_STEP_S
-        self.pane.append(
-            self._tspan(
-                PANE_TEXT_X,
-                LANG_SUMMARY_Y,
-                f'<tspan class="dim">Σ </tspan>'
-                f'<tspan class="value" id="lang_summary">counting…</tspan>',
-                self.clock,
-                element_id="lang_summary_row",
-            )
-        )
-        self.clock += PRINT_ROW_S
+    def flake_pane(self) -> None:
+        """cat of the flake that declares this profile, printed line by line."""
+        self.command(NIX_HEADER_Y, "bat flake.nix", left_pane=True)
+        for index, line in enumerate(FLAKE.split("\n")):
+            y = NIX_Y_START + index * NIX_LINE_H
+            self.pane.append(self._tspan(PANE_TEXT_X, y, nix_highlight(line), self.clock))
+            self.clock += NIX_PRINT_S
 
 
 def build_session() -> Session:
     session = Session()
 
-    session.output(66, boot_row("Started yuuki.service — GitHub profile daemon"), 0.18)
-    session.output(86, boot_row("Reached target Multi-User System"), 0.18)
+    session.boot(66, "Started yuuki.service — GitHub profile daemon")
+    session.boot(86, "Reached target Multi-User System")
     session.output(
         106,
         f'<tspan class="dim">Last login: </tspan>'
@@ -468,7 +540,7 @@ def build_session() -> Session:
 
     # left pane catches up while the right pane pauses
     pane_start = session.clock
-    session.lang_pane()
+    session.flake_pane()
     session.clock = max(pane_start + 0.4, session.clock - 1.2)
 
     session.command(496, "git shortlog -sn --all | head -1")
@@ -486,32 +558,6 @@ def build_session() -> Session:
 
     session.output(746, f'{prompt("")}<tspan class="cursor">█</tspan>')
     return session
-
-
-def lang_block(theme: dict, session: Session) -> str:
-    """Language breakdown rows — today.py fills in name, bar width and share.
-
-    Placeholder bars are full width so a failed run is obvious instead of
-    silently rendering an empty chart.
-    """
-    rows = []
-    for index in range(LANG_ROWS):
-        y = LANG_Y_START + index * LANG_LINE_H
-        bar_y = y - LANG_BAR_H + 1
-        cue = REVEAL.at(session.cues[f"lang_{index}"])
-        rows.append(
-            f'<g class="reveal {cue}">'
-            f'<text id="lang_{index}_name" class="key" x="{PANE_TEXT_X}" y="{y}" '
-            f'font-size="11px" fill="{theme["key"]}">—</text>'
-            f'<rect x="{LANG_BAR_X}" y="{bar_y}" width="{LANG_BAR_W}" height="{LANG_BAR_H}" '
-            f'rx="2" fill="{theme["lang_track"]}"/>'
-            f'<rect id="lang_{index}_bar" class="lang-bar lg{index}" x="{LANG_BAR_X}" y="{bar_y}" '
-            f'width="{LANG_BAR_W}" height="{LANG_BAR_H}" rx="2" fill="{theme["logo_1"]}"/>'
-            f'<text id="lang_{index}_pct" class="dim" x="{LANG_PCT_X}" y="{y}" '
-            f'font-size="11px" text-anchor="end" fill="{theme["dim"]}">—</text>'
-            f"</g>"
-        )
-    return "\n".join(rows)
 
 
 def heatmap_placeholder(theme: dict) -> str:
@@ -556,7 +602,11 @@ def heatmap_placeholder(theme: dict) -> str:
 
 
 def typing_overlays(theme: dict) -> str:
-    """Masks + carets, painted after the text so they sit on top of it."""
+    """Masks + carets, painted after the text so they sit on top of it.
+
+    Each caret is drawn twice: a blurred copy running a frame behind leaves the
+    phosphor trail a real tube would, then the solid caret on top of it.
+    """
     parts = []
     for index, (_, y, command, _, left_pane) in enumerate(TYPED):
         char_w = PANE_CHAR_W if left_pane else CHAR_W
@@ -565,6 +615,12 @@ def typing_overlays(theme: dict) -> str:
         parts.append(
             f'<rect class="type-mask type-{index}" x="{x:.1f}" y="{y - height + 3}" '
             f'width="{len(command) * char_w + 2:.1f}" height="{height}" fill="{theme["bg"]}"/>'
+        )
+        parts.append(
+            f'<g opacity="0.4" filter="url(#phosphor)">'
+            f'<rect class="caret caret-{index}" style="animation-delay: 0.09s" '
+            f'x="{x:.1f}" y="{y - height + 3}" width="{char_w:.1f}" height="{height}" '
+            f'fill="{theme["cursor"]}"/></g>'
         )
         parts.append(
             f'<rect class="caret caret-{index}" x="{x:.1f}" y="{y - height + 3}" '
@@ -592,7 +648,7 @@ def statusbar(theme: dict) -> str:
     return f'''<path d="M1 {STATUSBAR_Y} L984 {STATUSBAR_Y} L984 {SVG_HEIGHT - 13} A12 12 0 0 1 972 {SVG_HEIGHT - 1} L13 {SVG_HEIGHT - 1} A12 12 0 0 1 1 {SVG_HEIGHT - 13} Z" fill="{theme["statusbar_alt"]}"/>
 <rect x="1" y="{STATUSBAR_Y}" width="{left_w}" height="{STATUSBAR_H}" fill="{theme["statusbar"]}"/>
 <text x="20" y="{text_y}" font-size="13" fill="{theme["statusbar_text"]}">[0] NIXOS</text>
-<text x="{left_w + 20}" y="{text_y}" font-size="13" fill="{theme["statusbar_alt_text"]}">0:tokei*   1:session-   │   ~/github/YuukiFST</text>
+<text x="{left_w + 20}" y="{text_y}" font-size="13" fill="{theme["statusbar_alt_text"]}">0:flake*   1:session-   │   ~/github/YuukiFST</text>
 <text x="{SVG_WIDTH - 20}" y="{text_y}" text-anchor="end" font-size="13" fill="{theme["statusbar_alt_text"]}">main ✓   │   nixos-unstable</text>'''
 
 
@@ -652,9 +708,10 @@ def build_svg(theme_name: str) -> str:
 <text x="{TTY_X}" y="30" fill="{theme["fg"]}">
 {"".join(chr(10) + row for row in session.tty)}
 </text>
-{lang_block(theme, session)}
 {heatmap_placeholder(theme)}
-{typing_overlays(theme)}'''
+{typing_overlays(theme)}
+{spinner_overlays(session, theme)}
+{crt_overlay(theme)}'''
     return f'''<?xml version='1.0' encoding='UTF-8'?>
 <svg xmlns="http://www.w3.org/2000/svg" font-family="{font}" width="{SVG_WIDTH}px" height="{SVG_HEIGHT}px" font-size="16px">
 <style>
@@ -677,9 +734,14 @@ size-adjust: 109%;
 .cursor {{fill: {theme["cursor"]};}}
 .logo-1 {{fill: {theme["logo_1"]};}}
 .logo-2 {{fill: {theme["logo_2"]};}}
+.nix-kw {{fill: {theme["nix_kw"]};}}
+.nix-attr {{fill: {theme["nix_attr"]};}}
+.nix-str {{fill: {theme["nix_str"]};}}
+.nix-punct {{fill: {theme["dim"]};}}
+.spinner {{font-size: {PANE_FONT_SIZE + 3}px;}}
 {heat_rules}
 text, tspan {{white-space: pre;}}
-{animation_styles(session)}
+{animation_styles()}
 </style>
 <defs>
 <filter id="phosphor" x="-25%" y="-25%" width="150%" height="150%">
@@ -696,6 +758,14 @@ text, tspan {{white-space: pre;}}
 <animate attributeName="x1" values="{ASCII_X - 220};{sheen_end:.0f}" dur="7s" repeatCount="indefinite"/>
 <animate attributeName="x2" values="{ASCII_X - 60};{sheen_end + 160:.0f}" dur="7s" repeatCount="indefinite"/>
 </linearGradient>
+<pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse">
+<rect width="4" height="2" fill="{theme["scan_color"]}" opacity="{theme["scan_opacity"]}"/>
+<animateTransform attributeName="patternTransform" type="translate" values="0 0;0 4" dur="2.4s" repeatCount="indefinite"/>
+</pattern>
+<radialGradient id="vignette" cx="50%" cy="50%" r="72%">
+<stop offset="64%" stop-color="{theme["vignette"]}" stop-opacity="0"/>
+<stop offset="100%" stop-color="{theme["vignette"]}" stop-opacity="{theme["vignette_opacity"]}"/>
+</radialGradient>
 </defs>
 <rect width="{SVG_WIDTH}px" height="{SVG_HEIGHT}px" fill="{theme["bg"]}" rx="12"/>
 {body}
