@@ -1,0 +1,4 @@
+# The SVGs are rewritten on every bin/update run; without this, autocrlf churns
+# every line of both files and buries the real diff.
+* text=auto eol=lf
+*.webp binary
