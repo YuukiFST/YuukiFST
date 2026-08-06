@@ -20,9 +20,6 @@ size-adjust: 109%;
 .cursor {fill: #7ebae4;}
 .logo-1 {fill: #7ebae4;}
 .logo-2 {fill: #5277c3;}
-.git-node {fill: #febc2e;}
-.git-hash {fill: #c678dd;}
-.git-msg {fill: #cecece;}
 .lvl0 {fill: #10161f;}
 .lvl1 {fill: #1b3a5c;}
 .lvl2 {fill: #2b5d8f;}
@@ -32,765 +29,776 @@ text, tspan {white-space: pre;}
 
 .reveal {opacity: 1;}
 @keyframes rv0 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 36.62% { opacity: 0; }
-  36.92%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 37.78% { opacity: 0; }
+  38.08%, 100% { opacity: 1; }
 }
-.rv0 { animation: rv0 28.130000000000003s linear infinite; }
+.rv0 { animation: rv0 27.265s linear infinite; }
 @keyframes rv1 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 37.26% { opacity: 0; }
-  37.56%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 38.44% { opacity: 0; }
+  38.74%, 100% { opacity: 1; }
 }
-.rv1 { animation: rv1 28.130000000000003s linear infinite; }
+.rv1 { animation: rv1 27.265s linear infinite; }
 @keyframes rv2 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 37.90% { opacity: 0; }
-  38.20%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 39.10% { opacity: 0; }
+  39.40%, 100% { opacity: 1; }
 }
-.rv2 { animation: rv2 28.130000000000003s linear infinite; }
+.rv2 { animation: rv2 27.265s linear infinite; }
 @keyframes rv3 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 39.07% { opacity: 0; }
-  39.37%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 40.31% { opacity: 0; }
+  40.61%, 100% { opacity: 1; }
 }
-.rv3 { animation: rv3 28.130000000000003s linear infinite; }
+.rv3 { animation: rv3 27.265s linear infinite; }
 @keyframes rv4 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 42.34% { opacity: 0; }
-  42.64%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 43.68% { opacity: 0; }
+  43.98%, 100% { opacity: 1; }
 }
-.rv4 { animation: rv4 28.130000000000003s linear infinite; }
+.rv4 { animation: rv4 27.265s linear infinite; }
 @keyframes rv5 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 42.45% { opacity: 0; }
-  42.75%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 43.79% { opacity: 0; }
+  44.09%, 100% { opacity: 1; }
 }
-.rv5 { animation: rv5 28.130000000000003s linear infinite; }
+.rv5 { animation: rv5 27.265s linear infinite; }
 @keyframes rv6 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 42.55% { opacity: 0; }
-  42.85%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 43.90% { opacity: 0; }
+  44.20%, 100% { opacity: 1; }
 }
-.rv6 { animation: rv6 28.130000000000003s linear infinite; }
+.rv6 { animation: rv6 27.265s linear infinite; }
 @keyframes rv7 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 42.66% { opacity: 0; }
-  42.96%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 44.01% { opacity: 0; }
+  44.31%, 100% { opacity: 1; }
 }
-.rv7 { animation: rv7 28.130000000000003s linear infinite; }
+.rv7 { animation: rv7 27.265s linear infinite; }
 @keyframes rv8 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 42.77% { opacity: 0; }
-  43.07%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 44.12% { opacity: 0; }
+  44.42%, 100% { opacity: 1; }
 }
-.rv8 { animation: rv8 28.130000000000003s linear infinite; }
+.rv8 { animation: rv8 27.265s linear infinite; }
 @keyframes rv9 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 42.87% { opacity: 0; }
-  43.17%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 44.23% { opacity: 0; }
+  44.53%, 100% { opacity: 1; }
 }
-.rv9 { animation: rv9 28.130000000000003s linear infinite; }
+.rv9 { animation: rv9 27.265s linear infinite; }
 @keyframes rv10 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 42.98% { opacity: 0; }
-  43.28%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 44.34% { opacity: 0; }
+  44.64%, 100% { opacity: 1; }
 }
-.rv10 { animation: rv10 28.130000000000003s linear infinite; }
+.rv10 { animation: rv10 27.265s linear infinite; }
 @keyframes rv11 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 43.09% { opacity: 0; }
-  43.39%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 44.45% { opacity: 0; }
+  44.75%, 100% { opacity: 1; }
 }
-.rv11 { animation: rv11 28.130000000000003s linear infinite; }
+.rv11 { animation: rv11 27.265s linear infinite; }
 @keyframes rv12 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 43.19% { opacity: 0; }
-  43.49%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 44.56% { opacity: 0; }
+  44.86%, 100% { opacity: 1; }
 }
-.rv12 { animation: rv12 28.130000000000003s linear infinite; }
+.rv12 { animation: rv12 27.265s linear infinite; }
 @keyframes rv13 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 43.30% { opacity: 0; }
-  43.60%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 44.67% { opacity: 0; }
+  44.97%, 100% { opacity: 1; }
 }
-.rv13 { animation: rv13 28.130000000000003s linear infinite; }
+.rv13 { animation: rv13 27.265s linear infinite; }
 @keyframes rv14 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 43.41% { opacity: 0; }
-  43.71%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 44.78% { opacity: 0; }
+  45.08%, 100% { opacity: 1; }
 }
-.rv14 { animation: rv14 28.130000000000003s linear infinite; }
+.rv14 { animation: rv14 27.265s linear infinite; }
 @keyframes rv15 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 43.51% { opacity: 0; }
-  43.81%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 44.89% { opacity: 0; }
+  45.19%, 100% { opacity: 1; }
 }
-.rv15 { animation: rv15 28.130000000000003s linear infinite; }
+.rv15 { animation: rv15 27.265s linear infinite; }
 @keyframes rv16 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 43.62% { opacity: 0; }
-  43.92%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 45.00% { opacity: 0; }
+  45.30%, 100% { opacity: 1; }
 }
-.rv16 { animation: rv16 28.130000000000003s linear infinite; }
+.rv16 { animation: rv16 27.265s linear infinite; }
 @keyframes rv17 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 43.73% { opacity: 0; }
-  44.03%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 45.11% { opacity: 0; }
+  45.41%, 100% { opacity: 1; }
 }
-.rv17 { animation: rv17 28.130000000000003s linear infinite; }
+.rv17 { animation: rv17 27.265s linear infinite; }
 @keyframes rv18 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 43.83% { opacity: 0; }
-  44.13%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 45.22% { opacity: 0; }
+  45.52%, 100% { opacity: 1; }
 }
-.rv18 { animation: rv18 28.130000000000003s linear infinite; }
+.rv18 { animation: rv18 27.265s linear infinite; }
 @keyframes rv19 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 43.94% { opacity: 0; }
-  44.24%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 45.33% { opacity: 0; }
+  45.63%, 100% { opacity: 1; }
 }
-.rv19 { animation: rv19 28.130000000000003s linear infinite; }
+.rv19 { animation: rv19 27.265s linear infinite; }
 @keyframes rv20 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 44.05% { opacity: 0; }
-  44.35%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 45.44% { opacity: 0; }
+  45.74%, 100% { opacity: 1; }
 }
-.rv20 { animation: rv20 28.130000000000003s linear infinite; }
+.rv20 { animation: rv20 27.265s linear infinite; }
 @keyframes rv21 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 44.15% { opacity: 0; }
-  44.45%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 45.55% { opacity: 0; }
+  45.85%, 100% { opacity: 1; }
 }
-.rv21 { animation: rv21 28.130000000000003s linear infinite; }
+.rv21 { animation: rv21 27.265s linear infinite; }
 @keyframes rv22 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 44.26% { opacity: 0; }
-  44.56%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 45.66% { opacity: 0; }
+  45.96%, 100% { opacity: 1; }
 }
-.rv22 { animation: rv22 28.130000000000003s linear infinite; }
+.rv22 { animation: rv22 27.265s linear infinite; }
 @keyframes rv23 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 44.37% { opacity: 0; }
-  44.67%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 45.77% { opacity: 0; }
+  46.07%, 100% { opacity: 1; }
 }
-.rv23 { animation: rv23 28.130000000000003s linear infinite; }
+.rv23 { animation: rv23 27.265s linear infinite; }
 @keyframes rv24 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 42.62% { opacity: 0; }
-  42.92%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 43.98% { opacity: 0; }
+  44.28%, 100% { opacity: 1; }
 }
-.rv24 { animation: rv24 28.130000000000003s linear infinite; }
+.rv24 { animation: rv24 27.265s linear infinite; }
 @keyframes rv25 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 42.91% { opacity: 0; }
-  43.21%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 44.27% { opacity: 0; }
+  44.57%, 100% { opacity: 1; }
 }
-.rv25 { animation: rv25 28.130000000000003s linear infinite; }
+.rv25 { animation: rv25 27.265s linear infinite; }
 @keyframes rv26 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 43.48% { opacity: 0; }
-  43.78%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 44.86% { opacity: 0; }
+  45.16%, 100% { opacity: 1; }
 }
-.rv26 { animation: rv26 28.130000000000003s linear infinite; }
+.rv26 { animation: rv26 27.265s linear infinite; }
 @keyframes rv27 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 43.76% { opacity: 0; }
-  44.06%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 45.15% { opacity: 0; }
+  45.45%, 100% { opacity: 1; }
 }
-.rv27 { animation: rv27 28.130000000000003s linear infinite; }
+.rv27 { animation: rv27 27.265s linear infinite; }
 @keyframes rv28 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 44.33% { opacity: 0; }
-  44.63%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 45.74% { opacity: 0; }
+  46.04%, 100% { opacity: 1; }
 }
-.rv28 { animation: rv28 28.130000000000003s linear infinite; }
+.rv28 { animation: rv28 27.265s linear infinite; }
 @keyframes rv29 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 44.61% { opacity: 0; }
-  44.91%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 46.03% { opacity: 0; }
+  46.33%, 100% { opacity: 1; }
 }
-.rv29 { animation: rv29 28.130000000000003s linear infinite; }
+.rv29 { animation: rv29 27.265s linear infinite; }
 @keyframes rv30 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 44.90% { opacity: 0; }
-  45.20%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 46.32% { opacity: 0; }
+  46.62%, 100% { opacity: 1; }
 }
-.rv30 { animation: rv30 28.130000000000003s linear infinite; }
+.rv30 { animation: rv30 27.265s linear infinite; }
 @keyframes rv31 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 45.18% { opacity: 0; }
-  45.48%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 46.62% { opacity: 0; }
+  46.92%, 100% { opacity: 1; }
 }
-.rv31 { animation: rv31 28.130000000000003s linear infinite; }
+.rv31 { animation: rv31 27.265s linear infinite; }
 @keyframes rv32 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 45.47% { opacity: 0; }
-  45.77%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 46.91% { opacity: 0; }
+  47.21%, 100% { opacity: 1; }
 }
-.rv32 { animation: rv32 28.130000000000003s linear infinite; }
+.rv32 { animation: rv32 27.265s linear infinite; }
 @keyframes rv33 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 46.64% { opacity: 0; }
-  46.94%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 48.12% { opacity: 0; }
+  48.42%, 100% { opacity: 1; }
 }
-.rv33 { animation: rv33 28.130000000000003s linear infinite; }
+.rv33 { animation: rv33 27.265s linear infinite; }
 @keyframes rv34 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 48.56% { opacity: 0; }
-  48.86%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 50.10% { opacity: 0; }
+  50.40%, 100% { opacity: 1; }
 }
-.rv34 { animation: rv34 28.130000000000003s linear infinite; }
+.rv34 { animation: rv34 27.265s linear infinite; }
 @keyframes rv35 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 48.84% { opacity: 0; }
-  49.14%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 50.39% { opacity: 0; }
+  50.69%, 100% { opacity: 1; }
 }
-.rv35 { animation: rv35 28.130000000000003s linear infinite; }
+.rv35 { animation: rv35 27.265s linear infinite; }
 @keyframes rv36 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 50.02% { opacity: 0; }
-  50.32%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 51.60% { opacity: 0; }
+  51.90%, 100% { opacity: 1; }
 }
-.rv36 { animation: rv36 28.130000000000003s linear infinite; }
+.rv36 { animation: rv36 27.265s linear infinite; }
 @keyframes rv37 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 52.40% { opacity: 0; }
-  52.70%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 59.01% { opacity: 0; }
+  59.31%, 100% { opacity: 1; }
 }
-.rv37 { animation: rv37 28.130000000000003s linear infinite; }
+.rv37 { animation: rv37 27.265s linear infinite; }
 @keyframes rv38 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 52.65% { opacity: 0; }
-  52.95%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 54.91% { opacity: 0; }
+  55.21%, 100% { opacity: 1; }
 }
-.rv38 { animation: rv38 28.130000000000003s linear infinite; }
+.rv38 { animation: rv38 27.265s linear infinite; }
 @keyframes rv39 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 52.90% { opacity: 0; }
-  53.20%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 59.56% { opacity: 0; }
+  59.86%, 100% { opacity: 1; }
 }
-.rv39 { animation: rv39 28.130000000000003s linear infinite; }
+.rv39 { animation: rv39 27.265s linear infinite; }
 @keyframes rv40 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 53.15% { opacity: 0; }
-  53.45%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 60.77% { opacity: 0; }
+  61.07%, 100% { opacity: 1; }
 }
-.rv40 { animation: rv40 28.130000000000003s linear infinite; }
+.rv40 { animation: rv40 27.265s linear infinite; }
 @keyframes rv41 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 53.39% { opacity: 0; }
-  53.69%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 64.51% { opacity: 0; }
+  64.81%, 100% { opacity: 1; }
 }
-.rv41 { animation: rv41 28.130000000000003s linear infinite; }
+.rv41 { animation: rv41 27.265s linear infinite; }
 @keyframes rv42 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 53.64% { opacity: 0; }
-  53.94%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 65.73% { opacity: 0; }
+  66.03%, 100% { opacity: 1; }
 }
-.rv42 { animation: rv42 28.130000000000003s linear infinite; }
+.rv42 { animation: rv42 27.265s linear infinite; }
 @keyframes rv43 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 53.89% { opacity: 0; }
-  54.19%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 77.72% { opacity: 0; }
+  78.02%, 100% { opacity: 1; }
 }
-.rv43 { animation: rv43 28.130000000000003s linear infinite; }
+.rv43 { animation: rv43 27.265s linear infinite; }
 @keyframes rv44 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 54.14% { opacity: 0; }
-  54.44%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 45.88% { opacity: 0; }
+  46.18%, 100% { opacity: 1; }
 }
-.rv44 { animation: rv44 28.130000000000003s linear infinite; }
+.rv44 { animation: rv44 27.265s linear infinite; }
 @keyframes rv45 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 54.39% { opacity: 0; }
-  54.69%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 55.49% { opacity: 0; }
+  55.79%, 100% { opacity: 1; }
 }
-.rv45 { animation: rv45 28.130000000000003s linear infinite; }
+.rv45 { animation: rv45 27.265s linear infinite; }
 @keyframes rv46 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 54.64% { opacity: 0; }
-  54.94%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 55.93% { opacity: 0; }
+  56.23%, 100% { opacity: 1; }
 }
-.rv46 { animation: rv46 28.130000000000003s linear infinite; }
+.rv46 { animation: rv46 27.265s linear infinite; }
 @keyframes rv47 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 56.27% { opacity: 0; }
-  56.57%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 56.37% { opacity: 0; }
+  56.67%, 100% { opacity: 1; }
 }
-.rv47 { animation: rv47 28.130000000000003s linear infinite; }
+.rv47 { animation: rv47 27.265s linear infinite; }
 @keyframes rv48 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 60.79% { opacity: 0; }
-  61.09%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 56.81% { opacity: 0; }
+  57.11%, 100% { opacity: 1; }
 }
-.rv48 { animation: rv48 28.130000000000003s linear infinite; }
+.rv48 { animation: rv48 27.265s linear infinite; }
 @keyframes rv49 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 61.96% { opacity: 0; }
-  62.26%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 57.25% { opacity: 0; }
+  57.55%, 100% { opacity: 1; }
 }
-.rv49 { animation: rv49 28.130000000000003s linear infinite; }
+.rv49 { animation: rv49 27.265s linear infinite; }
 @keyframes rv50 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 65.62% { opacity: 0; }
-  65.92%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 57.69% { opacity: 0; }
+  57.99%, 100% { opacity: 1; }
 }
-.rv50 { animation: rv50 28.130000000000003s linear infinite; }
+.rv50 { animation: rv50 27.265s linear infinite; }
 @keyframes rv51 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 66.80% { opacity: 0; }
-  67.10%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 58.13% { opacity: 0; }
+  58.43%, 100% { opacity: 1; }
 }
-.rv51 { animation: rv51 28.130000000000003s linear infinite; }
+.rv51 { animation: rv51 27.265s linear infinite; }
 @keyframes rv52 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 78.39% { opacity: 0; }
-  78.69%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 58.57% { opacity: 0; }
+  58.87%, 100% { opacity: 1; }
 }
-.rv52 { animation: rv52 28.130000000000003s linear infinite; }
+.rv52 { animation: rv52 27.265s linear infinite; }
+@keyframes rv53 {
+  0%, 36.68% { opacity: 1; }
+  36.69%, 71.92% { opacity: 0; }
+  72.22%, 100% { opacity: 1; }
+}
+.rv53 { animation: rv53 27.265s linear infinite; }
 .type-mask {transform: scaleX(0); transform-origin: right center; transform-box: fill-box;}
 .caret {opacity: 0;}
 @keyframes type-0 {
-  0%, 35.55% { transform: scaleX(0); }
-  35.56%, 39.07% { transform: scaleX(1); animation-timing-function: steps(22, end); }
-  41.81%, 100% { transform: scaleX(0); }
+  0%, 36.68% { transform: scaleX(0); }
+  36.69%, 40.31% { transform: scaleX(1); animation-timing-function: steps(22, end); }
+  43.13%, 100% { transform: scaleX(0); }
 }
-.type-0 { animation: type-0 28.130000000000003s linear infinite; }
+.type-0 { animation: type-0 27.265s linear infinite; }
 @keyframes caret-0 {
-  0%, 39.07% { opacity: 0; transform: translateX(0); animation-timing-function: steps(22, end); }
-  39.08% { opacity: 1; transform: translateX(0); animation-timing-function: steps(22, end); }
-  41.81% { opacity: 1; transform: translateX(211.2px); }
-  41.82%, 100% { opacity: 0; transform: translateX(211.2px); }
+  0%, 40.31% { opacity: 0; transform: translateX(0); animation-timing-function: steps(22, end); }
+  40.32% { opacity: 1; transform: translateX(0); animation-timing-function: steps(22, end); }
+  43.13% { opacity: 1; transform: translateX(211.2px); }
+  43.14%, 100% { opacity: 0; transform: translateX(211.2px); }
 }
-.caret-0 { animation: caret-0 28.130000000000003s linear infinite; }
+.caret-0 { animation: caret-0 27.265s linear infinite; }
 @keyframes type-1 {
-  0%, 35.55% { transform: scaleX(0); }
-  35.56%, 46.64% { transform: scaleX(1); animation-timing-function: steps(11, end); }
-  48.01%, 100% { transform: scaleX(0); }
+  0%, 36.68% { transform: scaleX(0); }
+  36.69%, 48.12% { transform: scaleX(1); animation-timing-function: steps(11, end); }
+  49.53%, 100% { transform: scaleX(0); }
 }
-.type-1 { animation: type-1 28.130000000000003s linear infinite; }
+.type-1 { animation: type-1 27.265s linear infinite; }
 @keyframes caret-1 {
-  0%, 46.64% { opacity: 0; transform: translateX(0); animation-timing-function: steps(11, end); }
-  46.65% { opacity: 1; transform: translateX(0); animation-timing-function: steps(11, end); }
-  48.01% { opacity: 1; transform: translateX(105.6px); }
-  48.02%, 100% { opacity: 0; transform: translateX(105.6px); }
+  0%, 48.12% { opacity: 0; transform: translateX(0); animation-timing-function: steps(11, end); }
+  48.13% { opacity: 1; transform: translateX(0); animation-timing-function: steps(11, end); }
+  49.53% { opacity: 1; transform: translateX(105.6px); }
+  49.54%, 100% { opacity: 0; transform: translateX(105.6px); }
 }
-.caret-1 { animation: caret-1 28.130000000000003s linear infinite; }
+.caret-1 { animation: caret-1 27.265s linear infinite; }
 @keyframes type-2 {
-  0%, 35.55% { transform: scaleX(0); }
-  35.56%, 50.00% { transform: scaleX(1); animation-timing-function: steps(15, end); }
-  51.87%, 100% { transform: scaleX(0); }
+  0%, 36.68% { transform: scaleX(0); }
+  36.69%, 51.59% { transform: scaleX(1); animation-timing-function: steps(26, end); }
+  54.92%, 100% { transform: scaleX(0); }
 }
-.type-2 { animation: type-2 28.130000000000003s linear infinite; }
+.type-2 { animation: type-2 27.265s linear infinite; }
 @keyframes caret-2 {
-  0%, 50.00% { opacity: 0; transform: translateX(0); animation-timing-function: steps(15, end); }
-  50.01% { opacity: 1; transform: translateX(0); animation-timing-function: steps(15, end); }
-  51.87% { opacity: 1; transform: translateX(99.0px); }
-  51.88%, 100% { opacity: 0; transform: translateX(99.0px); }
+  0%, 51.59% { opacity: 0; transform: translateX(0); animation-timing-function: steps(26, end); }
+  51.60% { opacity: 1; transform: translateX(0); animation-timing-function: steps(26, end); }
+  54.92% { opacity: 1; transform: translateX(171.6px); }
+  54.93%, 100% { opacity: 0; transform: translateX(171.6px); }
 }
-.caret-2 { animation: caret-2 28.130000000000003s linear infinite; }
+.caret-2 { animation: caret-2 27.265s linear infinite; }
 @keyframes type-3 {
-  0%, 35.55% { transform: scaleX(0); }
-  35.56%, 54.64% { transform: scaleX(1); animation-timing-function: steps(26, end); }
-  57.87%, 100% { transform: scaleX(0); }
+  0%, 36.68% { transform: scaleX(0); }
+  36.69%, 54.89% { transform: scaleX(1); animation-timing-function: steps(32, end); }
+  59.00%, 100% { transform: scaleX(0); }
 }
-.type-3 { animation: type-3 28.130000000000003s linear infinite; }
+.type-3 { animation: type-3 27.265s linear infinite; }
 @keyframes caret-3 {
-  0%, 54.64% { opacity: 0; transform: translateX(0); animation-timing-function: steps(26, end); }
-  54.65% { opacity: 1; transform: translateX(0); animation-timing-function: steps(26, end); }
-  57.87% { opacity: 1; transform: translateX(171.6px); }
-  57.88%, 100% { opacity: 0; transform: translateX(171.6px); }
+  0%, 54.89% { opacity: 0; transform: translateX(0); animation-timing-function: steps(32, end); }
+  54.90% { opacity: 1; transform: translateX(0); animation-timing-function: steps(32, end); }
+  59.00% { opacity: 1; transform: translateX(307.2px); }
+  59.01%, 100% { opacity: 0; transform: translateX(307.2px); }
 }
-.caret-3 { animation: caret-3 28.130000000000003s linear infinite; }
+.caret-3 { animation: caret-3 27.265s linear infinite; }
 @keyframes type-4 {
-  0%, 35.55% { transform: scaleX(0); }
-  35.56%, 56.27% { transform: scaleX(1); animation-timing-function: steps(32, end); }
-  60.26%, 100% { transform: scaleX(0); }
+  0%, 36.68% { transform: scaleX(0); }
+  36.69%, 60.76% { transform: scaleX(1); animation-timing-function: steps(25, end); }
+  63.96%, 100% { transform: scaleX(0); }
 }
-.type-4 { animation: type-4 28.130000000000003s linear infinite; }
+.type-4 { animation: type-4 27.265s linear infinite; }
 @keyframes caret-4 {
-  0%, 56.27% { opacity: 0; transform: translateX(0); animation-timing-function: steps(32, end); }
-  56.28% { opacity: 1; transform: translateX(0); animation-timing-function: steps(32, end); }
-  60.26% { opacity: 1; transform: translateX(307.2px); }
-  60.27%, 100% { opacity: 0; transform: translateX(307.2px); }
+  0%, 60.76% { opacity: 0; transform: translateX(0); animation-timing-function: steps(25, end); }
+  60.77% { opacity: 1; transform: translateX(0); animation-timing-function: steps(25, end); }
+  63.96% { opacity: 1; transform: translateX(240.0px); }
+  63.97%, 100% { opacity: 0; transform: translateX(240.0px); }
 }
-.caret-4 { animation: caret-4 28.130000000000003s linear infinite; }
+.caret-4 { animation: caret-4 27.265s linear infinite; }
 @keyframes type-5 {
-  0%, 35.55% { transform: scaleX(0); }
-  35.56%, 61.96% { transform: scaleX(1); animation-timing-function: steps(25, end); }
-  65.07%, 100% { transform: scaleX(0); }
+  0%, 36.68% { transform: scaleX(0); }
+  36.69%, 65.73% { transform: scaleX(1); animation-timing-function: steps(44, end); }
+  71.37%, 100% { transform: scaleX(0); }
 }
-.type-5 { animation: type-5 28.130000000000003s linear infinite; }
+.type-5 { animation: type-5 27.265s linear infinite; }
 @keyframes caret-5 {
-  0%, 61.96% { opacity: 0; transform: translateX(0); animation-timing-function: steps(25, end); }
-  61.97% { opacity: 1; transform: translateX(0); animation-timing-function: steps(25, end); }
-  65.07% { opacity: 1; transform: translateX(240.0px); }
-  65.08%, 100% { opacity: 0; transform: translateX(240.0px); }
+  0%, 65.73% { opacity: 0; transform: translateX(0); animation-timing-function: steps(44, end); }
+  65.74% { opacity: 1; transform: translateX(0); animation-timing-function: steps(44, end); }
+  71.37% { opacity: 1; transform: translateX(422.4px); }
+  71.38%, 100% { opacity: 0; transform: translateX(422.4px); }
 }
-.caret-5 { animation: caret-5 28.130000000000003s linear infinite; }
-@keyframes type-6 {
-  0%, 35.55% { transform: scaleX(0); }
-  35.56%, 66.78% { transform: scaleX(1); animation-timing-function: steps(44, end); }
-  72.25%, 100% { transform: scaleX(0); }
-}
-.type-6 { animation: type-6 28.130000000000003s linear infinite; }
-@keyframes caret-6 {
-  0%, 66.78% { opacity: 0; transform: translateX(0); animation-timing-function: steps(44, end); }
-  66.79% { opacity: 1; transform: translateX(0); animation-timing-function: steps(44, end); }
-  72.25% { opacity: 1; transform: translateX(422.4px); }
-  72.26%, 100% { opacity: 0; transform: translateX(422.4px); }
-}
-.caret-6 { animation: caret-6 28.130000000000003s linear infinite; }
+.caret-5 { animation: caret-5 27.265s linear infinite; }
 .lang-bar {transform-origin: left center; transform-box: fill-box;}
 @keyframes lg0 {
-  0%, 35.55% { transform: scaleX(1); }
-  35.56%, 58.41% { transform: scaleX(0); animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
-  60.36%, 100% { transform: scaleX(1); }
+  0%, 36.68% { transform: scaleX(1); }
+  36.69%, 55.47% { transform: scaleX(0); animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
+  57.49%, 100% { transform: scaleX(1); }
 }
-.lg0 { animation: lg0 28.130000000000003s linear infinite; }
+.lg0 { animation: lg0 27.265s linear infinite; }
 @keyframes lg1 {
-  0%, 35.55% { transform: scaleX(1); }
-  35.56%, 58.83% { transform: scaleX(0); animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
-  60.79%, 100% { transform: scaleX(1); }
+  0%, 36.68% { transform: scaleX(1); }
+  36.69%, 55.91% { transform: scaleX(0); animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
+  57.93%, 100% { transform: scaleX(1); }
 }
-.lg1 { animation: lg1 28.130000000000003s linear infinite; }
+.lg1 { animation: lg1 27.265s linear infinite; }
 @keyframes lg2 {
-  0%, 35.55% { transform: scaleX(1); }
-  35.56%, 59.26% { transform: scaleX(0); animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
-  61.22%, 100% { transform: scaleX(1); }
+  0%, 36.68% { transform: scaleX(1); }
+  36.69%, 56.35% { transform: scaleX(0); animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
+  58.37%, 100% { transform: scaleX(1); }
 }
-.lg2 { animation: lg2 28.130000000000003s linear infinite; }
+.lg2 { animation: lg2 27.265s linear infinite; }
 @keyframes lg3 {
-  0%, 35.55% { transform: scaleX(1); }
-  35.56%, 59.69% { transform: scaleX(0); animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
-  61.64%, 100% { transform: scaleX(1); }
+  0%, 36.68% { transform: scaleX(1); }
+  36.69%, 56.79% { transform: scaleX(0); animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
+  58.81%, 100% { transform: scaleX(1); }
 }
-.lg3 { animation: lg3 28.130000000000003s linear infinite; }
+.lg3 { animation: lg3 27.265s linear infinite; }
 @keyframes lg4 {
-  0%, 35.55% { transform: scaleX(1); }
-  35.56%, 60.11% { transform: scaleX(0); animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
-  62.07%, 100% { transform: scaleX(1); }
+  0%, 36.68% { transform: scaleX(1); }
+  36.69%, 57.23% { transform: scaleX(0); animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
+  59.25%, 100% { transform: scaleX(1); }
 }
-.lg4 { animation: lg4 28.130000000000003s linear infinite; }
+.lg4 { animation: lg4 27.265s linear infinite; }
+@keyframes lg5 {
+  0%, 36.68% { transform: scaleX(1); }
+  36.69%, 57.67% { transform: scaleX(0); animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
+  59.69%, 100% { transform: scaleX(1); }
+}
+.lg5 { animation: lg5 27.265s linear infinite; }
+@keyframes lg6 {
+  0%, 36.68% { transform: scaleX(1); }
+  36.69%, 58.11% { transform: scaleX(0); animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
+  60.13%, 100% { transform: scaleX(1); }
+}
+.lg6 { animation: lg6 27.265s linear infinite; }
+@keyframes lg7 {
+  0%, 36.68% { transform: scaleX(1); }
+  36.69%, 58.55% { transform: scaleX(0); animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
+  60.57%, 100% { transform: scaleX(1); }
+}
+.lg7 { animation: lg7 27.265s linear infinite; }
 @keyframes hw0 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 72.79% { opacity: 0; }
-  73.09%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 71.92% { opacity: 0; }
+  72.22%, 100% { opacity: 1; }
 }
-.hw0 { animation: hw0 28.130000000000003s linear infinite; }
+.hw0 { animation: hw0 27.265s linear infinite; }
 @keyframes hw1 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 72.88% { opacity: 0; }
-  73.18%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 72.02% { opacity: 0; }
+  72.32%, 100% { opacity: 1; }
 }
-.hw1 { animation: hw1 28.130000000000003s linear infinite; }
+.hw1 { animation: hw1 27.265s linear infinite; }
 @keyframes hw2 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 72.96% { opacity: 0; }
-  73.26%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 72.11% { opacity: 0; }
+  72.41%, 100% { opacity: 1; }
 }
-.hw2 { animation: hw2 28.130000000000003s linear infinite; }
+.hw2 { animation: hw2 27.265s linear infinite; }
 @keyframes hw3 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 73.05% { opacity: 0; }
-  73.35%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 72.20% { opacity: 0; }
+  72.50%, 100% { opacity: 1; }
 }
-.hw3 { animation: hw3 28.130000000000003s linear infinite; }
+.hw3 { animation: hw3 27.265s linear infinite; }
 @keyframes hw4 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 73.14% { opacity: 0; }
-  73.44%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 72.29% { opacity: 0; }
+  72.59%, 100% { opacity: 1; }
 }
-.hw4 { animation: hw4 28.130000000000003s linear infinite; }
+.hw4 { animation: hw4 27.265s linear infinite; }
 @keyframes hw5 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 73.23% { opacity: 0; }
-  73.53%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 72.38% { opacity: 0; }
+  72.68%, 100% { opacity: 1; }
 }
-.hw5 { animation: hw5 28.130000000000003s linear infinite; }
+.hw5 { animation: hw5 27.265s linear infinite; }
 @keyframes hw6 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 73.32% { opacity: 0; }
-  73.62%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 72.47% { opacity: 0; }
+  72.77%, 100% { opacity: 1; }
 }
-.hw6 { animation: hw6 28.130000000000003s linear infinite; }
+.hw6 { animation: hw6 27.265s linear infinite; }
 @keyframes hw7 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 73.41% { opacity: 0; }
-  73.71%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 72.57% { opacity: 0; }
+  72.87%, 100% { opacity: 1; }
 }
-.hw7 { animation: hw7 28.130000000000003s linear infinite; }
+.hw7 { animation: hw7 27.265s linear infinite; }
 @keyframes hw8 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 73.50% { opacity: 0; }
-  73.80%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 72.66% { opacity: 0; }
+  72.96%, 100% { opacity: 1; }
 }
-.hw8 { animation: hw8 28.130000000000003s linear infinite; }
+.hw8 { animation: hw8 27.265s linear infinite; }
 @keyframes hw9 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 73.59% { opacity: 0; }
-  73.89%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 72.75% { opacity: 0; }
+  73.05%, 100% { opacity: 1; }
 }
-.hw9 { animation: hw9 28.130000000000003s linear infinite; }
+.hw9 { animation: hw9 27.265s linear infinite; }
 @keyframes hw10 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 73.68% { opacity: 0; }
-  73.98%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 72.84% { opacity: 0; }
+  73.14%, 100% { opacity: 1; }
 }
-.hw10 { animation: hw10 28.130000000000003s linear infinite; }
+.hw10 { animation: hw10 27.265s linear infinite; }
 @keyframes hw11 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 73.76% { opacity: 0; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 72.93% { opacity: 0; }
+  73.23%, 100% { opacity: 1; }
+}
+.hw11 { animation: hw11 27.265s linear infinite; }
+@keyframes hw12 {
+  0%, 36.68% { opacity: 1; }
+  36.69%, 73.02% { opacity: 0; }
+  73.32%, 100% { opacity: 1; }
+}
+.hw12 { animation: hw12 27.265s linear infinite; }
+@keyframes hw13 {
+  0%, 36.68% { opacity: 1; }
+  36.69%, 73.12% { opacity: 0; }
+  73.42%, 100% { opacity: 1; }
+}
+.hw13 { animation: hw13 27.265s linear infinite; }
+@keyframes hw14 {
+  0%, 36.68% { opacity: 1; }
+  36.69%, 73.21% { opacity: 0; }
+  73.51%, 100% { opacity: 1; }
+}
+.hw14 { animation: hw14 27.265s linear infinite; }
+@keyframes hw15 {
+  0%, 36.68% { opacity: 1; }
+  36.69%, 73.30% { opacity: 0; }
+  73.60%, 100% { opacity: 1; }
+}
+.hw15 { animation: hw15 27.265s linear infinite; }
+@keyframes hw16 {
+  0%, 36.68% { opacity: 1; }
+  36.69%, 73.39% { opacity: 0; }
+  73.69%, 100% { opacity: 1; }
+}
+.hw16 { animation: hw16 27.265s linear infinite; }
+@keyframes hw17 {
+  0%, 36.68% { opacity: 1; }
+  36.69%, 73.48% { opacity: 0; }
+  73.78%, 100% { opacity: 1; }
+}
+.hw17 { animation: hw17 27.265s linear infinite; }
+@keyframes hw18 {
+  0%, 36.68% { opacity: 1; }
+  36.69%, 73.57% { opacity: 0; }
+  73.87%, 100% { opacity: 1; }
+}
+.hw18 { animation: hw18 27.265s linear infinite; }
+@keyframes hw19 {
+  0%, 36.68% { opacity: 1; }
+  36.69%, 73.67% { opacity: 0; }
+  73.97%, 100% { opacity: 1; }
+}
+.hw19 { animation: hw19 27.265s linear infinite; }
+@keyframes hw20 {
+  0%, 36.68% { opacity: 1; }
+  36.69%, 73.76% { opacity: 0; }
   74.06%, 100% { opacity: 1; }
 }
-.hw11 { animation: hw11 28.130000000000003s linear infinite; }
-@keyframes hw12 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 73.85% { opacity: 0; }
+.hw20 { animation: hw20 27.265s linear infinite; }
+@keyframes hw21 {
+  0%, 36.68% { opacity: 1; }
+  36.69%, 73.85% { opacity: 0; }
   74.15%, 100% { opacity: 1; }
 }
-.hw12 { animation: hw12 28.130000000000003s linear infinite; }
-@keyframes hw13 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 73.94% { opacity: 0; }
+.hw21 { animation: hw21 27.265s linear infinite; }
+@keyframes hw22 {
+  0%, 36.68% { opacity: 1; }
+  36.69%, 73.94% { opacity: 0; }
   74.24%, 100% { opacity: 1; }
 }
-.hw13 { animation: hw13 28.130000000000003s linear infinite; }
-@keyframes hw14 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 74.03% { opacity: 0; }
+.hw22 { animation: hw22 27.265s linear infinite; }
+@keyframes hw23 {
+  0%, 36.68% { opacity: 1; }
+  36.69%, 74.03% { opacity: 0; }
   74.33%, 100% { opacity: 1; }
 }
-.hw14 { animation: hw14 28.130000000000003s linear infinite; }
-@keyframes hw15 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 74.12% { opacity: 0; }
+.hw23 { animation: hw23 27.265s linear infinite; }
+@keyframes hw24 {
+  0%, 36.68% { opacity: 1; }
+  36.69%, 74.12% { opacity: 0; }
   74.42%, 100% { opacity: 1; }
 }
-.hw15 { animation: hw15 28.130000000000003s linear infinite; }
-@keyframes hw16 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 74.21% { opacity: 0; }
-  74.51%, 100% { opacity: 1; }
-}
-.hw16 { animation: hw16 28.130000000000003s linear infinite; }
-@keyframes hw17 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 74.30% { opacity: 0; }
-  74.60%, 100% { opacity: 1; }
-}
-.hw17 { animation: hw17 28.130000000000003s linear infinite; }
-@keyframes hw18 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 74.39% { opacity: 0; }
-  74.69%, 100% { opacity: 1; }
-}
-.hw18 { animation: hw18 28.130000000000003s linear infinite; }
-@keyframes hw19 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 74.48% { opacity: 0; }
-  74.78%, 100% { opacity: 1; }
-}
-.hw19 { animation: hw19 28.130000000000003s linear infinite; }
-@keyframes hw20 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 74.56% { opacity: 0; }
-  74.86%, 100% { opacity: 1; }
-}
-.hw20 { animation: hw20 28.130000000000003s linear infinite; }
-@keyframes hw21 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 74.65% { opacity: 0; }
-  74.95%, 100% { opacity: 1; }
-}
-.hw21 { animation: hw21 28.130000000000003s linear infinite; }
-@keyframes hw22 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 74.74% { opacity: 0; }
-  75.04%, 100% { opacity: 1; }
-}
-.hw22 { animation: hw22 28.130000000000003s linear infinite; }
-@keyframes hw23 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 74.83% { opacity: 0; }
-  75.13%, 100% { opacity: 1; }
-}
-.hw23 { animation: hw23 28.130000000000003s linear infinite; }
-@keyframes hw24 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 74.92% { opacity: 0; }
-  75.22%, 100% { opacity: 1; }
-}
-.hw24 { animation: hw24 28.130000000000003s linear infinite; }
+.hw24 { animation: hw24 27.265s linear infinite; }
 @keyframes hw25 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 75.01% { opacity: 0; }
-  75.31%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 74.22% { opacity: 0; }
+  74.52%, 100% { opacity: 1; }
 }
-.hw25 { animation: hw25 28.130000000000003s linear infinite; }
+.hw25 { animation: hw25 27.265s linear infinite; }
 @keyframes hw26 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 75.10% { opacity: 0; }
-  75.40%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 74.31% { opacity: 0; }
+  74.61%, 100% { opacity: 1; }
 }
-.hw26 { animation: hw26 28.130000000000003s linear infinite; }
+.hw26 { animation: hw26 27.265s linear infinite; }
 @keyframes hw27 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 75.19% { opacity: 0; }
-  75.49%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 74.40% { opacity: 0; }
+  74.70%, 100% { opacity: 1; }
 }
-.hw27 { animation: hw27 28.130000000000003s linear infinite; }
+.hw27 { animation: hw27 27.265s linear infinite; }
 @keyframes hw28 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 75.28% { opacity: 0; }
-  75.58%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 74.49% { opacity: 0; }
+  74.79%, 100% { opacity: 1; }
 }
-.hw28 { animation: hw28 28.130000000000003s linear infinite; }
+.hw28 { animation: hw28 27.265s linear infinite; }
 @keyframes hw29 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 75.36% { opacity: 0; }
-  75.66%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 74.58% { opacity: 0; }
+  74.88%, 100% { opacity: 1; }
 }
-.hw29 { animation: hw29 28.130000000000003s linear infinite; }
+.hw29 { animation: hw29 27.265s linear infinite; }
 @keyframes hw30 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 75.45% { opacity: 0; }
-  75.75%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 74.67% { opacity: 0; }
+  74.97%, 100% { opacity: 1; }
 }
-.hw30 { animation: hw30 28.130000000000003s linear infinite; }
+.hw30 { animation: hw30 27.265s linear infinite; }
 @keyframes hw31 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 75.54% { opacity: 0; }
-  75.84%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 74.77% { opacity: 0; }
+  75.07%, 100% { opacity: 1; }
 }
-.hw31 { animation: hw31 28.130000000000003s linear infinite; }
+.hw31 { animation: hw31 27.265s linear infinite; }
 @keyframes hw32 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 75.63% { opacity: 0; }
-  75.93%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 74.86% { opacity: 0; }
+  75.16%, 100% { opacity: 1; }
 }
-.hw32 { animation: hw32 28.130000000000003s linear infinite; }
+.hw32 { animation: hw32 27.265s linear infinite; }
 @keyframes hw33 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 75.72% { opacity: 0; }
-  76.02%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 74.95% { opacity: 0; }
+  75.25%, 100% { opacity: 1; }
 }
-.hw33 { animation: hw33 28.130000000000003s linear infinite; }
+.hw33 { animation: hw33 27.265s linear infinite; }
 @keyframes hw34 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 75.81% { opacity: 0; }
-  76.11%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 75.04% { opacity: 0; }
+  75.34%, 100% { opacity: 1; }
 }
-.hw34 { animation: hw34 28.130000000000003s linear infinite; }
+.hw34 { animation: hw34 27.265s linear infinite; }
 @keyframes hw35 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 75.90% { opacity: 0; }
-  76.20%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 75.13% { opacity: 0; }
+  75.43%, 100% { opacity: 1; }
 }
-.hw35 { animation: hw35 28.130000000000003s linear infinite; }
+.hw35 { animation: hw35 27.265s linear infinite; }
 @keyframes hw36 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 75.99% { opacity: 0; }
-  76.29%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 75.22% { opacity: 0; }
+  75.52%, 100% { opacity: 1; }
 }
-.hw36 { animation: hw36 28.130000000000003s linear infinite; }
+.hw36 { animation: hw36 27.265s linear infinite; }
 @keyframes hw37 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 76.08% { opacity: 0; }
-  76.38%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 75.32% { opacity: 0; }
+  75.62%, 100% { opacity: 1; }
 }
-.hw37 { animation: hw37 28.130000000000003s linear infinite; }
+.hw37 { animation: hw37 27.265s linear infinite; }
 @keyframes hw38 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 76.16% { opacity: 0; }
-  76.46%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 75.41% { opacity: 0; }
+  75.71%, 100% { opacity: 1; }
 }
-.hw38 { animation: hw38 28.130000000000003s linear infinite; }
+.hw38 { animation: hw38 27.265s linear infinite; }
 @keyframes hw39 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 76.25% { opacity: 0; }
-  76.55%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 75.50% { opacity: 0; }
+  75.80%, 100% { opacity: 1; }
 }
-.hw39 { animation: hw39 28.130000000000003s linear infinite; }
+.hw39 { animation: hw39 27.265s linear infinite; }
 @keyframes hw40 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 76.34% { opacity: 0; }
-  76.64%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 75.59% { opacity: 0; }
+  75.89%, 100% { opacity: 1; }
 }
-.hw40 { animation: hw40 28.130000000000003s linear infinite; }
+.hw40 { animation: hw40 27.265s linear infinite; }
 @keyframes hw41 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 76.43% { opacity: 0; }
-  76.73%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 75.68% { opacity: 0; }
+  75.98%, 100% { opacity: 1; }
 }
-.hw41 { animation: hw41 28.130000000000003s linear infinite; }
+.hw41 { animation: hw41 27.265s linear infinite; }
 @keyframes hw42 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 76.52% { opacity: 0; }
-  76.82%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 75.77% { opacity: 0; }
+  76.07%, 100% { opacity: 1; }
 }
-.hw42 { animation: hw42 28.130000000000003s linear infinite; }
+.hw42 { animation: hw42 27.265s linear infinite; }
 @keyframes hw43 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 76.61% { opacity: 0; }
-  76.91%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 75.87% { opacity: 0; }
+  76.17%, 100% { opacity: 1; }
 }
-.hw43 { animation: hw43 28.130000000000003s linear infinite; }
+.hw43 { animation: hw43 27.265s linear infinite; }
 @keyframes hw44 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 76.70% { opacity: 0; }
-  77.00%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 75.96% { opacity: 0; }
+  76.26%, 100% { opacity: 1; }
 }
-.hw44 { animation: hw44 28.130000000000003s linear infinite; }
+.hw44 { animation: hw44 27.265s linear infinite; }
 @keyframes hw45 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 76.79% { opacity: 0; }
-  77.09%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 76.05% { opacity: 0; }
+  76.35%, 100% { opacity: 1; }
 }
-.hw45 { animation: hw45 28.130000000000003s linear infinite; }
+.hw45 { animation: hw45 27.265s linear infinite; }
 @keyframes hw46 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 76.88% { opacity: 0; }
-  77.18%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 76.14% { opacity: 0; }
+  76.44%, 100% { opacity: 1; }
 }
-.hw46 { animation: hw46 28.130000000000003s linear infinite; }
+.hw46 { animation: hw46 27.265s linear infinite; }
 @keyframes hw47 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 76.96% { opacity: 0; }
-  77.26%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 76.23% { opacity: 0; }
+  76.53%, 100% { opacity: 1; }
 }
-.hw47 { animation: hw47 28.130000000000003s linear infinite; }
+.hw47 { animation: hw47 27.265s linear infinite; }
 @keyframes hw48 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 77.05% { opacity: 0; }
-  77.35%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 76.32% { opacity: 0; }
+  76.62%, 100% { opacity: 1; }
 }
-.hw48 { animation: hw48 28.130000000000003s linear infinite; }
+.hw48 { animation: hw48 27.265s linear infinite; }
 @keyframes hw49 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 77.14% { opacity: 0; }
-  77.44%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 76.42% { opacity: 0; }
+  76.72%, 100% { opacity: 1; }
 }
-.hw49 { animation: hw49 28.130000000000003s linear infinite; }
+.hw49 { animation: hw49 27.265s linear infinite; }
 @keyframes hw50 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 77.23% { opacity: 0; }
-  77.53%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 76.51% { opacity: 0; }
+  76.81%, 100% { opacity: 1; }
 }
-.hw50 { animation: hw50 28.130000000000003s linear infinite; }
+.hw50 { animation: hw50 27.265s linear infinite; }
 @keyframes hw51 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 77.32% { opacity: 0; }
-  77.62%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 76.60% { opacity: 0; }
+  76.90%, 100% { opacity: 1; }
 }
-.hw51 { animation: hw51 28.130000000000003s linear infinite; }
+.hw51 { animation: hw51 27.265s linear infinite; }
 @keyframes hw52 {
-  0%, 35.55% { opacity: 1; }
-  35.56%, 77.41% { opacity: 0; }
-  77.71%, 100% { opacity: 1; }
+  0%, 36.68% { opacity: 1; }
+  36.69%, 76.69% { opacity: 0; }
+  76.99%, 100% { opacity: 1; }
 }
-.hw52 { animation: hw52 28.130000000000003s linear infinite; }
+.hw52 { animation: hw52 27.265s linear infinite; }
 @keyframes cursor-blink {
   0%, 45% { opacity: 1; }
   50%, 100% { opacity: 0; }
@@ -849,22 +857,13 @@ text, tspan {white-space: pre;}
 <tspan x="15" y="296" class="reveal rv22"><tspan class="logo-2">         ▟███▛  ▜███▙       </tspan><tspan class="logo-1">▜███▙</tspan></tspan>
 <tspan x="15" y="308" class="reveal rv23"><tspan class="logo-2">         ▝▀▀▀    ▀▀▀▀▘       </tspan><tspan class="logo-1">▀▀▀▘</tspan></tspan>
 </text>
-<text class="reveal rv53" font-size="10px" fill="url(#sheen)">
+<text class="reveal rv44" font-size="10px" fill="url(#sheen)">
 <tspan x="15" y="80">          ▗▄▄▄       ▗▄▄▄▄    ▄▄▄▖</tspan><tspan x="15" y="92">          ▜███▙       ▜███▙  ▟███▛</tspan><tspan x="15" y="104">           ▜███▙       ▜███▙▟███▛</tspan><tspan x="15" y="116">            ▜███▙       ▜██████▛</tspan><tspan x="15" y="128">     ▟█████████████████▙ ▜████▛     ▟▙</tspan><tspan x="15" y="140">    ▟███████████████████▙ ▜███▙    ▟██▙</tspan><tspan x="15" y="152">           ▄▄▄▄▖           ▜███▙  ▟███▛</tspan><tspan x="15" y="164">          ▟███▛             ▜██▛ ▟███▛</tspan><tspan x="15" y="176">         ▟███▛               ▜▛ ▟███▛</tspan><tspan x="15" y="188">▟███████████▛                  ▟██████████▙</tspan><tspan x="15" y="200">▜██████████▛                  ▟███████████▛</tspan><tspan x="15" y="212">      ▟███▛ ▟▙               ▟███▛</tspan><tspan x="15" y="224">     ▟███▛ ▟██▙             ▟███▛</tspan><tspan x="15" y="236">    ▟███▛  ▜███▙           ▝▀▀▀▀</tspan><tspan x="15" y="248">    ▜██▛    ▜███▙ ▜██████████████████▛</tspan><tspan x="15" y="260">     ▜▛     ▟████▙ ▜████████████████▛</tspan><tspan x="15" y="272">           ▟██████▙       ▜███▙</tspan><tspan x="15" y="284">          ▟███▛▜███▙       ▜███▙</tspan><tspan x="15" y="296">         ▟███▛  ▜███▙       ▜███▙</tspan><tspan x="15" y="308">         ▝▀▀▀    ▀▀▀▀▘       ▀▀▀▘</tspan>
 </text>
 <text x="15" y="30" fill="#ffffff" font-size="11px">
 
-<tspan x="15" y="348" class="reveal rv36"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">git log --graph</tspan></tspan>
-<tspan id="gitlog_0" x="15" y="374" class="reveal rv37"><tspan class="git-node">*</tspan><tspan class="dim"> </tspan><tspan class="git-hash">ed591eb</tspan><tspan class="dim"> </tspan><tspan class="git-msg">feat(profile): real commit lo…</tspan></tspan>
-<tspan id="gitlog_1" x="15" y="392" class="reveal rv38"><tspan class="git-node">*</tspan><tspan class="dim"> </tspan><tspan class="git-hash">340e880</tspan><tspan class="dim"> </tspan><tspan class="git-msg">refactor(profile): replay the…</tspan></tspan>
-<tspan id="gitlog_2" x="15" y="410" class="reveal rv39"><tspan class="git-node">*</tspan><tspan class="dim"> </tspan><tspan class="git-hash">48f03c0</tspan><tspan class="dim"> </tspan><tspan class="git-msg">feat(profile): tmux layout wi…</tspan></tspan>
-<tspan id="gitlog_3" x="15" y="428" class="reveal rv40"><tspan class="git-node">*</tspan><tspan class="dim"> </tspan><tspan class="git-hash">c60d1a2</tspan><tspan class="dim"> </tspan><tspan class="git-msg">chore(profile): refresh stats…</tspan></tspan>
-<tspan id="gitlog_4" x="15" y="446" class="reveal rv41"><tspan class="git-node">*</tspan><tspan class="dim"> </tspan><tspan class="git-hash">4fc4476</tspan><tspan class="dim"> </tspan><tspan class="git-msg">feat(profile): NixOS terminal…</tspan></tspan>
-<tspan id="gitlog_5" x="15" y="464" class="reveal rv42"><tspan class="git-node">*</tspan><tspan class="dim"> </tspan><tspan class="git-hash">0527907</tspan><tspan class="dim"> </tspan><tspan class="git-msg">feat(skills): update matt poc…</tspan></tspan>
-<tspan id="gitlog_6" x="15" y="482" class="reveal rv43"><tspan class="git-node">*</tspan><tspan class="dim"> </tspan><tspan class="git-hash">b963b4e</tspan><tspan class="dim"> </tspan><tspan class="git-msg">chore(config): turn off super…</tspan></tspan>
-<tspan id="gitlog_7" x="15" y="500" class="reveal rv44"><tspan class="git-node">*</tspan><tspan class="dim"> </tspan><tspan class="git-hash">5470509</tspan><tspan class="dim"> </tspan><tspan class="git-msg">feat(skills): prove gains a s…</tspan></tspan>
-<tspan id="gitlog_8" x="15" y="518" class="reveal rv45"><tspan class="git-node">*</tspan><tspan class="dim"> </tspan><tspan class="git-hash">0c2ae8c</tspan><tspan class="dim"> </tspan><tspan class="git-msg">docs(programacao-desktop): ad…</tspan></tspan>
-<tspan x="15" y="582" class="reveal rv46"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">tokei ~/github --sort code</tspan></tspan>
+<tspan x="15" y="350" class="reveal rv36"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">tokei ~/github --sort code</tspan></tspan>
+<tspan id="lang_summary_row" x="15" y="712" class="reveal rv37"><tspan class="dim">Σ </tspan><tspan class="value" id="lang_summary">715,646 lines · 24 langs · 25 repos</tspan></tspan>
 </text>
 <text x="300" y="30" fill="#ffffff">
 
@@ -887,22 +886,25 @@ text, tspan {white-space: pre;}
 <tspan x="300" y="426" class="reveal rv33"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">cat ~/links</tspan></tspan>
 <tspan x="300" y="446" class="reveal rv34"><tspan class="dim"> </tspan><tspan class="key">portfolio</tspan><tspan class="dim">  → </tspan><tspan class="value">fausto-yuuki.vercel.app</tspan></tspan>
 <tspan x="300" y="466" class="reveal rv35"><tspan class="dim"> </tspan><tspan class="key">linkedin</tspan><tspan class="dim">   → </tspan><tspan class="value">fausto-yuuki</tspan></tspan>
-<tspan x="300" y="496" class="reveal rv47"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">git shortlog -sn --all | head -1</tspan></tspan>
-<tspan x="300" y="516" class="reveal rv48"><tspan class="dim">   </tspan><tspan class="value" id="commit_data">871</tspan><tspan class="dim" id="commit_data_dots"></tspan><tspan class="dim">  commits authored by YuukiFST</tspan></tspan>
-<tspan x="300" y="546" class="reveal rv49"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">cloc --vcs=git ~/github/*</tspan></tspan>
-<tspan x="300" y="566" class="reveal rv50"><tspan class="dim">   </tspan><tspan class="value" id="loc_data">715,604</tspan><tspan class="dim" id="loc_data_dots"></tspan><tspan class="dim"> lines of code   </tspan><tspan class="addColor" id="loc_add">898,541</tspan><tspan class="dim" id="loc_add_dots"></tspan><tspan class="dim">++ / </tspan><tspan class="delColor" id="loc_del">182,937</tspan><tspan class="dim" id="loc_del_dots"></tspan><tspan class="dim">--</tspan></tspan>
-<tspan x="300" y="596" class="reveal rv51"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">gh api graphql -f query=contributionCalendar</tspan></tspan>
-<tspan x="300" y="746" class="reveal rv52"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command"/><tspan class="cursor">█</tspan></tspan>
+<tspan x="300" y="496" class="reveal rv38"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">git shortlog -sn --all | head -1</tspan></tspan>
+<tspan x="300" y="516" class="reveal rv39"><tspan class="dim">   </tspan><tspan class="value" id="commit_data">872</tspan><tspan class="dim" id="commit_data_dots"></tspan><tspan class="dim">  commits authored by YuukiFST</tspan></tspan>
+<tspan x="300" y="546" class="reveal rv40"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">cloc --vcs=git ~/github/*</tspan></tspan>
+<tspan x="300" y="566" class="reveal rv41"><tspan class="dim">   </tspan><tspan class="value" id="loc_data">715,646</tspan><tspan class="dim" id="loc_data_dots"></tspan><tspan class="dim"> lines of code   </tspan><tspan class="addColor" id="loc_add">899,832</tspan><tspan class="dim" id="loc_add_dots"></tspan><tspan class="dim">++ / </tspan><tspan class="delColor" id="loc_del">184,186</tspan><tspan class="dim" id="loc_del_dots"></tspan><tspan class="dim">--</tspan></tspan>
+<tspan x="300" y="596" class="reveal rv42"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">gh api graphql -f query=contributionCalendar</tspan></tspan>
+<tspan x="300" y="746" class="reveal rv43"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command"/><tspan class="cursor">█</tspan></tspan>
 </text>
-<g class="reveal rv54"><text id="lang_0_name" class="key" x="15" y="608" font-size="11px" fill="#b6b6b6">Kotlin</text><rect x="100" y="600" width="128" height="9" rx="2" fill="#141c28"/><rect id="lang_0_bar" class="lang-bar lg0" x="100" y="600" width="128.0" height="9" rx="2" fill="#A97BFF"/><text id="lang_0_pct" class="dim" x="277" y="608" font-size="11px" text-anchor="end" fill="#5c5c5c">52.1%</text></g>
-<g class="reveal rv55"><text id="lang_1_name" class="key" x="15" y="629" font-size="11px" fill="#b6b6b6">JavaScript</text><rect x="100" y="621" width="128" height="9" rx="2" fill="#141c28"/><rect id="lang_1_bar" class="lang-bar lg1" x="100" y="621" width="40.4" height="9" rx="2" fill="#f1e05a"/><text id="lang_1_pct" class="dim" x="277" y="629" font-size="11px" text-anchor="end" fill="#5c5c5c">16.5%</text></g>
-<g class="reveal rv56"><text id="lang_2_name" class="key" x="15" y="650" font-size="11px" fill="#b6b6b6">Python</text><rect x="100" y="642" width="128" height="9" rx="2" fill="#141c28"/><rect id="lang_2_bar" class="lang-bar lg2" x="100" y="642" width="16.6" height="9" rx="2" fill="#3572A5"/><text id="lang_2_pct" class="dim" x="277" y="650" font-size="11px" text-anchor="end" fill="#5c5c5c">6.7%</text></g>
-<g class="reveal rv57"><text id="lang_3_name" class="key" x="15" y="671" font-size="11px" fill="#b6b6b6">Rust</text><rect x="100" y="663" width="128" height="9" rx="2" fill="#141c28"/><rect id="lang_3_bar" class="lang-bar lg3" x="100" y="663" width="16.4" height="9" rx="2" fill="#dea584"/><text id="lang_3_pct" class="dim" x="277" y="671" font-size="11px" text-anchor="end" fill="#5c5c5c">6.7%</text></g>
-<g class="reveal rv58"><text id="lang_4_name" class="key" x="15" y="692" font-size="11px" fill="#b6b6b6">HTML</text><rect x="100" y="684" width="128" height="9" rx="2" fill="#141c28"/><rect id="lang_4_bar" class="lang-bar lg4" x="100" y="684" width="15.0" height="9" rx="2" fill="#e34c26"/><text id="lang_4_pct" class="dim" x="277" y="692" font-size="11px" text-anchor="end" fill="#5c5c5c">6.1%</text></g>
-<text id="heatmap_months" class="dim reveal rv59" font-size="11px" fill="#5c5c5c">
+<g class="reveal rv45"><text id="lang_0_name" class="key" x="15" y="388" font-size="11px" fill="#b6b6b6">Kotlin</text><rect x="100" y="377" width="126" height="12" rx="2" fill="#141c28"/><rect id="lang_0_bar" class="lang-bar lg0" x="100" y="377" width="126.0" height="12" rx="2" fill="#A97BFF"/><text id="lang_0_pct" class="dim" x="277" y="388" font-size="11px" text-anchor="end" fill="#5c5c5c">52.1%</text></g>
+<g class="reveal rv46"><text id="lang_1_name" class="key" x="15" y="426" font-size="11px" fill="#b6b6b6">JavaScript</text><rect x="100" y="415" width="126" height="12" rx="2" fill="#141c28"/><rect id="lang_1_bar" class="lang-bar lg1" x="100" y="415" width="39.8" height="12" rx="2" fill="#f1e05a"/><text id="lang_1_pct" class="dim" x="277" y="426" font-size="11px" text-anchor="end" fill="#5c5c5c">16.5%</text></g>
+<g class="reveal rv47"><text id="lang_2_name" class="key" x="15" y="464" font-size="11px" fill="#b6b6b6">Python</text><rect x="100" y="453" width="126" height="12" rx="2" fill="#141c28"/><rect id="lang_2_bar" class="lang-bar lg2" x="100" y="453" width="16.4" height="12" rx="2" fill="#3572A5"/><text id="lang_2_pct" class="dim" x="277" y="464" font-size="11px" text-anchor="end" fill="#5c5c5c">6.8%</text></g>
+<g class="reveal rv48"><text id="lang_3_name" class="key" x="15" y="502" font-size="11px" fill="#b6b6b6">Rust</text><rect x="100" y="491" width="126" height="12" rx="2" fill="#141c28"/><rect id="lang_3_bar" class="lang-bar lg3" x="100" y="491" width="16.1" height="12" rx="2" fill="#dea584"/><text id="lang_3_pct" class="dim" x="277" y="502" font-size="11px" text-anchor="end" fill="#5c5c5c">6.7%</text></g>
+<g class="reveal rv49"><text id="lang_4_name" class="key" x="15" y="540" font-size="11px" fill="#b6b6b6">HTML</text><rect x="100" y="529" width="126" height="12" rx="2" fill="#141c28"/><rect id="lang_4_bar" class="lang-bar lg4" x="100" y="529" width="14.7" height="12" rx="2" fill="#e34c26"/><text id="lang_4_pct" class="dim" x="277" y="540" font-size="11px" text-anchor="end" fill="#5c5c5c">6.1%</text></g>
+<g class="reveal rv50"><text id="lang_5_name" class="key" x="15" y="578" font-size="11px" fill="#b6b6b6">TypeScript</text><rect x="100" y="567" width="126" height="12" rx="2" fill="#141c28"/><rect id="lang_5_bar" class="lang-bar lg5" x="100" y="567" width="8.7" height="12" rx="2" fill="#3178c6"/><text id="lang_5_pct" class="dim" x="277" y="578" font-size="11px" text-anchor="end" fill="#5c5c5c">3.6%</text></g>
+<g class="reveal rv51"><text id="lang_6_name" class="key" x="15" y="616" font-size="11px" fill="#b6b6b6">C#</text><rect x="100" y="605" width="126" height="12" rx="2" fill="#141c28"/><rect id="lang_6_bar" class="lang-bar lg6" x="100" y="605" width="4.0" height="12" rx="2" fill="#178600"/><text id="lang_6_pct" class="dim" x="277" y="616" font-size="11px" text-anchor="end" fill="#5c5c5c">1.6%</text></g>
+<g class="reveal rv52"><text id="lang_7_name" class="key" x="15" y="654" font-size="11px" fill="#b6b6b6">CSS</text><rect x="100" y="643" width="126" height="12" rx="2" fill="#141c28"/><rect id="lang_7_bar" class="lang-bar lg7" x="100" y="643" width="3.6" height="12" rx="2" fill="#663399"/><text id="lang_7_pct" class="dim" x="277" y="654" font-size="11px" text-anchor="end" fill="#5c5c5c">1.5%</text></g>
+<text id="heatmap_months" class="dim reveal rv53" font-size="11px" fill="#5c5c5c">
 <tspan x="300" y="616">Aug</tspan><tspan x="355" y="616">Sep</tspan><tspan x="399" y="616">Oct</tspan><tspan x="443" y="616">Nov</tspan><tspan x="498" y="616">Dec</tspan><tspan x="542" y="616">Jan</tspan><tspan x="586" y="616">Feb</tspan><tspan x="630" y="616">Mar</tspan><tspan x="685" y="616">Apr</tspan><tspan x="729" y="616">May</tspan><tspan x="784" y="616">Jun</tspan><tspan x="828" y="616">Jul</tspan><tspan x="872" y="616">Aug</tspan></text>
 <g id="heatmap" transform="translate(300,626)"><g class="reveal hw0"><rect class="lvl0" x="0" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="0" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="0" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="0" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="0" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="0" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="0" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw1"><rect class="lvl0" x="11" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="11" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="11" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="11" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="11" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="11" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="11" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw2"><rect class="lvl0" x="22" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="22" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="22" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="22" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="22" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="22" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="22" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw3"><rect class="lvl0" x="33" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="33" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="33" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="33" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="33" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="33" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="33" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw4"><rect class="lvl0" x="44" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="44" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="44" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="44" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="44" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="44" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="44" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw5"><rect class="lvl0" x="55" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="55" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="55" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="55" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="55" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="55" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="55" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw6"><rect class="lvl0" x="66" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="66" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="66" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="66" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="66" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="66" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="66" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw7"><rect class="lvl0" x="77" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="77" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="77" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="77" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="77" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="77" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="77" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw8"><rect class="lvl0" x="88" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="88" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="88" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="88" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="88" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="88" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="88" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw9"><rect class="lvl0" x="99" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="99" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="99" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="99" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="99" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="99" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="99" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw10"><rect class="lvl0" x="110" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="110" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="110" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="110" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="110" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="110" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="110" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw11"><rect class="lvl0" x="121" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="121" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="121" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="121" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="121" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="121" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="121" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw12"><rect class="lvl0" x="132" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="132" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="132" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="132" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="132" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="132" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="132" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw13"><rect class="lvl0" x="143" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="143" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="143" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="143" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="143" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="143" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="143" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw14"><rect class="lvl0" x="154" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="154" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="154" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="154" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="154" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="154" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="154" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw15"><rect class="lvl0" x="165" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="165" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="165" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="165" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="165" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="165" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="165" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw16"><rect class="lvl0" x="176" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="176" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="176" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="176" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="176" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="176" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="176" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw17"><rect class="lvl0" x="187" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="187" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="187" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="187" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="187" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="187" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="187" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw18"><rect class="lvl0" x="198" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="198" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="198" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="198" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="198" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="198" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="198" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw19"><rect class="lvl0" x="209" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="209" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="209" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="209" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="209" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="209" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="209" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw20"><rect class="lvl0" x="220" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="220" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="220" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="220" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="220" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="220" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="220" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw21"><rect class="lvl0" x="231" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="231" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="231" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="231" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="231" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="231" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="231" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw22"><rect class="lvl1" x="242" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="242" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="242" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="242" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="242" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="242" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="242" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw23"><rect class="lvl0" x="253" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="253" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="253" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="253" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="253" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="253" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="253" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw24"><rect class="lvl0" x="264" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="264" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="264" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="264" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="264" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="264" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="264" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw25"><rect class="lvl0" x="275" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="275" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="275" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="275" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="275" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="275" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="275" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw26"><rect class="lvl0" x="286" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="286" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="286" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="286" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="286" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="286" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="286" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw27"><rect class="lvl0" x="297" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="297" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="297" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="297" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="297" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="297" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="297" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw28"><rect class="lvl0" x="308" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="308" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="308" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="308" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="308" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="308" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="308" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw29"><rect class="lvl0" x="319" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="319" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="319" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="319" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="319" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="319" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="319" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw30"><rect class="lvl1" x="330" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="330" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="330" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="330" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="330" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="330" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="330" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw31"><rect class="lvl0" x="341" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="341" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="341" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="341" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="341" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="341" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="341" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw32"><rect class="lvl1" x="352" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="352" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="352" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="352" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="352" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="352" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="352" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw33"><rect class="lvl1" x="363" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="363" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="363" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="363" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="363" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="363" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="363" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw34"><rect class="lvl1" x="374" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="374" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="374" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="374" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="374" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="374" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="374" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw35"><rect class="lvl0" x="385" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="385" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="385" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="385" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="385" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="385" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="385" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw36"><rect class="lvl1" x="396" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="396" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="396" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="396" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="396" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="396" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="396" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw37"><rect class="lvl0" x="407" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="407" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="407" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="407" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="407" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="407" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="407" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw38"><rect class="lvl0" x="418" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="418" y="11" width="9" height="9" rx="2"/><rect class="lvl2" x="418" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="418" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="418" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="418" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="418" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw39"><rect class="lvl1" x="429" y="0" width="9" height="9" rx="2"/><rect class="lvl2" x="429" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="429" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="429" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="429" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="429" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="429" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw40"><rect class="lvl1" x="440" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="440" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="440" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="440" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="440" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="440" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="440" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw41"><rect class="lvl0" x="451" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="451" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="451" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="451" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="451" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="451" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="451" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw42"><rect class="lvl0" x="462" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="462" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="462" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="462" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="462" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="462" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="462" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw43"><rect class="lvl0" x="473" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="473" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="473" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="473" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="473" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="473" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="473" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw44"><rect class="lvl0" x="484" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="484" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="484" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="484" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="484" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="484" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="484" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw45"><rect class="lvl1" x="495" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="495" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="495" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="495" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="495" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="495" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="495" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw46"><rect class="lvl1" x="506" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="506" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="506" y="22" width="9" height="9" rx="2"/><rect class="lvl2" x="506" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="506" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="506" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="506" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw47"><rect class="lvl1" x="517" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="517" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="517" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="517" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="517" y="44" width="9" height="9" rx="2"/><rect class="lvl2" x="517" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="517" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw48"><rect class="lvl1" x="528" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="528" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="528" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="528" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="528" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="528" y="55" width="9" height="9" rx="2"/><rect class="lvl4" x="528" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw49"><rect class="lvl1" x="539" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="539" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="539" y="22" width="9" height="9" rx="2"/><rect class="lvl2" x="539" y="33" width="9" height="9" rx="2"/><rect class="lvl2" x="539" y="44" width="9" height="9" rx="2"/><rect class="lvl2" x="539" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="539" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw50"><rect class="lvl0" x="550" y="0" width="9" height="9" rx="2"/><rect class="lvl2" x="550" y="11" width="9" height="9" rx="2"/><rect class="lvl2" x="550" y="22" width="9" height="9" rx="2"/><rect class="lvl2" x="550" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="550" y="44" width="9" height="9" rx="2"/><rect class="lvl2" x="550" y="55" width="9" height="9" rx="2"/><rect class="lvl4" x="550" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw51"><rect class="lvl2" x="561" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="561" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="561" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="561" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="561" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="561" y="55" width="9" height="9" rx="2"/><rect class="lvl2" x="561" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw52"><rect class="lvl0" x="572" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="572" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="572" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="572" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="572" y="44" width="9" height="9" rx="2"/></g></g>
-<g class="reveal rv59">
+<g class="reveal rv53">
 <text class="dim" font-size="11px" fill="#5c5c5c" x="300" y="716">Less</text>
 <rect class="lvl0" x="344" y="707" width="9" height="9" rx="2"/><rect class="lvl1" x="355" y="707" width="9" height="9" rx="2"/><rect class="lvl2" x="366" y="707" width="9" height="9" rx="2"/><rect class="lvl3" x="377" y="707" width="9" height="9" rx="2"/><rect class="lvl4" x="388" y="707" width="9" height="9" rx="2"/>
 <text class="dim" font-size="11px" fill="#5c5c5c" x="405" y="716">More</text>
@@ -911,14 +913,12 @@ text, tspan {white-space: pre;}
 <rect class="caret caret-0" x="444.0" y="120" width="9.6" height="19" fill="#7ebae4"/>
 <rect class="type-mask type-1" x="444.0" y="410" width="107.6" height="19" fill="#000000"/>
 <rect class="caret caret-1" x="444.0" y="410" width="9.6" height="19" fill="#7ebae4"/>
-<rect class="type-mask type-2" x="114.0" y="337" width="101.0" height="14" fill="#000000"/>
-<rect class="caret caret-2" x="114.0" y="337" width="6.6" height="14" fill="#7ebae4"/>
-<rect class="type-mask type-3" x="114.0" y="571" width="173.6" height="14" fill="#000000"/>
-<rect class="caret caret-3" x="114.0" y="571" width="6.6" height="14" fill="#7ebae4"/>
-<rect class="type-mask type-4" x="444.0" y="480" width="309.2" height="19" fill="#000000"/>
-<rect class="caret caret-4" x="444.0" y="480" width="9.6" height="19" fill="#7ebae4"/>
-<rect class="type-mask type-5" x="444.0" y="530" width="242.0" height="19" fill="#000000"/>
-<rect class="caret caret-5" x="444.0" y="530" width="9.6" height="19" fill="#7ebae4"/>
-<rect class="type-mask type-6" x="444.0" y="580" width="424.4" height="19" fill="#000000"/>
-<rect class="caret caret-6" x="444.0" y="580" width="9.6" height="19" fill="#7ebae4"/>
+<rect class="type-mask type-2" x="114.0" y="339" width="173.6" height="14" fill="#000000"/>
+<rect class="caret caret-2" x="114.0" y="339" width="6.6" height="14" fill="#7ebae4"/>
+<rect class="type-mask type-3" x="444.0" y="480" width="309.2" height="19" fill="#000000"/>
+<rect class="caret caret-3" x="444.0" y="480" width="9.6" height="19" fill="#7ebae4"/>
+<rect class="type-mask type-4" x="444.0" y="530" width="242.0" height="19" fill="#000000"/>
+<rect class="caret caret-4" x="444.0" y="530" width="9.6" height="19" fill="#7ebae4"/>
+<rect class="type-mask type-5" x="444.0" y="580" width="424.4" height="19" fill="#000000"/>
+<rect class="caret caret-5" x="444.0" y="580" width="9.6" height="19" fill="#7ebae4"/>
 </svg>

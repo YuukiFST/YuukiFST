@@ -11,8 +11,6 @@ import hashlib
 # this script draws aligned with the placeholder the template ships.
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'scripts'))
 from build_svg_template import (
-    GITLOG_MSG_COLS,
-    GITLOG_ROWS,
     HEAT_CELL,
     HEAT_MONTHS_Y,
     HEAT_PITCH,
@@ -405,8 +403,8 @@ def calendar_metrics(weeks):
 def graph_languages():
     """
     Uses GitHub's GraphQL v4 API to return my language breakdown by bytes
-    across every repository I own, as [(name, bytes, linguist color)] sorted
-    largest first. Forks are excluded — they are not my code.
+    across every repository I own, as ([(name, bytes, linguist color)] sorted
+    largest first, repository count). Forks are excluded — not my code.
     """
     query_count('graph_repos_stars')
     query = '''
@@ -425,20 +423,21 @@ def graph_languages():
         }
     }'''
     request = simple_request(graph_languages.__name__, query, {'login': USER_NAME})
+    repos = request.json()['data']['user']['repositories']['nodes']
     totals, colors = {}, {}
-    for repo in request.json()['data']['user']['repositories']['nodes']:
+    for repo in repos:
         for edge in repo['languages']['edges']:
             name = edge['node']['name']
             totals[name] = totals.get(name, 0) + edge['size']
             colors[name] = edge['node']['color'] or '#7ebae4'
     ranked = sorted(totals.items(), key=lambda item: item[1], reverse=True)
-    return [(name, size, colors[name]) for name, size in ranked]
+    return [(name, size, colors[name]) for name, size in ranked], len(repos)
 
 
-def lang_overwrite(root, languages):
+def lang_overwrite(root, languages, repo_count, net_loc):
     """
     Fills the tokei pane: language name, share bar scaled to the largest
-    language, and the percentage of all bytes I have written.
+    language, the percentage of all bytes I have written, and the totals line.
     """
     total = sum(size for __, size, __ in languages) or 1
     top = languages[:LANG_ROWS]
@@ -459,71 +458,9 @@ def lang_overwrite(root, languages):
         bar.set('width', str(round(max(2, LANG_BAR_W * size / largest), 1)))
         bar.set('fill', color)
         pct.text = '{:.1f}%'.format(100 * size / total)
-
-
-def graph_recent_commits():
-    """
-    Uses GitHub's GraphQL v4 API to return my most recent commits across the
-    repositories I pushed to last, newest first.
-    """
-    query_count('graph_repos_stars')
-    query = '''
-    query($login: String!) {
-        user(login: $login) {
-            repositories(first: 12, orderBy: {field: PUSHED_AT, direction: DESC}, ownerAffiliations: [OWNER]) {
-                nodes {
-                    name
-                    defaultBranchRef {
-                        target {
-                            ... on Commit {
-                                history(first: 8) {
-                                    nodes {
-                                        oid
-                                        messageHeadline
-                                        committedDate
-                                        author { user { login } }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }'''
-    request = simple_request(graph_recent_commits.__name__, query, {'login': USER_NAME})
-    commits = []
-    for repo in request.json()['data']['user']['repositories']['nodes']:
-        if not repo['defaultBranchRef']:
-            continue
-        for node in repo['defaultBranchRef']['target']['history']['nodes']:
-            author = node['author']['user']
-            if author and author['login'] == USER_NAME:
-                commits.append((node['committedDate'], node['oid'], node['messageHeadline']))
-    commits.sort(reverse=True)
-    return commits[:GITLOG_ROWS]
-
-
-def gitlog_overwrite(root, commits):
-    """
-    Fills the git log --graph rows in the left pane with real commits.
-    Rows past the end of the list are blanked instead of left as placeholders.
-    """
-    for index in range(GITLOG_ROWS):
-        row = root.find(".//*[@id='gitlog_" + str(index) + "']")
-        if row is None:
-            continue
-        for child in list(row):
-            row.remove(child)
-        if index >= len(commits):
-            continue
-        __, oid, headline = commits[index]
-        if len(headline) > GITLOG_MSG_COLS:
-            headline = headline[:GITLOG_MSG_COLS - 1] + '…'
-        for text, css_class in (('*', 'git-node'), (' ', 'dim'), (oid[:7], 'git-hash'), (' ', 'dim'), (headline, 'git-msg')):
-            part = etree.SubElement(row, '{http://www.w3.org/2000/svg}tspan')
-            part.set('class', css_class)
-            part.text = text
+    # kept short on purpose: the left pane clips at the divider
+    find_and_replace(root, 'lang_summary', '{:,} lines · {} langs · {} repos'.format(
+        net_loc, len(languages), repo_count))
 
 
 def heatmap_overwrite(root, weeks):
@@ -566,10 +503,10 @@ def heatmap_overwrite(root, weeks):
         label.text = datetime.date(2000, month, 1).strftime('%b')
 
 
-def svg_overwrite(filename, age_data, commit_data, loc_data, weeks, commits, languages):
+def svg_overwrite(filename, age_data, commit_data, loc_data, weeks, languages, repo_count):
     """
     Parse SVG files and update age, commits, lines of code, streak metrics, the
-    heatmap, the git log pane and the language breakdown.
+    heatmap and the language breakdown.
     loc_data is [added, deleted, net] from loc_query()
     """
     tree = etree.parse(filename)
@@ -585,8 +522,7 @@ def svg_overwrite(filename, age_data, commit_data, loc_data, weeks, commits, lan
     find_and_replace(root, 'peak_data', '{} contributions on {}'.format(
         peak['contributionCount'], peak['date']))
     heatmap_overwrite(root, weeks)
-    gitlog_overwrite(root, commits)
-    lang_overwrite(root, languages)
+    lang_overwrite(root, languages, repo_count, loc_data[2])
     tree.write(filename, encoding='utf-8', xml_declaration=True)
 
 
@@ -712,13 +648,11 @@ if __name__ == '__main__':
     commit_data, commit_time = perf_counter(commit_counter, 7)
     calendar_data, calendar_time = perf_counter(graph_contribution_calendar)
     formatter('contribution calendar', calendar_time)
-    recent_commits, recent_time = perf_counter(graph_recent_commits)
-    formatter('recent commits', recent_time)
-    language_data, language_time = perf_counter(graph_languages)
+    (language_data, repo_count), language_time = perf_counter(graph_languages)
     formatter('language breakdown', language_time)
 
-    svg_overwrite('dark_mode.svg', age_data, commit_data, total_loc[:-1], calendar_data, recent_commits, language_data)
-    svg_overwrite('light_mode.svg', age_data, commit_data, total_loc[:-1], calendar_data, recent_commits, language_data)
+    svg_overwrite('dark_mode.svg', age_data, commit_data, total_loc[:-1], calendar_data, language_data, repo_count)
+    svg_overwrite('light_mode.svg', age_data, commit_data, total_loc[:-1], calendar_data, language_data, repo_count)
 
     # move cursor to override 'Calculation times:' with 'Total function time:' and the total function time, then move cursor back
     print('\033[F\033[F\033[F\033[F',

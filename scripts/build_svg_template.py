@@ -2,12 +2,12 @@
 """Generate dark_mode.svg and light_mode.svg — tmux/NixOS session profile.
 
 Layout is a two-pane tmux window:
-  left pane  — NixOS snowflake logo, git log --graph, tokei language breakdown
+  left pane  — NixOS snowflake logo, tokei language breakdown
   right pane — fastfetch output, links, git stats, contribution heatmap
 
 Every panel is real data. Nothing here is decoration for its own sake: the bars
-are bytes per language, the graph is real commits, the grid is the real
-calendar.
+are bytes per language across my repositories, and the grid is the real
+contribution calendar.
 
 Animation is a session replay: the loop opens on the finished session, holds
 it, clears, and reprints every row on its own cue. Nothing ever dims. The
@@ -15,7 +15,7 @@ reveal, the typing masks and the carets are all fail-safe — a renderer that
 ignores CSS animation shows the finished session, never a blank window.
 
 today.py fills in the placeholders on every run: the stat numbers, the
-contribution calendar, and the commit log rows.
+contribution calendar, and the language rows.
 """
 
 from __future__ import annotations
@@ -73,9 +73,6 @@ THEMES = {
         "logo_1": "#7ebae4",
         "logo_2": "#5277c3",
         "sheen_opacity": "0.75",
-        "git_node": "#febc2e",
-        "git_hash": "#c678dd",
-        "git_msg": "#cecece",
         "lang_track": "#141c28",
         "heat": ["#10161f", "#1b3a5c", "#2b5d8f", "#4a8ec2", "#7ebae4"],
         "titlebar": "#0d1117",
@@ -105,9 +102,6 @@ THEMES = {
         "logo_1": "#5277c3",
         "logo_2": "#2f4f96",
         "sheen_opacity": "0.6",
-        "git_node": "#b58900",
-        "git_hash": "#d33682",
-        "git_msg": "#073642",
         "lang_track": "#e3dcc6",
         "heat": ["#eee8d5", "#b8d2ea", "#7aa9d6", "#4380bd", "#1f5a94"],
         "titlebar": "#eee8d5",
@@ -140,22 +134,17 @@ PANE_TEXT_X = 15
 PANE_FONT_SIZE = 11
 TTY_X = 300
 
-GITLOG_HEADER_Y = 348
-GITLOG_Y_START = 374
-GITLOG_LINE_H = 18
-GITLOG_ROWS = 9
-GITLOG_MSG_COLS = 30  # fits "* <hash> " + message inside the left pane
-
 # tokei-style language breakdown: label, byte-share bar, percentage
-LANG_HEADER_Y = 582
-LANG_Y_START = 608
-LANG_LINE_H = 21
-LANG_ROWS = 5
+LANG_HEADER_Y = 350
+LANG_Y_START = 388
+LANG_LINE_H = 38
+LANG_ROWS = 8
 LANG_BAR_X = 100
-LANG_BAR_W = 128
-LANG_BAR_H = 9
+LANG_BAR_W = 126
+LANG_BAR_H = 12
 LANG_PCT_X = 277
 LANG_NAME_COLS = 12
+LANG_SUMMARY_Y = 712
 LANG_GROW_S = 0.55
 LANG_ROW_STEP_S = 0.12
 
@@ -178,7 +167,6 @@ LOOP_S = 22.0  # recomputed from the session span in build_svg()
 TYPE_CHAR_S = 0.035
 PRINT_ROW_S = 0.08
 PRINT_LOGO_S = 0.03
-PRINT_GITLOG_S = 0.07
 BEAT_S = 0.25
 
 
@@ -419,22 +407,23 @@ class Session:
             self.clock += PRINT_LOGO_S
         self.mark("logo_done")
 
-    def gitlog_pane(self) -> None:
-        """Placeholder commit rows — today.py rewrites their contents."""
-        self.command(GITLOG_HEADER_Y, "git log --graph", left_pane=True)
-        for index in range(GITLOG_ROWS):
-            y = GITLOG_Y_START + index * GITLOG_LINE_H
-            body = (
-                f'<tspan class="git-node">*</tspan>'
-                f'<tspan class="dim"> </tspan>'
-                f'<tspan class="git-hash">0000000</tspan>'
-                f'<tspan class="dim"> </tspan>'
-                f'<tspan class="git-msg">waiting for today.py</tspan>'
+    def lang_pane(self) -> None:
+        """Language breakdown: the command, one cue per bar, then the totals."""
+        self.command(LANG_HEADER_Y, "tokei ~/github --sort code", left_pane=True)
+        for index in range(LANG_ROWS):
+            self.mark(f"lang_{index}")
+            self.clock += LANG_ROW_STEP_S
+        self.pane.append(
+            self._tspan(
+                PANE_TEXT_X,
+                LANG_SUMMARY_Y,
+                f'<tspan class="dim">Σ </tspan>'
+                f'<tspan class="value" id="lang_summary">counting…</tspan>',
+                self.clock,
+                element_id="lang_summary_row",
             )
-            self.pane.append(
-                self._tspan(PANE_TEXT_X, y, body, self.clock, element_id=f"gitlog_{index}")
-            )
-            self.clock += PRINT_GITLOG_S
+        )
+        self.clock += PRINT_ROW_S
 
 
 def build_session() -> Session:
@@ -477,11 +466,7 @@ def build_session() -> Session:
 
     # left pane catches up while the right pane pauses
     pane_start = session.clock
-    session.gitlog_pane()
-    session.command(LANG_HEADER_Y, "tokei ~/github --sort code", left_pane=True)
-    for index in range(LANG_ROWS):
-        session.mark(f"lang_{index}")
-        session.clock += LANG_ROW_STEP_S
+    session.lang_pane()
     session.clock = max(pane_start + 0.4, session.clock - 1.2)
 
     session.command(496, "git shortlog -sn --all | head -1")
@@ -648,6 +633,26 @@ def build_svg(theme_name: str) -> str:
     heat_rules = "\n".join(
         f".lvl{level} {{fill: {color};}}" for level, color in enumerate(theme["heat"])
     )
+    # Body first: every REVEAL.at() call has to be registered before the style
+    # block is rendered, or the element gets a class with no keyframes behind it
+    # and stays visible through the whole loop.
+    body = f'''{titlebar(theme)}
+{statusbar(theme)}
+{pane_divider(theme)}
+<rect x="1" y="1" width="983px" height="{SVG_HEIGHT - 2}px" fill="none" stroke="{theme["border"]}" stroke-width="2" rx="12"/>
+<text x="15" y="30" fill="{theme["logo_1"]}" class="ascii" font-size="{ASCII_FONT_SIZE}px" filter="url(#phosphor)">
+{"".join(chr(10) + row for row in session.logo)}
+</text>
+{logo_sheen(theme, session)}
+<text x="{PANE_TEXT_X}" y="30" fill="{theme["fg"]}" font-size="{PANE_FONT_SIZE}px">
+{"".join(chr(10) + row for row in session.pane)}
+</text>
+<text x="{TTY_X}" y="30" fill="{theme["fg"]}">
+{"".join(chr(10) + row for row in session.tty)}
+</text>
+{lang_block(theme, session)}
+{heatmap_placeholder(theme)}
+{typing_overlays(theme)}'''
     return f'''<?xml version='1.0' encoding='UTF-8'?>
 <svg xmlns="http://www.w3.org/2000/svg" font-family="{font}" width="{SVG_WIDTH}px" height="{SVG_HEIGHT}px" font-size="16px">
 <style>
@@ -670,9 +675,6 @@ size-adjust: 109%;
 .cursor {{fill: {theme["cursor"]};}}
 .logo-1 {{fill: {theme["logo_1"]};}}
 .logo-2 {{fill: {theme["logo_2"]};}}
-.git-node {{fill: {theme["git_node"]};}}
-.git-hash {{fill: {theme["git_hash"]};}}
-.git-msg {{fill: {theme["git_msg"]};}}
 {heat_rules}
 text, tspan {{white-space: pre;}}
 {animation_styles(session)}
@@ -694,23 +696,7 @@ text, tspan {{white-space: pre;}}
 </linearGradient>
 </defs>
 <rect width="{SVG_WIDTH}px" height="{SVG_HEIGHT}px" fill="{theme["bg"]}" rx="12"/>
-{titlebar(theme)}
-{statusbar(theme)}
-{pane_divider(theme)}
-<rect x="1" y="1" width="983px" height="{SVG_HEIGHT - 2}px" fill="none" stroke="{theme["border"]}" stroke-width="2" rx="12"/>
-<text x="15" y="30" fill="{theme["logo_1"]}" class="ascii" font-size="{ASCII_FONT_SIZE}px" filter="url(#phosphor)">
-{"".join(chr(10) + row for row in session.logo)}
-</text>
-{logo_sheen(theme, session)}
-<text x="{PANE_TEXT_X}" y="30" fill="{theme["fg"]}" font-size="{PANE_FONT_SIZE}px">
-{"".join(chr(10) + row for row in session.pane)}
-</text>
-<text x="{TTY_X}" y="30" fill="{theme["fg"]}">
-{"".join(chr(10) + row for row in session.tty)}
-</text>
-{lang_block(theme, session)}
-{heatmap_placeholder(theme)}
-{typing_overlays(theme)}
+{body}
 </svg>'''
 
 
