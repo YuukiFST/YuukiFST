@@ -831,7 +831,7 @@ text, tspan {white-space: pre;}
 <rect x="1" y="780" width="130" height="30" fill="#268bd2"/>
 <text x="20" y="800" font-size="13" fill="#fdf6e3">[0] NIXOS</text>
 <text x="150" y="800" font-size="13" fill="#657b83">0:tokei*   1:session-   │   ~/github/YuukiFST</text>
-<text x="965" y="800" text-anchor="end" font-size="13" fill="#657b83">main ✓   │   nixos-unstable   │   ★ reproducible</text>
+<text x="965" y="800" text-anchor="end" font-size="13" fill="#657b83">main ✓   │   nixos-unstable</text>
 <line x1="292" y1="36" x2="292" y2="780" stroke="#c8c0aa" stroke-width="1"/>
 <rect x="1" y="1" width="983px" height="808px" fill="none" stroke="#93a1a1" stroke-width="2" rx="12"/>
 <text x="15" y="30" fill="#5277c3" class="ascii" font-size="10px" filter="url(#phosphor)">
@@ -863,13 +863,13 @@ text, tspan {white-space: pre;}
 <text x="15" y="30" fill="#657b83" font-size="11px">
 
 <tspan x="15" y="350" class="reveal rv36"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">tokei ~/github --sort code</tspan></tspan>
-<tspan id="lang_summary_row" x="15" y="712" class="reveal rv37"><tspan class="dim">Σ </tspan><tspan class="value" id="lang_summary">715,646 lines · 24 langs · 25 repos</tspan></tspan>
+<tspan id="lang_summary_row" x="15" y="712" class="reveal rv37"><tspan class="dim">Σ </tspan><tspan class="value" id="lang_summary">715,566 lines · 24 langs · 25 repos</tspan></tspan>
 </text>
 <text x="300" y="30" fill="#657b83">
 
 <tspan x="300" y="66" class="reveal rv0"><tspan class="dim">[</tspan><tspan class="ok">  OK  </tspan><tspan class="dim">] </tspan><tspan class="value">Started yuuki.service — GitHub profile daemon</tspan></tspan>
 <tspan x="300" y="86" class="reveal rv1"><tspan class="dim">[</tspan><tspan class="ok">  OK  </tspan><tspan class="dim">] </tspan><tspan class="value">Reached target Multi-User System</tspan></tspan>
-<tspan x="300" y="106" class="reveal rv2"><tspan class="dim">Last login: Sat Jul 11 2026 — </tspan><tspan class="value" id="age_data">3 years, 9 months, 26 days</tspan><tspan class="dim" id="age_data_dots"></tspan><tspan class="dim"> on GitHub</tspan></tspan>
+<tspan x="300" y="106" class="reveal rv2"><tspan class="dim">Last login: </tspan><tspan class="dim" id="login_date">Thu Aug 06 2026</tspan><tspan class="dim"> — </tspan><tspan class="value" id="age_data">3 years, 9 months, 26 days</tspan><tspan class="dim" id="age_data_dots"></tspan><tspan class="dim"> on GitHub</tspan></tspan>
 <tspan x="300" y="136" class="reveal rv3"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">fastfetch --logo nixos</tspan></tspan>
 <tspan x="300" y="156" class="reveal rv4"><tspan class="key">yuuki@nixos</tspan><tspan class="dim"> ─────────────────────────────</tspan></tspan>
 <tspan x="300" y="176" class="reveal rv24"><tspan class="dim"> </tspan><tspan class="key">OS      </tspan><tspan class="dim">· </tspan><tspan class="value">NixOS unstable · x86_64</tspan></tspan>
@@ -887,15 +887,15 @@ text, tspan {white-space: pre;}
 <tspan x="300" y="446" class="reveal rv34"><tspan class="dim"> </tspan><tspan class="key">portfolio</tspan><tspan class="dim">  → </tspan><tspan class="value">fausto-yuuki.vercel.app</tspan></tspan>
 <tspan x="300" y="466" class="reveal rv35"><tspan class="dim"> </tspan><tspan class="key">linkedin</tspan><tspan class="dim">   → </tspan><tspan class="value">fausto-yuuki</tspan></tspan>
 <tspan x="300" y="496" class="reveal rv38"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">git shortlog -sn --all | head -1</tspan></tspan>
-<tspan x="300" y="516" class="reveal rv39"><tspan class="dim">   </tspan><tspan class="value" id="commit_data">872</tspan><tspan class="dim" id="commit_data_dots"></tspan><tspan class="dim">  commits authored by YuukiFST</tspan></tspan>
+<tspan x="300" y="516" class="reveal rv39"><tspan class="dim">   </tspan><tspan class="value" id="commit_data">873</tspan><tspan class="dim" id="commit_data_dots"></tspan><tspan class="dim">  commits authored by YuukiFST</tspan></tspan>
 <tspan x="300" y="546" class="reveal rv40"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">cloc --vcs=git ~/github/*</tspan></tspan>
-<tspan x="300" y="566" class="reveal rv41"><tspan class="dim">   </tspan><tspan class="value" id="loc_data">715,646</tspan><tspan class="dim" id="loc_data_dots"></tspan><tspan class="dim"> lines of code   </tspan><tspan class="addColor" id="loc_add">899,832</tspan><tspan class="dim" id="loc_add_dots"></tspan><tspan class="dim">++ / </tspan><tspan class="delColor" id="loc_del">184,186</tspan><tspan class="dim" id="loc_del_dots"></tspan><tspan class="dim">--</tspan></tspan>
+<tspan x="300" y="566" class="reveal rv41"><tspan class="dim">   </tspan><tspan class="value" id="loc_data">715,566</tspan><tspan class="dim" id="loc_data_dots"></tspan><tspan class="dim"> lines of code   </tspan><tspan class="addColor" id="loc_add">900,999</tspan><tspan class="dim" id="loc_add_dots"></tspan><tspan class="dim">++ / </tspan><tspan class="delColor" id="loc_del">185,433</tspan><tspan class="dim" id="loc_del_dots"></tspan><tspan class="dim">--</tspan></tspan>
 <tspan x="300" y="596" class="reveal rv42"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">gh api graphql -f query=contributionCalendar</tspan></tspan>
 <tspan x="300" y="746" class="reveal rv43"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command"/><tspan class="cursor">█</tspan></tspan>
 </text>
 <g class="reveal rv45"><text id="lang_0_name" class="key" x="15" y="388" font-size="11px" fill="#cb4b16">Kotlin</text><rect x="100" y="377" width="126" height="12" rx="2" fill="#e3dcc6"/><rect id="lang_0_bar" class="lang-bar lg0" x="100" y="377" width="126.0" height="12" rx="2" fill="#A97BFF"/><text id="lang_0_pct" class="dim" x="277" y="388" font-size="11px" text-anchor="end" fill="#93a1a1">52.1%</text></g>
 <g class="reveal rv46"><text id="lang_1_name" class="key" x="15" y="426" font-size="11px" fill="#cb4b16">JavaScript</text><rect x="100" y="415" width="126" height="12" rx="2" fill="#e3dcc6"/><rect id="lang_1_bar" class="lang-bar lg1" x="100" y="415" width="39.8" height="12" rx="2" fill="#f1e05a"/><text id="lang_1_pct" class="dim" x="277" y="426" font-size="11px" text-anchor="end" fill="#93a1a1">16.5%</text></g>
-<g class="reveal rv47"><text id="lang_2_name" class="key" x="15" y="464" font-size="11px" fill="#cb4b16">Python</text><rect x="100" y="453" width="126" height="12" rx="2" fill="#e3dcc6"/><rect id="lang_2_bar" class="lang-bar lg2" x="100" y="453" width="16.4" height="12" rx="2" fill="#3572A5"/><text id="lang_2_pct" class="dim" x="277" y="464" font-size="11px" text-anchor="end" fill="#93a1a1">6.8%</text></g>
+<g class="reveal rv47"><text id="lang_2_name" class="key" x="15" y="464" font-size="11px" fill="#cb4b16">Python</text><rect x="100" y="453" width="126" height="12" rx="2" fill="#e3dcc6"/><rect id="lang_2_bar" class="lang-bar lg2" x="100" y="453" width="16.3" height="12" rx="2" fill="#3572A5"/><text id="lang_2_pct" class="dim" x="277" y="464" font-size="11px" text-anchor="end" fill="#93a1a1">6.8%</text></g>
 <g class="reveal rv48"><text id="lang_3_name" class="key" x="15" y="502" font-size="11px" fill="#cb4b16">Rust</text><rect x="100" y="491" width="126" height="12" rx="2" fill="#e3dcc6"/><rect id="lang_3_bar" class="lang-bar lg3" x="100" y="491" width="16.1" height="12" rx="2" fill="#dea584"/><text id="lang_3_pct" class="dim" x="277" y="502" font-size="11px" text-anchor="end" fill="#93a1a1">6.7%</text></g>
 <g class="reveal rv49"><text id="lang_4_name" class="key" x="15" y="540" font-size="11px" fill="#cb4b16">HTML</text><rect x="100" y="529" width="126" height="12" rx="2" fill="#e3dcc6"/><rect id="lang_4_bar" class="lang-bar lg4" x="100" y="529" width="14.7" height="12" rx="2" fill="#e34c26"/><text id="lang_4_pct" class="dim" x="277" y="540" font-size="11px" text-anchor="end" fill="#93a1a1">6.1%</text></g>
 <g class="reveal rv50"><text id="lang_5_name" class="key" x="15" y="578" font-size="11px" fill="#cb4b16">TypeScript</text><rect x="100" y="567" width="126" height="12" rx="2" fill="#e3dcc6"/><rect id="lang_5_bar" class="lang-bar lg5" x="100" y="567" width="8.7" height="12" rx="2" fill="#3178c6"/><text id="lang_5_pct" class="dim" x="277" y="578" font-size="11px" text-anchor="end" fill="#93a1a1">3.6%</text></g>

@@ -433,7 +433,9 @@ def build_session() -> Session:
     session.output(86, boot_row("Reached target Multi-User System"), 0.18)
     session.output(
         106,
-        f'<tspan class="dim">Last login: Sat Jul 11 2026 — </tspan>'
+        f'<tspan class="dim">Last login: </tspan>'
+        f'<tspan class="dim" id="login_date">{datetime.date.today():%a %b %d %Y}</tspan>'
+        f'<tspan class="dim"> — </tspan>'
         f'<tspan class="value" id="age_data">3 years, 9 months, 0 days</tspan>'
         f'<tspan class="dim" id="age_data_dots"></tspan>'
         f'<tspan class="dim"> on GitHub</tspan>',
@@ -591,7 +593,7 @@ def statusbar(theme: dict) -> str:
 <rect x="1" y="{STATUSBAR_Y}" width="{left_w}" height="{STATUSBAR_H}" fill="{theme["statusbar"]}"/>
 <text x="20" y="{text_y}" font-size="13" fill="{theme["statusbar_text"]}">[0] NIXOS</text>
 <text x="{left_w + 20}" y="{text_y}" font-size="13" fill="{theme["statusbar_alt_text"]}">0:tokei*   1:session-   │   ~/github/YuukiFST</text>
-<text x="{SVG_WIDTH - 20}" y="{text_y}" text-anchor="end" font-size="13" fill="{theme["statusbar_alt_text"]}">main ✓   │   nixos-unstable   │   ★ reproducible</text>'''
+<text x="{SVG_WIDTH - 20}" y="{text_y}" text-anchor="end" font-size="13" fill="{theme["statusbar_alt_text"]}">main ✓   │   nixos-unstable</text>'''
 
 
 def pane_divider(theme: dict) -> str:

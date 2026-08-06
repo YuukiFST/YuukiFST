@@ -511,6 +511,8 @@ def svg_overwrite(filename, age_data, commit_data, loc_data, weeks, languages, r
     """
     tree = etree.parse(filename)
     root = tree.getroot()
+    # the template bakes in its build date; this is the date of the data run
+    find_and_replace(root, 'login_date', datetime.datetime.now().strftime('%a %b %d %Y'))
     justify_format(root, 'age_data', age_data)
     justify_format(root, 'commit_data', commit_data)
     justify_format(root, 'loc_data', loc_data[2])
