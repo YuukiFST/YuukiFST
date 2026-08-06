@@ -152,6 +152,14 @@ FUT_X = 49
 FUT_Y = 344
 FUT_W = 232
 FUT_H = 370
+FUT_FLIP_S = 0.55
+# Traced over the crop so the gloss stops at the shield instead of running over
+# the pane. Same 232x370 box the art is drawn in.
+FUT_SHIELD = (
+    "M8,26 C30,10 60,4 88,4 L100,16 L132,16 L144,4 C172,4 202,10 224,26 "
+    "L224,282 C224,300 218,306 206,314 L122,366 C118,369 114,369 110,366 "
+    "L26,314 C14,306 8,300 8,282 Z"
+)
 
 # systemd-style spinner that resolves into [  OK  ]
 SPIN_FRAMES = "▖▘▝▗"  # Block Elements — Consolas has these, Braille it does not
@@ -301,6 +309,34 @@ def crt_overlay(theme: dict) -> str:
     )
 
 
+def futcard_css(session: Session) -> str:
+    """The card turns face up on its cue, then never stops breathing.
+
+    Base state is the settled card, so a renderer that ignores animation shows
+    it face up and level rather than edge-on and invisible.
+    """
+    cue = session.cues["fut_plate"]
+    clear_pct = HOLD_BEFORE_S / LOOP_S * 100
+    start_pct = (HOLD_BEFORE_S + cue) / LOOP_S * 100
+    mid_pct = min((HOLD_BEFORE_S + cue + FUT_FLIP_S * 0.72) / LOOP_S * 100, 99.5)
+    end_pct = min((HOLD_BEFORE_S + cue + FUT_FLIP_S) / LOOP_S * 100, 99.7)
+    return f"""
+.fut-flip, .fut-float {{transform-origin: center; transform-box: fill-box;}}
+@keyframes fut-flip {{
+  0%, {clear_pct:.2f}% {{ transform: scaleX(1); }}
+  {clear_pct + 0.01:.2f}%, {start_pct:.2f}% {{ transform: scaleX(0.02); animation-timing-function: cubic-bezier(0.34, 1.3, 0.5, 1); }}
+  {mid_pct:.2f}% {{ transform: scaleX(1.06); }}
+  {end_pct:.2f}%, 100% {{ transform: scaleX(1); }}
+}}
+.fut-flip {{ animation: fut-flip {LOOP_S}s linear infinite; }}
+@keyframes fut-float {{
+  0%, 100% {{ transform: translateY(-3px); }}
+  50% {{ transform: translateY(3px); }}
+}}
+.fut-float {{ animation: fut-float 6s ease-in-out infinite; }}
+"""
+
+
 def heatwave_css() -> str:
     """Per-column cues so the calendar wipes in left to right."""
     base = HEAT_CUE[0]
@@ -310,10 +346,11 @@ def heatwave_css() -> str:
     )
 
 
-def animation_styles() -> str:
+def animation_styles(session: Session) -> str:
     return f"""
 {REVEAL.css()}
 {typing_css()}
+{futcard_css(session)}
 {heatwave_css()}
 @keyframes cursor-blink {{
   0%, 45% {{ opacity: 1; }}
@@ -522,9 +559,12 @@ def fut_card(theme: dict, session: Session) -> str:
     plate = REVEAL.at(session.cues["fut_plate"])
     footer = REVEAL.at(session.cues["fut_footer"])
     return f'''<g class="reveal {plate}">
-<rect id="fut_frame" x="{FUT_X}" y="{FUT_Y}" width="{FUT_W}" height="{FUT_H}" rx="10" fill="none"
+<g transform="translate({FUT_X},{FUT_Y})"><g class="fut-float"><g class="fut-flip">
+<rect id="fut_frame" width="{FUT_W}" height="{FUT_H}" rx="10" fill="none"
  stroke="{theme["pane_border"]}" stroke-dasharray="4 4"/>
-<image id="fut_card" x="{FUT_X}" y="{FUT_Y}" width="{FUT_W}" height="{FUT_H}" href=""/>
+<image id="fut_card" width="{FUT_W}" height="{FUT_H}" href=""/>
+<rect width="{FUT_W}" height="{FUT_H}" fill="url(#fut-gloss)" clip-path="url(#fut-shield)"/>
+</g></g></g>
 </g>
 <text class="reveal {footer}" x="{FUT_X + FUT_W // 2}" y="{FUT_Y + FUT_H + 24}" text-anchor="middle" font-size="11px">
 <tspan class="value" id="fut_tier">— · —</tspan>
@@ -709,7 +749,7 @@ size-adjust: 109%;
 .spinner {{font-size: {PANE_FONT_SIZE + 3}px;}}
 {heat_rules}
 text, tspan {{white-space: pre;}}
-{animation_styles()}
+{animation_styles(session)}
 </style>
 <defs>
 <filter id="phosphor" x="-25%" y="-25%" width="150%" height="150%">
@@ -725,6 +765,14 @@ text, tspan {{white-space: pre;}}
 <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
 <animate attributeName="x1" values="{ASCII_X - 220};{sheen_end:.0f}" dur="7s" repeatCount="indefinite"/>
 <animate attributeName="x2" values="{ASCII_X - 60};{sheen_end + 160:.0f}" dur="7s" repeatCount="indefinite"/>
+</linearGradient>
+<clipPath id="fut-shield"><path d="{FUT_SHIELD}"/></clipPath>
+<linearGradient id="fut-gloss" gradientUnits="userSpaceOnUse" x1="-150" y1="0" x2="-40" y2="{FUT_H}">
+<stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+<stop offset="50%" stop-color="#ffffff" stop-opacity="0.55"/>
+<stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+<animate attributeName="x1" values="-150;{FUT_W + 40}" dur="4.5s" repeatCount="indefinite"/>
+<animate attributeName="x2" values="-40;{FUT_W + 150}" dur="4.5s" repeatCount="indefinite"/>
 </linearGradient>
 <pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse">
 <rect width="4" height="2" fill="{theme["scan_color"]}" opacity="{theme["scan_opacity"]}"/>
