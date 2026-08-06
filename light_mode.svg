@@ -20,11 +20,16 @@ size-adjust: 109%;
 .cursor {fill: #6c71c4;}
 .logo-1 {fill: #5277c3;}
 .logo-2 {fill: #2f4f96;}
-.nix-kw {fill: #268bd2;}
-.nix-attr {fill: #073642;}
-.nix-str {fill: #859900;}
-.nix-punct {fill: #93a1a1;}
 .spinner {font-size: 14px;}
+.fut-rating, .fut-position, .fut-name, .fut-stat, .fut-label {
+  font-family: 'Arial Narrow', 'Saira Condensed', Impact, sans-serif;
+  fill: #303536;
+}
+.fut-rating {font-size: 44px; font-weight: 700; letter-spacing: -1px;}
+.fut-position {font-size: 18px;}
+.fut-name {font-size: 30px; font-weight: 700; letter-spacing: 1px;}
+.fut-stat {font-size: 24px; font-weight: 700;}
+.fut-label {font-size: 20px; fill-opacity: 0.75;}
 .lvl0 {fill: #eee8d5;}
 .lvl1 {fill: #b8d2ea;}
 .lvl2 {fill: #7aa9d6;}
@@ -34,859 +39,733 @@ text, tspan {white-space: pre;}
 
 .reveal {opacity: 1;}
 @keyframes rv0 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 20.02% { opacity: 0; }
-  20.32%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 19.87% { opacity: 0; }
+  20.17%, 100% { opacity: 1; }
 }
-.rv0 { animation: rv0 20.075000000000003s linear infinite; }
+.rv0 { animation: rv0 20.229999999999997s linear infinite; }
 @keyframes rv1 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 16.44% { opacity: 0; }
-  16.74%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 16.31% { opacity: 0; }
+  16.61%, 100% { opacity: 1; }
 }
-.rv1 { animation: rv1 20.075000000000003s linear infinite; }
+.rv1 { animation: rv1 20.229999999999997s linear infinite; }
 @keyframes rv2 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 20.92% { opacity: 0; }
-  21.22%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 20.76% { opacity: 0; }
+  21.06%, 100% { opacity: 1; }
 }
-.rv2 { animation: rv2 20.075000000000003s linear infinite; }
+.rv2 { animation: rv2 20.229999999999997s linear infinite; }
 @keyframes rv3 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 17.33% { opacity: 0; }
-  17.63%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 17.20% { opacity: 0; }
+  17.50%, 100% { opacity: 1; }
 }
-.rv3 { animation: rv3 20.075000000000003s linear infinite; }
+.rv3 { animation: rv3 20.229999999999997s linear infinite; }
 @keyframes rv4 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 18.23% { opacity: 0; }
-  18.53%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 18.09% { opacity: 0; }
+  18.39%, 100% { opacity: 1; }
 }
-.rv4 { animation: rv4 20.075000000000003s linear infinite; }
+.rv4 { animation: rv4 20.229999999999997s linear infinite; }
 @keyframes rv5 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 19.88% { opacity: 0; }
-  20.18%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 19.72% { opacity: 0; }
+  20.02%, 100% { opacity: 1; }
 }
-.rv5 { animation: rv5 20.075000000000003s linear infinite; }
+.rv5 { animation: rv5 20.229999999999997s linear infinite; }
 @keyframes rv6 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 24.46% { opacity: 0; }
-  24.76%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 24.27% { opacity: 0; }
+  24.57%, 100% { opacity: 1; }
 }
-.rv6 { animation: rv6 20.075000000000003s linear infinite; }
+.rv6 { animation: rv6 20.229999999999997s linear infinite; }
 @keyframes rv7 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 24.61% { opacity: 0; }
-  24.91%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 24.42% { opacity: 0; }
+  24.72%, 100% { opacity: 1; }
 }
-.rv7 { animation: rv7 20.075000000000003s linear infinite; }
+.rv7 { animation: rv7 20.229999999999997s linear infinite; }
 @keyframes rv8 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 24.76% { opacity: 0; }
-  25.06%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 24.57% { opacity: 0; }
+  24.87%, 100% { opacity: 1; }
 }
-.rv8 { animation: rv8 20.075000000000003s linear infinite; }
+.rv8 { animation: rv8 20.229999999999997s linear infinite; }
 @keyframes rv9 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 24.91% { opacity: 0; }
-  25.21%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 24.72% { opacity: 0; }
+  25.02%, 100% { opacity: 1; }
 }
-.rv9 { animation: rv9 20.075000000000003s linear infinite; }
+.rv9 { animation: rv9 20.229999999999997s linear infinite; }
 @keyframes rv10 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 25.06% { opacity: 0; }
-  25.36%, 100% { opacity: 1; }
-}
-.rv10 { animation: rv10 20.075000000000003s linear infinite; }
-@keyframes rv11 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 25.21% { opacity: 0; }
-  25.51%, 100% { opacity: 1; }
-}
-.rv11 { animation: rv11 20.075000000000003s linear infinite; }
-@keyframes rv12 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 25.35% { opacity: 0; }
-  25.65%, 100% { opacity: 1; }
-}
-.rv12 { animation: rv12 20.075000000000003s linear infinite; }
-@keyframes rv13 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 25.50% { opacity: 0; }
-  25.80%, 100% { opacity: 1; }
-}
-.rv13 { animation: rv13 20.075000000000003s linear infinite; }
-@keyframes rv14 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 25.65% { opacity: 0; }
-  25.95%, 100% { opacity: 1; }
-}
-.rv14 { animation: rv14 20.075000000000003s linear infinite; }
-@keyframes rv15 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 25.80% { opacity: 0; }
-  26.10%, 100% { opacity: 1; }
-}
-.rv15 { animation: rv15 20.075000000000003s linear infinite; }
-@keyframes rv16 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 25.95% { opacity: 0; }
-  26.25%, 100% { opacity: 1; }
-}
-.rv16 { animation: rv16 20.075000000000003s linear infinite; }
-@keyframes rv17 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 26.10% { opacity: 0; }
-  26.40%, 100% { opacity: 1; }
-}
-.rv17 { animation: rv17 20.075000000000003s linear infinite; }
-@keyframes rv18 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 26.25% { opacity: 0; }
-  26.55%, 100% { opacity: 1; }
-}
-.rv18 { animation: rv18 20.075000000000003s linear infinite; }
-@keyframes rv19 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 26.40% { opacity: 0; }
-  26.70%, 100% { opacity: 1; }
-}
-.rv19 { animation: rv19 20.075000000000003s linear infinite; }
-@keyframes rv20 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 26.55% { opacity: 0; }
-  26.85%, 100% { opacity: 1; }
-}
-.rv20 { animation: rv20 20.075000000000003s linear infinite; }
-@keyframes rv21 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 26.70% { opacity: 0; }
-  27.00%, 100% { opacity: 1; }
-}
-.rv21 { animation: rv21 20.075000000000003s linear infinite; }
-@keyframes rv22 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 26.85% { opacity: 0; }
-  27.15%, 100% { opacity: 1; }
-}
-.rv22 { animation: rv22 20.075000000000003s linear infinite; }
-@keyframes rv23 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 27.00% { opacity: 0; }
-  27.30%, 100% { opacity: 1; }
-}
-.rv23 { animation: rv23 20.075000000000003s linear infinite; }
-@keyframes rv24 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 27.15% { opacity: 0; }
-  27.45%, 100% { opacity: 1; }
-}
-.rv24 { animation: rv24 20.075000000000003s linear infinite; }
-@keyframes rv25 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 27.30% { opacity: 0; }
-  27.60%, 100% { opacity: 1; }
-}
-.rv25 { animation: rv25 20.075000000000003s linear infinite; }
-@keyframes rv26 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 24.86% { opacity: 0; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 24.86% { opacity: 0; }
   25.16%, 100% { opacity: 1; }
 }
-.rv26 { animation: rv26 20.075000000000003s linear infinite; }
-@keyframes rv27 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 25.26% { opacity: 0; }
-  25.56%, 100% { opacity: 1; }
+.rv10 { animation: rv10 20.229999999999997s linear infinite; }
+@keyframes rv11 {
+  0%, 14.83% { opacity: 1; }
+  14.84%, 25.01% { opacity: 0; }
+  25.31%, 100% { opacity: 1; }
 }
-.rv27 { animation: rv27 20.075000000000003s linear infinite; }
-@keyframes rv28 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 26.05% { opacity: 0; }
+.rv11 { animation: rv11 20.229999999999997s linear infinite; }
+@keyframes rv12 {
+  0%, 14.83% { opacity: 1; }
+  14.84%, 25.16% { opacity: 0; }
+  25.46%, 100% { opacity: 1; }
+}
+.rv12 { animation: rv12 20.229999999999997s linear infinite; }
+@keyframes rv13 {
+  0%, 14.83% { opacity: 1; }
+  14.84%, 25.31% { opacity: 0; }
+  25.61%, 100% { opacity: 1; }
+}
+.rv13 { animation: rv13 20.229999999999997s linear infinite; }
+@keyframes rv14 {
+  0%, 14.83% { opacity: 1; }
+  14.84%, 25.46% { opacity: 0; }
+  25.76%, 100% { opacity: 1; }
+}
+.rv14 { animation: rv14 20.229999999999997s linear infinite; }
+@keyframes rv15 {
+  0%, 14.83% { opacity: 1; }
+  14.84%, 25.61% { opacity: 0; }
+  25.91%, 100% { opacity: 1; }
+}
+.rv15 { animation: rv15 20.229999999999997s linear infinite; }
+@keyframes rv16 {
+  0%, 14.83% { opacity: 1; }
+  14.84%, 25.75% { opacity: 0; }
+  26.05%, 100% { opacity: 1; }
+}
+.rv16 { animation: rv16 20.229999999999997s linear infinite; }
+@keyframes rv17 {
+  0%, 14.83% { opacity: 1; }
+  14.84%, 25.90% { opacity: 0; }
+  26.20%, 100% { opacity: 1; }
+}
+.rv17 { animation: rv17 20.229999999999997s linear infinite; }
+@keyframes rv18 {
+  0%, 14.83% { opacity: 1; }
+  14.84%, 26.05% { opacity: 0; }
   26.35%, 100% { opacity: 1; }
 }
-.rv28 { animation: rv28 20.075000000000003s linear infinite; }
+.rv18 { animation: rv18 20.229999999999997s linear infinite; }
+@keyframes rv19 {
+  0%, 14.83% { opacity: 1; }
+  14.84%, 26.20% { opacity: 0; }
+  26.50%, 100% { opacity: 1; }
+}
+.rv19 { animation: rv19 20.229999999999997s linear infinite; }
+@keyframes rv20 {
+  0%, 14.83% { opacity: 1; }
+  14.84%, 26.35% { opacity: 0; }
+  26.65%, 100% { opacity: 1; }
+}
+.rv20 { animation: rv20 20.229999999999997s linear infinite; }
+@keyframes rv21 {
+  0%, 14.83% { opacity: 1; }
+  14.84%, 26.50% { opacity: 0; }
+  26.80%, 100% { opacity: 1; }
+}
+.rv21 { animation: rv21 20.229999999999997s linear infinite; }
+@keyframes rv22 {
+  0%, 14.83% { opacity: 1; }
+  14.84%, 26.64% { opacity: 0; }
+  26.94%, 100% { opacity: 1; }
+}
+.rv22 { animation: rv22 20.229999999999997s linear infinite; }
+@keyframes rv23 {
+  0%, 14.83% { opacity: 1; }
+  14.84%, 26.79% { opacity: 0; }
+  27.09%, 100% { opacity: 1; }
+}
+.rv23 { animation: rv23 20.229999999999997s linear infinite; }
+@keyframes rv24 {
+  0%, 14.83% { opacity: 1; }
+  14.84%, 26.94% { opacity: 0; }
+  27.24%, 100% { opacity: 1; }
+}
+.rv24 { animation: rv24 20.229999999999997s linear infinite; }
+@keyframes rv25 {
+  0%, 14.83% { opacity: 1; }
+  14.84%, 27.09% { opacity: 0; }
+  27.39%, 100% { opacity: 1; }
+}
+.rv25 { animation: rv25 20.229999999999997s linear infinite; }
+@keyframes rv26 {
+  0%, 14.83% { opacity: 1; }
+  14.84%, 24.67% { opacity: 0; }
+  24.97%, 100% { opacity: 1; }
+}
+.rv26 { animation: rv26 20.229999999999997s linear infinite; }
+@keyframes rv27 {
+  0%, 14.83% { opacity: 1; }
+  14.84%, 25.06% { opacity: 0; }
+  25.36%, 100% { opacity: 1; }
+}
+.rv27 { animation: rv27 20.229999999999997s linear infinite; }
+@keyframes rv28 {
+  0%, 14.83% { opacity: 1; }
+  14.84%, 25.85% { opacity: 0; }
+  26.15%, 100% { opacity: 1; }
+}
+.rv28 { animation: rv28 20.229999999999997s linear infinite; }
 @keyframes rv29 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 26.45% { opacity: 0; }
-  26.75%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 26.25% { opacity: 0; }
+  26.55%, 100% { opacity: 1; }
 }
-.rv29 { animation: rv29 20.075000000000003s linear infinite; }
+.rv29 { animation: rv29 20.229999999999997s linear infinite; }
 @keyframes rv30 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 27.25% { opacity: 0; }
-  27.55%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 27.04% { opacity: 0; }
+  27.34%, 100% { opacity: 1; }
 }
-.rv30 { animation: rv30 20.075000000000003s linear infinite; }
+.rv30 { animation: rv30 20.229999999999997s linear infinite; }
 @keyframes rv31 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 27.65% { opacity: 0; }
-  27.95%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 27.43% { opacity: 0; }
+  27.73%, 100% { opacity: 1; }
 }
-.rv31 { animation: rv31 20.075000000000003s linear infinite; }
+.rv31 { animation: rv31 20.229999999999997s linear infinite; }
 @keyframes rv32 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 28.04% { opacity: 0; }
-  28.34%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 27.83% { opacity: 0; }
+  28.13%, 100% { opacity: 1; }
 }
-.rv32 { animation: rv32 20.075000000000003s linear infinite; }
+.rv32 { animation: rv32 20.229999999999997s linear infinite; }
 @keyframes rv33 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 28.44% { opacity: 0; }
-  28.74%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 28.23% { opacity: 0; }
+  28.53%, 100% { opacity: 1; }
 }
-.rv33 { animation: rv33 20.075000000000003s linear infinite; }
+.rv33 { animation: rv33 20.229999999999997s linear infinite; }
 @keyframes rv34 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 28.84% { opacity: 0; }
-  29.14%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 28.62% { opacity: 0; }
+  28.92%, 100% { opacity: 1; }
 }
-.rv34 { animation: rv34 20.075000000000003s linear infinite; }
+.rv34 { animation: rv34 20.229999999999997s linear infinite; }
 @keyframes rv35 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 30.49% { opacity: 0; }
-  30.79%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 30.25% { opacity: 0; }
+  30.55%, 100% { opacity: 1; }
 }
-.rv35 { animation: rv35 20.075000000000003s linear infinite; }
+.rv35 { animation: rv35 20.229999999999997s linear infinite; }
 @keyframes rv36 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 33.18% { opacity: 0; }
-  33.48%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 32.92% { opacity: 0; }
+  33.22%, 100% { opacity: 1; }
 }
-.rv36 { animation: rv36 20.075000000000003s linear infinite; }
+.rv36 { animation: rv36 20.229999999999997s linear infinite; }
 @keyframes rv37 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 33.57% { opacity: 0; }
-  33.87%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 33.32% { opacity: 0; }
+  33.62%, 100% { opacity: 1; }
 }
-.rv37 { animation: rv37 20.075000000000003s linear infinite; }
+.rv37 { animation: rv37 20.229999999999997s linear infinite; }
 @keyframes rv38 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 35.22% { opacity: 0; }
-  35.52%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 34.95% { opacity: 0; }
+  35.25%, 100% { opacity: 1; }
 }
-.rv38 { animation: rv38 20.075000000000003s linear infinite; }
+.rv38 { animation: rv38 20.229999999999997s linear infinite; }
 @keyframes rv39 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 38.21% { opacity: 0; }
-  38.51%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 39.20% { opacity: 0; }
+  39.50%, 100% { opacity: 1; }
 }
-.rv39 { animation: rv39 20.075000000000003s linear infinite; }
+.rv39 { animation: rv39 20.229999999999997s linear infinite; }
 @keyframes rv40 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 38.46% { opacity: 0; }
-  38.76%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 45.48% { opacity: 0; }
+  45.78%, 100% { opacity: 1; }
 }
-.rv40 { animation: rv40 20.075000000000003s linear infinite; }
+.rv40 { animation: rv40 20.229999999999997s linear infinite; }
 @keyframes rv41 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 38.66% { opacity: 0; }
-  38.96%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 47.11% { opacity: 0; }
+  47.41%, 100% { opacity: 1; }
 }
-.rv41 { animation: rv41 20.075000000000003s linear infinite; }
+.rv41 { animation: rv41 20.229999999999997s linear infinite; }
 @keyframes rv42 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 38.90% { opacity: 0; }
-  39.20%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 52.15% { opacity: 0; }
+  52.45%, 100% { opacity: 1; }
 }
-.rv42 { animation: rv42 20.075000000000003s linear infinite; }
+.rv42 { animation: rv42 20.229999999999997s linear infinite; }
 @keyframes rv43 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 39.10% { opacity: 0; }
-  39.40%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 53.78% { opacity: 0; }
+  54.08%, 100% { opacity: 1; }
 }
-.rv43 { animation: rv43 20.075000000000003s linear infinite; }
+.rv43 { animation: rv43 20.229999999999997s linear infinite; }
 @keyframes rv44 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 39.35% { opacity: 0; }
-  39.65%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 69.95% { opacity: 0; }
+  70.25%, 100% { opacity: 1; }
 }
-.rv44 { animation: rv44 20.075000000000003s linear infinite; }
+.rv44 { animation: rv44 20.229999999999997s linear infinite; }
 @keyframes rv45 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 39.55% { opacity: 0; }
-  39.85%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 27.24% { opacity: 0; }
+  27.54%, 100% { opacity: 1; }
 }
-.rv45 { animation: rv45 20.075000000000003s linear infinite; }
+.rv45 { animation: rv45 20.229999999999997s linear infinite; }
 @keyframes rv46 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 39.80% { opacity: 0; }
-  40.10%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 42.07% { opacity: 0; }
+  42.37%, 100% { opacity: 1; }
 }
-.rv46 { animation: rv46 20.075000000000003s linear infinite; }
+.rv46 { animation: rv46 20.229999999999997s linear infinite; }
 @keyframes rv47 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 40.00% { opacity: 0; }
-  40.30%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 42.51% { opacity: 0; }
+  42.81%, 100% { opacity: 1; }
 }
-.rv47 { animation: rv47 20.075000000000003s linear infinite; }
+.rv47 { animation: rv47 20.229999999999997s linear infinite; }
 @keyframes rv48 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 40.25% { opacity: 0; }
-  40.55%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 42.96% { opacity: 0; }
+  43.26%, 100% { opacity: 1; }
 }
-.rv48 { animation: rv48 20.075000000000003s linear infinite; }
+.rv48 { animation: rv48 20.229999999999997s linear infinite; }
 @keyframes rv49 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 40.45% { opacity: 0; }
-  40.75%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 43.40% { opacity: 0; }
+  43.70%, 100% { opacity: 1; }
 }
-.rv49 { animation: rv49 20.075000000000003s linear infinite; }
+.rv49 { animation: rv49 20.229999999999997s linear infinite; }
 @keyframes rv50 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 40.70% { opacity: 0; }
-  41.00%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 43.85% { opacity: 0; }
+  44.15%, 100% { opacity: 1; }
 }
-.rv50 { animation: rv50 20.075000000000003s linear infinite; }
+.rv50 { animation: rv50 20.229999999999997s linear infinite; }
 @keyframes rv51 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 40.90% { opacity: 0; }
-  41.20%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 44.29% { opacity: 0; }
+  44.59%, 100% { opacity: 1; }
 }
-.rv51 { animation: rv51 20.075000000000003s linear infinite; }
+.rv51 { animation: rv51 20.229999999999997s linear infinite; }
 @keyframes rv52 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 41.15% { opacity: 0; }
-  41.45%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 44.74% { opacity: 0; }
+  45.04%, 100% { opacity: 1; }
 }
-.rv52 { animation: rv52 20.075000000000003s linear infinite; }
+.rv52 { animation: rv52 20.229999999999997s linear infinite; }
 @keyframes rv53 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 41.34% { opacity: 0; }
-  41.64%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 40.34% { opacity: 0; }
+  40.64%, 100% { opacity: 1; }
 }
-.rv53 { animation: rv53 20.075000000000003s linear infinite; }
+.rv53 { animation: rv53 20.229999999999997s linear infinite; }
 @keyframes rv54 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 41.59% { opacity: 0; }
-  41.89%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 62.14% { opacity: 0; }
+  62.44%, 100% { opacity: 1; }
 }
-.rv54 { animation: rv54 20.075000000000003s linear infinite; }
-@keyframes rv55 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 41.79% { opacity: 0; }
-  42.09%, 100% { opacity: 1; }
-}
-.rv55 { animation: rv55 20.075000000000003s linear infinite; }
-@keyframes rv56 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 42.04% { opacity: 0; }
-  42.34%, 100% { opacity: 1; }
-}
-.rv56 { animation: rv56 20.075000000000003s linear infinite; }
-@keyframes rv57 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 42.24% { opacity: 0; }
-  42.54%, 100% { opacity: 1; }
-}
-.rv57 { animation: rv57 20.075000000000003s linear infinite; }
-@keyframes rv58 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 42.49% { opacity: 0; }
-  42.79%, 100% { opacity: 1; }
-}
-.rv58 { animation: rv58 20.075000000000003s linear infinite; }
-@keyframes rv59 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 42.69% { opacity: 0; }
-  42.99%, 100% { opacity: 1; }
-}
-.rv59 { animation: rv59 20.075000000000003s linear infinite; }
-@keyframes rv60 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 42.94% { opacity: 0; }
-  43.24%, 100% { opacity: 1; }
-}
-.rv60 { animation: rv60 20.075000000000003s linear infinite; }
-@keyframes rv61 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 43.14% { opacity: 0; }
-  43.44%, 100% { opacity: 1; }
-}
-.rv61 { animation: rv61 20.075000000000003s linear infinite; }
-@keyframes rv62 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 43.39% { opacity: 0; }
-  43.69%, 100% { opacity: 1; }
-}
-.rv62 { animation: rv62 20.075000000000003s linear infinite; }
-@keyframes rv63 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 43.59% { opacity: 0; }
-  43.89%, 100% { opacity: 1; }
-}
-.rv63 { animation: rv63 20.075000000000003s linear infinite; }
-@keyframes rv64 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 43.79% { opacity: 0; }
-  44.09%, 100% { opacity: 1; }
-}
-.rv64 { animation: rv64 20.075000000000003s linear infinite; }
-@keyframes rv65 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 44.03% { opacity: 0; }
-  44.33%, 100% { opacity: 1; }
-}
-.rv65 { animation: rv65 20.075000000000003s linear infinite; }
-@keyframes rv66 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 44.23% { opacity: 0; }
-  44.53%, 100% { opacity: 1; }
-}
-.rv66 { animation: rv66 20.075000000000003s linear infinite; }
-@keyframes rv67 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 44.48% { opacity: 0; }
-  44.78%, 100% { opacity: 1; }
-}
-.rv67 { animation: rv67 20.075000000000003s linear infinite; }
-@keyframes rv68 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 38.70% { opacity: 0; }
-  39.00%, 100% { opacity: 1; }
-}
-.rv68 { animation: rv68 20.075000000000003s linear infinite; }
-@keyframes rv69 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 45.03% { opacity: 0; }
-  45.33%, 100% { opacity: 1; }
-}
-.rv69 { animation: rv69 20.075000000000003s linear infinite; }
-@keyframes rv70 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 46.72% { opacity: 0; }
-  47.02%, 100% { opacity: 1; }
-}
-.rv70 { animation: rv70 20.075000000000003s linear infinite; }
-@keyframes rv71 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 51.81% { opacity: 0; }
-  52.11%, 100% { opacity: 1; }
-}
-.rv71 { animation: rv71 20.075000000000003s linear infinite; }
-@keyframes rv72 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 53.45% { opacity: 0; }
-  53.75%, 100% { opacity: 1; }
-}
-.rv72 { animation: rv72 20.075000000000003s linear infinite; }
-@keyframes rv73 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 69.74% { opacity: 0; }
-  70.04%, 100% { opacity: 1; }
-}
-.rv73 { animation: rv73 20.075000000000003s linear infinite; }
-@keyframes rv74 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 27.45% { opacity: 0; }
-  27.75%, 100% { opacity: 1; }
-}
-.rv74 { animation: rv74 20.075000000000003s linear infinite; }
-@keyframes rv75 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 61.87% { opacity: 0; }
-  62.17%, 100% { opacity: 1; }
-}
-.rv75 { animation: rv75 20.075000000000003s linear infinite; }
+.rv54 { animation: rv54 20.229999999999997s linear infinite; }
 .type-mask {transform: scaleX(0); transform-origin: right center; transform-box: fill-box;}
 .caret {opacity: 0;}
 @keyframes type-0 {
-  0%, 14.94% { transform: scaleX(0); }
-  14.95%, 19.88% { transform: scaleX(1); animation-timing-function: steps(22, end); }
-  23.71%, 100% { transform: scaleX(0); }
+  0%, 14.83% { transform: scaleX(0); }
+  14.84%, 19.72% { transform: scaleX(1); animation-timing-function: steps(22, end); }
+  23.53%, 100% { transform: scaleX(0); }
 }
-.type-0 { animation: type-0 20.075000000000003s linear infinite; }
+.type-0 { animation: type-0 20.229999999999997s linear infinite; }
 @keyframes caret-0 {
-  0%, 19.88% { opacity: 0; transform: translateX(0); animation-timing-function: steps(22, end); }
-  19.89% { opacity: 1; transform: translateX(0); animation-timing-function: steps(22, end); }
-  23.71% { opacity: 1; transform: translateX(211.2px); }
-  23.72%, 100% { opacity: 0; transform: translateX(211.2px); }
+  0%, 19.72% { opacity: 0; transform: translateX(0); animation-timing-function: steps(22, end); }
+  19.73% { opacity: 1; transform: translateX(0); animation-timing-function: steps(22, end); }
+  23.53% { opacity: 1; transform: translateX(211.2px); }
+  23.54%, 100% { opacity: 0; transform: translateX(211.2px); }
 }
-.caret-0 { animation: caret-0 20.075000000000003s linear infinite; }
+.caret-0 { animation: caret-0 20.229999999999997s linear infinite; }
 @keyframes type-1 {
-  0%, 14.94% { transform: scaleX(0); }
-  14.95%, 30.49% { transform: scaleX(1); animation-timing-function: steps(11, end); }
-  32.40%, 100% { transform: scaleX(0); }
+  0%, 14.83% { transform: scaleX(0); }
+  14.84%, 30.25% { transform: scaleX(1); animation-timing-function: steps(11, end); }
+  32.16%, 100% { transform: scaleX(0); }
 }
-.type-1 { animation: type-1 20.075000000000003s linear infinite; }
+.type-1 { animation: type-1 20.229999999999997s linear infinite; }
 @keyframes caret-1 {
-  0%, 30.49% { opacity: 0; transform: translateX(0); animation-timing-function: steps(11, end); }
-  30.50% { opacity: 1; transform: translateX(0); animation-timing-function: steps(11, end); }
-  32.40% { opacity: 1; transform: translateX(105.6px); }
-  32.41%, 100% { opacity: 0; transform: translateX(105.6px); }
+  0%, 30.25% { opacity: 0; transform: translateX(0); animation-timing-function: steps(11, end); }
+  30.26% { opacity: 1; transform: translateX(0); animation-timing-function: steps(11, end); }
+  32.16% { opacity: 1; transform: translateX(105.6px); }
+  32.17%, 100% { opacity: 0; transform: translateX(105.6px); }
 }
-.caret-1 { animation: caret-1 20.075000000000003s linear infinite; }
+.caret-1 { animation: caret-1 20.229999999999997s linear infinite; }
 @keyframes type-2 {
-  0%, 14.94% { transform: scaleX(0); }
-  14.95%, 35.19% { transform: scaleX(1); animation-timing-function: steps(13, end); }
-  37.46%, 100% { transform: scaleX(0); }
+  0%, 14.83% { transform: scaleX(0); }
+  14.84%, 34.92% { transform: scaleX(1); animation-timing-function: steps(27, end); }
+  39.59%, 100% { transform: scaleX(0); }
 }
-.type-2 { animation: type-2 20.075000000000003s linear infinite; }
+.type-2 { animation: type-2 20.229999999999997s linear infinite; }
 @keyframes caret-2 {
-  0%, 35.19% { opacity: 0; transform: translateX(0); animation-timing-function: steps(13, end); }
-  35.20% { opacity: 1; transform: translateX(0); animation-timing-function: steps(13, end); }
-  37.46% { opacity: 1; transform: translateX(85.8px); }
-  37.47%, 100% { opacity: 0; transform: translateX(85.8px); }
+  0%, 34.92% { opacity: 0; transform: translateX(0); animation-timing-function: steps(27, end); }
+  34.93% { opacity: 1; transform: translateX(0); animation-timing-function: steps(27, end); }
+  39.59% { opacity: 1; transform: translateX(178.2px); }
+  39.60%, 100% { opacity: 0; transform: translateX(178.2px); }
 }
-.caret-2 { animation: caret-2 20.075000000000003s linear infinite; }
+.caret-2 { animation: caret-2 20.229999999999997s linear infinite; }
 @keyframes type-3 {
-  0%, 14.94% { transform: scaleX(0); }
-  14.95%, 38.73% { transform: scaleX(1); animation-timing-function: steps(32, end); }
-  44.31%, 100% { transform: scaleX(0); }
+  0%, 14.83% { transform: scaleX(0); }
+  14.84%, 39.20% { transform: scaleX(1); animation-timing-function: steps(32, end); }
+  44.74%, 100% { transform: scaleX(0); }
 }
-.type-3 { animation: type-3 20.075000000000003s linear infinite; }
+.type-3 { animation: type-3 20.229999999999997s linear infinite; }
 @keyframes caret-3 {
-  0%, 38.73% { opacity: 0; transform: translateX(0); animation-timing-function: steps(32, end); }
-  38.74% { opacity: 1; transform: translateX(0); animation-timing-function: steps(32, end); }
-  44.31% { opacity: 1; transform: translateX(307.2px); }
-  44.32%, 100% { opacity: 0; transform: translateX(307.2px); }
+  0%, 39.20% { opacity: 0; transform: translateX(0); animation-timing-function: steps(32, end); }
+  39.21% { opacity: 1; transform: translateX(0); animation-timing-function: steps(32, end); }
+  44.74% { opacity: 1; transform: translateX(307.2px); }
+  44.75%, 100% { opacity: 0; transform: translateX(307.2px); }
 }
-.caret-3 { animation: caret-3 20.075000000000003s linear infinite; }
+.caret-3 { animation: caret-3 20.229999999999997s linear infinite; }
 @keyframes type-4 {
-  0%, 14.94% { transform: scaleX(0); }
-  14.95%, 46.70% { transform: scaleX(1); animation-timing-function: steps(25, end); }
-  51.06%, 100% { transform: scaleX(0); }
+  0%, 14.83% { transform: scaleX(0); }
+  14.84%, 47.11% { transform: scaleX(1); animation-timing-function: steps(25, end); }
+  51.43%, 100% { transform: scaleX(0); }
 }
-.type-4 { animation: type-4 20.075000000000003s linear infinite; }
+.type-4 { animation: type-4 20.229999999999997s linear infinite; }
 @keyframes caret-4 {
-  0%, 46.70% { opacity: 0; transform: translateX(0); animation-timing-function: steps(25, end); }
-  46.71% { opacity: 1; transform: translateX(0); animation-timing-function: steps(25, end); }
-  51.06% { opacity: 1; transform: translateX(240.0px); }
-  51.07%, 100% { opacity: 0; transform: translateX(240.0px); }
+  0%, 47.11% { opacity: 0; transform: translateX(0); animation-timing-function: steps(25, end); }
+  47.12% { opacity: 1; transform: translateX(0); animation-timing-function: steps(25, end); }
+  51.43% { opacity: 1; transform: translateX(240.0px); }
+  51.44%, 100% { opacity: 0; transform: translateX(240.0px); }
 }
-.caret-4 { animation: caret-4 20.075000000000003s linear infinite; }
+.caret-4 { animation: caret-4 20.229999999999997s linear infinite; }
 @keyframes type-5 {
-  0%, 14.94% { transform: scaleX(0); }
-  14.95%, 53.45% { transform: scaleX(1); animation-timing-function: steps(44, end); }
-  61.12%, 100% { transform: scaleX(0); }
+  0%, 14.83% { transform: scaleX(0); }
+  14.84%, 53.81% { transform: scaleX(1); animation-timing-function: steps(44, end); }
+  61.42%, 100% { transform: scaleX(0); }
 }
-.type-5 { animation: type-5 20.075000000000003s linear infinite; }
+.type-5 { animation: type-5 20.229999999999997s linear infinite; }
 @keyframes caret-5 {
-  0%, 53.45% { opacity: 0; transform: translateX(0); animation-timing-function: steps(44, end); }
-  53.46% { opacity: 1; transform: translateX(0); animation-timing-function: steps(44, end); }
-  61.12% { opacity: 1; transform: translateX(422.4px); }
-  61.13%, 100% { opacity: 0; transform: translateX(422.4px); }
+  0%, 53.81% { opacity: 0; transform: translateX(0); animation-timing-function: steps(44, end); }
+  53.82% { opacity: 1; transform: translateX(0); animation-timing-function: steps(44, end); }
+  61.42% { opacity: 1; transform: translateX(422.4px); }
+  61.43%, 100% { opacity: 0; transform: translateX(422.4px); }
 }
-.caret-5 { animation: caret-5 20.075000000000003s linear infinite; }
+.caret-5 { animation: caret-5 20.229999999999997s linear infinite; }
 @keyframes hw0 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 61.87% { opacity: 0; }
-  62.17%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 62.16% { opacity: 0; }
+  62.46%, 100% { opacity: 1; }
 }
-.hw0 { animation: hw0 20.075000000000003s linear infinite; }
+.hw0 { animation: hw0 20.229999999999997s linear infinite; }
 @keyframes hw1 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 61.99% { opacity: 0; }
-  62.29%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 62.28% { opacity: 0; }
+  62.58%, 100% { opacity: 1; }
 }
-.hw1 { animation: hw1 20.075000000000003s linear infinite; }
+.hw1 { animation: hw1 20.229999999999997s linear infinite; }
 @keyframes hw2 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 62.12% { opacity: 0; }
-  62.42%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 62.41% { opacity: 0; }
+  62.71%, 100% { opacity: 1; }
 }
-.hw2 { animation: hw2 20.075000000000003s linear infinite; }
+.hw2 { animation: hw2 20.229999999999997s linear infinite; }
 @keyframes hw3 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 62.24% { opacity: 0; }
-  62.54%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 62.53% { opacity: 0; }
+  62.83%, 100% { opacity: 1; }
 }
-.hw3 { animation: hw3 20.075000000000003s linear infinite; }
+.hw3 { animation: hw3 20.229999999999997s linear infinite; }
 @keyframes hw4 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 62.37% { opacity: 0; }
-  62.67%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 62.65% { opacity: 0; }
+  62.95%, 100% { opacity: 1; }
 }
-.hw4 { animation: hw4 20.075000000000003s linear infinite; }
+.hw4 { animation: hw4 20.229999999999997s linear infinite; }
 @keyframes hw5 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 62.49% { opacity: 0; }
-  62.79%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 62.78% { opacity: 0; }
+  63.08%, 100% { opacity: 1; }
 }
-.hw5 { animation: hw5 20.075000000000003s linear infinite; }
+.hw5 { animation: hw5 20.229999999999997s linear infinite; }
 @keyframes hw6 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 62.62% { opacity: 0; }
-  62.92%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 62.90% { opacity: 0; }
+  63.20%, 100% { opacity: 1; }
 }
-.hw6 { animation: hw6 20.075000000000003s linear infinite; }
+.hw6 { animation: hw6 20.229999999999997s linear infinite; }
 @keyframes hw7 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 62.74% { opacity: 0; }
-  63.04%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 63.03% { opacity: 0; }
+  63.33%, 100% { opacity: 1; }
 }
-.hw7 { animation: hw7 20.075000000000003s linear infinite; }
+.hw7 { animation: hw7 20.229999999999997s linear infinite; }
 @keyframes hw8 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 62.86% { opacity: 0; }
-  63.16%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 63.15% { opacity: 0; }
+  63.45%, 100% { opacity: 1; }
 }
-.hw8 { animation: hw8 20.075000000000003s linear infinite; }
+.hw8 { animation: hw8 20.229999999999997s linear infinite; }
 @keyframes hw9 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 62.99% { opacity: 0; }
-  63.29%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 63.27% { opacity: 0; }
+  63.57%, 100% { opacity: 1; }
 }
-.hw9 { animation: hw9 20.075000000000003s linear infinite; }
+.hw9 { animation: hw9 20.229999999999997s linear infinite; }
 @keyframes hw10 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 63.11% { opacity: 0; }
-  63.41%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 63.40% { opacity: 0; }
+  63.70%, 100% { opacity: 1; }
 }
-.hw10 { animation: hw10 20.075000000000003s linear infinite; }
+.hw10 { animation: hw10 20.229999999999997s linear infinite; }
 @keyframes hw11 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 63.24% { opacity: 0; }
-  63.54%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 63.52% { opacity: 0; }
+  63.82%, 100% { opacity: 1; }
 }
-.hw11 { animation: hw11 20.075000000000003s linear infinite; }
+.hw11 { animation: hw11 20.229999999999997s linear infinite; }
 @keyframes hw12 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 63.36% { opacity: 0; }
-  63.66%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 63.64% { opacity: 0; }
+  63.94%, 100% { opacity: 1; }
 }
-.hw12 { animation: hw12 20.075000000000003s linear infinite; }
+.hw12 { animation: hw12 20.229999999999997s linear infinite; }
 @keyframes hw13 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 63.49% { opacity: 0; }
-  63.79%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 63.77% { opacity: 0; }
+  64.07%, 100% { opacity: 1; }
 }
-.hw13 { animation: hw13 20.075000000000003s linear infinite; }
+.hw13 { animation: hw13 20.229999999999997s linear infinite; }
 @keyframes hw14 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 63.61% { opacity: 0; }
-  63.91%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 63.89% { opacity: 0; }
+  64.19%, 100% { opacity: 1; }
 }
-.hw14 { animation: hw14 20.075000000000003s linear infinite; }
+.hw14 { animation: hw14 20.229999999999997s linear infinite; }
 @keyframes hw15 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 63.74% { opacity: 0; }
-  64.04%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 64.01% { opacity: 0; }
+  64.31%, 100% { opacity: 1; }
 }
-.hw15 { animation: hw15 20.075000000000003s linear infinite; }
+.hw15 { animation: hw15 20.229999999999997s linear infinite; }
 @keyframes hw16 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 63.86% { opacity: 0; }
-  64.16%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 64.14% { opacity: 0; }
+  64.44%, 100% { opacity: 1; }
 }
-.hw16 { animation: hw16 20.075000000000003s linear infinite; }
+.hw16 { animation: hw16 20.229999999999997s linear infinite; }
 @keyframes hw17 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 63.99% { opacity: 0; }
-  64.29%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 64.26% { opacity: 0; }
+  64.56%, 100% { opacity: 1; }
 }
-.hw17 { animation: hw17 20.075000000000003s linear infinite; }
+.hw17 { animation: hw17 20.229999999999997s linear infinite; }
 @keyframes hw18 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 64.11% { opacity: 0; }
-  64.41%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 64.38% { opacity: 0; }
+  64.68%, 100% { opacity: 1; }
 }
-.hw18 { animation: hw18 20.075000000000003s linear infinite; }
+.hw18 { animation: hw18 20.229999999999997s linear infinite; }
 @keyframes hw19 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 64.23% { opacity: 0; }
-  64.53%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 64.51% { opacity: 0; }
+  64.81%, 100% { opacity: 1; }
 }
-.hw19 { animation: hw19 20.075000000000003s linear infinite; }
+.hw19 { animation: hw19 20.229999999999997s linear infinite; }
 @keyframes hw20 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 64.36% { opacity: 0; }
-  64.66%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 64.63% { opacity: 0; }
+  64.93%, 100% { opacity: 1; }
 }
-.hw20 { animation: hw20 20.075000000000003s linear infinite; }
+.hw20 { animation: hw20 20.229999999999997s linear infinite; }
 @keyframes hw21 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 64.48% { opacity: 0; }
-  64.78%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 64.76% { opacity: 0; }
+  65.06%, 100% { opacity: 1; }
 }
-.hw21 { animation: hw21 20.075000000000003s linear infinite; }
+.hw21 { animation: hw21 20.229999999999997s linear infinite; }
 @keyframes hw22 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 64.61% { opacity: 0; }
-  64.91%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 64.88% { opacity: 0; }
+  65.18%, 100% { opacity: 1; }
 }
-.hw22 { animation: hw22 20.075000000000003s linear infinite; }
+.hw22 { animation: hw22 20.229999999999997s linear infinite; }
 @keyframes hw23 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 64.73% { opacity: 0; }
-  65.03%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 65.00% { opacity: 0; }
+  65.30%, 100% { opacity: 1; }
 }
-.hw23 { animation: hw23 20.075000000000003s linear infinite; }
+.hw23 { animation: hw23 20.229999999999997s linear infinite; }
 @keyframes hw24 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 64.86% { opacity: 0; }
-  65.16%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 65.13% { opacity: 0; }
+  65.43%, 100% { opacity: 1; }
 }
-.hw24 { animation: hw24 20.075000000000003s linear infinite; }
+.hw24 { animation: hw24 20.229999999999997s linear infinite; }
 @keyframes hw25 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 64.98% { opacity: 0; }
-  65.28%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 65.25% { opacity: 0; }
+  65.55%, 100% { opacity: 1; }
 }
-.hw25 { animation: hw25 20.075000000000003s linear infinite; }
+.hw25 { animation: hw25 20.229999999999997s linear infinite; }
 @keyframes hw26 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 65.11% { opacity: 0; }
-  65.41%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 65.37% { opacity: 0; }
+  65.67%, 100% { opacity: 1; }
 }
-.hw26 { animation: hw26 20.075000000000003s linear infinite; }
+.hw26 { animation: hw26 20.229999999999997s linear infinite; }
 @keyframes hw27 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 65.23% { opacity: 0; }
-  65.53%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 65.50% { opacity: 0; }
+  65.80%, 100% { opacity: 1; }
 }
-.hw27 { animation: hw27 20.075000000000003s linear infinite; }
+.hw27 { animation: hw27 20.229999999999997s linear infinite; }
 @keyframes hw28 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 65.35% { opacity: 0; }
-  65.65%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 65.62% { opacity: 0; }
+  65.92%, 100% { opacity: 1; }
 }
-.hw28 { animation: hw28 20.075000000000003s linear infinite; }
+.hw28 { animation: hw28 20.229999999999997s linear infinite; }
 @keyframes hw29 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 65.48% { opacity: 0; }
-  65.78%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 65.74% { opacity: 0; }
+  66.04%, 100% { opacity: 1; }
 }
-.hw29 { animation: hw29 20.075000000000003s linear infinite; }
+.hw29 { animation: hw29 20.229999999999997s linear infinite; }
 @keyframes hw30 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 65.60% { opacity: 0; }
-  65.90%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 65.87% { opacity: 0; }
+  66.17%, 100% { opacity: 1; }
 }
-.hw30 { animation: hw30 20.075000000000003s linear infinite; }
+.hw30 { animation: hw30 20.229999999999997s linear infinite; }
 @keyframes hw31 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 65.73% { opacity: 0; }
-  66.03%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 65.99% { opacity: 0; }
+  66.29%, 100% { opacity: 1; }
 }
-.hw31 { animation: hw31 20.075000000000003s linear infinite; }
+.hw31 { animation: hw31 20.229999999999997s linear infinite; }
 @keyframes hw32 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 65.85% { opacity: 0; }
-  66.15%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 66.11% { opacity: 0; }
+  66.41%, 100% { opacity: 1; }
 }
-.hw32 { animation: hw32 20.075000000000003s linear infinite; }
+.hw32 { animation: hw32 20.229999999999997s linear infinite; }
 @keyframes hw33 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 65.98% { opacity: 0; }
-  66.28%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 66.24% { opacity: 0; }
+  66.54%, 100% { opacity: 1; }
 }
-.hw33 { animation: hw33 20.075000000000003s linear infinite; }
+.hw33 { animation: hw33 20.229999999999997s linear infinite; }
 @keyframes hw34 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 66.10% { opacity: 0; }
-  66.40%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 66.36% { opacity: 0; }
+  66.66%, 100% { opacity: 1; }
 }
-.hw34 { animation: hw34 20.075000000000003s linear infinite; }
+.hw34 { animation: hw34 20.229999999999997s linear infinite; }
 @keyframes hw35 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 66.23% { opacity: 0; }
-  66.53%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 66.49% { opacity: 0; }
+  66.79%, 100% { opacity: 1; }
 }
-.hw35 { animation: hw35 20.075000000000003s linear infinite; }
+.hw35 { animation: hw35 20.229999999999997s linear infinite; }
 @keyframes hw36 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 66.35% { opacity: 0; }
-  66.65%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 66.61% { opacity: 0; }
+  66.91%, 100% { opacity: 1; }
 }
-.hw36 { animation: hw36 20.075000000000003s linear infinite; }
+.hw36 { animation: hw36 20.229999999999997s linear infinite; }
 @keyframes hw37 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 66.48% { opacity: 0; }
-  66.78%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 66.73% { opacity: 0; }
+  67.03%, 100% { opacity: 1; }
 }
-.hw37 { animation: hw37 20.075000000000003s linear infinite; }
+.hw37 { animation: hw37 20.229999999999997s linear infinite; }
 @keyframes hw38 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 66.60% { opacity: 0; }
-  66.90%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 66.86% { opacity: 0; }
+  67.16%, 100% { opacity: 1; }
 }
-.hw38 { animation: hw38 20.075000000000003s linear infinite; }
+.hw38 { animation: hw38 20.229999999999997s linear infinite; }
 @keyframes hw39 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 66.72% { opacity: 0; }
-  67.02%, 100% { opacity: 1; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 66.98% { opacity: 0; }
+  67.28%, 100% { opacity: 1; }
 }
-.hw39 { animation: hw39 20.075000000000003s linear infinite; }
+.hw39 { animation: hw39 20.229999999999997s linear infinite; }
 @keyframes hw40 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 66.85% { opacity: 0; }
-  67.15%, 100% { opacity: 1; }
-}
-.hw40 { animation: hw40 20.075000000000003s linear infinite; }
-@keyframes hw41 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 66.97% { opacity: 0; }
-  67.27%, 100% { opacity: 1; }
-}
-.hw41 { animation: hw41 20.075000000000003s linear infinite; }
-@keyframes hw42 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 67.10% { opacity: 0; }
+  0%, 14.83% { opacity: 1; }
+  14.84%, 67.10% { opacity: 0; }
   67.40%, 100% { opacity: 1; }
 }
-.hw42 { animation: hw42 20.075000000000003s linear infinite; }
-@keyframes hw43 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 67.22% { opacity: 0; }
-  67.52%, 100% { opacity: 1; }
+.hw40 { animation: hw40 20.229999999999997s linear infinite; }
+@keyframes hw41 {
+  0%, 14.83% { opacity: 1; }
+  14.84%, 67.23% { opacity: 0; }
+  67.53%, 100% { opacity: 1; }
 }
-.hw43 { animation: hw43 20.075000000000003s linear infinite; }
-@keyframes hw44 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 67.35% { opacity: 0; }
+.hw41 { animation: hw41 20.229999999999997s linear infinite; }
+@keyframes hw42 {
+  0%, 14.83% { opacity: 1; }
+  14.84%, 67.35% { opacity: 0; }
   67.65%, 100% { opacity: 1; }
 }
-.hw44 { animation: hw44 20.075000000000003s linear infinite; }
-@keyframes hw45 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 67.47% { opacity: 0; }
+.hw42 { animation: hw42 20.229999999999997s linear infinite; }
+@keyframes hw43 {
+  0%, 14.83% { opacity: 1; }
+  14.84%, 67.47% { opacity: 0; }
   67.77%, 100% { opacity: 1; }
 }
-.hw45 { animation: hw45 20.075000000000003s linear infinite; }
-@keyframes hw46 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 67.60% { opacity: 0; }
+.hw43 { animation: hw43 20.229999999999997s linear infinite; }
+@keyframes hw44 {
+  0%, 14.83% { opacity: 1; }
+  14.84%, 67.60% { opacity: 0; }
   67.90%, 100% { opacity: 1; }
 }
-.hw46 { animation: hw46 20.075000000000003s linear infinite; }
-@keyframes hw47 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 67.72% { opacity: 0; }
+.hw44 { animation: hw44 20.229999999999997s linear infinite; }
+@keyframes hw45 {
+  0%, 14.83% { opacity: 1; }
+  14.84%, 67.72% { opacity: 0; }
   68.02%, 100% { opacity: 1; }
 }
-.hw47 { animation: hw47 20.075000000000003s linear infinite; }
-@keyframes hw48 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 67.85% { opacity: 0; }
-  68.15%, 100% { opacity: 1; }
+.hw45 { animation: hw45 20.229999999999997s linear infinite; }
+@keyframes hw46 {
+  0%, 14.83% { opacity: 1; }
+  14.84%, 67.84% { opacity: 0; }
+  68.14%, 100% { opacity: 1; }
 }
-.hw48 { animation: hw48 20.075000000000003s linear infinite; }
-@keyframes hw49 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 67.97% { opacity: 0; }
+.hw46 { animation: hw46 20.229999999999997s linear infinite; }
+@keyframes hw47 {
+  0%, 14.83% { opacity: 1; }
+  14.84%, 67.97% { opacity: 0; }
   68.27%, 100% { opacity: 1; }
 }
-.hw49 { animation: hw49 20.075000000000003s linear infinite; }
-@keyframes hw50 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 68.09% { opacity: 0; }
+.hw47 { animation: hw47 20.229999999999997s linear infinite; }
+@keyframes hw48 {
+  0%, 14.83% { opacity: 1; }
+  14.84%, 68.09% { opacity: 0; }
   68.39%, 100% { opacity: 1; }
 }
-.hw50 { animation: hw50 20.075000000000003s linear infinite; }
-@keyframes hw51 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 68.22% { opacity: 0; }
+.hw48 { animation: hw48 20.229999999999997s linear infinite; }
+@keyframes hw49 {
+  0%, 14.83% { opacity: 1; }
+  14.84%, 68.22% { opacity: 0; }
   68.52%, 100% { opacity: 1; }
 }
-.hw51 { animation: hw51 20.075000000000003s linear infinite; }
-@keyframes hw52 {
-  0%, 14.94% { opacity: 1; }
-  14.95%, 68.34% { opacity: 0; }
+.hw49 { animation: hw49 20.229999999999997s linear infinite; }
+@keyframes hw50 {
+  0%, 14.83% { opacity: 1; }
+  14.84%, 68.34% { opacity: 0; }
   68.64%, 100% { opacity: 1; }
 }
-.hw52 { animation: hw52 20.075000000000003s linear infinite; }
+.hw50 { animation: hw50 20.229999999999997s linear infinite; }
+@keyframes hw51 {
+  0%, 14.83% { opacity: 1; }
+  14.84%, 68.46% { opacity: 0; }
+  68.76%, 100% { opacity: 1; }
+}
+.hw51 { animation: hw51 20.229999999999997s linear infinite; }
+@keyframes hw52 {
+  0%, 14.83% { opacity: 1; }
+  14.84%, 68.59% { opacity: 0; }
+  68.89%, 100% { opacity: 1; }
+}
+.hw52 { animation: hw52 20.229999999999997s linear infinite; }
 @keyframes cursor-blink {
   0%, 45% { opacity: 1; }
   50%, 100% { opacity: 0; }
@@ -909,6 +788,26 @@ text, tspan {white-space: pre;}
 <animate attributeName="x1" values="-205;319" dur="7s" repeatCount="indefinite"/>
 <animate attributeName="x2" values="-45;479" dur="7s" repeatCount="indefinite"/>
 </linearGradient>
+<clipPath id="fut-clip"><path d="M18,0 H232 A18,18 0 0 1 250,18 V292 A26,26 0 0 1 236,315 L135,362 A22,22 0 0 1 115,362 L14,315 A26,26 0 0 1 0,292 V18 A18,18 0 0 1 18,0 Z"/></clipPath>
+<linearGradient id="fut-bronze" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#f0d3b4"/><stop offset="45%" stop-color="#c88a5a"/>
+<stop offset="55%" stop-color="#e2ab7f"/><stop offset="100%" stop-color="#9c6238"/>
+</linearGradient>
+<linearGradient id="fut-silver" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#f6f7f8"/><stop offset="45%" stop-color="#b9bfc4"/>
+<stop offset="55%" stop-color="#dfe3e6"/><stop offset="100%" stop-color="#8f979d"/>
+</linearGradient>
+<linearGradient id="fut-gold" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#fdf0c0"/><stop offset="45%" stop-color="#e0b44a"/>
+<stop offset="55%" stop-color="#f5da8e"/><stop offset="100%" stop-color="#b8892a"/>
+</linearGradient>
+<linearGradient id="fut-shine" gradientUnits="userSpaceOnUse" x1="-180" y1="0" x2="-60" y2="368">
+<stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+<stop offset="50%" stop-color="#ffffff" stop-opacity="0.85"/>
+<stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+<animate attributeName="x1" values="-180;310" dur="5.5s" repeatCount="indefinite"/>
+<animate attributeName="x2" values="-60;430" dur="5.5s" repeatCount="indefinite"/>
+</linearGradient>
 <pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse">
 <rect width="4" height="2" fill="#586e75" opacity="0.06"/>
 <animateTransform attributeName="patternTransform" type="translate" values="0 0;0 4" dur="2.4s" repeatCount="indefinite"/>
@@ -926,7 +825,7 @@ text, tspan {white-space: pre;}
 <path d="M1 780 L984 780 L984 797 A12 12 0 0 1 972 809 L13 809 A12 12 0 0 1 1 797 Z" fill="#eee8d5"/>
 <rect x="1" y="780" width="130" height="30" fill="#268bd2"/>
 <text x="20" y="800" font-size="13" fill="#fdf6e3">[0] NIXOS</text>
-<text x="150" y="800" font-size="13" fill="#657b83">0:flake*   1:session-   │   ~/github/YuukiFST</text>
+<text x="150" y="800" font-size="13" fill="#657b83">0:gitfut*  1:session-   │   ~/github/YuukiFST</text>
 <text x="965" y="800" text-anchor="end" font-size="13" fill="#657b83">main ✓   │   nixos-unstable</text>
 <line x1="330" y1="36" x2="330" y2="780" stroke="#c8c0aa" stroke-width="1"/>
 <rect x="1" y="1" width="983px" height="808px" fill="none" stroke="#93a1a1" stroke-width="2" rx="12"/>
@@ -953,41 +852,12 @@ text, tspan {white-space: pre;}
 <tspan x="15" y="296" class="reveal rv24"><tspan class="logo-2">         ▟███▛  ▜███▙       </tspan><tspan class="logo-1">▜███▙</tspan></tspan>
 <tspan x="15" y="308" class="reveal rv25"><tspan class="logo-2">         ▝▀▀▀    ▀▀▀▀▘       </tspan><tspan class="logo-1">▀▀▀▘</tspan></tspan>
 </text>
-<text class="reveal rv74" font-size="10px" fill="url(#sheen)">
+<text class="reveal rv45" font-size="10px" fill="url(#sheen)">
 <tspan x="15" y="80">          ▗▄▄▄       ▗▄▄▄▄    ▄▄▄▖</tspan><tspan x="15" y="92">          ▜███▙       ▜███▙  ▟███▛</tspan><tspan x="15" y="104">           ▜███▙       ▜███▙▟███▛</tspan><tspan x="15" y="116">            ▜███▙       ▜██████▛</tspan><tspan x="15" y="128">     ▟█████████████████▙ ▜████▛     ▟▙</tspan><tspan x="15" y="140">    ▟███████████████████▙ ▜███▙    ▟██▙</tspan><tspan x="15" y="152">           ▄▄▄▄▖           ▜███▙  ▟███▛</tspan><tspan x="15" y="164">          ▟███▛             ▜██▛ ▟███▛</tspan><tspan x="15" y="176">         ▟███▛               ▜▛ ▟███▛</tspan><tspan x="15" y="188">▟███████████▛                  ▟██████████▙</tspan><tspan x="15" y="200">▜██████████▛                  ▟███████████▛</tspan><tspan x="15" y="212">      ▟███▛ ▟▙               ▟███▛</tspan><tspan x="15" y="224">     ▟███▛ ▟██▙             ▟███▛</tspan><tspan x="15" y="236">    ▟███▛  ▜███▙           ▝▀▀▀▀</tspan><tspan x="15" y="248">    ▜██▛    ▜███▙ ▜██████████████████▛</tspan><tspan x="15" y="260">     ▜▛     ▟████▙ ▜████████████████▛</tspan><tspan x="15" y="272">           ▟██████▙       ▜███▙</tspan><tspan x="15" y="284">          ▟███▛▜███▙       ▜███▙</tspan><tspan x="15" y="296">         ▟███▛  ▜███▙       ▜███▙</tspan><tspan x="15" y="308">         ▝▀▀▀    ▀▀▀▀▘       ▀▀▀▘</tspan>
 </text>
 <text x="15" y="30" fill="#657b83" font-size="11px">
 
-<tspan x="15" y="334" class="reveal rv38"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">bat flake.nix</tspan></tspan>
-<tspan x="15" y="356" class="reveal rv39"><tspan class="nix-punct">{</tspan></tspan>
-<tspan x="15" y="369" class="reveal rv40"><tspan class="nix-attr">  description </tspan><tspan class="nix-punct">=</tspan><tspan class="nix-attr"> </tspan><tspan class="nix-str">"this README, rendered"</tspan><tspan class="nix-punct">;</tspan></tspan>
-<tspan x="15" y="382" class="reveal rv41"/>
-<tspan x="15" y="395" class="reveal rv42"><tspan class="nix-attr">  inputs</tspan><tspan class="nix-punct">.</tspan><tspan class="nix-kw">nixpkgs</tspan><tspan class="nix-punct">.</tspan><tspan class="nix-attr">url </tspan><tspan class="nix-punct">=</tspan></tspan>
-<tspan x="15" y="408" class="reveal rv43"><tspan class="nix-attr">    </tspan><tspan class="nix-str">"github:NixOS/nixpkgs/nixos-unstable"</tspan><tspan class="nix-punct">;</tspan></tspan>
-<tspan x="15" y="421" class="reveal rv44"/>
-<tspan x="15" y="434" class="reveal rv45"><tspan class="nix-attr">  outputs </tspan><tspan class="nix-punct">=</tspan><tspan class="nix-attr"> </tspan><tspan class="nix-punct">{</tspan><tspan class="nix-attr"> </tspan><tspan class="nix-kw">self</tspan><tspan class="nix-punct">,</tspan><tspan class="nix-attr"> </tspan><tspan class="nix-kw">nixpkgs</tspan><tspan class="nix-attr"> </tspan><tspan class="nix-punct">}</tspan><tspan class="nix-punct">:</tspan></tspan>
-<tspan x="15" y="447" class="reveal rv46"><tspan class="nix-attr">    </tspan><tspan class="nix-kw">let</tspan></tspan>
-<tspan x="15" y="460" class="reveal rv47"><tspan class="nix-attr">      system </tspan><tspan class="nix-punct">=</tspan><tspan class="nix-attr"> </tspan><tspan class="nix-str">"x86_64-linux"</tspan><tspan class="nix-punct">;</tspan></tspan>
-<tspan x="15" y="473" class="reveal rv48"><tspan class="nix-attr">      </tspan><tspan class="nix-kw">pkgs</tspan><tspan class="nix-attr"> </tspan><tspan class="nix-punct">=</tspan><tspan class="nix-attr"> </tspan><tspan class="nix-kw">nixpkgs</tspan><tspan class="nix-punct">.</tspan><tspan class="nix-attr">legacyPackages</tspan><tspan class="nix-punct">.</tspan><tspan class="nix-punct">${</tspan><tspan class="nix-attr">system</tspan><tspan class="nix-punct">}</tspan><tspan class="nix-punct">;</tspan></tspan>
-<tspan x="15" y="486" class="reveal rv49"><tspan class="nix-attr">      python </tspan><tspan class="nix-punct">=</tspan><tspan class="nix-attr"> </tspan><tspan class="nix-kw">pkgs</tspan><tspan class="nix-punct">.</tspan><tspan class="nix-attr">python3</tspan><tspan class="nix-punct">.</tspan><tspan class="nix-attr">withPackages </tspan><tspan class="nix-punct">(</tspan><tspan class="nix-attr">ps</tspan><tspan class="nix-punct">:</tspan></tspan>
-<tspan x="15" y="499" class="reveal rv50"><tspan class="nix-attr">        </tspan><tspan class="nix-kw">with</tspan><tspan class="nix-attr"> ps</tspan><tspan class="nix-punct">;</tspan><tspan class="nix-attr"> </tspan><tspan class="nix-punct">[</tspan><tspan class="nix-attr"> requests lxml dateutil </tspan><tspan class="nix-punct">]</tspan><tspan class="nix-punct">)</tspan><tspan class="nix-punct">;</tspan></tspan>
-<tspan x="15" y="512" class="reveal rv51"><tspan class="nix-attr">    </tspan><tspan class="nix-kw">in</tspan><tspan class="nix-attr"> </tspan><tspan class="nix-punct">{</tspan></tspan>
-<tspan x="15" y="525" class="reveal rv52"><tspan class="nix-attr">      packages</tspan><tspan class="nix-punct">.</tspan><tspan class="nix-punct">${</tspan><tspan class="nix-attr">system</tspan><tspan class="nix-punct">}</tspan><tspan class="nix-punct">.</tspan><tspan class="nix-attr">default </tspan><tspan class="nix-punct">=</tspan></tspan>
-<tspan x="15" y="538" class="reveal rv53"><tspan class="nix-attr">        </tspan><tspan class="nix-kw">pkgs</tspan><tspan class="nix-punct">.</tspan><tspan class="nix-attr">runCommand </tspan><tspan class="nix-str">"profile-svg"</tspan><tspan class="nix-attr"> </tspan><tspan class="nix-punct">{</tspan><tspan class="nix-attr"> </tspan><tspan class="nix-punct">}</tspan><tspan class="nix-attr"> </tspan><tspan class="nix-punct">''</tspan></tspan>
-<tspan x="15" y="551" class="reveal rv54"><tspan class="nix-attr">          cd </tspan><tspan class="nix-punct">${</tspan><tspan class="nix-kw">self</tspan><tspan class="nix-punct">}</tspan></tspan>
-<tspan x="15" y="564" class="reveal rv55"><tspan class="nix-attr">          </tspan><tspan class="nix-punct">${</tspan><tspan class="nix-attr">python</tspan><tspan class="nix-punct">}</tspan><tspan class="nix-attr">/bin/python today</tspan><tspan class="nix-punct">.</tspan><tspan class="nix-attr">py</tspan></tspan>
-<tspan x="15" y="577" class="reveal rv56"><tspan class="nix-attr">          cp *_mode</tspan><tspan class="nix-punct">.</tspan><tspan class="nix-attr">svg $out</tspan></tspan>
-<tspan x="15" y="590" class="reveal rv57"><tspan class="nix-attr">        </tspan><tspan class="nix-punct">''</tspan><tspan class="nix-punct">;</tspan></tspan>
-<tspan x="15" y="603" class="reveal rv58"/>
-<tspan x="15" y="616" class="reveal rv59"><tspan class="nix-attr">      checks</tspan><tspan class="nix-punct">.</tspan><tspan class="nix-punct">${</tspan><tspan class="nix-attr">system</tspan><tspan class="nix-punct">}</tspan><tspan class="nix-punct">.</tspan><tspan class="nix-attr">template </tspan><tspan class="nix-punct">=</tspan></tspan>
-<tspan x="15" y="629" class="reveal rv60"><tspan class="nix-attr">        </tspan><tspan class="nix-kw">pkgs</tspan><tspan class="nix-punct">.</tspan><tspan class="nix-attr">runCommand </tspan><tspan class="nix-str">"builds"</tspan><tspan class="nix-attr"> </tspan><tspan class="nix-punct">{</tspan><tspan class="nix-attr"> </tspan><tspan class="nix-punct">}</tspan><tspan class="nix-attr"> </tspan><tspan class="nix-punct">''</tspan></tspan>
-<tspan x="15" y="642" class="reveal rv61"><tspan class="nix-attr">          cd </tspan><tspan class="nix-punct">${</tspan><tspan class="nix-kw">self</tspan><tspan class="nix-punct">}</tspan><tspan class="nix-attr">/scripts</tspan></tspan>
-<tspan x="15" y="655" class="reveal rv62"><tspan class="nix-attr">          </tspan><tspan class="nix-punct">${</tspan><tspan class="nix-attr">python</tspan><tspan class="nix-punct">}</tspan><tspan class="nix-attr">/bin/python \</tspan></tspan>
-<tspan x="15" y="668" class="reveal rv63"><tspan class="nix-attr">            build_svg_template</tspan><tspan class="nix-punct">.</tspan><tspan class="nix-attr">py</tspan></tspan>
-<tspan x="15" y="681" class="reveal rv64"><tspan class="nix-attr">          touch $out</tspan></tspan>
-<tspan x="15" y="694" class="reveal rv65"><tspan class="nix-attr">        </tspan><tspan class="nix-punct">''</tspan><tspan class="nix-punct">;</tspan></tspan>
-<tspan x="15" y="707" class="reveal rv66"><tspan class="nix-attr">    </tspan><tspan class="nix-punct">}</tspan><tspan class="nix-punct">;</tspan></tspan>
-<tspan x="15" y="720" class="reveal rv67"><tspan class="nix-punct">}</tspan></tspan>
+<tspan x="15" y="326" class="reveal rv38"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">curl -s gitfut.com/YuukiFST</tspan></tspan>
 </text>
 <text x="338" y="30" fill="#657b83">
 
@@ -1010,17 +880,33 @@ text, tspan {white-space: pre;}
 <tspan x="338" y="426" class="reveal rv35"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">cat ~/links</tspan></tspan>
 <tspan x="338" y="446" class="reveal rv36"><tspan class="dim"> </tspan><tspan class="key">portfolio</tspan><tspan class="dim">  → </tspan><tspan class="value">fausto-yuuki.vercel.app</tspan></tspan>
 <tspan x="338" y="466" class="reveal rv37"><tspan class="dim"> </tspan><tspan class="key">linkedin</tspan><tspan class="dim">   → </tspan><tspan class="value">fausto-yuuki</tspan></tspan>
-<tspan x="338" y="496" class="reveal rv68"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">git shortlog -sn --all | head -1</tspan></tspan>
-<tspan x="338" y="516" class="reveal rv69"><tspan class="dim">   </tspan><tspan class="value" id="commit_data">875</tspan><tspan class="dim" id="commit_data_dots"></tspan><tspan class="dim">  commits authored by YuukiFST</tspan></tspan>
-<tspan x="338" y="546" class="reveal rv70"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">cloc --vcs=git ~/github/*</tspan></tspan>
-<tspan x="338" y="566" class="reveal rv71"><tspan class="dim">   </tspan><tspan class="value" id="loc_data">715,778</tspan><tspan class="dim" id="loc_data_dots"></tspan><tspan class="dim"> lines of code   </tspan><tspan class="addColor" id="loc_add">902,623</tspan><tspan class="dim" id="loc_add_dots"></tspan><tspan class="dim">++ / </tspan><tspan class="delColor" id="loc_del">186,845</tspan><tspan class="dim" id="loc_del_dots"></tspan><tspan class="dim">--</tspan></tspan>
-<tspan x="338" y="596" class="reveal rv72"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">gh api graphql -f query=contributionCalendar</tspan></tspan>
-<tspan x="338" y="746" class="reveal rv73"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command"/><tspan class="cursor">█</tspan></tspan>
+<tspan x="338" y="496" class="reveal rv39"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">git shortlog -sn --all | head -1</tspan></tspan>
+<tspan x="338" y="516" class="reveal rv40"><tspan class="dim">   </tspan><tspan class="value" id="commit_data">876</tspan><tspan class="dim" id="commit_data_dots"></tspan><tspan class="dim">  commits authored by YuukiFST</tspan></tspan>
+<tspan x="338" y="546" class="reveal rv41"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">cloc --vcs=git ~/github/*</tspan></tspan>
+<tspan x="338" y="566" class="reveal rv42"><tspan class="dim">   </tspan><tspan class="value" id="loc_data">715,829</tspan><tspan class="dim" id="loc_data_dots"></tspan><tspan class="dim"> lines of code   </tspan><tspan class="addColor" id="loc_add">903,882</tspan><tspan class="dim" id="loc_add_dots"></tspan><tspan class="dim">++ / </tspan><tspan class="delColor" id="loc_del">188,053</tspan><tspan class="dim" id="loc_del_dots"></tspan><tspan class="dim">--</tspan></tspan>
+<tspan x="338" y="596" class="reveal rv43"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">gh api graphql -f query=contributionCalendar</tspan></tspan>
+<tspan x="338" y="746" class="reveal rv44"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command"/><tspan class="cursor">█</tspan></tspan>
 </text>
-<text id="heatmap_months" class="dim reveal rv75" font-size="11px" fill="#93a1a1">
+<g transform="translate(40,344)">
+<g class="reveal rv53">
+<path id="fut_plate" d="M18,0 H232 A18,18 0 0 1 250,18 V292 A26,26 0 0 1 236,315 L135,362 A22,22 0 0 1 115,362 L14,315 A26,26 0 0 1 0,292 V18 A18,18 0 0 1 18,0 Z" fill="url(#fut-silver)"/>
+<image id="fut_avatar" x="92" y="34" width="106" height="106" preserveAspectRatio="xMidYMid slice" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAaQAAAGkCAIAAADxLsZiAAAF20lEQVR4nOzXUZHqQBBA0cer2MAJnqIFT3ESAyNh/1YABTNL7jkGuqsm3Gq2McY/gKv7v3oBgBnEDkgQOyBB7IAEsQMSxA5IEDsgQeyABLEDEsQOSBA7IEHsgASxAxLEDkgQOyBB7IAEsQMSxA5IEDsgQeyABLEDEsQOSBA7IEHsgASxAxLEDkgQOyBB7IAEsQMSxA5IEDsgQeyABLEDEsQOSBA7IEHsgASxAxLEDkgQOyBB7IAEsQMSxA5IEDsgQeyABLEDEsQOSBA7IEHsgASxAxLEDkgQOyBB7IAEsQMSxA5IEDsgQeyABLEDEsQOSBA7IEHsgASxAxLEDkgQOyBB7IAEsQMSxA5IEDsgQeyABLEDEsQOSBA7IEHsgASxAxLEDkgQOyBB7IAEsQMSxA5IEDsgQeyABLEDEsQOSBA7IEHsgASxAxLEDkgQOyBB7IAEsQMSxA5IEDsgQeyABLEDEsQOSBA7IEHsgASxAxLEDkgQOyBB7IAEsQMSxA5IEDsgQeyAhG3apHM/ps3iZffnY/UK7+Sr+wpzvjqXHZAgdkCC2AEJYgckiB2QIHZAgtgBCWIHJIgdkCB2QILYAQliBySIHZAgdkCC2AEJYgckiB2QIHZAgtgBCWIHJIgdkCB2QILYAQliBySIHZAgdkCC2AEJYgckiB2QIHZAgtgBCWIHJIgdkCB2QILYAQliBySIHZAgdkCC2AEJYgckiB2QIHZAgtgBCWIHJIgdkCB2QILYAQliBySIHZAgdkCC2AEJYgckiB2QIHZAgtgBCWIHJIgdkCB2QILYAQliBySIHZAgdkCC2AEJYgckiB2QIHZAgtgBCWIHJIgdkLCtXoC/5dyP1SvAR7jsgASxAxLEDkgQOyBB7IAEsQMSxA5IEDsgQeyABLEDEsQOSBA7IEHsgASxAxLEDkgQOyBB7IAEsQMSxA5IEDsgQeyABLEDEsQOSBA7IEHsgASxAxLEDkgQOyBB7IAEsQMSxA5IEDsgQeyABLEDEsQOSBA7IEHsgASxAxLEDkgQOyBB7IAEsQMSxA5IEDsgQeyABLEDEsQOSBA7IEHsgASxAxLEDkgQOyBB7IAEsQMSxA5IEDsgQeyABLEDEsQOSBA7IEHsgASxAxLEDkgQOyBB7IAEsQMSxA5IEDsgQeyABLEDEm5jjNU7fKtzP1av8H7352P1Cu/kjfjlsgMSxA5IEDsgQeyABLEDEsQOSBA7IEHsgASxAxLEDkgQOyBB7IAEsQMSxA5IEDsgQeyABLEDEsQOSBA7IEHsgASxAxLEDkgQOyBB7IAEsQMSxA5IEDsgQeyABLEDEsQOSBA7IEHsgASxAxLEDkgQOyBB7IAEsQMSxA5IEDsgQeyABLEDEsQOSBA7IEHsgASxAxLEDkgQOyBB7IAEsQMSxA5IEDsgQeyABLEDEsQOSBA7IEHsgASxAxLEDkgQOyBB7IAEsQMSxA5IEDsgQeyABLEDEsQOSBA7IEHsgIRt2qRzP6bNggu73k/p/nxMmDIvdpc055F42fUe6Hqlm8bfWCBB7IAEsQMSxA5IEDsgQeyABLEDEsQOSBA7IEHsgASxAxLEDkgQOyBB7IAEsQMSxA5IEDsgQeyABLEDEsQOSBA7IEHsgASxAxLEDkgQOyBB7IAEsQMSxA5IEDsgQeyABLEDEsQOSBA7IEHsgASxAxLEDkgQOyBB7IAEsQMSxA5IEDsgQeyABLEDEsQOSBA7IEHsgASxAxLEDkgQOyBB7IAEsQMSxA5IEDsgQeyABLEDEsQOSBA7IEHsgASxAxLEDkgQOyBB7IAEsQMSxA5IEDsgQeyABLEDEsQOSBA7IOE2xli9A8DHueyABLEDEsQOSBA7IEHsgASxAxLEDkgQOyBB7IAEsQMSxA5IEDsgQeyABLEDEsQOSBA7IEHsgASxAxLEDkgQOyBB7IAEsQMSxA5IEDsgQeyABLEDEsQOSBA7IEHsgASxAxLEDkgQOyBB7ICEnwAAAP//uHIi1y3IRGgAAAAASUVORK5CYII="/>
+<text id="fut_rating" class="fut-rating" x="30" y="66">65</text>
+<text id="fut_position" class="fut-position" x="30" y="92">CAM</text>
+<text id="fut_name" class="fut-name" x="125" y="196" text-anchor="middle">YUUKI</text>
+<line x1="45" y1="212" x2="205" y2="212" stroke="#303536" stroke-opacity="0.35"/>
+<line x1="125" y1="228" x2="125" y2="330" stroke="#303536" stroke-opacity="0.25"/>
+<rect x="0" y="0" width="250" height="368" fill="url(#fut-shine)" clip-path="url(#fut-clip)"/>
+</g>
+<g class="reveal rv46"><text id="fut_pac" class="fut-stat" x="66" y="250" text-anchor="end">69</text><text class="fut-label" x="74" y="250">PAC</text></g><g class="reveal rv47"><text id="fut_dri" class="fut-stat" x="158" y="250" text-anchor="end">74</text><text class="fut-label" x="166" y="250">DRI</text></g><g class="reveal rv48"><text id="fut_sho" class="fut-stat" x="66" y="284" text-anchor="end">47</text><text class="fut-label" x="74" y="284">SHO</text></g><g class="reveal rv49"><text id="fut_def" class="fut-stat" x="158" y="284" text-anchor="end">57</text><text class="fut-label" x="166" y="284">DEF</text></g><g class="reveal rv50"><text id="fut_pas" class="fut-stat" x="66" y="318" text-anchor="end">65</text><text class="fut-label" x="74" y="318">PAS</text></g><g class="reveal rv51"><text id="fut_phy" class="fut-stat" x="158" y="318" text-anchor="end">66</text><text class="fut-label" x="166" y="318">PHY</text></g>
+</g>
+<text class="reveal rv52" x="165" y="738" text-anchor="middle" font-size="11px">
+<tspan class="value" id="fut_tier">65 SILVER · Fantasista</tspan>
+</text>
+<text id="heatmap_months" class="dim reveal rv54" font-size="11px" fill="#93a1a1">
 <tspan x="338" y="616">Aug</tspan><tspan x="393" y="616">Sep</tspan><tspan x="437" y="616">Oct</tspan><tspan x="481" y="616">Nov</tspan><tspan x="536" y="616">Dec</tspan><tspan x="580" y="616">Jan</tspan><tspan x="624" y="616">Feb</tspan><tspan x="668" y="616">Mar</tspan><tspan x="723" y="616">Apr</tspan><tspan x="767" y="616">May</tspan><tspan x="822" y="616">Jun</tspan><tspan x="866" y="616">Jul</tspan><tspan x="910" y="616">Aug</tspan></text>
 <g id="heatmap" transform="translate(338,626)"><g class="reveal hw0"><rect class="lvl0" x="0" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="0" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="0" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="0" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="0" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="0" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="0" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw1"><rect class="lvl0" x="11" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="11" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="11" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="11" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="11" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="11" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="11" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw2"><rect class="lvl0" x="22" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="22" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="22" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="22" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="22" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="22" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="22" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw3"><rect class="lvl0" x="33" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="33" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="33" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="33" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="33" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="33" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="33" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw4"><rect class="lvl0" x="44" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="44" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="44" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="44" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="44" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="44" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="44" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw5"><rect class="lvl0" x="55" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="55" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="55" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="55" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="55" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="55" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="55" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw6"><rect class="lvl0" x="66" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="66" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="66" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="66" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="66" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="66" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="66" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw7"><rect class="lvl0" x="77" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="77" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="77" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="77" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="77" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="77" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="77" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw8"><rect class="lvl0" x="88" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="88" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="88" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="88" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="88" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="88" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="88" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw9"><rect class="lvl0" x="99" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="99" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="99" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="99" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="99" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="99" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="99" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw10"><rect class="lvl0" x="110" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="110" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="110" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="110" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="110" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="110" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="110" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw11"><rect class="lvl0" x="121" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="121" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="121" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="121" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="121" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="121" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="121" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw12"><rect class="lvl0" x="132" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="132" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="132" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="132" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="132" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="132" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="132" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw13"><rect class="lvl0" x="143" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="143" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="143" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="143" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="143" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="143" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="143" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw14"><rect class="lvl0" x="154" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="154" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="154" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="154" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="154" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="154" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="154" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw15"><rect class="lvl0" x="165" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="165" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="165" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="165" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="165" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="165" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="165" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw16"><rect class="lvl0" x="176" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="176" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="176" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="176" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="176" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="176" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="176" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw17"><rect class="lvl0" x="187" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="187" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="187" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="187" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="187" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="187" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="187" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw18"><rect class="lvl0" x="198" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="198" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="198" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="198" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="198" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="198" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="198" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw19"><rect class="lvl0" x="209" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="209" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="209" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="209" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="209" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="209" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="209" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw20"><rect class="lvl0" x="220" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="220" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="220" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="220" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="220" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="220" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="220" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw21"><rect class="lvl0" x="231" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="231" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="231" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="231" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="231" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="231" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="231" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw22"><rect class="lvl1" x="242" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="242" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="242" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="242" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="242" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="242" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="242" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw23"><rect class="lvl0" x="253" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="253" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="253" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="253" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="253" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="253" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="253" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw24"><rect class="lvl0" x="264" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="264" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="264" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="264" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="264" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="264" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="264" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw25"><rect class="lvl0" x="275" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="275" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="275" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="275" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="275" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="275" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="275" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw26"><rect class="lvl0" x="286" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="286" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="286" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="286" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="286" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="286" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="286" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw27"><rect class="lvl0" x="297" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="297" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="297" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="297" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="297" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="297" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="297" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw28"><rect class="lvl0" x="308" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="308" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="308" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="308" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="308" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="308" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="308" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw29"><rect class="lvl0" x="319" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="319" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="319" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="319" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="319" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="319" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="319" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw30"><rect class="lvl1" x="330" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="330" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="330" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="330" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="330" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="330" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="330" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw31"><rect class="lvl0" x="341" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="341" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="341" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="341" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="341" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="341" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="341" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw32"><rect class="lvl1" x="352" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="352" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="352" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="352" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="352" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="352" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="352" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw33"><rect class="lvl1" x="363" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="363" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="363" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="363" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="363" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="363" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="363" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw34"><rect class="lvl1" x="374" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="374" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="374" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="374" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="374" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="374" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="374" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw35"><rect class="lvl0" x="385" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="385" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="385" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="385" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="385" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="385" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="385" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw36"><rect class="lvl1" x="396" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="396" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="396" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="396" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="396" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="396" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="396" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw37"><rect class="lvl0" x="407" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="407" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="407" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="407" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="407" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="407" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="407" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw38"><rect class="lvl0" x="418" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="418" y="11" width="9" height="9" rx="2"/><rect class="lvl2" x="418" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="418" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="418" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="418" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="418" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw39"><rect class="lvl1" x="429" y="0" width="9" height="9" rx="2"/><rect class="lvl2" x="429" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="429" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="429" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="429" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="429" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="429" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw40"><rect class="lvl1" x="440" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="440" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="440" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="440" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="440" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="440" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="440" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw41"><rect class="lvl0" x="451" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="451" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="451" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="451" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="451" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="451" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="451" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw42"><rect class="lvl0" x="462" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="462" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="462" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="462" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="462" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="462" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="462" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw43"><rect class="lvl0" x="473" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="473" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="473" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="473" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="473" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="473" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="473" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw44"><rect class="lvl0" x="484" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="484" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="484" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="484" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="484" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="484" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="484" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw45"><rect class="lvl1" x="495" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="495" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="495" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="495" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="495" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="495" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="495" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw46"><rect class="lvl1" x="506" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="506" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="506" y="22" width="9" height="9" rx="2"/><rect class="lvl2" x="506" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="506" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="506" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="506" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw47"><rect class="lvl1" x="517" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="517" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="517" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="517" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="517" y="44" width="9" height="9" rx="2"/><rect class="lvl2" x="517" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="517" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw48"><rect class="lvl1" x="528" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="528" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="528" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="528" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="528" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="528" y="55" width="9" height="9" rx="2"/><rect class="lvl4" x="528" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw49"><rect class="lvl1" x="539" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="539" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="539" y="22" width="9" height="9" rx="2"/><rect class="lvl2" x="539" y="33" width="9" height="9" rx="2"/><rect class="lvl2" x="539" y="44" width="9" height="9" rx="2"/><rect class="lvl2" x="539" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="539" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw50"><rect class="lvl0" x="550" y="0" width="9" height="9" rx="2"/><rect class="lvl2" x="550" y="11" width="9" height="9" rx="2"/><rect class="lvl2" x="550" y="22" width="9" height="9" rx="2"/><rect class="lvl2" x="550" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="550" y="44" width="9" height="9" rx="2"/><rect class="lvl2" x="550" y="55" width="9" height="9" rx="2"/><rect class="lvl4" x="550" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw51"><rect class="lvl2" x="561" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="561" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="561" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="561" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="561" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="561" y="55" width="9" height="9" rx="2"/><rect class="lvl2" x="561" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw52"><rect class="lvl0" x="572" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="572" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="572" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="572" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="572" y="44" width="9" height="9" rx="2"/></g></g>
-<g class="reveal rv75">
+<g class="reveal rv54">
 <text class="dim" font-size="11px" fill="#93a1a1" x="338" y="716">Less</text>
 <rect class="lvl0" x="382" y="707" width="9" height="9" rx="2"/><rect class="lvl1" x="393" y="707" width="9" height="9" rx="2"/><rect class="lvl2" x="404" y="707" width="9" height="9" rx="2"/><rect class="lvl3" x="415" y="707" width="9" height="9" rx="2"/><rect class="lvl4" x="426" y="707" width="9" height="9" rx="2"/>
 <text class="dim" font-size="11px" fill="#93a1a1" x="443" y="716">More</text>
@@ -1031,9 +917,9 @@ text, tspan {white-space: pre;}
 <rect class="type-mask type-1" x="482.0" y="410" width="107.6" height="19" fill="#fdf6e3"/>
 <g opacity="0.4" filter="url(#phosphor)"><rect class="caret caret-1" style="animation-delay: 0.09s" x="482.0" y="410" width="9.6" height="19" fill="#6c71c4"/></g>
 <rect class="caret caret-1" x="482.0" y="410" width="9.6" height="19" fill="#6c71c4"/>
-<rect class="type-mask type-2" x="114.0" y="323" width="87.8" height="14" fill="#fdf6e3"/>
-<g opacity="0.4" filter="url(#phosphor)"><rect class="caret caret-2" style="animation-delay: 0.09s" x="114.0" y="323" width="6.6" height="14" fill="#6c71c4"/></g>
-<rect class="caret caret-2" x="114.0" y="323" width="6.6" height="14" fill="#6c71c4"/>
+<rect class="type-mask type-2" x="114.0" y="315" width="180.2" height="14" fill="#fdf6e3"/>
+<g opacity="0.4" filter="url(#phosphor)"><rect class="caret caret-2" style="animation-delay: 0.09s" x="114.0" y="315" width="6.6" height="14" fill="#6c71c4"/></g>
+<rect class="caret caret-2" x="114.0" y="315" width="6.6" height="14" fill="#6c71c4"/>
 <rect class="type-mask type-3" x="482.0" y="480" width="309.2" height="19" fill="#fdf6e3"/>
 <g opacity="0.4" filter="url(#phosphor)"><rect class="caret caret-3" style="animation-delay: 0.09s" x="482.0" y="480" width="9.6" height="19" fill="#6c71c4"/></g>
 <rect class="caret caret-3" x="482.0" y="480" width="9.6" height="19" fill="#6c71c4"/>
@@ -1043,7 +929,7 @@ text, tspan {white-space: pre;}
 <rect class="type-mask type-5" x="482.0" y="580" width="424.4" height="19" fill="#fdf6e3"/>
 <g opacity="0.4" filter="url(#phosphor)"><rect class="caret caret-5" style="animation-delay: 0.09s" x="482.0" y="580" width="9.6" height="19" fill="#6c71c4"/></g>
 <rect class="caret caret-5" x="482.0" y="580" width="9.6" height="19" fill="#6c71c4"/>
-<text class="spinner" fill="#268bd2"><tspan x="366.8" y="66" opacity="0">▖<animate attributeName="opacity" values="0;0;1;1;0;0;1;1;0;0" keyTimes="0;0.16388;0.16438;0.17036;0.17086;0.18779;0.18829;0.19427;0.19477;1" dur="20.075000000000003s" repeatCount="indefinite"/></tspan><tspan x="366.8" y="66" opacity="0">▘<animate attributeName="opacity" values="0;0;1;1;0;0;1;1;0;0" keyTimes="0;0.16986;0.17036;0.17634;0.17684;0.19377;0.19427;0.20025;0.20075;1" dur="20.075000000000003s" repeatCount="indefinite"/></tspan><tspan x="366.8" y="66" opacity="0">▝<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.17584;0.17634;0.18232;0.18282;1" dur="20.075000000000003s" repeatCount="indefinite"/></tspan><tspan x="366.8" y="66" opacity="0">▗<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.18182;0.18232;0.18829;0.18879;1" dur="20.075000000000003s" repeatCount="indefinite"/></tspan></text>
-<text class="spinner" fill="#268bd2"><tspan x="366.8" y="86" opacity="0">▖<animate attributeName="opacity" values="0;0;1;1;0;0;1;1;0;0" keyTimes="0;0.17285;0.17335;0.17933;0.17983;0.19676;0.19726;0.20324;0.20374;1" dur="20.075000000000003s" repeatCount="indefinite"/></tspan><tspan x="366.8" y="86" opacity="0">▘<animate attributeName="opacity" values="0;0;1;1;0;0;1;1;0;0" keyTimes="0;0.17883;0.17933;0.18531;0.18581;0.20274;0.20324;0.20922;0.20972;1" dur="20.075000000000003s" repeatCount="indefinite"/></tspan><tspan x="366.8" y="86" opacity="0">▝<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.18481;0.18531;0.19128;0.19178;1" dur="20.075000000000003s" repeatCount="indefinite"/></tspan><tspan x="366.8" y="86" opacity="0">▗<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.19078;0.19128;0.19726;0.19776;1" dur="20.075000000000003s" repeatCount="indefinite"/></tspan></text>
+<text class="spinner" fill="#268bd2"><tspan x="366.8" y="66" opacity="0">▖<animate attributeName="opacity" values="0;0;1;1;0;0;1;1;0;0" keyTimes="0;0.16262;0.16312;0.16906;0.16956;0.18635;0.18685;0.19278;0.19328;1" dur="20.229999999999997s" repeatCount="indefinite"/></tspan><tspan x="366.8" y="66" opacity="0">▘<animate attributeName="opacity" values="0;0;1;1;0;0;1;1;0;0" keyTimes="0;0.16856;0.16906;0.17499;0.17549;0.19228;0.19278;0.19871;0.19921;1" dur="20.229999999999997s" repeatCount="indefinite"/></tspan><tspan x="366.8" y="66" opacity="0">▝<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.17449;0.17499;0.18092;0.18142;1" dur="20.229999999999997s" repeatCount="indefinite"/></tspan><tspan x="366.8" y="66" opacity="0">▗<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.18042;0.18092;0.18685;0.18735;1" dur="20.229999999999997s" repeatCount="indefinite"/></tspan></text>
+<text class="spinner" fill="#268bd2"><tspan x="366.8" y="86" opacity="0">▖<animate attributeName="opacity" values="0;0;1;1;0;0;1;1;0;0" keyTimes="0;0.17152;0.17202;0.17795;0.17845;0.19525;0.19575;0.20168;0.20218;1" dur="20.229999999999997s" repeatCount="indefinite"/></tspan><tspan x="366.8" y="86" opacity="0">▘<animate attributeName="opacity" values="0;0;1;1;0;0;1;1;0;0" keyTimes="0;0.17745;0.17795;0.18389;0.18439;0.20118;0.20168;0.20761;0.20811;1" dur="20.229999999999997s" repeatCount="indefinite"/></tspan><tspan x="366.8" y="86" opacity="0">▝<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.18339;0.18389;0.18982;0.19032;1" dur="20.229999999999997s" repeatCount="indefinite"/></tspan><tspan x="366.8" y="86" opacity="0">▗<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.18932;0.18982;0.19575;0.19625;1" dur="20.229999999999997s" repeatCount="indefinite"/></tspan></text>
 <rect x="1" y="1" width="983" height="808" rx="12" fill="url(#scanlines)"/><rect x="1" y="1" width="983" height="808" rx="12" fill="url(#vignette)"/>
 </svg>

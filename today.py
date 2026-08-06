@@ -6,6 +6,8 @@ import sys
 from lxml import etree
 import time
 import hashlib
+import base64
+import re
 
 # Heatmap geometry lives with the layout, not here — importing it keeps the grid
 # this script draws aligned with the placeholder the template ships.
@@ -397,6 +399,62 @@ def calendar_metrics(weeks):
     return current, longest, peak
 
 
+def gitfut_card():
+    """
+    Scrapes gitfut.com, which grades a GitHub account as a FIFA Ultimate Team
+    card, and returns {rating, position, name, tier, archetype, stats, avatar}.
+    Returns None if the site is unreachable or changed its markup — the card
+    keeps whatever it was last drawn with rather than blanking out.
+    """
+    try:
+        page = requests.get('https://gitfut.com/' + USER_NAME, timeout=20)
+        page.raise_for_status()
+        html = page.text
+        stats = dict((label, value) for value, label in re.findall(
+            r'>(\d{1,2})</span><span[^>]*>(PAC|SHO|PAS|DRI|DEF|PHY)</span>', html))
+        rating, position = re.findall(r'>(\d{1,3})</div><div[^>]*>([A-Z]{2,3})</div>', html)[0]
+        name = re.findall(r'nowrap;color:#[0-9a-f]{6}">([^<]+)</div>', html)[0]
+        tier = re.findall(r'\d{1,3} (BRONZE|SILVER|GOLD|SPECIAL)', html)[0]
+        # the archetype only shows up in the meta description, not in the card markup
+        archetype = re.findall(r'OVR [A-Z]{2,3}, ([^.&"]+)\.', html)
+        if len(stats) != 6:
+            raise ValueError('gitfut returned {} stats, expected 6'.format(len(stats)))
+        avatar = requests.get(
+            'https://avatars.githubusercontent.com/' + USER_NAME + '?size=200', timeout=20)
+        avatar.raise_for_status()
+        return {
+            'rating': rating, 'position': position, 'name': name, 'tier': tier,
+            'archetype': archetype[0] if archetype else '',
+            'stats': stats,
+            'avatar': 'data:image/png;base64,' + base64.b64encode(avatar.content).decode(),
+        }
+    except Exception as error:
+        print('   gitfut card:        skipped ({})'.format(error))
+        return None
+
+
+def fut_overwrite(root, card):
+    """
+    Fills the FUT card: plate colour by tier, avatar, rating and the six stats.
+    """
+    if card is None:
+        return
+    plate = root.find(".//*[@id='fut_plate']")
+    if plate is not None:
+        tier = card['tier'].lower()
+        plate.set('fill', 'url(#fut-{})'.format(tier if tier in ('bronze', 'silver', 'gold') else 'gold'))
+    avatar = root.find(".//*[@id='fut_avatar']")
+    if avatar is not None:
+        avatar.set('href', card['avatar'])
+    find_and_replace(root, 'fut_rating', card['rating'])
+    find_and_replace(root, 'fut_position', card['position'])
+    find_and_replace(root, 'fut_name', card['name'])
+    for label, value in card['stats'].items():
+        find_and_replace(root, 'fut_' + label.lower(), value)
+    find_and_replace(root, 'fut_tier', '{} {}{}'.format(
+        card['rating'], card['tier'], ' · ' + card['archetype'] if card['archetype'] else ''))
+
+
 def heatmap_overwrite(root, weeks):
     """
     Redraws the contribution grid and its month labels from the real calendar.
@@ -437,7 +495,7 @@ def heatmap_overwrite(root, weeks):
         label.text = datetime.date(2000, month, 1).strftime('%b')
 
 
-def svg_overwrite(filename, age_data, commit_data, loc_data, weeks):
+def svg_overwrite(filename, age_data, commit_data, loc_data, weeks, card):
     """
     Parse SVG files and update age, commits, lines of code, streak metrics, the
     heatmap.
@@ -458,6 +516,7 @@ def svg_overwrite(filename, age_data, commit_data, loc_data, weeks):
     find_and_replace(root, 'peak_data', '{} contributions on {}'.format(
         peak['contributionCount'], peak['date']))
     heatmap_overwrite(root, weeks)
+    fut_overwrite(root, card)
     tree.write(filename, encoding='utf-8', xml_declaration=True)
 
 
@@ -583,8 +642,10 @@ if __name__ == '__main__':
     commit_data, commit_time = perf_counter(commit_counter, 7)
     calendar_data, calendar_time = perf_counter(graph_contribution_calendar)
     formatter('contribution calendar', calendar_time)
-    svg_overwrite('dark_mode.svg', age_data, commit_data, total_loc[:-1], calendar_data)
-    svg_overwrite('light_mode.svg', age_data, commit_data, total_loc[:-1], calendar_data)
+    card_data, card_time = perf_counter(gitfut_card)
+    formatter('gitfut card', card_time)
+    svg_overwrite('dark_mode.svg', age_data, commit_data, total_loc[:-1], calendar_data, card_data)
+    svg_overwrite('light_mode.svg', age_data, commit_data, total_loc[:-1], calendar_data, card_data)
 
     # move cursor to override 'Calculation times:' with 'Total function time:' and the total function time, then move cursor back
     print('\033[F\033[F\033[F\033[F',
