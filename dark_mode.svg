@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<svg xmlns="http://www.w3.org/2000/svg" font-family="FantasqueSansM Nerd Font,ConsolasFallback,Consolas,monospace" width="985px" height="540px" font-size="16px">
+<svg xmlns="http://www.w3.org/2000/svg" font-family="FantasqueSansM Nerd Font,ConsolasFallback,Consolas,monospace" width="985px" height="600px" font-size="16px">
 <style>
 @font-face {
 src: local('Consolas'), local('Consolas Bold');
@@ -8,183 +8,243 @@ font-display: swap;
 -webkit-size-adjust: 109%;
 size-adjust: 109%;
 }
-.prompt-host {fill: #8d8d8d;}
-.prompt-path {fill: #ececec;}
+.prompt-host {fill: #7ebae4;}
+.prompt-path {fill: #5277c3;}
 .command {fill: #ffffff;}
 .key {fill: #b6b6b6;}
 .value {fill: #cecece;}
 .dim {fill: #5c5c5c;}
-.addColor {fill: #ffffff;}
+.addColor {fill: #7ebae4;}
 .delColor {fill: #a4a4a4;}
-.cursor {fill: #ffffff;}
+.cursor {fill: #7ebae4;}
 text, tspan {white-space: pre;}
 
-@keyframes row-fade-30 {
-  0%, 1.6% { opacity: 1; }
-  4.9% { opacity: 0.1; }
-  4.9%, 99.9% { opacity: 0.1; }
+@keyframes row-fade-66 {
+  0%, 1.7% { opacity: 1; }
+  5.0% { opacity: 0.1; }
+  5.0%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
-@keyframes row-fade-40 {
-  0%, 3.4% { opacity: 1; }
-  6.7% { opacity: 0.1; }
-  6.7%, 99.9% { opacity: 0.1; }
+@keyframes row-fade-106 {
+  0%, 9.7% { opacity: 1; }
+  13.0% { opacity: 0.1; }
+  13.0%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
-@keyframes row-fade-60 {
-  0%, 7.1% { opacity: 1; }
-  10.4% { opacity: 0.1; }
-  10.4%, 99.9% { opacity: 0.1; }
+@keyframes row-fade-126 {
+  0%, 13.8% { opacity: 1; }
+  17.1% { opacity: 0.1; }
+  17.1%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
-@keyframes row-fade-70 {
-  0%, 9.0% { opacity: 1; }
-  12.3% { opacity: 0.1; }
-  12.3%, 99.9% { opacity: 0.1; }
+@keyframes row-fade-146 {
+  0%, 17.8% { opacity: 1; }
+  21.1% { opacity: 0.1; }
+  21.1%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
-@keyframes row-fade-80 {
-  0%, 10.9% { opacity: 1; }
-  14.2% { opacity: 0.1; }
-  14.2%, 99.9% { opacity: 0.1; }
-  100% { opacity: 1; }
-}
-@keyframes row-fade-90 {
-  0%, 12.7% { opacity: 1; }
-  16.0% { opacity: 0.1; }
-  16.0%, 99.9% { opacity: 0.1; }
-  100% { opacity: 1; }
-}
-@keyframes row-fade-100 {
-  0%, 14.6% { opacity: 1; }
-  17.9% { opacity: 0.1; }
-  17.9%, 99.9% { opacity: 0.1; }
-  100% { opacity: 1; }
-}
-@keyframes row-fade-110 {
-  0%, 16.4% { opacity: 1; }
-  19.7% { opacity: 0.1; }
-  19.7%, 99.9% { opacity: 0.1; }
-  100% { opacity: 1; }
-}
-@keyframes row-fade-120 {
-  0%, 18.3% { opacity: 1; }
-  21.6% { opacity: 0.1; }
-  21.6%, 99.9% { opacity: 0.1; }
-  100% { opacity: 1; }
-}
-@keyframes row-fade-130 {
-  0%, 20.1% { opacity: 1; }
-  23.4% { opacity: 0.1; }
-  23.4%, 99.9% { opacity: 0.1; }
-  100% { opacity: 1; }
-}
-@keyframes row-fade-140 {
-  0%, 22.0% { opacity: 1; }
-  25.3% { opacity: 0.1; }
-  25.3%, 99.9% { opacity: 0.1; }
-  100% { opacity: 1; }
-}
-@keyframes row-fade-150 {
-  0%, 23.9% { opacity: 1; }
-  27.2% { opacity: 0.1; }
-  27.2%, 99.9% { opacity: 0.1; }
-  100% { opacity: 1; }
-}
-@keyframes row-fade-160 {
-  0%, 25.7% { opacity: 1; }
-  29.0% { opacity: 0.1; }
-  29.0%, 99.9% { opacity: 0.1; }
+@keyframes row-fade-166 {
+  0%, 21.8% { opacity: 1; }
+  25.1% { opacity: 0.1; }
+  25.1%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes row-fade-170 {
-  0%, 27.6% { opacity: 1; }
-  30.9% { opacity: 0.1; }
-  30.9%, 99.9% { opacity: 0.1; }
+  0%, 22.6% { opacity: 1; }
+  25.9% { opacity: 0.1; }
+  25.9%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
-@keyframes row-fade-180 {
-  0%, 29.4% { opacity: 1; }
-  32.7% { opacity: 0.1; }
-  32.7%, 99.9% { opacity: 0.1; }
+@keyframes row-fade-182 {
+  0%, 25.0% { opacity: 1; }
+  28.3% { opacity: 0.1; }
+  28.3%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
-@keyframes row-fade-190 {
-  0%, 31.3% { opacity: 1; }
-  34.6% { opacity: 0.1; }
-  34.6%, 99.9% { opacity: 0.1; }
+@keyframes row-fade-186 {
+  0%, 25.8% { opacity: 1; }
+  29.1% { opacity: 0.1; }
+  29.1%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
-@keyframes row-fade-220 {
-  0%, 36.9% { opacity: 1; }
-  40.2% { opacity: 0.1; }
-  40.2%, 99.9% { opacity: 0.1; }
+@keyframes row-fade-194 {
+  0%, 27.4% { opacity: 1; }
+  30.7% { opacity: 0.1; }
+  30.7%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
-@keyframes row-fade-240 {
-  0%, 40.6% { opacity: 1; }
-  43.9% { opacity: 0.1; }
-  43.9%, 99.9% { opacity: 0.1; }
+@keyframes row-fade-206 {
+  0%, 29.8% { opacity: 1; }
+  33.1% { opacity: 0.1; }
+  33.1%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
-@keyframes row-fade-260 {
+@keyframes row-fade-218 {
+  0%, 32.2% { opacity: 1; }
+  35.5% { opacity: 0.1; }
+  35.5%, 99.9% { opacity: 0.1; }
+  100% { opacity: 1; }
+}
+@keyframes row-fade-226 {
+  0%, 33.8% { opacity: 1; }
+  37.1% { opacity: 0.1; }
+  37.1%, 99.9% { opacity: 0.1; }
+  100% { opacity: 1; }
+}
+@keyframes row-fade-230 {
+  0%, 34.6% { opacity: 1; }
+  37.9% { opacity: 0.1; }
+  37.9%, 99.9% { opacity: 0.1; }
+  100% { opacity: 1; }
+}
+@keyframes row-fade-242 {
+  0%, 37.0% { opacity: 1; }
+  40.3% { opacity: 0.1; }
+  40.3%, 99.9% { opacity: 0.1; }
+  100% { opacity: 1; }
+}
+@keyframes row-fade-254 {
+  0%, 39.5% { opacity: 1; }
+  42.8% { opacity: 0.1; }
+  42.8%, 99.9% { opacity: 0.1; }
+  100% { opacity: 1; }
+}
+@keyframes row-fade-256 {
+  0%, 39.9% { opacity: 1; }
+  43.2% { opacity: 0.1; }
+  43.2%, 99.9% { opacity: 0.1; }
+  100% { opacity: 1; }
+}
+@keyframes row-fade-266 {
+  0%, 41.9% { opacity: 1; }
+  45.2% { opacity: 0.1; }
+  45.2%, 99.9% { opacity: 0.1; }
+  100% { opacity: 1; }
+}
+@keyframes row-fade-276 {
+  0%, 43.9% { opacity: 1; }
+  47.2% { opacity: 0.1; }
+  47.2%, 99.9% { opacity: 0.1; }
+  100% { opacity: 1; }
+}
+@keyframes row-fade-278 {
   0%, 44.3% { opacity: 1; }
   47.6% { opacity: 0.1; }
   47.6%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
-@keyframes row-fade-280 {
-  0%, 48.0% { opacity: 1; }
-  51.3% { opacity: 0.1; }
-  51.3%, 99.9% { opacity: 0.1; }
+@keyframes row-fade-290 {
+  0%, 46.7% { opacity: 1; }
+  50.0% { opacity: 0.1; }
+  50.0%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
-@keyframes row-fade-320 {
-  0%, 55.5% { opacity: 1; }
-  58.8% { opacity: 0.1; }
-  58.8%, 99.9% { opacity: 0.1; }
+@keyframes row-fade-296 {
+  0%, 47.9% { opacity: 1; }
+  51.2% { opacity: 0.1; }
+  51.2%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
-@keyframes row-fade-340 {
-  0%, 59.2% { opacity: 1; }
-  62.5% { opacity: 0.1; }
-  62.5%, 99.9% { opacity: 0.1; }
+@keyframes row-fade-302 {
+  0%, 49.1% { opacity: 1; }
+  52.4% { opacity: 0.1; }
+  52.4%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
-@keyframes row-fade-360 {
-  0%, 62.9% { opacity: 1; }
-  66.2% { opacity: 0.1; }
-  66.2%, 99.9% { opacity: 0.1; }
+@keyframes row-fade-314 {
+  0%, 51.5% { opacity: 1; }
+  54.8% { opacity: 0.1; }
+  54.8%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
-@keyframes row-fade-400 {
-  0%, 70.3% { opacity: 1; }
-  73.6% { opacity: 0.1; }
-  73.6%, 99.9% { opacity: 0.1; }
+@keyframes row-fade-316 {
+  0%, 51.9% { opacity: 1; }
+  55.2% { opacity: 0.1; }
+  55.2%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
-@keyframes row-fade-420 {
-  0%, 74.0% { opacity: 1; }
-  77.3% { opacity: 0.1; }
-  77.3%, 99.9% { opacity: 0.1; }
+@keyframes row-fade-326 {
+  0%, 53.9% { opacity: 1; }
+  57.2% { opacity: 0.1; }
+  57.2%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
-@keyframes row-fade-460 {
-  0%, 81.5% { opacity: 1; }
-  84.8% { opacity: 0.1; }
-  84.8%, 99.9% { opacity: 0.1; }
+@keyframes row-fade-338 {
+  0%, 56.3% { opacity: 1; }
+  59.6% { opacity: 0.1; }
+  59.6%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
-@keyframes row-fade-480 {
-  0%, 85.2% { opacity: 1; }
-  88.5% { opacity: 0.1; }
-  88.5%, 99.9% { opacity: 0.1; }
+@keyframes row-fade-346 {
+  0%, 57.9% { opacity: 1; }
+  61.2% { opacity: 0.1; }
+  61.2%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
-@keyframes row-fade-520 {
-  0%, 92.6% { opacity: 1; }
-  95.9% { opacity: 0.1; }
-  95.9%, 99.9% { opacity: 0.1; }
+@keyframes row-fade-350 {
+  0%, 58.7% { opacity: 1; }
+  62.0% { opacity: 0.1; }
+  62.0%, 99.9% { opacity: 0.1; }
+  100% { opacity: 1; }
+}
+@keyframes row-fade-362 {
+  0%, 61.1% { opacity: 1; }
+  64.4% { opacity: 0.1; }
+  64.4%, 99.9% { opacity: 0.1; }
+  100% { opacity: 1; }
+}
+@keyframes row-fade-366 {
+  0%, 61.9% { opacity: 1; }
+  65.2% { opacity: 0.1; }
+  65.2%, 99.9% { opacity: 0.1; }
+  100% { opacity: 1; }
+}
+@keyframes row-fade-374 {
+  0%, 63.6% { opacity: 1; }
+  66.9% { opacity: 0.1; }
+  66.9%, 99.9% { opacity: 0.1; }
+  100% { opacity: 1; }
+}
+@keyframes row-fade-386 {
+  0%, 66.0% { opacity: 1; }
+  69.3% { opacity: 0.1; }
+  69.3%, 99.9% { opacity: 0.1; }
+  100% { opacity: 1; }
+}
+@keyframes row-fade-398 {
+  0%, 68.4% { opacity: 1; }
+  71.7% { opacity: 0.1; }
+  71.7%, 99.9% { opacity: 0.1; }
+  100% { opacity: 1; }
+}
+@keyframes row-fade-416 {
+  0%, 72.0% { opacity: 1; }
+  75.3% { opacity: 0.1; }
+  75.3%, 99.9% { opacity: 0.1; }
+  100% { opacity: 1; }
+}
+@keyframes row-fade-436 {
+  0%, 76.0% { opacity: 1; }
+  79.3% { opacity: 0.1; }
+  79.3%, 99.9% { opacity: 0.1; }
+  100% { opacity: 1; }
+}
+@keyframes row-fade-466 {
+  0%, 82.0% { opacity: 1; }
+  85.3% { opacity: 0.1; }
+  85.3%, 99.9% { opacity: 0.1; }
+  100% { opacity: 1; }
+}
+@keyframes row-fade-486 {
+  0%, 86.0% { opacity: 1; }
+  89.3% { opacity: 0.1; }
+  89.3%, 99.9% { opacity: 0.1; }
+  100% { opacity: 1; }
+}
+@keyframes row-fade-516 {
+  0%, 92.1% { opacity: 1; }
+  95.4% { opacity: 0.1; }
+  95.4%, 99.9% { opacity: 0.1; }
   100% { opacity: 1; }
 }
 @keyframes cursor-blink {
@@ -192,43 +252,58 @@ text, tspan {white-space: pre;}
   50%, 100% { opacity: 0; }
 }
 @keyframes scanline {
-  0% { transform: translateY(-8px); opacity: 0; }
-  1.7% { opacity: 0.22; }
+  0% { transform: translateY(28px); opacity: 0; }
+  1.8% { opacity: 0.22; }
   99.5% { opacity: 0.22; }
-  100% { transform: translateY(530px); opacity: 0; }
+  100% { transform: translateY(526px); opacity: 0; }
+}
+@keyframes logo-pulse {
+  0%, 100% { opacity: 0.92; }
+  50% { opacity: 1; }
 }
 .terminal-row {
   opacity: 1;
 }
-.row-y-30 { animation: row-fade-30 39s linear infinite; }
-.row-y-40 { animation: row-fade-40 39s linear infinite; }
-.row-y-60 { animation: row-fade-60 39s linear infinite; }
-.row-y-70 { animation: row-fade-70 39s linear infinite; }
-.row-y-80 { animation: row-fade-80 39s linear infinite; }
-.row-y-90 { animation: row-fade-90 39s linear infinite; }
-.row-y-100 { animation: row-fade-100 39s linear infinite; }
-.row-y-110 { animation: row-fade-110 39s linear infinite; }
-.row-y-120 { animation: row-fade-120 39s linear infinite; }
-.row-y-130 { animation: row-fade-130 39s linear infinite; }
-.row-y-140 { animation: row-fade-140 39s linear infinite; }
-.row-y-150 { animation: row-fade-150 39s linear infinite; }
-.row-y-160 { animation: row-fade-160 39s linear infinite; }
+.row-y-66 { animation: row-fade-66 39s linear infinite; }
+.row-y-106 { animation: row-fade-106 39s linear infinite; }
+.row-y-126 { animation: row-fade-126 39s linear infinite; }
+.row-y-146 { animation: row-fade-146 39s linear infinite; }
+.row-y-166 { animation: row-fade-166 39s linear infinite; }
 .row-y-170 { animation: row-fade-170 39s linear infinite; }
-.row-y-180 { animation: row-fade-180 39s linear infinite; }
-.row-y-190 { animation: row-fade-190 39s linear infinite; }
-.row-y-220 { animation: row-fade-220 39s linear infinite; }
-.row-y-240 { animation: row-fade-240 39s linear infinite; }
-.row-y-260 { animation: row-fade-260 39s linear infinite; }
-.row-y-280 { animation: row-fade-280 39s linear infinite; }
-.row-y-320 { animation: row-fade-320 39s linear infinite; }
-.row-y-340 { animation: row-fade-340 39s linear infinite; }
-.row-y-360 { animation: row-fade-360 39s linear infinite; }
-.row-y-400 { animation: row-fade-400 39s linear infinite; }
-.row-y-420 { animation: row-fade-420 39s linear infinite; }
-.row-y-460 { animation: row-fade-460 39s linear infinite; }
-.row-y-480 { animation: row-fade-480 39s linear infinite; }
-.row-y-520 { animation: row-fade-520 39s linear infinite; }
+.row-y-182 { animation: row-fade-182 39s linear infinite; }
+.row-y-186 { animation: row-fade-186 39s linear infinite; }
+.row-y-194 { animation: row-fade-194 39s linear infinite; }
+.row-y-206 { animation: row-fade-206 39s linear infinite; }
+.row-y-218 { animation: row-fade-218 39s linear infinite; }
+.row-y-226 { animation: row-fade-226 39s linear infinite; }
+.row-y-230 { animation: row-fade-230 39s linear infinite; }
+.row-y-242 { animation: row-fade-242 39s linear infinite; }
+.row-y-254 { animation: row-fade-254 39s linear infinite; }
+.row-y-256 { animation: row-fade-256 39s linear infinite; }
+.row-y-266 { animation: row-fade-266 39s linear infinite; }
+.row-y-276 { animation: row-fade-276 39s linear infinite; }
+.row-y-278 { animation: row-fade-278 39s linear infinite; }
+.row-y-290 { animation: row-fade-290 39s linear infinite; }
+.row-y-296 { animation: row-fade-296 39s linear infinite; }
+.row-y-302 { animation: row-fade-302 39s linear infinite; }
+.row-y-314 { animation: row-fade-314 39s linear infinite; }
+.row-y-316 { animation: row-fade-316 39s linear infinite; }
+.row-y-326 { animation: row-fade-326 39s linear infinite; }
+.row-y-338 { animation: row-fade-338 39s linear infinite; }
+.row-y-346 { animation: row-fade-346 39s linear infinite; }
+.row-y-350 { animation: row-fade-350 39s linear infinite; }
+.row-y-362 { animation: row-fade-362 39s linear infinite; }
+.row-y-366 { animation: row-fade-366 39s linear infinite; }
+.row-y-374 { animation: row-fade-374 39s linear infinite; }
+.row-y-386 { animation: row-fade-386 39s linear infinite; }
+.row-y-398 { animation: row-fade-398 39s linear infinite; }
+.row-y-416 { animation: row-fade-416 39s linear infinite; }
+.row-y-436 { animation: row-fade-436 39s linear infinite; }
+.row-y-466 { animation: row-fade-466 39s linear infinite; }
+.row-y-486 { animation: row-fade-486 39s linear infinite; }
+.row-y-516 { animation: row-fade-516 39s linear infinite; }
 .cursor { animation: cursor-blink 1.05s step-end infinite; }
+.ascii { animation: logo-pulse 6s ease-in-out infinite; }
 #terminal-scanline {
   fill: url(#scanline-gradient);
   animation: scanline 39s linear infinite;
@@ -238,44 +313,69 @@ text, tspan {white-space: pre;}
 <defs>
 <linearGradient id="scanline-gradient" x1="0" y1="0" x2="0" y2="1">
 <stop offset="0%" stop-color="#000000" stop-opacity="0"/>
-<stop offset="47%" stop-color="#8d8d8d" stop-opacity="0.4"/>
-<stop offset="53%" stop-color="#8d8d8d" stop-opacity="0.4"/>
+<stop offset="47%" stop-color="#7ebae4" stop-opacity="0.4"/>
+<stop offset="53%" stop-color="#7ebae4" stop-opacity="0.4"/>
 <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
 </linearGradient>
+<linearGradient id="logo-gradient" gradientUnits="userSpaceOnUse" x1="20" y1="170" x2="285" y2="410">
+<stop offset="0%" stop-color="#8fc6ee"/>
+<stop offset="100%" stop-color="#4a6cb8"/>
+</linearGradient>
 </defs>
-<rect width="985px" height="540px" fill="#000000" rx="12"/>
-<rect x="1" y="1" width="983px" height="538px" fill="none" stroke="#404040" stroke-width="2" rx="12"/>
+<rect width="985px" height="600px" fill="#000000" rx="12"/>
+<path d="M1 13 A12 12 0 0 1 13 1 L972 1 A12 12 0 0 1 984 13 L984 36 L1 36 Z" fill="#0d1117"/>
+<circle cx="26" cy="18" r="6" fill="#ff5f57"/><circle cx="48" cy="18" r="6" fill="#febc2e"/><circle cx="70" cy="18" r="6" fill="#28c840"/>
+<text x="492" y="23" text-anchor="middle" font-size="13" fill="#8b949e">yuuki@nixos: ~ — ghostty</text>
+<line x1="1" y1="36" x2="984" y2="36" stroke="#2b3a52" stroke-width="1"/>
+<path d="M1 570 L984 570 L984 587 A12 12 0 0 1 972 599 L13 599 A12 12 0 0 1 1 587 Z" fill="#1b2740"/>
+<rect x="1" y="570" width="130" height="30" fill="#5277c3"/>
+<text x="20" y="590" font-size="13" fill="#e8eefc">[0] NIXOS</text>
+<text x="150" y="590" font-size="13" fill="#9db4dd">~/github/YuukiFST   │   main ✓   │   flake.nix</text>
+<text x="965" y="590" text-anchor="end" font-size="13" fill="#9db4dd">utf-8   │   nixos-unstable   │   ★ reproducible</text>
+<rect x="1" y="1" width="983px" height="598px" fill="none" stroke="#2b3a52" stroke-width="2" rx="12"/>
 <rect id="terminal-scanline" x="12" y="0" width="961" height="28" opacity="0"/>
-<text x="15" y="30" fill="#ffffff" class="ascii">
-<tspan x="15" y="40" class="terminal-row row-y-40" fill="#8d8d8d">#   # #   # #   # #   # ### </tspan>
-<tspan x="15" y="60" class="terminal-row row-y-60" fill="#8d8d8d"> # #  #   # #   # #  #   #  </tspan>
-<tspan x="15" y="80" class="terminal-row row-y-80" fill="#8d8d8d">  #   #   # #   # ###    #  </tspan>
-<tspan x="15" y="100" class="terminal-row row-y-100" fill="#8d8d8d">  #   #   # #   # #  #   #  </tspan>
-<tspan x="15" y="120" class="terminal-row row-y-120" fill="#8d8d8d">  #    ###   ###  #   # ### </tspan>
-<tspan x="15" y="140" class="terminal-row row-y-140" fill="#8d8d8d">                            </tspan>
-<tspan x="15" y="160" class="terminal-row row-y-160" fill="#8d8d8d">                            </tspan>
-<tspan x="15" y="180" class="terminal-row row-y-180" fill="#8d8d8d">                            </tspan>
+<text x="15" y="30" fill="#7ebae4" class="ascii" font-size="9px">
+<tspan x="20" y="170" class="terminal-row row-y-170" fill="url(#logo-gradient)">          ▗▄▄▄       ▗▄▄▄▄    ▄▄▄▖</tspan>
+<tspan x="20" y="182" class="terminal-row row-y-182" fill="url(#logo-gradient)">          ▜███▙       ▜███▙  ▟███▛</tspan>
+<tspan x="20" y="194" class="terminal-row row-y-194" fill="url(#logo-gradient)">           ▜███▙       ▜███▙▟███▛</tspan>
+<tspan x="20" y="206" class="terminal-row row-y-206" fill="url(#logo-gradient)">            ▜███▙       ▜██████▛</tspan>
+<tspan x="20" y="218" class="terminal-row row-y-218" fill="url(#logo-gradient)">     ▟█████████████████▙ ▜████▛     ▟▙</tspan>
+<tspan x="20" y="230" class="terminal-row row-y-230" fill="url(#logo-gradient)">    ▟███████████████████▙ ▜███▙    ▟██▙</tspan>
+<tspan x="20" y="242" class="terminal-row row-y-242" fill="url(#logo-gradient)">           ▄▄▄▄▖           ▜███▙  ▟███▛</tspan>
+<tspan x="20" y="254" class="terminal-row row-y-254" fill="url(#logo-gradient)">          ▟███▛             ▜██▛ ▟███▛</tspan>
+<tspan x="20" y="266" class="terminal-row row-y-266" fill="url(#logo-gradient)">         ▟███▛               ▜▛ ▟███▛</tspan>
+<tspan x="20" y="278" class="terminal-row row-y-278" fill="url(#logo-gradient)">▟███████████▛                  ▟██████████▙</tspan>
+<tspan x="20" y="290" class="terminal-row row-y-290" fill="url(#logo-gradient)">▜██████████▛                  ▟███████████▛</tspan>
+<tspan x="20" y="302" class="terminal-row row-y-302" fill="url(#logo-gradient)">      ▟███▛ ▟▙               ▟███▛</tspan>
+<tspan x="20" y="314" class="terminal-row row-y-314" fill="url(#logo-gradient)">     ▟███▛ ▟██▙             ▟███▛</tspan>
+<tspan x="20" y="326" class="terminal-row row-y-326" fill="url(#logo-gradient)">    ▟███▛  ▜███▙           ▝▀▀▀▀</tspan>
+<tspan x="20" y="338" class="terminal-row row-y-338" fill="url(#logo-gradient)">    ▜██▛    ▜███▙ ▜██████████████████▛</tspan>
+<tspan x="20" y="350" class="terminal-row row-y-350" fill="url(#logo-gradient)">     ▜▛     ▟████▙ ▜████████████████▛</tspan>
+<tspan x="20" y="362" class="terminal-row row-y-362" fill="url(#logo-gradient)">           ▟██████▙       ▜███▙</tspan>
+<tspan x="20" y="374" class="terminal-row row-y-374" fill="url(#logo-gradient)">          ▟███▛▜███▙       ▜███▙</tspan>
+<tspan x="20" y="386" class="terminal-row row-y-386" fill="url(#logo-gradient)">         ▟███▛  ▜███▙       ▜███▙</tspan>
+<tspan x="20" y="398" class="terminal-row row-y-398" fill="url(#logo-gradient)">         ▝▀▀▀    ▀▀▀▀▘       ▀▀▀▘</tspan>
 </text>
 <text x="300" y="30" fill="#ffffff">
-<tspan x="300" y="30" class="terminal-row row-y-30"><tspan class="dim">Last login: Sat Jul 11 2026 from 127.0.0.1 — </tspan><tspan class="value" id="age_data">3 years, 9 months, 0 days</tspan><tspan class="dim" id="age_data_dots"></tspan><tspan class="dim"> on GitHub</tspan></tspan>
-<tspan x="300" y="70" class="terminal-row row-y-70"><tspan class="prompt-host">yuuki@github</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">fastfetch --logo custom</tspan></tspan>
-<tspan x="300" y="90" class="terminal-row row-y-90"><tspan class="key">yuuki@github</tspan><tspan class="dim"> ─────────────────────────────</tspan></tspan>
-<tspan x="300" y="110" class="terminal-row row-y-110"><tspan class="dim"> </tspan><tspan class="key">OS      </tspan><tspan class="dim">· </tspan><tspan class="value">Omarchy</tspan></tspan>
-<tspan x="300" y="130" class="terminal-row row-y-130"><tspan class="dim"> </tspan><tspan class="key">Host    </tspan><tspan class="dim">· </tspan><tspan class="value">São Benedito / IFMT</tspan></tspan>
-<tspan x="300" y="150" class="terminal-row row-y-150"><tspan class="dim"> </tspan><tspan class="key">Shell   </tspan><tspan class="dim">· </tspan><tspan class="value">bash</tspan></tspan>
-<tspan x="300" y="170" class="terminal-row row-y-170"><tspan class="dim"> </tspan><tspan class="key">Terminal</tspan><tspan class="dim">· </tspan><tspan class="value">Ghostty</tspan></tspan>
-<tspan x="300" y="190" class="terminal-row row-y-190"><tspan class="dim"> </tspan><tspan class="key">Role    </tspan><tspan class="dim">· </tspan><tspan class="value">Fullstack</tspan></tspan>
-<tspan x="300" y="220" class="terminal-row row-y-220"><tspan class="dim"> » </tspan><tspan class="key">Backend:    </tspan><tspan class="value">Python, Django, Go, tRPC, Prisma</tspan></tspan>
-<tspan x="300" y="240" class="terminal-row row-y-240"><tspan class="dim"> » </tspan><tspan class="key">Frontend:   </tspan><tspan class="value">React, Next.js, TypeScript, Tailwind, shadcn/ui</tspan></tspan>
-<tspan x="300" y="260" class="terminal-row row-y-260"><tspan class="dim"> » </tspan><tspan class="key">Databases:  </tspan><tspan class="value">PostgreSQL, Neon, Supabase</tspan></tspan>
-<tspan x="300" y="280" class="terminal-row row-y-280"><tspan class="dim"> » </tspan><tspan class="key">DevOps:     </tspan><tspan class="value">Docker, Git, Linux, Cloudinary</tspan></tspan>
-<tspan x="300" y="320" class="terminal-row row-y-320"><tspan class="prompt-host">yuuki@github</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">cat ~/links</tspan></tspan>
-<tspan x="300" y="340" class="terminal-row row-y-340"><tspan class="dim"> </tspan><tspan class="key">portfolio</tspan><tspan class="dim">  → </tspan><tspan class="value">fausto-yuuki.vercel.app</tspan></tspan>
-<tspan x="300" y="360" class="terminal-row row-y-360"><tspan class="dim"> </tspan><tspan class="key">linkedin</tspan><tspan class="dim">   → </tspan><tspan class="value">fausto-yuuki</tspan></tspan>
-<tspan x="300" y="400" class="terminal-row row-y-400"><tspan class="prompt-host">yuuki@github</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">git shortlog -sn --all | head -1</tspan></tspan>
-<tspan x="300" y="420" class="terminal-row row-y-420"><tspan class="dim">   </tspan><tspan class="value" id="commit_data">500</tspan><tspan class="dim" id="commit_data_dots"></tspan><tspan class="dim">  YuukiFST</tspan></tspan>
-<tspan x="300" y="460" class="terminal-row row-y-460"><tspan class="prompt-host">yuuki@github</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">gh api graphql --field query=contributions</tspan></tspan>
-<tspan x="300" y="480" class="terminal-row row-y-480"><tspan class="dim">  </tspan><tspan class="value" id="contrib_data">29</tspan><tspan class="dim" id="contrib_data_dots"></tspan><tspan class="dim"> contributions</tspan></tspan>
-<tspan x="300" y="520" class="terminal-row row-y-520"><tspan class="prompt-host">yuuki@github</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command"/><tspan class="cursor">█</tspan></tspan>
+<tspan x="300" y="66" class="terminal-row row-y-66"><tspan class="dim">Last login: Sat Jul 11 2026 — </tspan><tspan class="value" id="age_data">3 years, 9 months, 0 days</tspan><tspan class="dim" id="age_data_dots"></tspan><tspan class="dim"> on GitHub</tspan></tspan>
+<tspan x="300" y="106" class="terminal-row row-y-106"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">fastfetch --logo nixos</tspan></tspan>
+<tspan x="300" y="126" class="terminal-row row-y-126"><tspan class="key">yuuki@nixos</tspan><tspan class="dim"> ─────────────────────────────</tspan></tspan>
+<tspan x="300" y="146" class="terminal-row row-y-146"><tspan class="dim"> </tspan><tspan class="key">OS      </tspan><tspan class="dim">· </tspan><tspan class="value">NixOS unstable · x86_64</tspan></tspan>
+<tspan x="300" y="166" class="terminal-row row-y-166"><tspan class="dim"> </tspan><tspan class="key">Host    </tspan><tspan class="dim">· </tspan><tspan class="value">São Benedito / IFMT</tspan></tspan>
+<tspan x="300" y="186" class="terminal-row row-y-186"><tspan class="dim"> </tspan><tspan class="key">Shell   </tspan><tspan class="dim">· </tspan><tspan class="value">bash</tspan></tspan>
+<tspan x="300" y="206" class="terminal-row row-y-206"><tspan class="dim"> </tspan><tspan class="key">Terminal</tspan><tspan class="dim">· </tspan><tspan class="value">Ghostty</tspan></tspan>
+<tspan x="300" y="226" class="terminal-row row-y-226"><tspan class="dim"> </tspan><tspan class="key">Role    </tspan><tspan class="dim">· </tspan><tspan class="value">Fullstack</tspan></tspan>
+<tspan x="300" y="256" class="terminal-row row-y-256"><tspan class="dim"> » </tspan><tspan class="key">Backend:    </tspan><tspan class="value">Python, Django, Go, tRPC, Prisma</tspan></tspan>
+<tspan x="300" y="276" class="terminal-row row-y-276"><tspan class="dim"> » </tspan><tspan class="key">Frontend:   </tspan><tspan class="value">React, Next.js, TypeScript, Tailwind, shadcn/ui</tspan></tspan>
+<tspan x="300" y="296" class="terminal-row row-y-296"><tspan class="dim"> » </tspan><tspan class="key">Databases:  </tspan><tspan class="value">PostgreSQL, Neon, Supabase</tspan></tspan>
+<tspan x="300" y="316" class="terminal-row row-y-316"><tspan class="dim"> » </tspan><tspan class="key">DevOps:     </tspan><tspan class="value">Docker, Git, Linux, Cloudinary</tspan></tspan>
+<tspan x="300" y="346" class="terminal-row row-y-346"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">cat ~/links</tspan></tspan>
+<tspan x="300" y="366" class="terminal-row row-y-366"><tspan class="dim"> </tspan><tspan class="key">portfolio</tspan><tspan class="dim">  → </tspan><tspan class="value">fausto-yuuki.vercel.app</tspan></tspan>
+<tspan x="300" y="386" class="terminal-row row-y-386"><tspan class="dim"> </tspan><tspan class="key">linkedin</tspan><tspan class="dim">   → </tspan><tspan class="value">fausto-yuuki</tspan></tspan>
+<tspan x="300" y="416" class="terminal-row row-y-416"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">git shortlog -sn --all | head -1</tspan></tspan>
+<tspan x="300" y="436" class="terminal-row row-y-436"><tspan class="dim">   </tspan><tspan class="value" id="commit_data">0</tspan><tspan class="dim" id="commit_data_dots"></tspan><tspan class="dim">  commits authored by YuukiFST</tspan></tspan>
+<tspan x="300" y="466" class="terminal-row row-y-466"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">cloc --vcs=git ~/github/*</tspan></tspan>
+<tspan x="300" y="486" class="terminal-row row-y-486"><tspan class="dim">   </tspan><tspan class="value" id="loc_data">0</tspan><tspan class="dim" id="loc_data_dots"></tspan><tspan class="dim"> lines of code   </tspan><tspan class="addColor" id="loc_add">0</tspan><tspan class="dim" id="loc_add_dots"></tspan><tspan class="dim">++ / </tspan><tspan class="delColor" id="loc_del">0</tspan><tspan class="dim" id="loc_del_dots"></tspan><tspan class="dim">--</tspan></tspan>
+<tspan x="300" y="516" class="terminal-row row-y-516"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command"></tspan><tspan class="cursor">█</tspan></tspan>
 </text>
 </svg>
