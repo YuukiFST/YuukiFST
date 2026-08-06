@@ -2,17 +2,16 @@
 """Generate dark_mode.svg and light_mode.svg — tmux/NixOS session profile.
 
 Layout is a two-pane tmux window:
-  left pane  — NixOS snowflake logo + flake.nix
+  left pane  — NixOS snowflake logo, git log --graph, a cava equalizer
   right pane — fastfetch output, links, git stats, contribution heatmap
 
-Animation is a session replay: every row prints in on its own cue and then
-stays lit for the rest of the loop. Nothing ever dims. Both the reveal and the
-command-typing masks are fail-safe — a renderer that ignores CSS animation
-shows the finished session, never a blank window.
+Animation is a session replay: the loop opens on the finished session, holds
+it, clears, and reprints every row on its own cue. Nothing ever dims. The
+reveal, the typing masks and the carets are all fail-safe — a renderer that
+ignores CSS animation shows the finished session, never a blank window.
 
-The heatmap grid and its month labels are emitted here as an empty placeholder;
-today.py fills them with the real contribution calendar (and the stat numbers)
-on every run.
+today.py fills in the placeholders on every run: the stat numbers, the
+contribution calendar, and the commit log rows.
 """
 
 from __future__ import annotations
@@ -49,28 +48,6 @@ ASCII_LOGO: list[list[tuple[str, int]]] = [
     [("         ▝▀▀▀    ▀▀▀▀▘       ", 2), ("▀▀▀▘", 1)],
 ]
 
-# (text, css class) per line — the profile as a derivation.
-# Lines must fit the left pane; FLAKE_MAX_COLS is enforced in main().
-FLAKE_LINES: list[list[tuple[str, str]]] = [
-    [("{", "nix-punct")],
-    [("  description", "nix-key"), (" = ", "nix-punct"), ('"nixos + fullstack"', "nix-str"), (";", "nix-punct")],
-    [("", "nix-punct")],
-    [("  inputs = {", "nix-key")],
-    [("    backend.url", "nix-attr"), ("  = ", "nix-punct"), ('"python+django+go"', "nix-str"), (";", "nix-punct")],
-    [("    frontend.url", "nix-attr"), (" = ", "nix-punct"), ('"react+next+ts"', "nix-str"), (";", "nix-punct")],
-    [("    data.url", "nix-attr"), ("     = ", "nix-punct"), ('"postgres+prisma"', "nix-str"), (";", "nix-punct")],
-    [("  };", "nix-key")],
-    [("", "nix-punct")],
-    [("  outputs = { self, ... }: {", "nix-key")],
-    [("    devShells.default", "nix-attr"), (" =", "nix-punct")],
-    [("      pkgs.mkShell { buildInputs = [", "nix-punct")],
-    [("        docker git neovim ghostty", "nix-val")],
-    [("      ]; };", "nix-punct")],
-    [("  };", "nix-key")],
-    [("}", "nix-punct")],
-]
-FLAKE_MAX_COLS = 40
-
 THEMES = {
     "dark": {
         "file": "dark_mode.svg",
@@ -91,11 +68,12 @@ THEMES = {
         "cursor": "#7ebae4",
         "logo_1": "#7ebae4",
         "logo_2": "#5277c3",
-        "nix_key": "#7ebae4",
-        "nix_attr": "#b6b6b6",
-        "nix_str": "#28c840",
-        "nix_val": "#cecece",
-        "nix_punct": "#5c5c5c",
+        "sheen_opacity": "0.75",
+        "git_node": "#febc2e",
+        "git_hash": "#c678dd",
+        "git_msg": "#cecece",
+        "cava_top": "#7ebae4",
+        "cava_bottom": "#2b5d8f",
         "heat": ["#10161f", "#1b3a5c", "#2b5d8f", "#4a8ec2", "#7ebae4"],
         "palette": ["#000000", "#ff5f57", "#28c840", "#febc2e", "#5277c3", "#c678dd", "#56b6c2", "#cecece"],
         "palette_bright": ["#5c5c5c", "#ff8b85", "#5ce06f", "#ffd479", "#7ebae4", "#dda0ee", "#8ad9e3", "#ffffff"],
@@ -125,11 +103,12 @@ THEMES = {
         "cursor": "#6c71c4",
         "logo_1": "#5277c3",
         "logo_2": "#2f4f96",
-        "nix_key": "#268bd2",
-        "nix_attr": "#cb4b16",
-        "nix_str": "#859900",
-        "nix_val": "#073642",
-        "nix_punct": "#93a1a1",
+        "sheen_opacity": "0.6",
+        "git_node": "#b58900",
+        "git_hash": "#d33682",
+        "git_msg": "#073642",
+        "cava_top": "#268bd2",
+        "cava_bottom": "#7aa9d6",
         "heat": ["#eee8d5", "#b8d2ea", "#7aa9d6", "#4380bd", "#1f5a94"],
         "palette": ["#073642", "#dc322f", "#859900", "#b58900", "#268bd2", "#d33682", "#2aa198", "#eee8d5"],
         "palette_bright": ["#586e75", "#cb4b16", "#9fb300", "#d4a017", "#5294cf", "#e05a9c", "#3fc4b8", "#fdf6e3"],
@@ -149,9 +128,9 @@ TITLEBAR_H = 36
 STATUSBAR_H = 30
 STATUSBAR_Y = SVG_HEIGHT - STATUSBAR_H
 
-# Advance width of the 16px monospace face, measured against the rendered SVG.
-# Used to place the typing masks over each command.
+# Advance widths of the monospace face, measured against the rendered SVG.
 CHAR_W = 9.6
+PANE_CHAR_W = 6.6
 PROMPT_LEN = len("yuuki@nixos:~$ ")
 
 PANE_X = 292
@@ -159,12 +138,24 @@ ASCII_X = 15
 ASCII_FONT_SIZE = 10
 ASCII_LINE_H = 12
 ASCII_Y_START = 80
-FLAKE_X = 15
-FLAKE_FONT_SIZE = 11
-FLAKE_LINE_H = 16
-FLAKE_Y_START = 420
-FLAKE_HEADER_Y = FLAKE_Y_START - FLAKE_LINE_H - 8
+PANE_TEXT_X = 15
+PANE_FONT_SIZE = 11
 TTY_X = 300
+
+GITLOG_HEADER_Y = 348
+GITLOG_Y_START = 374
+GITLOG_LINE_H = 18
+GITLOG_ROWS = 9
+GITLOG_MSG_COLS = 30  # fits "* <hash> " + message inside the left pane
+
+CAVA_HEADER_Y = 582
+CAVA_BARS = 24
+CAVA_BAR_W = 7
+CAVA_BAR_GAP = 4
+CAVA_X = 18
+CAVA_BASELINE = 706
+CAVA_HEIGHT = 88
+CAVA_WAVES = 6
 
 PALETTE_ROW_Y = (376, 396)
 PALETTE_CELL_W = 22
@@ -178,6 +169,7 @@ HEAT_X = TTY_X
 HEAT_Y = 626
 HEAT_MONTHS_Y = 616
 HEAT_LEGEND_Y = 716
+HEAT_WAVE_STEP_S = 0.025  # per-column delay of the calendar wipe
 
 # Session replay timing (seconds). The loop opens on the finished session, holds
 # it, clears, replays it, then holds again — so frame 0 is always the full
@@ -188,7 +180,7 @@ LOOP_S = 22.0  # recomputed from the session span in build_svg()
 TYPE_CHAR_S = 0.035
 PRINT_ROW_S = 0.08
 PRINT_LOGO_S = 0.03
-PRINT_FLAKE_S = 0.05
+PRINT_GITLOG_S = 0.07
 BEAT_S = 0.25
 
 
@@ -204,73 +196,119 @@ class Reveal:
             self.classes[key] = f"rv{len(self.classes)}"
         return self.classes[key]
 
+    def keyframes(self, name: str, seconds: float) -> str:
+        clear_at = HOLD_BEFORE_S / LOOP_S * 100
+        print_at = (HOLD_BEFORE_S + seconds) / LOOP_S * 100
+        lit_at = min(print_at + 0.3, 99.8)
+        return (
+            f"@keyframes {name} {{\n"
+            f"  0%, {clear_at:.2f}% {{ opacity: 1; }}\n"
+            f"  {clear_at + 0.01:.2f}%, {print_at:.2f}% {{ opacity: 0; }}\n"
+            f"  {lit_at:.2f}%, 100% {{ opacity: 1; }}\n"
+            f"}}\n"
+            f".{name} {{ animation: {name} {LOOP_S}s linear infinite; }}"
+        )
+
     def css(self) -> str:
         blocks = [".reveal {opacity: 1;}"]
-        for seconds, name in self.classes.items():
-            clear_at = HOLD_BEFORE_S / LOOP_S * 100
-            print_at = (HOLD_BEFORE_S + seconds) / LOOP_S * 100
-            lit_at = min(print_at + 0.3, 99.8)
-            blocks.append(
-                f"@keyframes {name} {{\n"
-                f"  0%, {clear_at:.2f}% {{ opacity: 1; }}\n"
-                f"  {clear_at + 0.01:.2f}%, {print_at:.2f}% {{ opacity: 0; }}\n"
-                f"  {lit_at:.2f}%, 100% {{ opacity: 1; }}\n"
-                f"}}\n"
-                f".{name} {{ animation: {name} {LOOP_S}s linear infinite; }}"
-            )
+        blocks += [self.keyframes(name, seconds) for seconds, name in self.classes.items()]
         return "\n".join(blocks)
 
 
 REVEAL = Reveal()
-# (mask index, row y, command, seconds the command starts typing)
-TYPED: list[tuple[int, int, str, float]] = []
+# (mask index, row y, command, seconds the command starts typing, in left pane)
+TYPED: list[tuple[int, int, str, float, bool]] = []
 
 
 def esc(text: str) -> str:
     return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
-def flake_line_width(segments: list[tuple[str, str]]) -> int:
-    return sum(len(text) for text, _ in segments)
-
-
 def typing_css() -> str:
-    """Mask that uncovers a command one character at a time.
+    """Masks that uncover each command one character at a time, plus the caret
+    that travels with it.
 
-    Defaults to scaleX(0) so a renderer without CSS animation shows the command
-    in full instead of a blank bar.
+    Both default to hidden/uncovered so a renderer without CSS animation shows
+    the command in full instead of a blank bar.
     """
-    blocks = [".type-mask {transform: scaleX(0); transform-origin: right center; transform-box: fill-box;}"]
-    for index, (_, _, command, cue) in enumerate(TYPED):
+    blocks = [
+        ".type-mask {transform: scaleX(0); transform-origin: right center; transform-box: fill-box;}",
+        ".caret {opacity: 0;}",
+    ]
+    for index, (_, _, command, cue, left_pane) in enumerate(TYPED):
         duration = len(command) * TYPE_CHAR_S
+        steps = max(1, len(command))
+        travel = steps * (PANE_CHAR_W if left_pane else CHAR_W)
         clear_pct = HOLD_BEFORE_S / LOOP_S * 100
         start_pct = (HOLD_BEFORE_S + cue) / LOOP_S * 100
-        end_pct = min((HOLD_BEFORE_S + cue + duration) / LOOP_S * 100, 99.8)
+        end_pct = min((HOLD_BEFORE_S + cue + duration) / LOOP_S * 100, 99.7)
         blocks.append(
             f"@keyframes type-{index} {{\n"
             f"  0%, {clear_pct:.2f}% {{ transform: scaleX(0); }}\n"
-            f"  {clear_pct + 0.01:.2f}%, {start_pct:.2f}% {{ transform: scaleX(1); animation-timing-function: steps({max(1, len(command))}, end); }}\n"
+            f"  {clear_pct + 0.01:.2f}%, {start_pct:.2f}% {{ transform: scaleX(1); animation-timing-function: steps({steps}, end); }}\n"
             f"  {end_pct:.2f}%, 100% {{ transform: scaleX(0); }}\n"
             f"}}\n"
             f".type-{index} {{ animation: type-{index} {LOOP_S}s linear infinite; }}"
         )
+        blocks.append(
+            f"@keyframes caret-{index} {{\n"
+            f"  0%, {start_pct:.2f}% {{ opacity: 0; transform: translateX(0); animation-timing-function: steps({steps}, end); }}\n"
+            f"  {start_pct + 0.01:.2f}% {{ opacity: 1; transform: translateX(0); animation-timing-function: steps({steps}, end); }}\n"
+            f"  {end_pct:.2f}% {{ opacity: 1; transform: translateX({travel:.1f}px); }}\n"
+            f"  {min(end_pct + 0.01, 99.8):.2f}%, 100% {{ opacity: 0; transform: translateX({travel:.1f}px); }}\n"
+            f"}}\n"
+            f".caret-{index} {{ animation: caret-{index} {LOOP_S}s linear infinite; }}"
+        )
     return "\n".join(blocks)
+
+
+def cava_css() -> str:
+    """Equalizer bars: a handful of wave shapes, each bar on its own clock."""
+    waves = [
+        ("0.18", "0.95", "0.35", "1.00", "0.42"),
+        ("0.60", "0.25", "0.90", "0.30", "0.75"),
+        ("0.35", "0.70", "0.20", "0.85", "0.30"),
+        ("0.90", "0.40", "0.65", "0.22", "0.95"),
+        ("0.25", "0.55", "1.00", "0.45", "0.20"),
+        ("0.72", "0.30", "0.48", "0.92", "0.38"),
+    ]
+    blocks = [".cava-bar {transform-origin: bottom; transform-box: fill-box;}"]
+    for index, steps in enumerate(waves):
+        stops = "\n".join(
+            f"  {pct}% {{ transform: scaleY({value}); }}"
+            for pct, value in zip((0, 25, 50, 75, 100), steps)
+        )
+        blocks.append(f"@keyframes cava-{index} {{\n{stops}\n}}")
+    for bar in range(CAVA_BARS):
+        wave = bar % CAVA_WAVES
+        duration = 0.9 + (bar * 7 % 9) / 10
+        delay = -((bar * 13 % 17) / 10)
+        blocks.append(
+            f".cava-{bar} {{ animation: cava-{wave} {duration:.1f}s ease-in-out {delay:.1f}s infinite; }}"
+        )
+    return "\n".join(blocks)
+
+
+def heatwave_css() -> str:
+    """Per-column cues so the calendar wipes in left to right."""
+    base = HEAT_CUE[0]
+    return "\n".join(
+        REVEAL.keyframes(f"hw{week}", base + week * HEAT_WAVE_STEP_S)
+        for week in range(HEAT_WEEKS)
+    )
 
 
 def animation_styles() -> str:
     return f"""
 {REVEAL.css()}
 {typing_css()}
+{cava_css()}
+{heatwave_css()}
 @keyframes cursor-blink {{
   0%, 45% {{ opacity: 1; }}
   50%, 100% {{ opacity: 0; }}
 }}
-@keyframes logo-pulse {{
-  0%, 100% {{ opacity: 0.9; }}
-  50% {{ opacity: 1; }}
-}}
 .cursor {{ animation: cursor-blink 1.05s step-end infinite; }}
-.ascii {{ animation: logo-pulse 6s ease-in-out infinite; }}
 """
 
 
@@ -343,23 +381,29 @@ class Session:
         self.clock = 0.3
         self.tty: list[str] = []
         self.logo: list[str] = []
-        self.flake: list[str] = []
+        self.pane: list[str] = []
         self.cues: dict[str, float] = {}
 
-    def _tspan(self, x: int, y: int, content: str, seconds: float) -> str:
-        return f'<tspan x="{x}" y="{y}" class="reveal {REVEAL.at(seconds)}">{content}</tspan>'
+    def _tspan(self, x: int, y: int, content: str, seconds: float, element_id: str = "") -> str:
+        ident = f' id="{element_id}"' if element_id else ""
+        return f'<tspan{ident} x="{x}" y="{y}" class="reveal {REVEAL.at(seconds)}">{content}</tspan>'
 
     def beat(self, seconds: float = BEAT_S) -> None:
         self.clock += seconds
+
+    def mark(self, name: str) -> None:
+        self.cues[name] = self.clock
 
     def output(self, y: int, content: str, step: float = PRINT_ROW_S) -> None:
         self.tty.append(self._tspan(TTY_X, y, content, self.clock))
         self.clock += step
 
-    def command(self, y: int, text: str) -> None:
+    def command(self, y: int, text: str, left_pane: bool = False) -> None:
         """Prompt appears, then the command types itself in."""
-        self.tty.append(self._tspan(TTY_X, y, prompt(text), self.clock))
-        TYPED.append((len(TYPED), y, text, self.clock))
+        target = self.pane if left_pane else self.tty
+        x = PANE_TEXT_X if left_pane else TTY_X
+        target.append(self._tspan(x, y, prompt(text), self.clock))
+        TYPED.append((len(TYPED), y, text, self.clock, left_pane))
         self.clock += len(text) * TYPE_CHAR_S + 0.15
 
     def logo_pane(self) -> None:
@@ -370,26 +414,24 @@ class Session:
             )
             self.logo.append(self._tspan(ASCII_X, y, parts, self.clock))
             self.clock += PRINT_LOGO_S
+        self.mark("logo_done")
 
-    def flake_pane(self) -> None:
-        header = (
-            f'<tspan class="prompt-host">yuuki@nixos</tspan>'
-            f'<tspan class="prompt-path">:~$</tspan> '
-            f'<tspan class="command">bat flake.nix</tspan>'
-        )
-        self.flake.append(self._tspan(FLAKE_X, FLAKE_HEADER_Y, header, self.clock))
-        TYPED.append((len(TYPED), FLAKE_HEADER_Y, "bat flake.nix", self.clock))
-        self.clock += len("bat flake.nix") * TYPE_CHAR_S + 0.15
-        for index, segments in enumerate(FLAKE_LINES):
-            y = FLAKE_Y_START + index * FLAKE_LINE_H
-            parts = "".join(
-                f'<tspan class="{cls}">{esc(text)}</tspan>' for text, cls in segments
+    def gitlog_pane(self) -> None:
+        """Placeholder commit rows — today.py rewrites their contents."""
+        self.command(GITLOG_HEADER_Y, "git log --graph", left_pane=True)
+        for index in range(GITLOG_ROWS):
+            y = GITLOG_Y_START + index * GITLOG_LINE_H
+            body = (
+                f'<tspan class="git-node">*</tspan>'
+                f'<tspan class="dim"> </tspan>'
+                f'<tspan class="git-hash">0000000</tspan>'
+                f'<tspan class="dim"> </tspan>'
+                f'<tspan class="git-msg">waiting for today.py</tspan>'
             )
-            self.flake.append(self._tspan(FLAKE_X, y, parts, self.clock))
-            self.clock += PRINT_FLAKE_S
-
-    def mark(self, name: str) -> None:
-        self.cues[name] = self.clock
+            self.pane.append(
+                self._tspan(PANE_TEXT_X, y, body, self.clock, element_id=f"gitlog_{index}")
+            )
+            self.clock += PRINT_GITLOG_S
 
 
 def build_session() -> Session:
@@ -433,9 +475,11 @@ def build_session() -> Session:
     session.beat()
 
     # left pane catches up while the right pane pauses
-    flake_start = session.clock
-    session.flake_pane()
-    session.clock = max(flake_start + 0.4, session.clock - 0.6)
+    pane_start = session.clock
+    session.gitlog_pane()
+    session.command(CAVA_HEADER_Y, "cava", left_pane=True)
+    session.mark("cava")
+    session.clock = max(pane_start + 0.4, session.clock - 1.2)
 
     session.command(496, "git shortlog -sn --all | head -1")
     session.output(516, stat_line("commit_data", "  commits authored by YuukiFST", "   "))
@@ -447,7 +491,7 @@ def build_session() -> Session:
 
     session.command(596, "gh api graphql -f query=contributionCalendar")
     session.mark("heatmap")
-    session.clock += 0.5
+    session.clock += HEAT_WEEKS * HEAT_WAVE_STEP_S
     session.beat()
 
     session.output(746, f'{prompt("")}<tspan class="cursor">█</tspan>')
@@ -471,14 +515,32 @@ def palette_block(theme: dict, session: Session) -> str:
     return "\n".join(groups)
 
 
-def heatmap_placeholder(theme: dict, session: Session) -> str:
-    """Empty calendar grid + month labels; today.py replaces both with real data."""
-    cue = REVEAL.at(session.cues["heatmap"])
-    cells = "".join(
-        f'<rect class="lvl0" x="{week * HEAT_PITCH}" y="{day * HEAT_PITCH}" '
-        f'width="{HEAT_CELL}" height="{HEAT_CELL}" rx="2"/>'
+def cava_block(theme: dict, session: Session) -> str:
+    """Equalizer bars — the one element that keeps moving between replays."""
+    bars = "".join(
+        f'<rect class="cava-bar cava-{bar}" '
+        f'x="{CAVA_X + bar * (CAVA_BAR_W + CAVA_BAR_GAP)}" y="{CAVA_BASELINE - CAVA_HEIGHT}" '
+        f'width="{CAVA_BAR_W}" height="{CAVA_HEIGHT}" rx="2" fill="url(#cava-gradient)"/>'
+        for bar in range(CAVA_BARS)
+    )
+    return f'<g class="reveal {REVEAL.at(session.cues["cava"])}">{bars}</g>'
+
+
+def heatmap_placeholder(theme: dict) -> str:
+    """Empty calendar grid + month labels; today.py replaces both with real data.
+
+    Each week is its own group so the calendar wipes in column by column.
+    """
+    cue = REVEAL.at(HEAT_CUE[0])
+    columns = "".join(
+        f'<g class="reveal hw{week}">'
+        + "".join(
+            f'<rect class="lvl0" x="{week * HEAT_PITCH}" y="{day * HEAT_PITCH}" '
+            f'width="{HEAT_CELL}" height="{HEAT_CELL}" rx="2"/>'
+            for day in range(7)
+        )
+        + "</g>"
         for week in range(HEAT_WEEKS)
-        for day in range(7)
     )
     today = datetime.date.today()
     months = []
@@ -497,7 +559,7 @@ def heatmap_placeholder(theme: dict, session: Session) -> str:
     return f'''<text id="heatmap_months" class="dim reveal {cue}" font-size="11px" fill="{theme["dim"]}">
 {"".join(months)}
 </text>
-<g id="heatmap" class="reveal {cue}" transform="translate({HEAT_X},{HEAT_Y})">{cells}</g>
+<g id="heatmap" transform="translate({HEAT_X},{HEAT_Y})">{columns}</g>
 <g class="reveal {cue}">
 <text class="dim" font-size="11px" fill="{theme["dim"]}" x="{HEAT_X}" y="{HEAT_LEGEND_Y}">Less</text>
 {legend_cells}
@@ -505,23 +567,22 @@ def heatmap_placeholder(theme: dict, session: Session) -> str:
 </g>'''
 
 
-def typing_masks(theme: dict) -> str:
-    """Bg-colored rects that uncover each command left-to-right.
-
-    Painted after the text, so they must stay last in document order.
-    """
-    rects = []
-    for index, (_, y, command, _) in enumerate(TYPED):
-        left_pane = y == FLAKE_HEADER_Y
-        char_w = FLAKE_FONT_SIZE * 0.60 if left_pane else CHAR_W
-        x = (FLAKE_X if left_pane else TTY_X) + PROMPT_LEN * char_w
-        width = len(command) * char_w + 2
+def typing_overlays(theme: dict) -> str:
+    """Masks + carets, painted after the text so they sit on top of it."""
+    parts = []
+    for index, (_, y, command, _, left_pane) in enumerate(TYPED):
+        char_w = PANE_CHAR_W if left_pane else CHAR_W
+        x = (PANE_TEXT_X if left_pane else TTY_X) + PROMPT_LEN * char_w
         height = 14 if left_pane else 19
-        rects.append(
+        parts.append(
             f'<rect class="type-mask type-{index}" x="{x:.1f}" y="{y - height + 3}" '
-            f'width="{width:.1f}" height="{height}" fill="{theme["bg"]}"/>'
+            f'width="{len(command) * char_w + 2:.1f}" height="{height}" fill="{theme["bg"]}"/>'
         )
-    return "\n".join(rects)
+        parts.append(
+            f'<rect class="caret caret-{index}" x="{x:.1f}" y="{y - height + 3}" '
+            f'width="{char_w:.1f}" height="{height}" fill="{theme["cursor"]}"/>'
+        )
+    return "\n".join(parts)
 
 
 def titlebar(theme: dict) -> str:
@@ -543,7 +604,7 @@ def statusbar(theme: dict) -> str:
     return f'''<path d="M1 {STATUSBAR_Y} L984 {STATUSBAR_Y} L984 {SVG_HEIGHT - 13} A12 12 0 0 1 972 {SVG_HEIGHT - 1} L13 {SVG_HEIGHT - 1} A12 12 0 0 1 1 {SVG_HEIGHT - 13} Z" fill="{theme["statusbar_alt"]}"/>
 <rect x="1" y="{STATUSBAR_Y}" width="{left_w}" height="{STATUSBAR_H}" fill="{theme["statusbar"]}"/>
 <text x="20" y="{text_y}" font-size="13" fill="{theme["statusbar_text"]}">[0] NIXOS</text>
-<text x="{left_w + 20}" y="{text_y}" font-size="13" fill="{theme["statusbar_alt_text"]}">0:flake*   1:session-   │   ~/github/YuukiFST</text>
+<text x="{left_w + 20}" y="{text_y}" font-size="13" fill="{theme["statusbar_alt_text"]}">0:cava*   1:session-   │   ~/github/YuukiFST</text>
 <text x="{SVG_WIDTH - 20}" y="{text_y}" text-anchor="end" font-size="13" fill="{theme["statusbar_alt_text"]}">main ✓   │   nixos-unstable   │   ★ reproducible</text>'''
 
 
@@ -554,14 +615,34 @@ def pane_divider(theme: dict) -> str:
     )
 
 
+def logo_sheen(theme: dict, session: Session) -> str:
+    """A highlight sweeping across the finished snowflake every few seconds.
+
+    Same glyphs as the logo, filled with a moving gradient, so the sheen only
+    paints where the block characters already are.
+    """
+    rows = []
+    for index, segments in enumerate(ASCII_LOGO):
+        y = ASCII_Y_START + index * ASCII_LINE_H
+        line = "".join(esc(text) for text, _ in segments)
+        rows.append(f'<tspan x="{ASCII_X}" y="{y}">{line}</tspan>')
+    return f'''<text class="reveal {REVEAL.at(session.cues["logo_done"])}" font-size="{ASCII_FONT_SIZE}px" fill="url(#sheen)">
+{"".join(rows)}
+</text>'''
+
+
 def build_svg(theme_name: str) -> str:
-    global REVEAL, TYPED, LOOP_S
+    global REVEAL, TYPED, LOOP_S, HEAT_CUE
     REVEAL = Reveal()
     TYPED = []
+    HEAT_CUE = [0.0]
 
     theme = THEMES[theme_name]
     session = build_session()
     LOOP_S = HOLD_BEFORE_S + session.clock + HOLD_AFTER_S
+    HEAT_CUE[0] = session.cues["heatmap"]
+    sheen_end = ASCII_X + 46 * PANE_CHAR_W
+    heat_span = HEAT_WEEKS * HEAT_PITCH
     font = theme.get("font", "ConsolasFallback,Consolas,monospace")
     heat_rules = "\n".join(
         f".lvl{level} {{fill: {color};}}" for level, color in enumerate(theme["heat"])
@@ -588,11 +669,9 @@ size-adjust: 109%;
 .cursor {{fill: {theme["cursor"]};}}
 .logo-1 {{fill: {theme["logo_1"]};}}
 .logo-2 {{fill: {theme["logo_2"]};}}
-.nix-key {{fill: {theme["nix_key"]};}}
-.nix-attr {{fill: {theme["nix_attr"]};}}
-.nix-str {{fill: {theme["nix_str"]};}}
-.nix-val {{fill: {theme["nix_val"]};}}
-.nix-punct {{fill: {theme["nix_punct"]};}}
+.git-node {{fill: {theme["git_node"]};}}
+.git-hash {{fill: {theme["git_hash"]};}}
+.git-msg {{fill: {theme["git_msg"]};}}
 {heat_rules}
 text, tspan {{white-space: pre;}}
 {animation_styles()}
@@ -605,6 +684,17 @@ text, tspan {{white-space: pre;}}
 <feMergeNode in="SourceGraphic"/>
 </feMerge>
 </filter>
+<linearGradient id="sheen" gradientUnits="userSpaceOnUse" x1="{ASCII_X - 220}" y1="{ASCII_Y_START}" x2="{ASCII_X - 60}" y2="{ASCII_Y_START + 120}">
+<stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+<stop offset="50%" stop-color="#ffffff" stop-opacity="{theme["sheen_opacity"]}"/>
+<stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+<animate attributeName="x1" values="{ASCII_X - 220};{sheen_end:.0f}" dur="7s" repeatCount="indefinite"/>
+<animate attributeName="x2" values="{ASCII_X - 60};{sheen_end + 160:.0f}" dur="7s" repeatCount="indefinite"/>
+</linearGradient>
+<linearGradient id="cava-gradient" gradientUnits="userSpaceOnUse" x1="0" y1="{CAVA_BASELINE}" x2="0" y2="{CAVA_BASELINE - CAVA_HEIGHT}">
+<stop offset="0%" stop-color="{theme["cava_bottom"]}"/>
+<stop offset="100%" stop-color="{theme["cava_top"]}"/>
+</linearGradient>
 </defs>
 <rect width="{SVG_WIDTH}px" height="{SVG_HEIGHT}px" fill="{theme["bg"]}" rx="12"/>
 {titlebar(theme)}
@@ -614,29 +704,24 @@ text, tspan {{white-space: pre;}}
 <text x="15" y="30" fill="{theme["logo_1"]}" class="ascii" font-size="{ASCII_FONT_SIZE}px" filter="url(#phosphor)">
 {"".join(chr(10) + row for row in session.logo)}
 </text>
-<text x="{FLAKE_X}" y="30" fill="{theme["fg"]}" font-size="{FLAKE_FONT_SIZE}px">
-{"".join(chr(10) + row for row in session.flake)}
+{logo_sheen(theme, session)}
+<text x="{PANE_TEXT_X}" y="30" fill="{theme["fg"]}" font-size="{PANE_FONT_SIZE}px">
+{"".join(chr(10) + row for row in session.pane)}
 </text>
 <text x="{TTY_X}" y="30" fill="{theme["fg"]}">
 {"".join(chr(10) + row for row in session.tty)}
 </text>
 {palette_block(theme, session)}
-{heatmap_placeholder(theme, session)}
-{typing_masks(theme)}
+{cava_block(theme, session)}
+{heatmap_placeholder(theme)}
+{typing_overlays(theme)}
 </svg>'''
 
 
+HEAT_CUE = [0.0]
+
+
 def main() -> None:
-    too_wide = [
-        "".join(text for text, _ in line)
-        for line in FLAKE_LINES
-        if flake_line_width(line) > FLAKE_MAX_COLS
-    ]
-    if too_wide:
-        raise SystemExit(
-            f"flake.nix lines exceed {FLAKE_MAX_COLS} cols and would spill into the "
-            f"right pane: {too_wide}"
-        )
     for theme_name in THEMES:
         path = ROOT / THEMES[theme_name]["file"]
         path.write_text(build_svg(theme_name), encoding="utf-8")

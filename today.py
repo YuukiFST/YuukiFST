@@ -10,7 +10,15 @@ import hashlib
 # Heatmap geometry lives with the layout, not here — importing it keeps the grid
 # this script draws aligned with the placeholder the template ships.
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'scripts'))
-from build_svg_template import HEAT_CELL, HEAT_MONTHS_Y, HEAT_PITCH, HEAT_WEEKS, HEAT_X
+from build_svg_template import (
+    GITLOG_MSG_COLS,
+    GITLOG_ROWS,
+    HEAT_CELL,
+    HEAT_MONTHS_Y,
+    HEAT_PITCH,
+    HEAT_WEEKS,
+    HEAT_X,
+)
 
 # Fine-grained personal access token with All Repositories access:
 # Account permissions: read:Followers, read:Starring, read:Watching
@@ -367,10 +375,75 @@ def heat_level(count, peak):
     return 4
 
 
+def graph_recent_commits():
+    """
+    Uses GitHub's GraphQL v4 API to return my most recent commits across the
+    repositories I pushed to last, newest first.
+    """
+    query_count('graph_repos_stars')
+    query = '''
+    query($login: String!) {
+        user(login: $login) {
+            repositories(first: 12, orderBy: {field: PUSHED_AT, direction: DESC}, ownerAffiliations: [OWNER]) {
+                nodes {
+                    name
+                    defaultBranchRef {
+                        target {
+                            ... on Commit {
+                                history(first: 8) {
+                                    nodes {
+                                        oid
+                                        messageHeadline
+                                        committedDate
+                                        author { user { login } }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }'''
+    request = simple_request(graph_recent_commits.__name__, query, {'login': USER_NAME})
+    commits = []
+    for repo in request.json()['data']['user']['repositories']['nodes']:
+        if not repo['defaultBranchRef']:
+            continue
+        for node in repo['defaultBranchRef']['target']['history']['nodes']:
+            author = node['author']['user']
+            if author and author['login'] == USER_NAME:
+                commits.append((node['committedDate'], node['oid'], node['messageHeadline']))
+    commits.sort(reverse=True)
+    return commits[:GITLOG_ROWS]
+
+
+def gitlog_overwrite(root, commits):
+    """
+    Fills the git log --graph rows in the left pane with real commits.
+    Rows past the end of the list are blanked instead of left as placeholders.
+    """
+    for index in range(GITLOG_ROWS):
+        row = root.find(".//*[@id='gitlog_" + str(index) + "']")
+        if row is None:
+            continue
+        for child in list(row):
+            row.remove(child)
+        if index >= len(commits):
+            continue
+        __, oid, headline = commits[index]
+        if len(headline) > GITLOG_MSG_COLS:
+            headline = headline[:GITLOG_MSG_COLS - 1] + '…'
+        for text, css_class in (('*', 'git-node'), (' ', 'dim'), (oid[:7], 'git-hash'), (' ', 'dim'), (headline, 'git-msg')):
+            part = etree.SubElement(row, '{http://www.w3.org/2000/svg}tspan')
+            part.set('class', css_class)
+            part.text = text
+
+
 def heatmap_overwrite(root, weeks):
     """
     Redraws the contribution grid and its month labels from the real calendar.
-    The template only ships an empty grid, so this is what gives it data.
+    One group per week, so the template's column-by-column wipe still lines up.
     """
     grid = root.find(".//*[@id='heatmap']")
     labels = root.find(".//*[@id='heatmap_months']")
@@ -384,8 +457,10 @@ def heatmap_overwrite(root, weeks):
         labels.remove(child)
 
     for week_index, week in enumerate(weeks):
+        column = etree.SubElement(grid, '{http://www.w3.org/2000/svg}g')
+        column.set('class', 'reveal hw' + str(week_index))
         for day_index, day in enumerate(week['contributionDays']):
-            cell = etree.SubElement(grid, '{http://www.w3.org/2000/svg}rect')
+            cell = etree.SubElement(column, '{http://www.w3.org/2000/svg}rect')
             cell.set('class', 'lvl' + str(heat_level(day['contributionCount'], peak)))
             cell.set('x', str(week_index * HEAT_PITCH))
             cell.set('y', str(day_index * HEAT_PITCH))
@@ -405,9 +480,10 @@ def heatmap_overwrite(root, weeks):
         label.text = datetime.date(2000, month, 1).strftime('%b')
 
 
-def svg_overwrite(filename, age_data, commit_data, loc_data, weeks):
+def svg_overwrite(filename, age_data, commit_data, loc_data, weeks, commits):
     """
-    Parse SVG files and update age, commits, lines of code and the heatmap.
+    Parse SVG files and update age, commits, lines of code, the heatmap and the
+    git log pane.
     loc_data is [added, deleted, net] from loc_query()
     """
     tree = etree.parse(filename)
@@ -418,6 +494,7 @@ def svg_overwrite(filename, age_data, commit_data, loc_data, weeks):
     justify_format(root, 'loc_add', loc_data[0])
     justify_format(root, 'loc_del', loc_data[1])
     heatmap_overwrite(root, weeks)
+    gitlog_overwrite(root, commits)
     tree.write(filename, encoding='utf-8', xml_declaration=True)
 
 
@@ -543,9 +620,11 @@ if __name__ == '__main__':
     commit_data, commit_time = perf_counter(commit_counter, 7)
     calendar_data, calendar_time = perf_counter(graph_contribution_calendar)
     formatter('contribution calendar', calendar_time)
+    recent_commits, recent_time = perf_counter(graph_recent_commits)
+    formatter('recent commits', recent_time)
 
-    svg_overwrite('dark_mode.svg', age_data, commit_data, total_loc[:-1], calendar_data)
-    svg_overwrite('light_mode.svg', age_data, commit_data, total_loc[:-1], calendar_data)
+    svg_overwrite('dark_mode.svg', age_data, commit_data, total_loc[:-1], calendar_data, recent_commits)
+    svg_overwrite('light_mode.svg', age_data, commit_data, total_loc[:-1], calendar_data, recent_commits)
 
     # move cursor to override 'Calculation times:' with 'Total function time:' and the total function time, then move cursor back
     print('\033[F\033[F\033[F\033[F',
