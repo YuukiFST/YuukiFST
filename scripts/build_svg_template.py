@@ -2,8 +2,12 @@
 """Generate dark_mode.svg and light_mode.svg — tmux/NixOS session profile.
 
 Layout is a two-pane tmux window:
-  left pane  — NixOS snowflake logo, git log --graph, a cava equalizer
+  left pane  — NixOS snowflake logo, git log --graph, tokei language breakdown
   right pane — fastfetch output, links, git stats, contribution heatmap
+
+Every panel is real data. Nothing here is decoration for its own sake: the bars
+are bytes per language, the graph is real commits, the grid is the real
+calendar.
 
 Animation is a session replay: the loop opens on the finished session, holds
 it, clears, and reprints every row on its own cue. Nothing ever dims. The
@@ -72,11 +76,8 @@ THEMES = {
         "git_node": "#febc2e",
         "git_hash": "#c678dd",
         "git_msg": "#cecece",
-        "cava_top": "#7ebae4",
-        "cava_bottom": "#2b5d8f",
+        "lang_track": "#141c28",
         "heat": ["#10161f", "#1b3a5c", "#2b5d8f", "#4a8ec2", "#7ebae4"],
-        "palette": ["#000000", "#ff5f57", "#28c840", "#febc2e", "#5277c3", "#c678dd", "#56b6c2", "#cecece"],
-        "palette_bright": ["#5c5c5c", "#ff8b85", "#5ce06f", "#ffd479", "#7ebae4", "#dda0ee", "#8ad9e3", "#ffffff"],
         "titlebar": "#0d1117",
         "titlebar_text": "#8b949e",
         "statusbar": "#5277c3",
@@ -107,11 +108,8 @@ THEMES = {
         "git_node": "#b58900",
         "git_hash": "#d33682",
         "git_msg": "#073642",
-        "cava_top": "#268bd2",
-        "cava_bottom": "#7aa9d6",
+        "lang_track": "#e3dcc6",
         "heat": ["#eee8d5", "#b8d2ea", "#7aa9d6", "#4380bd", "#1f5a94"],
-        "palette": ["#073642", "#dc322f", "#859900", "#b58900", "#268bd2", "#d33682", "#2aa198", "#eee8d5"],
-        "palette_bright": ["#586e75", "#cb4b16", "#9fb300", "#d4a017", "#5294cf", "#e05a9c", "#3fc4b8", "#fdf6e3"],
         "titlebar": "#eee8d5",
         "titlebar_text": "#657b83",
         "statusbar": "#268bd2",
@@ -148,18 +146,18 @@ GITLOG_LINE_H = 18
 GITLOG_ROWS = 9
 GITLOG_MSG_COLS = 30  # fits "* <hash> " + message inside the left pane
 
-CAVA_HEADER_Y = 582
-CAVA_BARS = 24
-CAVA_BAR_W = 7
-CAVA_BAR_GAP = 4
-CAVA_X = 18
-CAVA_BASELINE = 706
-CAVA_HEIGHT = 88
-CAVA_WAVES = 6
-
-PALETTE_ROW_Y = (376, 396)
-PALETTE_CELL_W = 22
-PALETTE_CELL_H = 12
+# tokei-style language breakdown: label, byte-share bar, percentage
+LANG_HEADER_Y = 582
+LANG_Y_START = 608
+LANG_LINE_H = 21
+LANG_ROWS = 5
+LANG_BAR_X = 100
+LANG_BAR_W = 128
+LANG_BAR_H = 9
+LANG_PCT_X = 277
+LANG_NAME_COLS = 12
+LANG_GROW_S = 0.55
+LANG_ROW_STEP_S = 0.12
 
 HEAT_CELL = 9
 HEAT_GAP = 2
@@ -262,29 +260,25 @@ def typing_css() -> str:
     return "\n".join(blocks)
 
 
-def cava_css() -> str:
-    """Equalizer bars: a handful of wave shapes, each bar on its own clock."""
-    waves = [
-        ("0.18", "0.95", "0.35", "1.00", "0.42"),
-        ("0.60", "0.25", "0.90", "0.30", "0.75"),
-        ("0.35", "0.70", "0.20", "0.85", "0.30"),
-        ("0.90", "0.40", "0.65", "0.22", "0.95"),
-        ("0.25", "0.55", "1.00", "0.45", "0.20"),
-        ("0.72", "0.30", "0.48", "0.92", "0.38"),
-    ]
-    blocks = [".cava-bar {transform-origin: bottom; transform-box: fill-box;}"]
-    for index, steps in enumerate(waves):
-        stops = "\n".join(
-            f"  {pct}% {{ transform: scaleY({value}); }}"
-            for pct, value in zip((0, 25, 50, 75, 100), steps)
-        )
-        blocks.append(f"@keyframes cava-{index} {{\n{stops}\n}}")
-    for bar in range(CAVA_BARS):
-        wave = bar % CAVA_WAVES
-        duration = 0.9 + (bar * 7 % 9) / 10
-        delay = -((bar * 13 % 17) / 10)
+def langbar_css(session: Session) -> str:
+    """Language bars fill from the left on their row's cue.
+
+    Base state is the measured width, so a renderer without CSS animation shows
+    the finished breakdown.
+    """
+    blocks = [".lang-bar {transform-origin: left center; transform-box: fill-box;}"]
+    clear_pct = HOLD_BEFORE_S / LOOP_S * 100
+    for index in range(LANG_ROWS):
+        cue = session.cues[f"lang_{index}"]
+        start_pct = (HOLD_BEFORE_S + cue) / LOOP_S * 100
+        end_pct = min((HOLD_BEFORE_S + cue + LANG_GROW_S) / LOOP_S * 100, 99.7)
         blocks.append(
-            f".cava-{bar} {{ animation: cava-{wave} {duration:.1f}s ease-in-out {delay:.1f}s infinite; }}"
+            f"@keyframes lg{index} {{\n"
+            f"  0%, {clear_pct:.2f}% {{ transform: scaleX(1); }}\n"
+            f"  {clear_pct + 0.01:.2f}%, {start_pct:.2f}% {{ transform: scaleX(0); animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }}\n"
+            f"  {end_pct:.2f}%, 100% {{ transform: scaleX(1); }}\n"
+            f"}}\n"
+            f".lg{index} {{ animation: lg{index} {LOOP_S}s linear infinite; }}"
         )
     return "\n".join(blocks)
 
@@ -298,11 +292,11 @@ def heatwave_css() -> str:
     )
 
 
-def animation_styles() -> str:
+def animation_styles(session: Session) -> str:
     return f"""
 {REVEAL.css()}
 {typing_css()}
-{cava_css()}
+{langbar_css(session)}
 {heatwave_css()}
 @keyframes cursor-blink {{
   0%, 45% {{ opacity: 1; }}
@@ -363,6 +357,15 @@ def loc_line(indent: str = "   ") -> str:
         f'<tspan class="delColor" id="loc_del">0</tspan>'
         f'<tspan class="dim" id="loc_del_dots"></tspan>'
         f'<tspan class="dim">--</tspan>'
+    )
+
+
+def metric_row(label: str, value_id: str, placeholder: str) -> str:
+    """A stack-styled row whose value today.py rewrites by id."""
+    return (
+        f'<tspan class="dim"> » </tspan>'
+        f'<tspan class="key">{esc(f"{label + ':':<12}")}</tspan>'
+        f'<tspan class="value" id="{value_id}">{esc(placeholder)}</tspan>'
     )
 
 
@@ -463,10 +466,8 @@ def build_session() -> Session:
     session.output(306, stack_row("Frontend", "React, Next.js, TypeScript, Tailwind, shadcn/ui"))
     session.output(326, stack_row("Databases", "PostgreSQL, Neon, Supabase"))
     session.output(346, stack_row("DevOps", "Docker, Git, Linux, Cloudinary"))
-    session.mark("palette_1")
-    session.clock += PRINT_ROW_S
-    session.mark("palette_2")
-    session.clock += PRINT_ROW_S
+    session.output(376, metric_row("Streak", "streak_data", "0 days"))
+    session.output(396, metric_row("Peak day", "peak_data", "0 contributions"))
     session.beat()
 
     session.command(426, "cat ~/links")
@@ -477,8 +478,10 @@ def build_session() -> Session:
     # left pane catches up while the right pane pauses
     pane_start = session.clock
     session.gitlog_pane()
-    session.command(CAVA_HEADER_Y, "cava", left_pane=True)
-    session.mark("cava")
+    session.command(LANG_HEADER_Y, "tokei ~/github --sort code", left_pane=True)
+    for index in range(LANG_ROWS):
+        session.mark(f"lang_{index}")
+        session.clock += LANG_ROW_STEP_S
     session.clock = max(pane_start + 0.4, session.clock - 1.2)
 
     session.command(496, "git shortlog -sn --all | head -1")
@@ -498,32 +501,30 @@ def build_session() -> Session:
     return session
 
 
-def palette_block(theme: dict, session: Session) -> str:
-    """The two swatch rows fastfetch prints under the info block."""
-    groups = []
-    for row_index, (y, colors) in enumerate(
-        zip(PALETTE_ROW_Y, (theme["palette"], theme["palette_bright"]))
-    ):
-        cells = "".join(
-            f'<rect x="{TTY_X + 4 + index * PALETTE_CELL_W}" y="{y - PALETTE_CELL_H}" '
-            f'width="{PALETTE_CELL_W - 4}" height="{PALETTE_CELL_H}" rx="2" fill="{color}" '
-            f'stroke="{theme["pane_border"]}" stroke-width="1"/>'
-            for index, color in enumerate(colors)
+def lang_block(theme: dict, session: Session) -> str:
+    """Language breakdown rows — today.py fills in name, bar width and share.
+
+    Placeholder bars are full width so a failed run is obvious instead of
+    silently rendering an empty chart.
+    """
+    rows = []
+    for index in range(LANG_ROWS):
+        y = LANG_Y_START + index * LANG_LINE_H
+        bar_y = y - LANG_BAR_H + 1
+        cue = REVEAL.at(session.cues[f"lang_{index}"])
+        rows.append(
+            f'<g class="reveal {cue}">'
+            f'<text id="lang_{index}_name" class="key" x="{PANE_TEXT_X}" y="{y}" '
+            f'font-size="11px" fill="{theme["key"]}">—</text>'
+            f'<rect x="{LANG_BAR_X}" y="{bar_y}" width="{LANG_BAR_W}" height="{LANG_BAR_H}" '
+            f'rx="2" fill="{theme["lang_track"]}"/>'
+            f'<rect id="lang_{index}_bar" class="lang-bar lg{index}" x="{LANG_BAR_X}" y="{bar_y}" '
+            f'width="{LANG_BAR_W}" height="{LANG_BAR_H}" rx="2" fill="{theme["logo_1"]}"/>'
+            f'<text id="lang_{index}_pct" class="dim" x="{LANG_PCT_X}" y="{y}" '
+            f'font-size="11px" text-anchor="end" fill="{theme["dim"]}">—</text>'
+            f"</g>"
         )
-        cue = session.cues[f"palette_{row_index + 1}"]
-        groups.append(f'<g class="reveal {REVEAL.at(cue)}">{cells}</g>')
-    return "\n".join(groups)
-
-
-def cava_block(theme: dict, session: Session) -> str:
-    """Equalizer bars — the one element that keeps moving between replays."""
-    bars = "".join(
-        f'<rect class="cava-bar cava-{bar}" '
-        f'x="{CAVA_X + bar * (CAVA_BAR_W + CAVA_BAR_GAP)}" y="{CAVA_BASELINE - CAVA_HEIGHT}" '
-        f'width="{CAVA_BAR_W}" height="{CAVA_HEIGHT}" rx="2" fill="url(#cava-gradient)"/>'
-        for bar in range(CAVA_BARS)
-    )
-    return f'<g class="reveal {REVEAL.at(session.cues["cava"])}">{bars}</g>'
+    return "\n".join(rows)
 
 
 def heatmap_placeholder(theme: dict) -> str:
@@ -604,7 +605,7 @@ def statusbar(theme: dict) -> str:
     return f'''<path d="M1 {STATUSBAR_Y} L984 {STATUSBAR_Y} L984 {SVG_HEIGHT - 13} A12 12 0 0 1 972 {SVG_HEIGHT - 1} L13 {SVG_HEIGHT - 1} A12 12 0 0 1 1 {SVG_HEIGHT - 13} Z" fill="{theme["statusbar_alt"]}"/>
 <rect x="1" y="{STATUSBAR_Y}" width="{left_w}" height="{STATUSBAR_H}" fill="{theme["statusbar"]}"/>
 <text x="20" y="{text_y}" font-size="13" fill="{theme["statusbar_text"]}">[0] NIXOS</text>
-<text x="{left_w + 20}" y="{text_y}" font-size="13" fill="{theme["statusbar_alt_text"]}">0:cava*   1:session-   │   ~/github/YuukiFST</text>
+<text x="{left_w + 20}" y="{text_y}" font-size="13" fill="{theme["statusbar_alt_text"]}">0:tokei*   1:session-   │   ~/github/YuukiFST</text>
 <text x="{SVG_WIDTH - 20}" y="{text_y}" text-anchor="end" font-size="13" fill="{theme["statusbar_alt_text"]}">main ✓   │   nixos-unstable   │   ★ reproducible</text>'''
 
 
@@ -674,7 +675,7 @@ size-adjust: 109%;
 .git-msg {{fill: {theme["git_msg"]};}}
 {heat_rules}
 text, tspan {{white-space: pre;}}
-{animation_styles()}
+{animation_styles(session)}
 </style>
 <defs>
 <filter id="phosphor" x="-25%" y="-25%" width="150%" height="150%">
@@ -690,10 +691,6 @@ text, tspan {{white-space: pre;}}
 <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
 <animate attributeName="x1" values="{ASCII_X - 220};{sheen_end:.0f}" dur="7s" repeatCount="indefinite"/>
 <animate attributeName="x2" values="{ASCII_X - 60};{sheen_end + 160:.0f}" dur="7s" repeatCount="indefinite"/>
-</linearGradient>
-<linearGradient id="cava-gradient" gradientUnits="userSpaceOnUse" x1="0" y1="{CAVA_BASELINE}" x2="0" y2="{CAVA_BASELINE - CAVA_HEIGHT}">
-<stop offset="0%" stop-color="{theme["cava_bottom"]}"/>
-<stop offset="100%" stop-color="{theme["cava_top"]}"/>
 </linearGradient>
 </defs>
 <rect width="{SVG_WIDTH}px" height="{SVG_HEIGHT}px" fill="{theme["bg"]}" rx="12"/>
@@ -711,8 +708,7 @@ text, tspan {{white-space: pre;}}
 <text x="{TTY_X}" y="30" fill="{theme["fg"]}">
 {"".join(chr(10) + row for row in session.tty)}
 </text>
-{palette_block(theme, session)}
-{cava_block(theme, session)}
+{lang_block(theme, session)}
 {heatmap_placeholder(theme)}
 {typing_overlays(theme)}
 </svg>'''

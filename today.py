@@ -18,6 +18,9 @@ from build_svg_template import (
     HEAT_PITCH,
     HEAT_WEEKS,
     HEAT_X,
+    LANG_BAR_W,
+    LANG_NAME_COLS,
+    LANG_ROWS,
 )
 
 # Fine-grained personal access token with All Repositories access:
@@ -375,6 +378,89 @@ def heat_level(count, peak):
     return 4
 
 
+def calendar_metrics(weeks):
+    """
+    Returns (current streak, longest streak, peak day) from the contribution
+    calendar. Days are walked oldest first; the streak in progress counts only
+    if it reaches the most recent day with activity.
+    """
+    days = [day for week in weeks for day in week['contributionDays']]
+    longest, running = 0, 0
+    peak = {'contributionCount': 0, 'date': days[0]['date'] if days else '—'}
+    for day in days:
+        running = running + 1 if day['contributionCount'] > 0 else 0
+        longest = max(longest, running)
+        if day['contributionCount'] > peak['contributionCount']:
+            peak = day
+    # today being quiet does not break a streak that is still alive
+    tail = days[:-1] if days and days[-1]['contributionCount'] == 0 else days
+    current = 0
+    for day in reversed(tail):
+        if day['contributionCount'] == 0:
+            break
+        current += 1
+    return current, longest, peak
+
+
+def graph_languages():
+    """
+    Uses GitHub's GraphQL v4 API to return my language breakdown by bytes
+    across every repository I own, as [(name, bytes, linguist color)] sorted
+    largest first. Forks are excluded — they are not my code.
+    """
+    query_count('graph_repos_stars')
+    query = '''
+    query($login: String!) {
+        user(login: $login) {
+            repositories(first: 100, ownerAffiliations: [OWNER], isFork: false) {
+                nodes {
+                    languages(first: 12, orderBy: {field: SIZE, direction: DESC}) {
+                        edges {
+                            size
+                            node { name color }
+                        }
+                    }
+                }
+            }
+        }
+    }'''
+    request = simple_request(graph_languages.__name__, query, {'login': USER_NAME})
+    totals, colors = {}, {}
+    for repo in request.json()['data']['user']['repositories']['nodes']:
+        for edge in repo['languages']['edges']:
+            name = edge['node']['name']
+            totals[name] = totals.get(name, 0) + edge['size']
+            colors[name] = edge['node']['color'] or '#7ebae4'
+    ranked = sorted(totals.items(), key=lambda item: item[1], reverse=True)
+    return [(name, size, colors[name]) for name, size in ranked]
+
+
+def lang_overwrite(root, languages):
+    """
+    Fills the tokei pane: language name, share bar scaled to the largest
+    language, and the percentage of all bytes I have written.
+    """
+    total = sum(size for __, size, __ in languages) or 1
+    top = languages[:LANG_ROWS]
+    largest = top[0][1] if top else 1
+    for index in range(LANG_ROWS):
+        name_node = root.find(".//*[@id='lang_" + str(index) + "_name']")
+        bar = root.find(".//*[@id='lang_" + str(index) + "_bar']")
+        pct = root.find(".//*[@id='lang_" + str(index) + "_pct']")
+        if name_node is None or bar is None or pct is None:
+            continue
+        if index >= len(top):
+            name_node.text = ''
+            pct.text = ''
+            bar.set('width', '0')
+            continue
+        name, size, color = top[index]
+        name_node.text = name[:LANG_NAME_COLS]
+        bar.set('width', str(round(max(2, LANG_BAR_W * size / largest), 1)))
+        bar.set('fill', color)
+        pct.text = '{:.1f}%'.format(100 * size / total)
+
+
 def graph_recent_commits():
     """
     Uses GitHub's GraphQL v4 API to return my most recent commits across the
@@ -480,10 +566,10 @@ def heatmap_overwrite(root, weeks):
         label.text = datetime.date(2000, month, 1).strftime('%b')
 
 
-def svg_overwrite(filename, age_data, commit_data, loc_data, weeks, commits):
+def svg_overwrite(filename, age_data, commit_data, loc_data, weeks, commits, languages):
     """
-    Parse SVG files and update age, commits, lines of code, the heatmap and the
-    git log pane.
+    Parse SVG files and update age, commits, lines of code, streak metrics, the
+    heatmap, the git log pane and the language breakdown.
     loc_data is [added, deleted, net] from loc_query()
     """
     tree = etree.parse(filename)
@@ -493,8 +579,14 @@ def svg_overwrite(filename, age_data, commit_data, loc_data, weeks, commits):
     justify_format(root, 'loc_data', loc_data[2])
     justify_format(root, 'loc_add', loc_data[0])
     justify_format(root, 'loc_del', loc_data[1])
+    current, longest, peak = calendar_metrics(weeks)
+    find_and_replace(root, 'streak_data', '{} day{} current  ·  {} longest'.format(
+        current, format_plural(current), longest))
+    find_and_replace(root, 'peak_data', '{} contributions on {}'.format(
+        peak['contributionCount'], peak['date']))
     heatmap_overwrite(root, weeks)
     gitlog_overwrite(root, commits)
+    lang_overwrite(root, languages)
     tree.write(filename, encoding='utf-8', xml_declaration=True)
 
 
@@ -622,9 +714,11 @@ if __name__ == '__main__':
     formatter('contribution calendar', calendar_time)
     recent_commits, recent_time = perf_counter(graph_recent_commits)
     formatter('recent commits', recent_time)
+    language_data, language_time = perf_counter(graph_languages)
+    formatter('language breakdown', language_time)
 
-    svg_overwrite('dark_mode.svg', age_data, commit_data, total_loc[:-1], calendar_data, recent_commits)
-    svg_overwrite('light_mode.svg', age_data, commit_data, total_loc[:-1], calendar_data, recent_commits)
+    svg_overwrite('dark_mode.svg', age_data, commit_data, total_loc[:-1], calendar_data, recent_commits, language_data)
+    svg_overwrite('light_mode.svg', age_data, commit_data, total_loc[:-1], calendar_data, recent_commits, language_data)
 
     # move cursor to override 'Calculation times:' with 'Total function time:' and the total function time, then move cursor back
     print('\033[F\033[F\033[F\033[F',
