@@ -149,12 +149,15 @@ TTY_X = 338
 # flake.nix listing in the left pane
 NIX_HEADER_Y = 334
 NIX_Y_START = 356
-NIX_LINE_H = 14
+NIX_LINE_H = 13
 NIX_PRINT_S = 0.045
 
-# the profile as a flake: kept under 46 columns so it clears the pane divider
+# The flake that renders this very window — everything the right pane already
+# says (role, host, stack) stays out of here. Kept under NIX_MAX_COLS so the
+# listing never crosses the pane divider.
+NIX_MAX_COLS = 46
 FLAKE = '''{
-  description = "fausto yuuki · fullstack";
+  description = "this README, rendered";
 
   inputs.nixpkgs.url =
     "github:NixOS/nixpkgs/nixos-unstable";
@@ -163,22 +166,28 @@ FLAKE = '''{
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      python = pkgs.python3.withPackages (ps:
+        with ps; [ requests lxml dateutil ]);
     in {
-      profile = {
-        role  = "fullstack";
-        since = "2022-10-11";
-        host  = "são benedito / ifmt";
-      };
+      packages.${system}.default =
+        pkgs.runCommand "profile-svg" { } \'\'
+          cd ${self}
+          ${python}/bin/python today.py
+          cp *_mode.svg $out
+        \'\';
 
-      devShells.${system}.default =
-        pkgs.mkShell {
-          packages = with pkgs; [
-            python3 nodejs go postgresql
-            docker git neovim
-          ];
-        };
+      checks.${system}.template =
+        pkgs.runCommand "builds" { } \'\'
+          cd ${self}/scripts
+          ${python}/bin/python \\
+            build_svg_template.py
+          touch $out
+        \'\';
     };
 }'''
+_too_wide = [line for line in FLAKE.split("\n") if len(line) > NIX_MAX_COLS]
+if _too_wide:
+    raise SystemExit(f"flake line over {NIX_MAX_COLS} columns: {_too_wide[0]!r}")
 
 # systemd-style spinner that resolves into [  OK  ]
 SPIN_FRAMES = "▖▘▝▗"  # Block Elements — Consolas has these, Braille it does not
@@ -198,7 +207,7 @@ HEAT_WAVE_STEP_S = 0.025  # per-column delay of the calendar wipe
 # Session replay timing (seconds). The loop opens on the finished session, holds
 # it, clears, replays it, then holds again — so frame 0 is always the full
 # window and nothing ever dims.
-HOLD_BEFORE_S = 10.0
+HOLD_BEFORE_S = 3.0
 HOLD_AFTER_S = 6.0
 LOOP_S = 22.0  # recomputed from the session span in build_svg()
 TYPE_CHAR_S = 0.035
@@ -288,7 +297,7 @@ def typing_css() -> str:
 NIX_TOKEN = re.compile(
     r'(?P<str>"[^"]*")'
     r"|(?P<kw>\b(?:let|in|with|inherit|rec|self|nixpkgs|pkgs|import)\b)"
-    r"|(?P<punct>\$\{|[{}\[\]();=:.,])"
+    r"|(?P<punct>''|\$\{|[{}\[\]();=:.,])"
 )
 
 
