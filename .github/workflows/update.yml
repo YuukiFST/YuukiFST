@@ -1,0 +1,65 @@
+# Keeps the profile honest without anyone remembering to run it: the streak,
+# the calendar and the gitfut card all age on their own.
+#
+# Needs a repository secret named ACCESS_TOKEN — a fine-grained personal access
+# token with access to all repositories and read permission on Contents,
+# Metadata and Commit statuses. The built-in GITHUB_TOKEN cannot do it: it only
+# reaches this one repository, and the line count walks every repository I own.
+name: update profile
+
+on:
+  schedule:
+    - cron: '0 6 * * *' # 03:00 in São Paulo
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-profile
+  cancel-in-progress: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      # The secrets context is not available to step `if`, so the check lives in
+      # the shell where the value actually arrives.
+      - name: Fail early when the token is missing
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        run: |
+          if [ -z "$ACCESS_TOKEN" ]; then
+            echo "::error::ACCESS_TOKEN secret is not set — see the comment at the top of this file"
+            exit 1
+          fi
+
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: cache/requirements.txt
+
+      - run: pip install -r cache/requirements.txt
+
+      # Without the commit cache every run walks the full history of every
+      # repository, which is slow enough to hit the abuse limit.
+      - uses: actions/cache@v4
+        with:
+          path: cache
+          key: loc-cache-${{ github.run_id }}
+          restore-keys: loc-cache-
+
+      - name: Commit as the profile owner
+        run: |
+          git config user.name 'YuukiFST'
+          git config user.email '115494802+YuukiFST@users.noreply.github.com'
+
+      - name: Rebuild, refresh and publish
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          USER_NAME: YuukiFST
+        # bash explicitly: the exec bit does not survive a Windows checkout
+        run: bash bin/update
