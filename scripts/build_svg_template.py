@@ -19,10 +19,15 @@ contribution calendar.
 
 from __future__ import annotations
 
+import base64
 import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+# Ghostty here runs translucent over the wallpaper, so the window does too. The
+# file is committed next to this script: the SVG has to carry its own pixels,
+# nothing is fetched at render time.
+WALLPAPER = Path(__file__).with_name("wallpaper.webp")
 
 # NixOS snowflake, split into the two lambda triads the official logo alternates
 # (tone 1 = light blue, tone 2 = dark blue). Block Elements only — no Nerd Font
@@ -77,6 +82,8 @@ THEMES = {
         "nix_str": "#28c840",
         "scan_color": "#ffffff",
         "scan_opacity": "0.05",
+        "glass": "0.82",
+        "bar_glass": "0.70",
         "vignette": "#000000",
         "vignette_opacity": "0.32",
         "heat": ["#10161f", "#1b3a5c", "#2b5d8f", "#4a8ec2", "#7ebae4"],
@@ -112,6 +119,8 @@ THEMES = {
         "nix_str": "#859900",
         "scan_color": "#586e75",
         "scan_opacity": "0.06",
+        "glass": "0.88",
+        "bar_glass": "0.80",
         "vignette": "#586e75",
         "vignette_opacity": "0.14",
         "heat": ["#eee8d5", "#b8d2ea", "#7aa9d6", "#4380bd", "#1f5a94"],
@@ -292,6 +301,16 @@ def spinner_overlays(session: Session, theme: dict) -> str:
             f'<text class="spinner" fill="{theme["prompt_host"]}">{"".join(glyphs)}</text>'
         )
     return "\n".join(parts)
+
+
+def desktop(theme: dict) -> str:
+    """The wallpaper the window floats over, plus the tint that makes it glass."""
+    pixels = base64.b64encode(WALLPAPER.read_bytes()).decode()
+    return f'''<g clip-path="url(#window)">
+<image id="wallpaper" x="0" y="0" width="{SVG_WIDTH}" height="{SVG_HEIGHT}"
+ preserveAspectRatio="xMidYMid slice" href="data:image/webp;base64,{pixels}"/>
+<rect width="{SVG_WIDTH}" height="{SVG_HEIGHT}" fill="{theme["bg"]}" fill-opacity="{theme["glass"]}"/>
+</g>'''
 
 
 def crt_overlay(theme: dict) -> str:
@@ -606,11 +625,7 @@ def heatmap_placeholder(theme: dict) -> str:
 
 
 def typing_overlays(theme: dict) -> str:
-    """Masks + carets, painted after the text so they sit on top of it.
-
-    Each caret is drawn twice: a blurred copy running a frame behind leaves the
-    phosphor trail a real tube would, then the solid caret on top of it.
-    """
+    """Masks + carets, painted after the text so they sit on top of it."""
     parts = []
     for index, (_, y, command, _, left_pane) in enumerate(TYPED):
         char_w = PANE_CHAR_W if left_pane else CHAR_W
@@ -618,13 +633,7 @@ def typing_overlays(theme: dict) -> str:
         height = 14 if left_pane else 19
         parts.append(
             f'<rect class="type-mask type-{index}" x="{x:.1f}" y="{y - height + 3}" '
-            f'width="{len(command) * char_w + 2:.1f}" height="{height}" fill="{theme["bg"]}"/>'
-        )
-        parts.append(
-            f'<g opacity="0.4" filter="url(#phosphor)">'
-            f'<rect class="caret caret-{index}" style="animation-delay: 0.09s" '
-            f'x="{x:.1f}" y="{y - height + 3}" width="{char_w:.1f}" height="{height}" '
-            f'fill="{theme["cursor"]}"/></g>'
+            f'width="{len(command) * char_w + 2:.1f}" height="{height}" fill="url(#glass)"/>'
         )
         parts.append(
             f'<rect class="caret caret-{index}" x="{x:.1f}" y="{y - height + 3}" '
@@ -639,7 +648,7 @@ def titlebar(theme: dict) -> str:
         f'<circle cx="{cx}" cy="{TITLEBAR_H // 2}" r="6" fill="{color}"/>'
         for cx, color in ((26, "#ff5f57"), (48, "#febc2e"), (70, "#28c840"))
     )
-    return f'''<path d="M1 13 A12 12 0 0 1 13 1 L972 1 A12 12 0 0 1 984 13 L984 {TITLEBAR_H} L1 {TITLEBAR_H} Z" fill="{theme["titlebar"]}"/>
+    return f'''<path d="M1 13 A12 12 0 0 1 13 1 L972 1 A12 12 0 0 1 984 13 L984 {TITLEBAR_H} L1 {TITLEBAR_H} Z" fill="{theme["titlebar"]}" fill-opacity="{theme["bar_glass"]}"/>
 {dots}
 <text x="{SVG_WIDTH // 2}" y="{TITLEBAR_H // 2 + 5}" text-anchor="middle" font-size="13" fill="{theme["titlebar_text"]}">yuuki@nixos: ~ — tmux — ghostty</text>
 <line x1="1" y1="{TITLEBAR_H}" x2="984" y2="{TITLEBAR_H}" stroke="{theme["border"]}" stroke-width="1"/>'''
@@ -650,7 +659,7 @@ def statusbar(theme: dict) -> str:
     left_w = 130
     text_y = STATUSBAR_Y + STATUSBAR_H // 2 + 5
     return f'''<path d="M1 {STATUSBAR_Y} L984 {STATUSBAR_Y} L984 {SVG_HEIGHT - 13} A12 12 0 0 1 972 {SVG_HEIGHT - 1} L13 {SVG_HEIGHT - 1} A12 12 0 0 1 1 {SVG_HEIGHT - 13} Z" fill="{theme["statusbar_alt"]}"/>
-<rect x="1" y="{STATUSBAR_Y}" width="{left_w}" height="{STATUSBAR_H}" fill="{theme["statusbar"]}"/>
+<rect x="1" y="{STATUSBAR_Y}" width="{left_w}" height="{STATUSBAR_H}" fill="{theme["statusbar"]}" fill-opacity="{theme["bar_glass"]}"/>
 <text x="20" y="{text_y}" font-size="13" fill="{theme["statusbar_text"]}">[0] NIXOS</text>
 <text x="{left_w + 20}" y="{text_y}" font-size="13" fill="{theme["statusbar_alt_text"]}">0:gitfut*  1:session-   │   ~/github/YuukiFST</text>
 <text x="{SVG_WIDTH - 20}" y="{text_y}" text-anchor="end" font-size="13" fill="{theme["statusbar_alt_text"]}">main ✓   │   nixos-unstable</text>'''
@@ -759,6 +768,11 @@ text, tspan {{white-space: pre;}}
 <animate attributeName="x1" values="{ASCII_X - 220};{sheen_end:.0f}" dur="7s" repeatCount="indefinite"/>
 <animate attributeName="x2" values="{ASCII_X - 60};{sheen_end + 160:.0f}" dur="7s" repeatCount="indefinite"/>
 </linearGradient>
+<clipPath id="window"><rect width="{SVG_WIDTH}" height="{SVG_HEIGHT}" rx="12"/></clipPath>
+<pattern id="glass" patternUnits="userSpaceOnUse" x="0" y="0" width="{SVG_WIDTH}" height="{SVG_HEIGHT}">
+<use href="#wallpaper"/>
+<rect width="{SVG_WIDTH}" height="{SVG_HEIGHT}" fill="{theme["bg"]}" fill-opacity="{theme["glass"]}"/>
+</pattern>
 <mask id="fut-shield" maskUnits="userSpaceOnUse" x="0" y="0" width="{FUT_W}" height="{FUT_H}" style="mask-type: alpha">
 <use href="#fut_card"/>
 </mask>
@@ -778,7 +792,7 @@ text, tspan {{white-space: pre;}}
 <stop offset="100%" stop-color="{theme["vignette"]}" stop-opacity="{theme["vignette_opacity"]}"/>
 </radialGradient>
 </defs>
-<rect width="{SVG_WIDTH}px" height="{SVG_HEIGHT}px" fill="{theme["bg"]}" rx="12"/>
+{desktop(theme)}
 {body}
 </svg>'''
 
