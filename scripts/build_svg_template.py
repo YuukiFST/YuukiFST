@@ -153,13 +153,6 @@ FUT_Y = 344
 FUT_W = 232
 FUT_H = 370
 FUT_FLIP_S = 0.55
-# Traced over the crop so the gloss stops at the shield instead of running over
-# the pane. Same 232x370 box the art is drawn in.
-FUT_SHIELD = (
-    "M8,26 C30,10 60,4 88,4 L100,16 L132,16 L144,4 C172,4 202,10 224,26 "
-    "L224,282 C224,300 218,306 206,314 L122,366 C118,369 114,369 110,366 "
-    "L26,314 C14,306 8,300 8,282 Z"
-)
 
 # systemd-style spinner that resolves into [  OK  ]
 SPIN_FRAMES = "▖▘▝▗"  # Block Elements — Consolas has these, Braille it does not
@@ -563,7 +556,7 @@ def fut_card(theme: dict, session: Session) -> str:
 <rect id="fut_frame" width="{FUT_W}" height="{FUT_H}" rx="10" fill="none"
  stroke="{theme["pane_border"]}" stroke-dasharray="4 4"/>
 <image id="fut_card" width="{FUT_W}" height="{FUT_H}" href=""/>
-<rect width="{FUT_W}" height="{FUT_H}" fill="url(#fut-gloss)" clip-path="url(#fut-shield)"/>
+<rect width="{FUT_W}" height="{FUT_H}" fill="url(#fut-gloss)" mask="url(#fut-shield)"/>
 </g></g></g>
 </g>
 <text class="reveal {footer}" x="{FUT_X + FUT_W // 2}" y="{FUT_Y + FUT_H + 24}" text-anchor="middle" font-size="11px">
@@ -766,7 +759,9 @@ text, tspan {{white-space: pre;}}
 <animate attributeName="x1" values="{ASCII_X - 220};{sheen_end:.0f}" dur="7s" repeatCount="indefinite"/>
 <animate attributeName="x2" values="{ASCII_X - 60};{sheen_end + 160:.0f}" dur="7s" repeatCount="indefinite"/>
 </linearGradient>
-<clipPath id="fut-shield"><path d="{FUT_SHIELD}"/></clipPath>
+<mask id="fut-shield" maskUnits="userSpaceOnUse" x="0" y="0" width="{FUT_W}" height="{FUT_H}" style="mask-type: alpha">
+<use href="#fut_card"/>
+</mask>
 <linearGradient id="fut-gloss" gradientUnits="userSpaceOnUse" x1="-150" y1="0" x2="-40" y2="{FUT_H}">
 <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
 <stop offset="50%" stop-color="#ffffff" stop-opacity="0.55"/>
