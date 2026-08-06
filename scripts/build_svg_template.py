@@ -145,22 +145,13 @@ PANE_TEXT_X = 15
 PANE_FONT_SIZE = 11
 TTY_X = 338
 
-# gitfut.com renders my GitHub account as a FIFA Ultimate Team card. today.py
-# scrapes the real rating and redraws it here in vector — the page ships a PNG,
-# and an SVG inside <img> cannot load anything from the network.
-FUT_X = 40
+# gitfut.com grades my GitHub account as a FIFA Ultimate Team card. today.py
+# crops the real card out of the page's social image and inlines it here as
+# WebP — an SVG inside <img> cannot pull anything off the network at all.
+FUT_X = 49
 FUT_Y = 344
-FUT_W = 250
-FUT_H = 368
-FUT_PLATE = (
-    "M18,0 H232 A18,18 0 0 1 250,18 V292 A26,26 0 0 1 236,315 "
-    "L135,362 A22,22 0 0 1 115,362 L14,315 A26,26 0 0 1 0,292 "
-    "V18 A18,18 0 0 1 18,0 Z"
-)
-FUT_STATS = (("pac", "PAC"), ("dri", "DRI"), ("sho", "SHO"), ("def", "DEF"), ("pas", "PAS"), ("phy", "PHY"))
-FUT_STAT_Y = (250, 284, 318)
-FUT_STAT_STEP_S = 0.09
-FUT_INK = "#303536"
+FUT_W = 232
+FUT_H = 370
 
 # systemd-style spinner that resolves into [  OK  ]
 SPIN_FRAMES = "▖▘▝▗"  # Block Elements — Consolas has these, Braille it does not
@@ -454,10 +445,7 @@ class Session:
         """The gitfut card: the request, the plate, then the stats one by one."""
         self.command(326, "curl -s gitfut.com/YuukiFST", left_pane=True)
         self.mark("fut_plate")
-        self.clock += 0.35
-        for index in range(len(FUT_STATS)):
-            self.mark(f"fut_stat_{index}")
-            self.clock += FUT_STAT_STEP_S
+        self.clock += 0.55
         self.mark("fut_footer")
         self.clock += PRINT_ROW_S
 
@@ -524,38 +512,21 @@ def build_session() -> Session:
     return session
 
 
-def fut_card(session: Session) -> str:
-    """The FUT card as vector. Every value carries an id today.py rewrites.
+def fut_card(theme: dict, session: Session) -> str:
+    """The card slot. today.py sets the href; the frame marks a run that failed.
 
-    Placeholders are the rating as it stood when this was written, so a run that
-    cannot reach gitfut.com still draws a coherent card instead of empty slots.
+    The art is a raster because it is a rendered artifact of another site, not
+    something I can redraw honestly — the rating, the finish and the language
+    badge are all theirs.
     """
-    stats = []
-    for index, (key, label) in enumerate(FUT_STATS):
-        column = index % 2
-        value_x = 66 + column * 92
-        y = FUT_STAT_Y[index // 2]
-        stats.append(
-            f'<g class="reveal {REVEAL.at(session.cues[f"fut_stat_{index}"])}">'
-            f'<text id="fut_{key}" class="fut-stat" x="{value_x}" y="{y}" text-anchor="end">00</text>'
-            f'<text class="fut-label" x="{value_x + 8}" y="{y}">{label}</text>'
-            f"</g>"
-        )
+    plate = REVEAL.at(session.cues["fut_plate"])
     footer = REVEAL.at(session.cues["fut_footer"])
-    return f'''<g transform="translate({FUT_X},{FUT_Y})">
-<g class="reveal {REVEAL.at(session.cues["fut_plate"])}">
-<path id="fut_plate" d="{FUT_PLATE}" fill="url(#fut-silver)"/>
-<image id="fut_avatar" x="92" y="34" width="106" height="106" preserveAspectRatio="xMidYMid slice" href=""/>
-<text id="fut_rating" class="fut-rating" x="30" y="66">00</text>
-<text id="fut_position" class="fut-position" x="30" y="92">POS</text>
-<text id="fut_name" class="fut-name" x="125" y="196" text-anchor="middle">—</text>
-<line x1="45" y1="212" x2="205" y2="212" stroke="{FUT_INK}" stroke-opacity="0.35"/>
-<line x1="125" y1="228" x2="125" y2="330" stroke="{FUT_INK}" stroke-opacity="0.25"/>
-<rect x="0" y="0" width="{FUT_W}" height="{FUT_H}" fill="url(#fut-shine)" clip-path="url(#fut-clip)"/>
+    return f'''<g class="reveal {plate}">
+<rect id="fut_frame" x="{FUT_X}" y="{FUT_Y}" width="{FUT_W}" height="{FUT_H}" rx="10" fill="none"
+ stroke="{theme["pane_border"]}" stroke-dasharray="4 4"/>
+<image id="fut_card" x="{FUT_X}" y="{FUT_Y}" width="{FUT_W}" height="{FUT_H}" href=""/>
 </g>
-{"".join(stats)}
-</g>
-<text class="reveal {footer}" x="{FUT_X + FUT_W // 2}" y="{FUT_Y + FUT_H + 26}" text-anchor="middle" font-size="11px">
+<text class="reveal {footer}" x="{FUT_X + FUT_W // 2}" y="{FUT_Y + FUT_H + 24}" text-anchor="middle" font-size="11px">
 <tspan class="value" id="fut_tier">— · —</tspan>
 </text>'''
 
@@ -708,7 +679,7 @@ def build_svg(theme_name: str) -> str:
 <text x="{TTY_X}" y="30" fill="{theme["fg"]}">
 {"".join(chr(10) + row for row in session.tty)}
 </text>
-{fut_card(session)}
+{fut_card(theme, session)}
 {heatmap_placeholder(theme)}
 {typing_overlays(theme)}
 {spinner_overlays(session, theme)}
@@ -736,15 +707,6 @@ size-adjust: 109%;
 .logo-1 {{fill: {theme["logo_1"]};}}
 .logo-2 {{fill: {theme["logo_2"]};}}
 .spinner {{font-size: {PANE_FONT_SIZE + 3}px;}}
-.fut-rating, .fut-position, .fut-name, .fut-stat, .fut-label {{
-  font-family: 'Arial Narrow', 'Saira Condensed', Impact, sans-serif;
-  fill: {FUT_INK};
-}}
-.fut-rating {{font-size: 44px; font-weight: 700; letter-spacing: -1px;}}
-.fut-position {{font-size: 18px;}}
-.fut-name {{font-size: 30px; font-weight: 700; letter-spacing: 1px;}}
-.fut-stat {{font-size: 24px; font-weight: 700;}}
-.fut-label {{font-size: 20px; fill-opacity: 0.75;}}
 {heat_rules}
 text, tspan {{white-space: pre;}}
 {animation_styles()}
@@ -763,26 +725,6 @@ text, tspan {{white-space: pre;}}
 <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
 <animate attributeName="x1" values="{ASCII_X - 220};{sheen_end:.0f}" dur="7s" repeatCount="indefinite"/>
 <animate attributeName="x2" values="{ASCII_X - 60};{sheen_end + 160:.0f}" dur="7s" repeatCount="indefinite"/>
-</linearGradient>
-<clipPath id="fut-clip"><path d="{FUT_PLATE}"/></clipPath>
-<linearGradient id="fut-bronze" x1="0" y1="0" x2="0" y2="1">
-<stop offset="0%" stop-color="#f0d3b4"/><stop offset="45%" stop-color="#c88a5a"/>
-<stop offset="55%" stop-color="#e2ab7f"/><stop offset="100%" stop-color="#9c6238"/>
-</linearGradient>
-<linearGradient id="fut-silver" x1="0" y1="0" x2="0" y2="1">
-<stop offset="0%" stop-color="#f6f7f8"/><stop offset="45%" stop-color="#b9bfc4"/>
-<stop offset="55%" stop-color="#dfe3e6"/><stop offset="100%" stop-color="#8f979d"/>
-</linearGradient>
-<linearGradient id="fut-gold" x1="0" y1="0" x2="0" y2="1">
-<stop offset="0%" stop-color="#fdf0c0"/><stop offset="45%" stop-color="#e0b44a"/>
-<stop offset="55%" stop-color="#f5da8e"/><stop offset="100%" stop-color="#b8892a"/>
-</linearGradient>
-<linearGradient id="fut-shine" gradientUnits="userSpaceOnUse" x1="-180" y1="0" x2="-60" y2="{FUT_H}">
-<stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
-<stop offset="50%" stop-color="#ffffff" stop-opacity="0.85"/>
-<stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
-<animate attributeName="x1" values="-180;{FUT_W + 60}" dur="5.5s" repeatCount="indefinite"/>
-<animate attributeName="x2" values="-60;{FUT_W + 180}" dur="5.5s" repeatCount="indefinite"/>
 </linearGradient>
 <pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse">
 <rect width="4" height="2" fill="{theme["scan_color"]}" opacity="{theme["scan_opacity"]}"/>

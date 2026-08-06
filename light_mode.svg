@@ -21,15 +21,6 @@ size-adjust: 109%;
 .logo-1 {fill: #5277c3;}
 .logo-2 {fill: #2f4f96;}
 .spinner {font-size: 14px;}
-.fut-rating, .fut-position, .fut-name, .fut-stat, .fut-label {
-  font-family: 'Arial Narrow', 'Saira Condensed', Impact, sans-serif;
-  fill: #303536;
-}
-.fut-rating {font-size: 44px; font-weight: 700; letter-spacing: -1px;}
-.fut-position {font-size: 18px;}
-.fut-name {font-size: 30px; font-weight: 700; letter-spacing: 1px;}
-.fut-stat {font-size: 24px; font-weight: 700;}
-.fut-label {font-size: 20px; fill-opacity: 0.75;}
 .lvl0 {fill: #eee8d5;}
 .lvl1 {fill: #b8d2ea;}
 .lvl2 {fill: #7aa9d6;}
@@ -39,733 +30,697 @@ text, tspan {white-space: pre;}
 
 .reveal {opacity: 1;}
 @keyframes rv0 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 19.87% { opacity: 0; }
-  20.17%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 20.21% { opacity: 0; }
+  20.51%, 100% { opacity: 1; }
 }
-.rv0 { animation: rv0 20.229999999999997s linear infinite; }
+.rv0 { animation: rv0 19.89s linear infinite; }
 @keyframes rv1 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 16.31% { opacity: 0; }
-  16.61%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 16.59% { opacity: 0; }
+  16.89%, 100% { opacity: 1; }
 }
-.rv1 { animation: rv1 20.229999999999997s linear infinite; }
+.rv1 { animation: rv1 19.89s linear infinite; }
 @keyframes rv2 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 20.76% { opacity: 0; }
-  21.06%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 21.12% { opacity: 0; }
+  21.42%, 100% { opacity: 1; }
 }
-.rv2 { animation: rv2 20.229999999999997s linear infinite; }
+.rv2 { animation: rv2 19.89s linear infinite; }
 @keyframes rv3 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 17.20% { opacity: 0; }
-  17.50%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 17.50% { opacity: 0; }
+  17.80%, 100% { opacity: 1; }
 }
-.rv3 { animation: rv3 20.229999999999997s linear infinite; }
+.rv3 { animation: rv3 19.89s linear infinite; }
 @keyframes rv4 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 18.09% { opacity: 0; }
-  18.39%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 18.40% { opacity: 0; }
+  18.70%, 100% { opacity: 1; }
 }
-.rv4 { animation: rv4 20.229999999999997s linear infinite; }
+.rv4 { animation: rv4 19.89s linear infinite; }
 @keyframes rv5 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 19.72% { opacity: 0; }
-  20.02%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 20.06% { opacity: 0; }
+  20.36%, 100% { opacity: 1; }
 }
-.rv5 { animation: rv5 20.229999999999997s linear infinite; }
+.rv5 { animation: rv5 19.89s linear infinite; }
 @keyframes rv6 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 24.27% { opacity: 0; }
-  24.57%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 24.69% { opacity: 0; }
+  24.99%, 100% { opacity: 1; }
 }
-.rv6 { animation: rv6 20.229999999999997s linear infinite; }
+.rv6 { animation: rv6 19.89s linear infinite; }
 @keyframes rv7 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 24.42% { opacity: 0; }
-  24.72%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 24.84% { opacity: 0; }
+  25.14%, 100% { opacity: 1; }
 }
-.rv7 { animation: rv7 20.229999999999997s linear infinite; }
+.rv7 { animation: rv7 19.89s linear infinite; }
 @keyframes rv8 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 24.57% { opacity: 0; }
-  24.87%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 24.99% { opacity: 0; }
+  25.29%, 100% { opacity: 1; }
 }
-.rv8 { animation: rv8 20.229999999999997s linear infinite; }
+.rv8 { animation: rv8 19.89s linear infinite; }
 @keyframes rv9 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 24.72% { opacity: 0; }
-  25.02%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 25.14% { opacity: 0; }
+  25.44%, 100% { opacity: 1; }
 }
-.rv9 { animation: rv9 20.229999999999997s linear infinite; }
+.rv9 { animation: rv9 19.89s linear infinite; }
 @keyframes rv10 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 24.86% { opacity: 0; }
-  25.16%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 25.29% { opacity: 0; }
+  25.59%, 100% { opacity: 1; }
 }
-.rv10 { animation: rv10 20.229999999999997s linear infinite; }
+.rv10 { animation: rv10 19.89s linear infinite; }
 @keyframes rv11 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 25.01% { opacity: 0; }
-  25.31%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 25.44% { opacity: 0; }
+  25.74%, 100% { opacity: 1; }
 }
-.rv11 { animation: rv11 20.229999999999997s linear infinite; }
+.rv11 { animation: rv11 19.89s linear infinite; }
 @keyframes rv12 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 25.16% { opacity: 0; }
-  25.46%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 25.59% { opacity: 0; }
+  25.89%, 100% { opacity: 1; }
 }
-.rv12 { animation: rv12 20.229999999999997s linear infinite; }
+.rv12 { animation: rv12 19.89s linear infinite; }
 @keyframes rv13 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 25.31% { opacity: 0; }
-  25.61%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 25.74% { opacity: 0; }
+  26.04%, 100% { opacity: 1; }
 }
-.rv13 { animation: rv13 20.229999999999997s linear infinite; }
+.rv13 { animation: rv13 19.89s linear infinite; }
 @keyframes rv14 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 25.46% { opacity: 0; }
-  25.76%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 25.89% { opacity: 0; }
+  26.19%, 100% { opacity: 1; }
 }
-.rv14 { animation: rv14 20.229999999999997s linear infinite; }
+.rv14 { animation: rv14 19.89s linear infinite; }
 @keyframes rv15 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 25.61% { opacity: 0; }
-  25.91%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 26.04% { opacity: 0; }
+  26.34%, 100% { opacity: 1; }
 }
-.rv15 { animation: rv15 20.229999999999997s linear infinite; }
+.rv15 { animation: rv15 19.89s linear infinite; }
 @keyframes rv16 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 25.75% { opacity: 0; }
-  26.05%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 26.19% { opacity: 0; }
+  26.49%, 100% { opacity: 1; }
 }
-.rv16 { animation: rv16 20.229999999999997s linear infinite; }
+.rv16 { animation: rv16 19.89s linear infinite; }
 @keyframes rv17 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 25.90% { opacity: 0; }
-  26.20%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 26.34% { opacity: 0; }
+  26.64%, 100% { opacity: 1; }
 }
-.rv17 { animation: rv17 20.229999999999997s linear infinite; }
+.rv17 { animation: rv17 19.89s linear infinite; }
 @keyframes rv18 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 26.05% { opacity: 0; }
-  26.35%, 100% { opacity: 1; }
-}
-.rv18 { animation: rv18 20.229999999999997s linear infinite; }
-@keyframes rv19 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 26.20% { opacity: 0; }
-  26.50%, 100% { opacity: 1; }
-}
-.rv19 { animation: rv19 20.229999999999997s linear infinite; }
-@keyframes rv20 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 26.35% { opacity: 0; }
-  26.65%, 100% { opacity: 1; }
-}
-.rv20 { animation: rv20 20.229999999999997s linear infinite; }
-@keyframes rv21 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 26.50% { opacity: 0; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 26.50% { opacity: 0; }
   26.80%, 100% { opacity: 1; }
 }
-.rv21 { animation: rv21 20.229999999999997s linear infinite; }
+.rv18 { animation: rv18 19.89s linear infinite; }
+@keyframes rv19 {
+  0%, 15.08% { opacity: 1; }
+  15.09%, 26.65% { opacity: 0; }
+  26.95%, 100% { opacity: 1; }
+}
+.rv19 { animation: rv19 19.89s linear infinite; }
+@keyframes rv20 {
+  0%, 15.08% { opacity: 1; }
+  15.09%, 26.80% { opacity: 0; }
+  27.10%, 100% { opacity: 1; }
+}
+.rv20 { animation: rv20 19.89s linear infinite; }
+@keyframes rv21 {
+  0%, 15.08% { opacity: 1; }
+  15.09%, 26.95% { opacity: 0; }
+  27.25%, 100% { opacity: 1; }
+}
+.rv21 { animation: rv21 19.89s linear infinite; }
 @keyframes rv22 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 26.64% { opacity: 0; }
-  26.94%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 27.10% { opacity: 0; }
+  27.40%, 100% { opacity: 1; }
 }
-.rv22 { animation: rv22 20.229999999999997s linear infinite; }
+.rv22 { animation: rv22 19.89s linear infinite; }
 @keyframes rv23 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 26.79% { opacity: 0; }
-  27.09%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 27.25% { opacity: 0; }
+  27.55%, 100% { opacity: 1; }
 }
-.rv23 { animation: rv23 20.229999999999997s linear infinite; }
+.rv23 { animation: rv23 19.89s linear infinite; }
 @keyframes rv24 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 26.94% { opacity: 0; }
-  27.24%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 27.40% { opacity: 0; }
+  27.70%, 100% { opacity: 1; }
 }
-.rv24 { animation: rv24 20.229999999999997s linear infinite; }
+.rv24 { animation: rv24 19.89s linear infinite; }
 @keyframes rv25 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 27.09% { opacity: 0; }
-  27.39%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 27.55% { opacity: 0; }
+  27.85%, 100% { opacity: 1; }
 }
-.rv25 { animation: rv25 20.229999999999997s linear infinite; }
+.rv25 { animation: rv25 19.89s linear infinite; }
 @keyframes rv26 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 24.67% { opacity: 0; }
-  24.97%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 25.09% { opacity: 0; }
+  25.39%, 100% { opacity: 1; }
 }
-.rv26 { animation: rv26 20.229999999999997s linear infinite; }
+.rv26 { animation: rv26 19.89s linear infinite; }
 @keyframes rv27 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 25.06% { opacity: 0; }
-  25.36%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 25.49% { opacity: 0; }
+  25.79%, 100% { opacity: 1; }
 }
-.rv27 { animation: rv27 20.229999999999997s linear infinite; }
+.rv27 { animation: rv27 19.89s linear infinite; }
 @keyframes rv28 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 25.85% { opacity: 0; }
-  26.15%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 26.29% { opacity: 0; }
+  26.59%, 100% { opacity: 1; }
 }
-.rv28 { animation: rv28 20.229999999999997s linear infinite; }
+.rv28 { animation: rv28 19.89s linear infinite; }
 @keyframes rv29 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 26.25% { opacity: 0; }
-  26.55%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 26.70% { opacity: 0; }
+  27.00%, 100% { opacity: 1; }
 }
-.rv29 { animation: rv29 20.229999999999997s linear infinite; }
+.rv29 { animation: rv29 19.89s linear infinite; }
 @keyframes rv30 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 27.04% { opacity: 0; }
-  27.34%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 27.50% { opacity: 0; }
+  27.80%, 100% { opacity: 1; }
 }
-.rv30 { animation: rv30 20.229999999999997s linear infinite; }
+.rv30 { animation: rv30 19.89s linear infinite; }
 @keyframes rv31 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 27.43% { opacity: 0; }
-  27.73%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 27.90% { opacity: 0; }
+  28.20%, 100% { opacity: 1; }
 }
-.rv31 { animation: rv31 20.229999999999997s linear infinite; }
+.rv31 { animation: rv31 19.89s linear infinite; }
 @keyframes rv32 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 27.83% { opacity: 0; }
-  28.13%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 28.31% { opacity: 0; }
+  28.61%, 100% { opacity: 1; }
 }
-.rv32 { animation: rv32 20.229999999999997s linear infinite; }
+.rv32 { animation: rv32 19.89s linear infinite; }
 @keyframes rv33 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 28.23% { opacity: 0; }
-  28.53%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 28.71% { opacity: 0; }
+  29.01%, 100% { opacity: 1; }
 }
-.rv33 { animation: rv33 20.229999999999997s linear infinite; }
+.rv33 { animation: rv33 19.89s linear infinite; }
 @keyframes rv34 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 28.62% { opacity: 0; }
-  28.92%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 29.11% { opacity: 0; }
+  29.41%, 100% { opacity: 1; }
 }
-.rv34 { animation: rv34 20.229999999999997s linear infinite; }
+.rv34 { animation: rv34 19.89s linear infinite; }
 @keyframes rv35 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 30.25% { opacity: 0; }
-  30.55%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 30.77% { opacity: 0; }
+  31.07%, 100% { opacity: 1; }
 }
-.rv35 { animation: rv35 20.229999999999997s linear infinite; }
+.rv35 { animation: rv35 19.89s linear infinite; }
 @keyframes rv36 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 32.92% { opacity: 0; }
-  33.22%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 33.48% { opacity: 0; }
+  33.78%, 100% { opacity: 1; }
 }
-.rv36 { animation: rv36 20.229999999999997s linear infinite; }
+.rv36 { animation: rv36 19.89s linear infinite; }
 @keyframes rv37 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 33.32% { opacity: 0; }
-  33.62%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 33.89% { opacity: 0; }
+  34.19%, 100% { opacity: 1; }
 }
-.rv37 { animation: rv37 20.229999999999997s linear infinite; }
+.rv37 { animation: rv37 19.89s linear infinite; }
 @keyframes rv38 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 34.95% { opacity: 0; }
-  35.25%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 35.55% { opacity: 0; }
+  35.85%, 100% { opacity: 1; }
 }
-.rv38 { animation: rv38 20.229999999999997s linear infinite; }
+.rv38 { animation: rv38 19.89s linear infinite; }
 @keyframes rv39 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 39.20% { opacity: 0; }
-  39.50%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 38.16% { opacity: 0; }
+  38.46%, 100% { opacity: 1; }
 }
-.rv39 { animation: rv39 20.229999999999997s linear infinite; }
+.rv39 { animation: rv39 19.89s linear infinite; }
 @keyframes rv40 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 45.48% { opacity: 0; }
-  45.78%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 44.54% { opacity: 0; }
+  44.84%, 100% { opacity: 1; }
 }
-.rv40 { animation: rv40 20.229999999999997s linear infinite; }
+.rv40 { animation: rv40 19.89s linear infinite; }
 @keyframes rv41 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 47.11% { opacity: 0; }
-  47.41%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 46.20% { opacity: 0; }
+  46.50%, 100% { opacity: 1; }
 }
-.rv41 { animation: rv41 20.229999999999997s linear infinite; }
+.rv41 { animation: rv41 19.89s linear infinite; }
 @keyframes rv42 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 52.15% { opacity: 0; }
-  52.45%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 51.38% { opacity: 0; }
+  51.68%, 100% { opacity: 1; }
 }
-.rv42 { animation: rv42 20.229999999999997s linear infinite; }
+.rv42 { animation: rv42 19.89s linear infinite; }
 @keyframes rv43 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 53.78% { opacity: 0; }
-  54.08%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 53.04% { opacity: 0; }
+  53.34%, 100% { opacity: 1; }
 }
-.rv43 { animation: rv43 20.229999999999997s linear infinite; }
+.rv43 { animation: rv43 19.89s linear infinite; }
 @keyframes rv44 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 69.95% { opacity: 0; }
-  70.25%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 69.43% { opacity: 0; }
+  69.73%, 100% { opacity: 1; }
 }
-.rv44 { animation: rv44 20.229999999999997s linear infinite; }
+.rv44 { animation: rv44 19.89s linear infinite; }
 @keyframes rv45 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 27.24% { opacity: 0; }
-  27.54%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 27.70% { opacity: 0; }
+  28.00%, 100% { opacity: 1; }
 }
-.rv45 { animation: rv45 20.229999999999997s linear infinite; }
+.rv45 { animation: rv45 19.89s linear infinite; }
 @keyframes rv46 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 42.07% { opacity: 0; }
-  42.37%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 41.03% { opacity: 0; }
+  41.33%, 100% { opacity: 1; }
 }
-.rv46 { animation: rv46 20.229999999999997s linear infinite; }
+.rv46 { animation: rv46 19.89s linear infinite; }
 @keyframes rv47 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 42.51% { opacity: 0; }
-  42.81%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 43.79% { opacity: 0; }
+  44.09%, 100% { opacity: 1; }
 }
-.rv47 { animation: rv47 20.229999999999997s linear infinite; }
+.rv47 { animation: rv47 19.89s linear infinite; }
 @keyframes rv48 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 42.96% { opacity: 0; }
-  43.26%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 61.54% { opacity: 0; }
+  61.84%, 100% { opacity: 1; }
 }
-.rv48 { animation: rv48 20.229999999999997s linear infinite; }
-@keyframes rv49 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 43.40% { opacity: 0; }
-  43.70%, 100% { opacity: 1; }
-}
-.rv49 { animation: rv49 20.229999999999997s linear infinite; }
-@keyframes rv50 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 43.85% { opacity: 0; }
-  44.15%, 100% { opacity: 1; }
-}
-.rv50 { animation: rv50 20.229999999999997s linear infinite; }
-@keyframes rv51 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 44.29% { opacity: 0; }
-  44.59%, 100% { opacity: 1; }
-}
-.rv51 { animation: rv51 20.229999999999997s linear infinite; }
-@keyframes rv52 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 44.74% { opacity: 0; }
-  45.04%, 100% { opacity: 1; }
-}
-.rv52 { animation: rv52 20.229999999999997s linear infinite; }
-@keyframes rv53 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 40.34% { opacity: 0; }
-  40.64%, 100% { opacity: 1; }
-}
-.rv53 { animation: rv53 20.229999999999997s linear infinite; }
-@keyframes rv54 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 62.14% { opacity: 0; }
-  62.44%, 100% { opacity: 1; }
-}
-.rv54 { animation: rv54 20.229999999999997s linear infinite; }
+.rv48 { animation: rv48 19.89s linear infinite; }
 .type-mask {transform: scaleX(0); transform-origin: right center; transform-box: fill-box;}
 .caret {opacity: 0;}
 @keyframes type-0 {
-  0%, 14.83% { transform: scaleX(0); }
-  14.84%, 19.72% { transform: scaleX(1); animation-timing-function: steps(22, end); }
-  23.53%, 100% { transform: scaleX(0); }
+  0%, 15.08% { transform: scaleX(0); }
+  15.09%, 20.06% { transform: scaleX(1); animation-timing-function: steps(22, end); }
+  23.93%, 100% { transform: scaleX(0); }
 }
-.type-0 { animation: type-0 20.229999999999997s linear infinite; }
+.type-0 { animation: type-0 19.89s linear infinite; }
 @keyframes caret-0 {
-  0%, 19.72% { opacity: 0; transform: translateX(0); animation-timing-function: steps(22, end); }
-  19.73% { opacity: 1; transform: translateX(0); animation-timing-function: steps(22, end); }
-  23.53% { opacity: 1; transform: translateX(211.2px); }
-  23.54%, 100% { opacity: 0; transform: translateX(211.2px); }
+  0%, 20.06% { opacity: 0; transform: translateX(0); animation-timing-function: steps(22, end); }
+  20.07% { opacity: 1; transform: translateX(0); animation-timing-function: steps(22, end); }
+  23.93% { opacity: 1; transform: translateX(211.2px); }
+  23.94%, 100% { opacity: 0; transform: translateX(211.2px); }
 }
-.caret-0 { animation: caret-0 20.229999999999997s linear infinite; }
+.caret-0 { animation: caret-0 19.89s linear infinite; }
 @keyframes type-1 {
-  0%, 14.83% { transform: scaleX(0); }
-  14.84%, 30.25% { transform: scaleX(1); animation-timing-function: steps(11, end); }
-  32.16%, 100% { transform: scaleX(0); }
+  0%, 15.08% { transform: scaleX(0); }
+  15.09%, 30.77% { transform: scaleX(1); animation-timing-function: steps(11, end); }
+  32.70%, 100% { transform: scaleX(0); }
 }
-.type-1 { animation: type-1 20.229999999999997s linear infinite; }
+.type-1 { animation: type-1 19.89s linear infinite; }
 @keyframes caret-1 {
-  0%, 30.25% { opacity: 0; transform: translateX(0); animation-timing-function: steps(11, end); }
-  30.26% { opacity: 1; transform: translateX(0); animation-timing-function: steps(11, end); }
-  32.16% { opacity: 1; transform: translateX(105.6px); }
-  32.17%, 100% { opacity: 0; transform: translateX(105.6px); }
+  0%, 30.77% { opacity: 0; transform: translateX(0); animation-timing-function: steps(11, end); }
+  30.78% { opacity: 1; transform: translateX(0); animation-timing-function: steps(11, end); }
+  32.70% { opacity: 1; transform: translateX(105.6px); }
+  32.71%, 100% { opacity: 0; transform: translateX(105.6px); }
 }
-.caret-1 { animation: caret-1 20.229999999999997s linear infinite; }
+.caret-1 { animation: caret-1 19.89s linear infinite; }
 @keyframes type-2 {
-  0%, 14.83% { transform: scaleX(0); }
-  14.84%, 34.92% { transform: scaleX(1); animation-timing-function: steps(27, end); }
-  39.59%, 100% { transform: scaleX(0); }
+  0%, 15.08% { transform: scaleX(0); }
+  15.09%, 35.52% { transform: scaleX(1); animation-timing-function: steps(27, end); }
+  40.27%, 100% { transform: scaleX(0); }
 }
-.type-2 { animation: type-2 20.229999999999997s linear infinite; }
+.type-2 { animation: type-2 19.89s linear infinite; }
 @keyframes caret-2 {
-  0%, 34.92% { opacity: 0; transform: translateX(0); animation-timing-function: steps(27, end); }
-  34.93% { opacity: 1; transform: translateX(0); animation-timing-function: steps(27, end); }
-  39.59% { opacity: 1; transform: translateX(178.2px); }
-  39.60%, 100% { opacity: 0; transform: translateX(178.2px); }
+  0%, 35.52% { opacity: 0; transform: translateX(0); animation-timing-function: steps(27, end); }
+  35.53% { opacity: 1; transform: translateX(0); animation-timing-function: steps(27, end); }
+  40.27% { opacity: 1; transform: translateX(178.2px); }
+  40.28%, 100% { opacity: 0; transform: translateX(178.2px); }
 }
-.caret-2 { animation: caret-2 20.229999999999997s linear infinite; }
+.caret-2 { animation: caret-2 19.89s linear infinite; }
 @keyframes type-3 {
-  0%, 14.83% { transform: scaleX(0); }
-  14.84%, 39.20% { transform: scaleX(1); animation-timing-function: steps(32, end); }
-  44.74%, 100% { transform: scaleX(0); }
+  0%, 15.08% { transform: scaleX(0); }
+  15.09%, 38.16% { transform: scaleX(1); animation-timing-function: steps(32, end); }
+  43.79%, 100% { transform: scaleX(0); }
 }
-.type-3 { animation: type-3 20.229999999999997s linear infinite; }
+.type-3 { animation: type-3 19.89s linear infinite; }
 @keyframes caret-3 {
-  0%, 39.20% { opacity: 0; transform: translateX(0); animation-timing-function: steps(32, end); }
-  39.21% { opacity: 1; transform: translateX(0); animation-timing-function: steps(32, end); }
-  44.74% { opacity: 1; transform: translateX(307.2px); }
-  44.75%, 100% { opacity: 0; transform: translateX(307.2px); }
+  0%, 38.16% { opacity: 0; transform: translateX(0); animation-timing-function: steps(32, end); }
+  38.17% { opacity: 1; transform: translateX(0); animation-timing-function: steps(32, end); }
+  43.79% { opacity: 1; transform: translateX(307.2px); }
+  43.80%, 100% { opacity: 0; transform: translateX(307.2px); }
 }
-.caret-3 { animation: caret-3 20.229999999999997s linear infinite; }
+.caret-3 { animation: caret-3 19.89s linear infinite; }
 @keyframes type-4 {
-  0%, 14.83% { transform: scaleX(0); }
-  14.84%, 47.11% { transform: scaleX(1); animation-timing-function: steps(25, end); }
-  51.43%, 100% { transform: scaleX(0); }
+  0%, 15.08% { transform: scaleX(0); }
+  15.09%, 46.20% { transform: scaleX(1); animation-timing-function: steps(25, end); }
+  50.60%, 100% { transform: scaleX(0); }
 }
-.type-4 { animation: type-4 20.229999999999997s linear infinite; }
+.type-4 { animation: type-4 19.89s linear infinite; }
 @keyframes caret-4 {
-  0%, 47.11% { opacity: 0; transform: translateX(0); animation-timing-function: steps(25, end); }
-  47.12% { opacity: 1; transform: translateX(0); animation-timing-function: steps(25, end); }
-  51.43% { opacity: 1; transform: translateX(240.0px); }
-  51.44%, 100% { opacity: 0; transform: translateX(240.0px); }
+  0%, 46.20% { opacity: 0; transform: translateX(0); animation-timing-function: steps(25, end); }
+  46.21% { opacity: 1; transform: translateX(0); animation-timing-function: steps(25, end); }
+  50.60% { opacity: 1; transform: translateX(240.0px); }
+  50.61%, 100% { opacity: 0; transform: translateX(240.0px); }
 }
-.caret-4 { animation: caret-4 20.229999999999997s linear infinite; }
+.caret-4 { animation: caret-4 19.89s linear infinite; }
 @keyframes type-5 {
-  0%, 14.83% { transform: scaleX(0); }
-  14.84%, 53.81% { transform: scaleX(1); animation-timing-function: steps(44, end); }
-  61.42%, 100% { transform: scaleX(0); }
+  0%, 15.08% { transform: scaleX(0); }
+  15.09%, 53.02% { transform: scaleX(1); animation-timing-function: steps(44, end); }
+  60.76%, 100% { transform: scaleX(0); }
 }
-.type-5 { animation: type-5 20.229999999999997s linear infinite; }
+.type-5 { animation: type-5 19.89s linear infinite; }
 @keyframes caret-5 {
-  0%, 53.81% { opacity: 0; transform: translateX(0); animation-timing-function: steps(44, end); }
-  53.82% { opacity: 1; transform: translateX(0); animation-timing-function: steps(44, end); }
-  61.42% { opacity: 1; transform: translateX(422.4px); }
-  61.43%, 100% { opacity: 0; transform: translateX(422.4px); }
+  0%, 53.02% { opacity: 0; transform: translateX(0); animation-timing-function: steps(44, end); }
+  53.03% { opacity: 1; transform: translateX(0); animation-timing-function: steps(44, end); }
+  60.76% { opacity: 1; transform: translateX(422.4px); }
+  60.77%, 100% { opacity: 0; transform: translateX(422.4px); }
 }
-.caret-5 { animation: caret-5 20.229999999999997s linear infinite; }
+.caret-5 { animation: caret-5 19.89s linear infinite; }
 @keyframes hw0 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 62.16% { opacity: 0; }
-  62.46%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 61.51% { opacity: 0; }
+  61.81%, 100% { opacity: 1; }
 }
-.hw0 { animation: hw0 20.229999999999997s linear infinite; }
+.hw0 { animation: hw0 19.89s linear infinite; }
 @keyframes hw1 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 62.28% { opacity: 0; }
-  62.58%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 61.64% { opacity: 0; }
+  61.94%, 100% { opacity: 1; }
 }
-.hw1 { animation: hw1 20.229999999999997s linear infinite; }
+.hw1 { animation: hw1 19.89s linear infinite; }
 @keyframes hw2 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 62.41% { opacity: 0; }
-  62.71%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 61.76% { opacity: 0; }
+  62.06%, 100% { opacity: 1; }
 }
-.hw2 { animation: hw2 20.229999999999997s linear infinite; }
+.hw2 { animation: hw2 19.89s linear infinite; }
 @keyframes hw3 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 62.53% { opacity: 0; }
-  62.83%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 61.89% { opacity: 0; }
+  62.19%, 100% { opacity: 1; }
 }
-.hw3 { animation: hw3 20.229999999999997s linear infinite; }
+.hw3 { animation: hw3 19.89s linear infinite; }
 @keyframes hw4 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 62.65% { opacity: 0; }
-  62.95%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 62.02% { opacity: 0; }
+  62.32%, 100% { opacity: 1; }
 }
-.hw4 { animation: hw4 20.229999999999997s linear infinite; }
+.hw4 { animation: hw4 19.89s linear infinite; }
 @keyframes hw5 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 62.78% { opacity: 0; }
-  63.08%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 62.14% { opacity: 0; }
+  62.44%, 100% { opacity: 1; }
 }
-.hw5 { animation: hw5 20.229999999999997s linear infinite; }
+.hw5 { animation: hw5 19.89s linear infinite; }
 @keyframes hw6 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 62.90% { opacity: 0; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 62.27% { opacity: 0; }
+  62.57%, 100% { opacity: 1; }
+}
+.hw6 { animation: hw6 19.89s linear infinite; }
+@keyframes hw7 {
+  0%, 15.08% { opacity: 1; }
+  15.09%, 62.39% { opacity: 0; }
+  62.69%, 100% { opacity: 1; }
+}
+.hw7 { animation: hw7 19.89s linear infinite; }
+@keyframes hw8 {
+  0%, 15.08% { opacity: 1; }
+  15.09%, 62.52% { opacity: 0; }
+  62.82%, 100% { opacity: 1; }
+}
+.hw8 { animation: hw8 19.89s linear infinite; }
+@keyframes hw9 {
+  0%, 15.08% { opacity: 1; }
+  15.09%, 62.64% { opacity: 0; }
+  62.94%, 100% { opacity: 1; }
+}
+.hw9 { animation: hw9 19.89s linear infinite; }
+@keyframes hw10 {
+  0%, 15.08% { opacity: 1; }
+  15.09%, 62.77% { opacity: 0; }
+  63.07%, 100% { opacity: 1; }
+}
+.hw10 { animation: hw10 19.89s linear infinite; }
+@keyframes hw11 {
+  0%, 15.08% { opacity: 1; }
+  15.09%, 62.90% { opacity: 0; }
   63.20%, 100% { opacity: 1; }
 }
-.hw6 { animation: hw6 20.229999999999997s linear infinite; }
-@keyframes hw7 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 63.03% { opacity: 0; }
-  63.33%, 100% { opacity: 1; }
+.hw11 { animation: hw11 19.89s linear infinite; }
+@keyframes hw12 {
+  0%, 15.08% { opacity: 1; }
+  15.09%, 63.02% { opacity: 0; }
+  63.32%, 100% { opacity: 1; }
 }
-.hw7 { animation: hw7 20.229999999999997s linear infinite; }
-@keyframes hw8 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 63.15% { opacity: 0; }
+.hw12 { animation: hw12 19.89s linear infinite; }
+@keyframes hw13 {
+  0%, 15.08% { opacity: 1; }
+  15.09%, 63.15% { opacity: 0; }
   63.45%, 100% { opacity: 1; }
 }
-.hw8 { animation: hw8 20.229999999999997s linear infinite; }
-@keyframes hw9 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 63.27% { opacity: 0; }
+.hw13 { animation: hw13 19.89s linear infinite; }
+@keyframes hw14 {
+  0%, 15.08% { opacity: 1; }
+  15.09%, 63.27% { opacity: 0; }
   63.57%, 100% { opacity: 1; }
 }
-.hw9 { animation: hw9 20.229999999999997s linear infinite; }
-@keyframes hw10 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 63.40% { opacity: 0; }
+.hw14 { animation: hw14 19.89s linear infinite; }
+@keyframes hw15 {
+  0%, 15.08% { opacity: 1; }
+  15.09%, 63.40% { opacity: 0; }
   63.70%, 100% { opacity: 1; }
 }
-.hw10 { animation: hw10 20.229999999999997s linear infinite; }
-@keyframes hw11 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 63.52% { opacity: 0; }
+.hw15 { animation: hw15 19.89s linear infinite; }
+@keyframes hw16 {
+  0%, 15.08% { opacity: 1; }
+  15.09%, 63.52% { opacity: 0; }
   63.82%, 100% { opacity: 1; }
 }
-.hw11 { animation: hw11 20.229999999999997s linear infinite; }
-@keyframes hw12 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 63.64% { opacity: 0; }
-  63.94%, 100% { opacity: 1; }
-}
-.hw12 { animation: hw12 20.229999999999997s linear infinite; }
-@keyframes hw13 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 63.77% { opacity: 0; }
-  64.07%, 100% { opacity: 1; }
-}
-.hw13 { animation: hw13 20.229999999999997s linear infinite; }
-@keyframes hw14 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 63.89% { opacity: 0; }
-  64.19%, 100% { opacity: 1; }
-}
-.hw14 { animation: hw14 20.229999999999997s linear infinite; }
-@keyframes hw15 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 64.01% { opacity: 0; }
-  64.31%, 100% { opacity: 1; }
-}
-.hw15 { animation: hw15 20.229999999999997s linear infinite; }
-@keyframes hw16 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 64.14% { opacity: 0; }
-  64.44%, 100% { opacity: 1; }
-}
-.hw16 { animation: hw16 20.229999999999997s linear infinite; }
+.hw16 { animation: hw16 19.89s linear infinite; }
 @keyframes hw17 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 64.26% { opacity: 0; }
-  64.56%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 63.65% { opacity: 0; }
+  63.95%, 100% { opacity: 1; }
 }
-.hw17 { animation: hw17 20.229999999999997s linear infinite; }
+.hw17 { animation: hw17 19.89s linear infinite; }
 @keyframes hw18 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 64.38% { opacity: 0; }
-  64.68%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 63.78% { opacity: 0; }
+  64.08%, 100% { opacity: 1; }
 }
-.hw18 { animation: hw18 20.229999999999997s linear infinite; }
+.hw18 { animation: hw18 19.89s linear infinite; }
 @keyframes hw19 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 64.51% { opacity: 0; }
-  64.81%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 63.90% { opacity: 0; }
+  64.20%, 100% { opacity: 1; }
 }
-.hw19 { animation: hw19 20.229999999999997s linear infinite; }
+.hw19 { animation: hw19 19.89s linear infinite; }
 @keyframes hw20 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 64.63% { opacity: 0; }
-  64.93%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 64.03% { opacity: 0; }
+  64.33%, 100% { opacity: 1; }
 }
-.hw20 { animation: hw20 20.229999999999997s linear infinite; }
+.hw20 { animation: hw20 19.89s linear infinite; }
 @keyframes hw21 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 64.76% { opacity: 0; }
-  65.06%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 64.15% { opacity: 0; }
+  64.45%, 100% { opacity: 1; }
 }
-.hw21 { animation: hw21 20.229999999999997s linear infinite; }
+.hw21 { animation: hw21 19.89s linear infinite; }
 @keyframes hw22 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 64.88% { opacity: 0; }
-  65.18%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 64.28% { opacity: 0; }
+  64.58%, 100% { opacity: 1; }
 }
-.hw22 { animation: hw22 20.229999999999997s linear infinite; }
+.hw22 { animation: hw22 19.89s linear infinite; }
 @keyframes hw23 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 65.00% { opacity: 0; }
-  65.30%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 64.40% { opacity: 0; }
+  64.70%, 100% { opacity: 1; }
 }
-.hw23 { animation: hw23 20.229999999999997s linear infinite; }
+.hw23 { animation: hw23 19.89s linear infinite; }
 @keyframes hw24 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 65.13% { opacity: 0; }
-  65.43%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 64.53% { opacity: 0; }
+  64.83%, 100% { opacity: 1; }
 }
-.hw24 { animation: hw24 20.229999999999997s linear infinite; }
+.hw24 { animation: hw24 19.89s linear infinite; }
 @keyframes hw25 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 65.25% { opacity: 0; }
-  65.55%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 64.66% { opacity: 0; }
+  64.96%, 100% { opacity: 1; }
 }
-.hw25 { animation: hw25 20.229999999999997s linear infinite; }
+.hw25 { animation: hw25 19.89s linear infinite; }
 @keyframes hw26 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 65.37% { opacity: 0; }
-  65.67%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 64.78% { opacity: 0; }
+  65.08%, 100% { opacity: 1; }
 }
-.hw26 { animation: hw26 20.229999999999997s linear infinite; }
+.hw26 { animation: hw26 19.89s linear infinite; }
 @keyframes hw27 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 65.50% { opacity: 0; }
-  65.80%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 64.91% { opacity: 0; }
+  65.21%, 100% { opacity: 1; }
 }
-.hw27 { animation: hw27 20.229999999999997s linear infinite; }
+.hw27 { animation: hw27 19.89s linear infinite; }
 @keyframes hw28 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 65.62% { opacity: 0; }
-  65.92%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 65.03% { opacity: 0; }
+  65.33%, 100% { opacity: 1; }
 }
-.hw28 { animation: hw28 20.229999999999997s linear infinite; }
+.hw28 { animation: hw28 19.89s linear infinite; }
 @keyframes hw29 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 65.74% { opacity: 0; }
-  66.04%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 65.16% { opacity: 0; }
+  65.46%, 100% { opacity: 1; }
 }
-.hw29 { animation: hw29 20.229999999999997s linear infinite; }
+.hw29 { animation: hw29 19.89s linear infinite; }
 @keyframes hw30 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 65.87% { opacity: 0; }
-  66.17%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 65.28% { opacity: 0; }
+  65.58%, 100% { opacity: 1; }
 }
-.hw30 { animation: hw30 20.229999999999997s linear infinite; }
+.hw30 { animation: hw30 19.89s linear infinite; }
 @keyframes hw31 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 65.99% { opacity: 0; }
-  66.29%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 65.41% { opacity: 0; }
+  65.71%, 100% { opacity: 1; }
 }
-.hw31 { animation: hw31 20.229999999999997s linear infinite; }
+.hw31 { animation: hw31 19.89s linear infinite; }
 @keyframes hw32 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 66.11% { opacity: 0; }
-  66.41%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 65.54% { opacity: 0; }
+  65.84%, 100% { opacity: 1; }
 }
-.hw32 { animation: hw32 20.229999999999997s linear infinite; }
+.hw32 { animation: hw32 19.89s linear infinite; }
 @keyframes hw33 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 66.24% { opacity: 0; }
-  66.54%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 65.66% { opacity: 0; }
+  65.96%, 100% { opacity: 1; }
 }
-.hw33 { animation: hw33 20.229999999999997s linear infinite; }
+.hw33 { animation: hw33 19.89s linear infinite; }
 @keyframes hw34 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 66.36% { opacity: 0; }
-  66.66%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 65.79% { opacity: 0; }
+  66.09%, 100% { opacity: 1; }
 }
-.hw34 { animation: hw34 20.229999999999997s linear infinite; }
+.hw34 { animation: hw34 19.89s linear infinite; }
 @keyframes hw35 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 66.49% { opacity: 0; }
-  66.79%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 65.91% { opacity: 0; }
+  66.21%, 100% { opacity: 1; }
 }
-.hw35 { animation: hw35 20.229999999999997s linear infinite; }
+.hw35 { animation: hw35 19.89s linear infinite; }
 @keyframes hw36 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 66.61% { opacity: 0; }
-  66.91%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 66.04% { opacity: 0; }
+  66.34%, 100% { opacity: 1; }
 }
-.hw36 { animation: hw36 20.229999999999997s linear infinite; }
+.hw36 { animation: hw36 19.89s linear infinite; }
 @keyframes hw37 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 66.73% { opacity: 0; }
-  67.03%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 66.16% { opacity: 0; }
+  66.46%, 100% { opacity: 1; }
 }
-.hw37 { animation: hw37 20.229999999999997s linear infinite; }
+.hw37 { animation: hw37 19.89s linear infinite; }
 @keyframes hw38 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 66.86% { opacity: 0; }
-  67.16%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 66.29% { opacity: 0; }
+  66.59%, 100% { opacity: 1; }
 }
-.hw38 { animation: hw38 20.229999999999997s linear infinite; }
+.hw38 { animation: hw38 19.89s linear infinite; }
 @keyframes hw39 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 66.98% { opacity: 0; }
-  67.28%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 66.42% { opacity: 0; }
+  66.72%, 100% { opacity: 1; }
 }
-.hw39 { animation: hw39 20.229999999999997s linear infinite; }
+.hw39 { animation: hw39 19.89s linear infinite; }
 @keyframes hw40 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 67.10% { opacity: 0; }
-  67.40%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 66.54% { opacity: 0; }
+  66.84%, 100% { opacity: 1; }
 }
-.hw40 { animation: hw40 20.229999999999997s linear infinite; }
+.hw40 { animation: hw40 19.89s linear infinite; }
 @keyframes hw41 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 67.23% { opacity: 0; }
-  67.53%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 66.67% { opacity: 0; }
+  66.97%, 100% { opacity: 1; }
 }
-.hw41 { animation: hw41 20.229999999999997s linear infinite; }
+.hw41 { animation: hw41 19.89s linear infinite; }
 @keyframes hw42 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 67.35% { opacity: 0; }
-  67.65%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 66.79% { opacity: 0; }
+  67.09%, 100% { opacity: 1; }
 }
-.hw42 { animation: hw42 20.229999999999997s linear infinite; }
+.hw42 { animation: hw42 19.89s linear infinite; }
 @keyframes hw43 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 67.47% { opacity: 0; }
-  67.77%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 66.92% { opacity: 0; }
+  67.22%, 100% { opacity: 1; }
 }
-.hw43 { animation: hw43 20.229999999999997s linear infinite; }
+.hw43 { animation: hw43 19.89s linear infinite; }
 @keyframes hw44 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 67.60% { opacity: 0; }
-  67.90%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 67.04% { opacity: 0; }
+  67.34%, 100% { opacity: 1; }
 }
-.hw44 { animation: hw44 20.229999999999997s linear infinite; }
+.hw44 { animation: hw44 19.89s linear infinite; }
 @keyframes hw45 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 67.72% { opacity: 0; }
-  68.02%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 67.17% { opacity: 0; }
+  67.47%, 100% { opacity: 1; }
 }
-.hw45 { animation: hw45 20.229999999999997s linear infinite; }
+.hw45 { animation: hw45 19.89s linear infinite; }
 @keyframes hw46 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 67.84% { opacity: 0; }
-  68.14%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 67.30% { opacity: 0; }
+  67.60%, 100% { opacity: 1; }
 }
-.hw46 { animation: hw46 20.229999999999997s linear infinite; }
+.hw46 { animation: hw46 19.89s linear infinite; }
 @keyframes hw47 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 67.97% { opacity: 0; }
-  68.27%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 67.42% { opacity: 0; }
+  67.72%, 100% { opacity: 1; }
 }
-.hw47 { animation: hw47 20.229999999999997s linear infinite; }
+.hw47 { animation: hw47 19.89s linear infinite; }
 @keyframes hw48 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 68.09% { opacity: 0; }
-  68.39%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 67.55% { opacity: 0; }
+  67.85%, 100% { opacity: 1; }
 }
-.hw48 { animation: hw48 20.229999999999997s linear infinite; }
+.hw48 { animation: hw48 19.89s linear infinite; }
 @keyframes hw49 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 68.22% { opacity: 0; }
-  68.52%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 67.67% { opacity: 0; }
+  67.97%, 100% { opacity: 1; }
 }
-.hw49 { animation: hw49 20.229999999999997s linear infinite; }
+.hw49 { animation: hw49 19.89s linear infinite; }
 @keyframes hw50 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 68.34% { opacity: 0; }
-  68.64%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 67.80% { opacity: 0; }
+  68.10%, 100% { opacity: 1; }
 }
-.hw50 { animation: hw50 20.229999999999997s linear infinite; }
+.hw50 { animation: hw50 19.89s linear infinite; }
 @keyframes hw51 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 68.46% { opacity: 0; }
-  68.76%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 67.92% { opacity: 0; }
+  68.22%, 100% { opacity: 1; }
 }
-.hw51 { animation: hw51 20.229999999999997s linear infinite; }
+.hw51 { animation: hw51 19.89s linear infinite; }
 @keyframes hw52 {
-  0%, 14.83% { opacity: 1; }
-  14.84%, 68.59% { opacity: 0; }
-  68.89%, 100% { opacity: 1; }
+  0%, 15.08% { opacity: 1; }
+  15.09%, 68.05% { opacity: 0; }
+  68.35%, 100% { opacity: 1; }
 }
-.hw52 { animation: hw52 20.229999999999997s linear infinite; }
+.hw52 { animation: hw52 19.89s linear infinite; }
 @keyframes cursor-blink {
   0%, 45% { opacity: 1; }
   50%, 100% { opacity: 0; }
@@ -787,26 +742,6 @@ text, tspan {white-space: pre;}
 <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
 <animate attributeName="x1" values="-205;319" dur="7s" repeatCount="indefinite"/>
 <animate attributeName="x2" values="-45;479" dur="7s" repeatCount="indefinite"/>
-</linearGradient>
-<clipPath id="fut-clip"><path d="M18,0 H232 A18,18 0 0 1 250,18 V292 A26,26 0 0 1 236,315 L135,362 A22,22 0 0 1 115,362 L14,315 A26,26 0 0 1 0,292 V18 A18,18 0 0 1 18,0 Z"/></clipPath>
-<linearGradient id="fut-bronze" x1="0" y1="0" x2="0" y2="1">
-<stop offset="0%" stop-color="#f0d3b4"/><stop offset="45%" stop-color="#c88a5a"/>
-<stop offset="55%" stop-color="#e2ab7f"/><stop offset="100%" stop-color="#9c6238"/>
-</linearGradient>
-<linearGradient id="fut-silver" x1="0" y1="0" x2="0" y2="1">
-<stop offset="0%" stop-color="#f6f7f8"/><stop offset="45%" stop-color="#b9bfc4"/>
-<stop offset="55%" stop-color="#dfe3e6"/><stop offset="100%" stop-color="#8f979d"/>
-</linearGradient>
-<linearGradient id="fut-gold" x1="0" y1="0" x2="0" y2="1">
-<stop offset="0%" stop-color="#fdf0c0"/><stop offset="45%" stop-color="#e0b44a"/>
-<stop offset="55%" stop-color="#f5da8e"/><stop offset="100%" stop-color="#b8892a"/>
-</linearGradient>
-<linearGradient id="fut-shine" gradientUnits="userSpaceOnUse" x1="-180" y1="0" x2="-60" y2="368">
-<stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
-<stop offset="50%" stop-color="#ffffff" stop-opacity="0.85"/>
-<stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
-<animate attributeName="x1" values="-180;310" dur="5.5s" repeatCount="indefinite"/>
-<animate attributeName="x2" values="-60;430" dur="5.5s" repeatCount="indefinite"/>
 </linearGradient>
 <pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse">
 <rect width="4" height="2" fill="#586e75" opacity="0.06"/>
@@ -881,32 +816,22 @@ text, tspan {white-space: pre;}
 <tspan x="338" y="446" class="reveal rv36"><tspan class="dim"> </tspan><tspan class="key">portfolio</tspan><tspan class="dim">  → </tspan><tspan class="value">fausto-yuuki.vercel.app</tspan></tspan>
 <tspan x="338" y="466" class="reveal rv37"><tspan class="dim"> </tspan><tspan class="key">linkedin</tspan><tspan class="dim">   → </tspan><tspan class="value">fausto-yuuki</tspan></tspan>
 <tspan x="338" y="496" class="reveal rv39"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">git shortlog -sn --all | head -1</tspan></tspan>
-<tspan x="338" y="516" class="reveal rv40"><tspan class="dim">   </tspan><tspan class="value" id="commit_data">876</tspan><tspan class="dim" id="commit_data_dots"></tspan><tspan class="dim">  commits authored by YuukiFST</tspan></tspan>
+<tspan x="338" y="516" class="reveal rv40"><tspan class="dim">   </tspan><tspan class="value" id="commit_data">877</tspan><tspan class="dim" id="commit_data_dots"></tspan><tspan class="dim">  commits authored by YuukiFST</tspan></tspan>
 <tspan x="338" y="546" class="reveal rv41"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">cloc --vcs=git ~/github/*</tspan></tspan>
-<tspan x="338" y="566" class="reveal rv42"><tspan class="dim">   </tspan><tspan class="value" id="loc_data">715,829</tspan><tspan class="dim" id="loc_data_dots"></tspan><tspan class="dim"> lines of code   </tspan><tspan class="addColor" id="loc_add">903,882</tspan><tspan class="dim" id="loc_add_dots"></tspan><tspan class="dim">++ / </tspan><tspan class="delColor" id="loc_del">188,053</tspan><tspan class="dim" id="loc_del_dots"></tspan><tspan class="dim">--</tspan></tspan>
+<tspan x="338" y="566" class="reveal rv42"><tspan class="dim">   </tspan><tspan class="value" id="loc_data">715,679</tspan><tspan class="dim" id="loc_data_dots"></tspan><tspan class="dim"> lines of code   </tspan><tspan class="addColor" id="loc_add">905,136</tspan><tspan class="dim" id="loc_add_dots"></tspan><tspan class="dim">++ / </tspan><tspan class="delColor" id="loc_del">189,457</tspan><tspan class="dim" id="loc_del_dots"></tspan><tspan class="dim">--</tspan></tspan>
 <tspan x="338" y="596" class="reveal rv43"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command">gh api graphql -f query=contributionCalendar</tspan></tspan>
 <tspan x="338" y="746" class="reveal rv44"><tspan class="prompt-host">yuuki@nixos</tspan><tspan class="prompt-path">:~$</tspan> <tspan class="command"/><tspan class="cursor">█</tspan></tspan>
 </text>
-<g transform="translate(40,344)">
-<g class="reveal rv53">
-<path id="fut_plate" d="M18,0 H232 A18,18 0 0 1 250,18 V292 A26,26 0 0 1 236,315 L135,362 A22,22 0 0 1 115,362 L14,315 A26,26 0 0 1 0,292 V18 A18,18 0 0 1 18,0 Z" fill="url(#fut-silver)"/>
-<image id="fut_avatar" x="92" y="34" width="106" height="106" preserveAspectRatio="xMidYMid slice" href="data:image/png;base64,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"/>
-<text id="fut_rating" class="fut-rating" x="30" y="66">65</text>
-<text id="fut_position" class="fut-position" x="30" y="92">CAM</text>
-<text id="fut_name" class="fut-name" x="125" y="196" text-anchor="middle">YUUKI</text>
-<line x1="45" y1="212" x2="205" y2="212" stroke="#303536" stroke-opacity="0.35"/>
-<line x1="125" y1="228" x2="125" y2="330" stroke="#303536" stroke-opacity="0.25"/>
-<rect x="0" y="0" width="250" height="368" fill="url(#fut-shine)" clip-path="url(#fut-clip)"/>
+<g class="reveal rv46">
+<image id="fut_card" x="49" y="344" width="232" height="370" href="data:image/webp;base64,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DAcfhQiw7cmnZErdcu0+FqZkp5y8rQBRiH9VHAjQs822s76mtOpNupRWb8HXZm27TY8ADtaa81B6X936W9r1tP66va/kwQ0pHTwxAWbfc9/dzyiQ093IUeCZu+2e2QKkiQ0uQ+278NLzblagAS3teloDFLj5vEsv7JOh7jH4XM5RoGb1TLummdVMgXP2mMvgOuQC0K5rAeha7w5lQ21q19ayoer/97///vvvv//++++///7777///vvvv//++++///7777///vvvv//++++///7777///vvvv//++++///7777///vvvv//++++///7flFu3qRtda3WTMr1tP7rKNb4sf/hPQfeoznVJcE1R7yZdLfxIa12k7JuSvvWmAS26RTVukVjeqzS7Q4XW/3G+i9yJDW11hwxOkMjF6+29Mm90i06VWHpYT1ndDWq2/nvxTomXiC1/1NRGF6hf6ZMUiIQb6q3uT2H63AwfCzhh0meVvNuzmj9MDSMngItk8/NqebOrkys/eYPgpf26spUy0M3Jaf74DdLrZdAknPNPLfIuTh1myjoMNQ7W+bv2d2/y/kLnSM+QvLD7bdo/kHdlipry3/0mxX5IBInM/7FCswuTFXrDZ88WQta0j5mP2yptdVsKU/40S0icrMXAc5U2ui4DunSixLJWncAml2vW3+yi5Jnyqx2F0K0VXNwrG31KodEtyV5RPn7hPhIFsvb74NZ7ntC8VXQ/ihyldrNAIq+qQ3hfQ7uk/61/X1zs5NXvOUChbkU3ozBT2H+bLQQvr3rYAyeccpuS15vdiaLesFy57eQTBCIZloHB/jebQsss7zKYGeWbbX8hSEOGqbPICXeveEm7k/95/j93CS4KnQxjJ7DJxu8sZRRdg1bWVFg1Y+pW6ws4Gd4uNCE98p2Hf0OhVq9Zs+Jr1Oo1Uzj10HcfIEBoToZ/lAow42pWarlpRVXXappRfvDqLwkQJ8QyQn0MTvjy0r+ZrVYotKBiK8oKLFv69FJ7qxDFETLyk4m2rn1cyVtmVlRrVi4tmLiBWSAd0ZlJefN99uvXcq1eyyuyZi3T8uV7H7SPtA18JwCiBBA487OLPmsvKJDRKKqtZiNroPCtzy7+rE0WIIkTAumoliDlCx5/8LFMgbzIKSqpAnItP/fYPdI2iRMvndvFnp9ophSAVtMFtDndx65N5/ZlAbZ6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"/>
 </g>
-<g class="reveal rv46"><text id="fut_pac" class="fut-stat" x="66" y="250" text-anchor="end">69</text><text class="fut-label" x="74" y="250">PAC</text></g><g class="reveal rv47"><text id="fut_dri" class="fut-stat" x="158" y="250" text-anchor="end">74</text><text class="fut-label" x="166" y="250">DRI</text></g><g class="reveal rv48"><text id="fut_sho" class="fut-stat" x="66" y="284" text-anchor="end">47</text><text class="fut-label" x="74" y="284">SHO</text></g><g class="reveal rv49"><text id="fut_def" class="fut-stat" x="158" y="284" text-anchor="end">57</text><text class="fut-label" x="166" y="284">DEF</text></g><g class="reveal rv50"><text id="fut_pas" class="fut-stat" x="66" y="318" text-anchor="end">65</text><text class="fut-label" x="74" y="318">PAS</text></g><g class="reveal rv51"><text id="fut_phy" class="fut-stat" x="158" y="318" text-anchor="end">66</text><text class="fut-label" x="166" y="318">PHY</text></g>
-</g>
-<text class="reveal rv52" x="165" y="738" text-anchor="middle" font-size="11px">
+<text class="reveal rv47" x="165" y="738" text-anchor="middle" font-size="11px">
 <tspan class="value" id="fut_tier">65 SILVER · Fantasista</tspan>
 </text>
-<text id="heatmap_months" class="dim reveal rv54" font-size="11px" fill="#93a1a1">
+<text id="heatmap_months" class="dim reveal rv48" font-size="11px" fill="#93a1a1">
 <tspan x="338" y="616">Aug</tspan><tspan x="393" y="616">Sep</tspan><tspan x="437" y="616">Oct</tspan><tspan x="481" y="616">Nov</tspan><tspan x="536" y="616">Dec</tspan><tspan x="580" y="616">Jan</tspan><tspan x="624" y="616">Feb</tspan><tspan x="668" y="616">Mar</tspan><tspan x="723" y="616">Apr</tspan><tspan x="767" y="616">May</tspan><tspan x="822" y="616">Jun</tspan><tspan x="866" y="616">Jul</tspan><tspan x="910" y="616">Aug</tspan></text>
 <g id="heatmap" transform="translate(338,626)"><g class="reveal hw0"><rect class="lvl0" x="0" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="0" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="0" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="0" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="0" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="0" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="0" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw1"><rect class="lvl0" x="11" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="11" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="11" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="11" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="11" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="11" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="11" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw2"><rect class="lvl0" x="22" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="22" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="22" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="22" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="22" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="22" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="22" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw3"><rect class="lvl0" x="33" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="33" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="33" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="33" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="33" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="33" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="33" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw4"><rect class="lvl0" x="44" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="44" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="44" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="44" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="44" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="44" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="44" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw5"><rect class="lvl0" x="55" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="55" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="55" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="55" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="55" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="55" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="55" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw6"><rect class="lvl0" x="66" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="66" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="66" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="66" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="66" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="66" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="66" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw7"><rect class="lvl0" x="77" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="77" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="77" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="77" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="77" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="77" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="77" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw8"><rect class="lvl0" x="88" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="88" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="88" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="88" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="88" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="88" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="88" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw9"><rect class="lvl0" x="99" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="99" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="99" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="99" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="99" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="99" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="99" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw10"><rect class="lvl0" x="110" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="110" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="110" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="110" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="110" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="110" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="110" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw11"><rect class="lvl0" x="121" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="121" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="121" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="121" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="121" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="121" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="121" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw12"><rect class="lvl0" x="132" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="132" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="132" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="132" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="132" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="132" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="132" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw13"><rect class="lvl0" x="143" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="143" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="143" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="143" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="143" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="143" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="143" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw14"><rect class="lvl0" x="154" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="154" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="154" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="154" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="154" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="154" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="154" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw15"><rect class="lvl0" x="165" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="165" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="165" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="165" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="165" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="165" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="165" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw16"><rect class="lvl0" x="176" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="176" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="176" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="176" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="176" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="176" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="176" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw17"><rect class="lvl0" x="187" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="187" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="187" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="187" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="187" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="187" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="187" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw18"><rect class="lvl0" x="198" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="198" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="198" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="198" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="198" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="198" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="198" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw19"><rect class="lvl0" x="209" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="209" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="209" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="209" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="209" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="209" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="209" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw20"><rect class="lvl0" x="220" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="220" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="220" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="220" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="220" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="220" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="220" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw21"><rect class="lvl0" x="231" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="231" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="231" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="231" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="231" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="231" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="231" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw22"><rect class="lvl1" x="242" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="242" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="242" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="242" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="242" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="242" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="242" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw23"><rect class="lvl0" x="253" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="253" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="253" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="253" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="253" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="253" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="253" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw24"><rect class="lvl0" x="264" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="264" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="264" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="264" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="264" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="264" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="264" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw25"><rect class="lvl0" x="275" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="275" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="275" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="275" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="275" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="275" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="275" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw26"><rect class="lvl0" x="286" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="286" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="286" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="286" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="286" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="286" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="286" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw27"><rect class="lvl0" x="297" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="297" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="297" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="297" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="297" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="297" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="297" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw28"><rect class="lvl0" x="308" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="308" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="308" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="308" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="308" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="308" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="308" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw29"><rect class="lvl0" x="319" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="319" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="319" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="319" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="319" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="319" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="319" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw30"><rect class="lvl1" x="330" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="330" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="330" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="330" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="330" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="330" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="330" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw31"><rect class="lvl0" x="341" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="341" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="341" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="341" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="341" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="341" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="341" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw32"><rect class="lvl1" x="352" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="352" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="352" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="352" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="352" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="352" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="352" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw33"><rect class="lvl1" x="363" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="363" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="363" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="363" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="363" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="363" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="363" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw34"><rect class="lvl1" x="374" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="374" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="374" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="374" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="374" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="374" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="374" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw35"><rect class="lvl0" x="385" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="385" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="385" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="385" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="385" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="385" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="385" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw36"><rect class="lvl1" x="396" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="396" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="396" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="396" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="396" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="396" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="396" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw37"><rect class="lvl0" x="407" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="407" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="407" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="407" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="407" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="407" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="407" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw38"><rect class="lvl0" x="418" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="418" y="11" width="9" height="9" rx="2"/><rect class="lvl2" x="418" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="418" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="418" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="418" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="418" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw39"><rect class="lvl1" x="429" y="0" width="9" height="9" rx="2"/><rect class="lvl2" x="429" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="429" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="429" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="429" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="429" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="429" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw40"><rect class="lvl1" x="440" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="440" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="440" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="440" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="440" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="440" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="440" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw41"><rect class="lvl0" x="451" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="451" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="451" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="451" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="451" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="451" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="451" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw42"><rect class="lvl0" x="462" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="462" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="462" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="462" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="462" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="462" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="462" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw43"><rect class="lvl0" x="473" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="473" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="473" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="473" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="473" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="473" y="55" width="9" height="9" rx="2"/><rect class="lvl0" x="473" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw44"><rect class="lvl0" x="484" y="0" width="9" height="9" rx="2"/><rect class="lvl0" x="484" y="11" width="9" height="9" rx="2"/><rect class="lvl0" x="484" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="484" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="484" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="484" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="484" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw45"><rect class="lvl1" x="495" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="495" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="495" y="22" width="9" height="9" rx="2"/><rect class="lvl0" x="495" y="33" width="9" height="9" rx="2"/><rect class="lvl0" x="495" y="44" width="9" height="9" rx="2"/><rect class="lvl0" x="495" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="495" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw46"><rect class="lvl1" x="506" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="506" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="506" y="22" width="9" height="9" rx="2"/><rect class="lvl2" x="506" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="506" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="506" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="506" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw47"><rect class="lvl1" x="517" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="517" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="517" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="517" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="517" y="44" width="9" height="9" rx="2"/><rect class="lvl2" x="517" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="517" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw48"><rect class="lvl1" x="528" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="528" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="528" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="528" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="528" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="528" y="55" width="9" height="9" rx="2"/><rect class="lvl4" x="528" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw49"><rect class="lvl1" x="539" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="539" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="539" y="22" width="9" height="9" rx="2"/><rect class="lvl2" x="539" y="33" width="9" height="9" rx="2"/><rect class="lvl2" x="539" y="44" width="9" height="9" rx="2"/><rect class="lvl2" x="539" y="55" width="9" height="9" rx="2"/><rect class="lvl1" x="539" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw50"><rect class="lvl0" x="550" y="0" width="9" height="9" rx="2"/><rect class="lvl2" x="550" y="11" width="9" height="9" rx="2"/><rect class="lvl2" x="550" y="22" width="9" height="9" rx="2"/><rect class="lvl2" x="550" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="550" y="44" width="9" height="9" rx="2"/><rect class="lvl2" x="550" y="55" width="9" height="9" rx="2"/><rect class="lvl4" x="550" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw51"><rect class="lvl2" x="561" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="561" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="561" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="561" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="561" y="44" width="9" height="9" rx="2"/><rect class="lvl1" x="561" y="55" width="9" height="9" rx="2"/><rect class="lvl2" x="561" y="66" width="9" height="9" rx="2"/></g><g class="reveal hw52"><rect class="lvl0" x="572" y="0" width="9" height="9" rx="2"/><rect class="lvl1" x="572" y="11" width="9" height="9" rx="2"/><rect class="lvl1" x="572" y="22" width="9" height="9" rx="2"/><rect class="lvl1" x="572" y="33" width="9" height="9" rx="2"/><rect class="lvl1" x="572" y="44" width="9" height="9" rx="2"/></g></g>
-<g class="reveal rv54">
+<g class="reveal rv48">
 <text class="dim" font-size="11px" fill="#93a1a1" x="338" y="716">Less</text>
 <rect class="lvl0" x="382" y="707" width="9" height="9" rx="2"/><rect class="lvl1" x="393" y="707" width="9" height="9" rx="2"/><rect class="lvl2" x="404" y="707" width="9" height="9" rx="2"/><rect class="lvl3" x="415" y="707" width="9" height="9" rx="2"/><rect class="lvl4" x="426" y="707" width="9" height="9" rx="2"/>
 <text class="dim" font-size="11px" fill="#93a1a1" x="443" y="716">More</text>
@@ -929,7 +854,7 @@ text, tspan {white-space: pre;}
 <rect class="type-mask type-5" x="482.0" y="580" width="424.4" height="19" fill="#fdf6e3"/>
 <g opacity="0.4" filter="url(#phosphor)"><rect class="caret caret-5" style="animation-delay: 0.09s" x="482.0" y="580" width="9.6" height="19" fill="#6c71c4"/></g>
 <rect class="caret caret-5" x="482.0" y="580" width="9.6" height="19" fill="#6c71c4"/>
-<text class="spinner" fill="#268bd2"><tspan x="366.8" y="66" opacity="0">▖<animate attributeName="opacity" values="0;0;1;1;0;0;1;1;0;0" keyTimes="0;0.16262;0.16312;0.16906;0.16956;0.18635;0.18685;0.19278;0.19328;1" dur="20.229999999999997s" repeatCount="indefinite"/></tspan><tspan x="366.8" y="66" opacity="0">▘<animate attributeName="opacity" values="0;0;1;1;0;0;1;1;0;0" keyTimes="0;0.16856;0.16906;0.17499;0.17549;0.19228;0.19278;0.19871;0.19921;1" dur="20.229999999999997s" repeatCount="indefinite"/></tspan><tspan x="366.8" y="66" opacity="0">▝<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.17449;0.17499;0.18092;0.18142;1" dur="20.229999999999997s" repeatCount="indefinite"/></tspan><tspan x="366.8" y="66" opacity="0">▗<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.18042;0.18092;0.18685;0.18735;1" dur="20.229999999999997s" repeatCount="indefinite"/></tspan></text>
-<text class="spinner" fill="#268bd2"><tspan x="366.8" y="86" opacity="0">▖<animate attributeName="opacity" values="0;0;1;1;0;0;1;1;0;0" keyTimes="0;0.17152;0.17202;0.17795;0.17845;0.19525;0.19575;0.20168;0.20218;1" dur="20.229999999999997s" repeatCount="indefinite"/></tspan><tspan x="366.8" y="86" opacity="0">▘<animate attributeName="opacity" values="0;0;1;1;0;0;1;1;0;0" keyTimes="0;0.17745;0.17795;0.18389;0.18439;0.20118;0.20168;0.20761;0.20811;1" dur="20.229999999999997s" repeatCount="indefinite"/></tspan><tspan x="366.8" y="86" opacity="0">▝<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.18339;0.18389;0.18982;0.19032;1" dur="20.229999999999997s" repeatCount="indefinite"/></tspan><tspan x="366.8" y="86" opacity="0">▗<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.18932;0.18982;0.19575;0.19625;1" dur="20.229999999999997s" repeatCount="indefinite"/></tspan></text>
+<text class="spinner" fill="#268bd2"><tspan x="366.8" y="66" opacity="0">▖<animate attributeName="opacity" values="0;0;1;1;0;0;1;1;0;0" keyTimes="0;0.16541;0.16591;0.17195;0.17245;0.18955;0.19005;0.19608;0.19658;1" dur="19.89s" repeatCount="indefinite"/></tspan><tspan x="366.8" y="66" opacity="0">▘<animate attributeName="opacity" values="0;0;1;1;0;0;1;1;0;0" keyTimes="0;0.17145;0.17195;0.17798;0.17848;0.19558;0.19608;0.20211;0.20261;1" dur="19.89s" repeatCount="indefinite"/></tspan><tspan x="366.8" y="66" opacity="0">▝<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.17748;0.17798;0.18401;0.18451;1" dur="19.89s" repeatCount="indefinite"/></tspan><tspan x="366.8" y="66" opacity="0">▗<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.18351;0.18401;0.19005;0.19055;1" dur="19.89s" repeatCount="indefinite"/></tspan></text>
+<text class="spinner" fill="#268bd2"><tspan x="366.8" y="86" opacity="0">▖<animate attributeName="opacity" values="0;0;1;1;0;0;1;1;0;0" keyTimes="0;0.17446;0.17496;0.18100;0.18150;0.19860;0.19910;0.20513;0.20563;1" dur="19.89s" repeatCount="indefinite"/></tspan><tspan x="366.8" y="86" opacity="0">▘<animate attributeName="opacity" values="0;0;1;1;0;0;1;1;0;0" keyTimes="0;0.18050;0.18100;0.18703;0.18753;0.20463;0.20513;0.21116;0.21166;1" dur="19.89s" repeatCount="indefinite"/></tspan><tspan x="366.8" y="86" opacity="0">▝<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.18653;0.18703;0.19306;0.19356;1" dur="19.89s" repeatCount="indefinite"/></tspan><tspan x="366.8" y="86" opacity="0">▗<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.19256;0.19306;0.19910;0.19960;1" dur="19.89s" repeatCount="indefinite"/></tspan></text>
 <rect x="1" y="1" width="983" height="808" rx="12" fill="url(#scanlines)"/><rect x="1" y="1" width="983" height="808" rx="12" fill="url(#vignette)"/>
 </svg>

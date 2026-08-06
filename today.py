@@ -7,7 +7,7 @@ from lxml import etree
 import time
 import hashlib
 import base64
-import re
+import io
 
 # Heatmap geometry lives with the layout, not here — importing it keeps the grid
 # this script draws aligned with the placeholder the template ships.
@@ -18,6 +18,7 @@ from build_svg_template import (
     HEAT_PITCH,
     HEAT_WEEKS,
     HEAT_X,
+    FUT_W,
 )
 
 # Fine-grained personal access token with All Repositories access:
@@ -401,58 +402,66 @@ def calendar_metrics(weeks):
 
 def gitfut_card():
     """
-    Scrapes gitfut.com, which grades a GitHub account as a FIFA Ultimate Team
-    card, and returns {rating, position, name, tier, archetype, stats, avatar}.
-    Returns None if the site is unreachable or changed its markup — the card
-    keeps whatever it was last drawn with rather than blanking out.
+    Reads gitfut.com, which grades a GitHub account as a FIFA Ultimate Team
+    card, and returns {tier, image} where image is the card art cropped out of
+    the page's social image as a WebP data URI.
+    Returns None if the site is unreachable or its layout moved — the card then
+    keeps whatever it was last drawn with instead of blanking out.
     """
     try:
-        page = requests.get('https://gitfut.com/' + USER_NAME, timeout=20)
-        page.raise_for_status()
-        html = page.text
-        stats = dict((label, value) for value, label in re.findall(
-            r'>(\d{1,2})</span><span[^>]*>(PAC|SHO|PAS|DRI|DEF|PHY)</span>', html))
-        rating, position = re.findall(r'>(\d{1,3})</div><div[^>]*>([A-Z]{2,3})</div>', html)[0]
-        name = re.findall(r'nowrap;color:#[0-9a-f]{6}">([^<]+)</div>', html)[0]
-        tier = re.findall(r'\d{1,3} (BRONZE|SILVER|GOLD|SPECIAL)', html)[0]
-        # the archetype only shows up in the meta description, not in the card markup
-        archetype = re.findall(r'OVR [A-Z]{2,3}, ([^.&"]+)\.', html)
-        if len(stats) != 6:
-            raise ValueError('gitfut returned {} stats, expected 6'.format(len(stats)))
-        avatar = requests.get(
-            'https://avatars.githubusercontent.com/' + USER_NAME + '?size=200', timeout=20)
-        avatar.raise_for_status()
+        card = requests.get('https://gitfut.com/api/card/' + USER_NAME, timeout=20)
+        card.raise_for_status()
+        card = card.json()
+        social = requests.get('https://gitfut.com/' + USER_NAME + '/opengraph-image', timeout=30)
+        social.raise_for_status()
         return {
-            'rating': rating, 'position': position, 'name': name, 'tier': tier,
-            'archetype': archetype[0] if archetype else '',
-            'stats': stats,
-            'avatar': 'data:image/png;base64,' + base64.b64encode(avatar.content).decode(),
+            'tier': '{} {} · {}'.format(card['overall'], card['finishLabel'], card['archetype']),
+            'image': crop_fut_card(social.content),
         }
     except Exception as error:
         print('   gitfut card:        skipped ({})'.format(error))
         return None
 
 
+def crop_fut_card(social_png):
+    """
+    Cuts the card out of gitfut's 1200x630 social image and returns it as a
+    WebP data URI at twice the size it is drawn, background knocked out so the
+    shield sits on either theme. WebP because the same crop costs 28 kB here
+    and 171 kB as PNG, and the file is rewritten on every run.
+    """
+    from PIL import Image, ImageDraw
+    image = Image.open(io.BytesIO(social_png)).convert('RGB')
+    pixels = image.load()
+    backdrop = pixels[5, 5]
+    def differs(x, y):
+        return sum(abs(a - b) for a, b in zip(pixels[x, y], backdrop)) > 40
+    # the right half of the social image is the marketing copy, not the card
+    columns = [x for x in range(500) if any(differs(x, y) for y in range(0, image.height, 2))]
+    rows = [y for y in range(image.height) if any(differs(x, y) for x in range(columns[0], columns[-1], 2))]
+    card = image.crop((columns[0], rows[0], columns[-1] + 1, rows[-1] + 1)).convert('RGBA')
+    for corner in ((0, 0), (card.width - 1, 0), (0, card.height - 1), (card.width - 1, card.height - 1)):
+        ImageDraw.floodfill(card, corner, (0, 0, 0, 0), thresh=70)
+    card = card.resize((FUT_W * 2, round(FUT_W * 2 * card.height / card.width)), Image.LANCZOS)
+    buffer = io.BytesIO()
+    card.save(buffer, 'WEBP', quality=88, method=6)
+    return 'data:image/webp;base64,' + base64.b64encode(buffer.getvalue()).decode()
+
+
 def fut_overwrite(root, card):
     """
-    Fills the FUT card: plate colour by tier, avatar, rating and the six stats.
+    Drops the card art into its slot and prints the finish under it.
     """
     if card is None:
         return
-    plate = root.find(".//*[@id='fut_plate']")
-    if plate is not None:
-        tier = card['tier'].lower()
-        plate.set('fill', 'url(#fut-{})'.format(tier if tier in ('bronze', 'silver', 'gold') else 'gold'))
-    avatar = root.find(".//*[@id='fut_avatar']")
-    if avatar is not None:
-        avatar.set('href', card['avatar'])
-    find_and_replace(root, 'fut_rating', card['rating'])
-    find_and_replace(root, 'fut_position', card['position'])
-    find_and_replace(root, 'fut_name', card['name'])
-    for label, value in card['stats'].items():
-        find_and_replace(root, 'fut_' + label.lower(), value)
-    find_and_replace(root, 'fut_tier', '{} {}{}'.format(
-        card['rating'], card['tier'], ' · ' + card['archetype'] if card['archetype'] else ''))
+    art = root.find(".//*[@id='fut_card']")
+    if art is not None:
+        art.set('href', card['image'])
+    # the dashed frame is only there to make an empty slot obvious
+    frame = root.find(".//*[@id='fut_frame']")
+    if frame is not None:
+        frame.getparent().remove(frame)
+    find_and_replace(root, 'fut_tier', card['tier'])
 
 
 def heatmap_overwrite(root, weeks):
