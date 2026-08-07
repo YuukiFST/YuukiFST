@@ -1,10 +1,12 @@
 # Keeps the profile honest without anyone remembering to run it: the streak,
 # the calendar and the gitfut card all age on their own.
 #
-# Needs a repository secret named ACCESS_TOKEN — a fine-grained personal access
-# token with access to all repositories and read permission on Contents,
-# Metadata and Commit statuses. The built-in GITHUB_TOKEN cannot do it: it only
-# reaches this one repository, and the line count walks every repository I own.
+# Needs a repository secret named ACCESS_TOKEN — a CLASSIC personal access
+# token with the `repo` and `read:user` scopes. A fine-grained token is not
+# enough: "All repositories" there means all repositories owned by this account,
+# and a fine-grained token can never reach another user's personal repository,
+# so every commit made as a collaborator drops out of the count. The built-in
+# GITHUB_TOKEN is narrower still — it only reaches this one repository.
 name: update profile
 
 on:
@@ -61,5 +63,8 @@ jobs:
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           USER_NAME: YuukiFST
+          # Commits whose author email GitHub cannot resolve to this account —
+          # `Yuuki` has no domain, so it never linked to anything.
+          AUTHOR_EMAILS: faustoyuuki@gmail.com,Yuuki
         # bash explicitly: the exec bit does not survive a Windows checkout
         run: bash bin/update

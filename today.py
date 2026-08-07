@@ -27,6 +27,9 @@ from build_svg_template import (
 # Issues and pull requests permissions not needed at the moment, but may be used in the future
 HEADERS = {'authorization': 'token '+ os.environ['ACCESS_TOKEN']}
 USER_NAME = os.environ['USER_NAME'] # 'Andrew6rant'
+# Commit author emails to credit on top of whatever GitHub already links to the
+# account — see authored_by_me(). Comma separated, empty by default.
+AUTHOR_EMAILS = {email.strip().lower() for email in os.environ.get('AUTHOR_EMAILS', '').split(',') if email.strip()}
 QUERY_COUNT = {'user_getter': 0, 'follower_getter': 0, 'graph_repos_stars': 0, 'recursive_loc': 0, 'graph_commits': 0, 'loc_query': 0}
 
 
@@ -140,6 +143,7 @@ def recursive_loc(owner, repo_name, data, cache_comment, addition_total=0, delet
                                         committedDate
                                     }
                                     author {
+                                        email
                                         user {
                                             id
                                         }
@@ -170,13 +174,28 @@ def recursive_loc(owner, repo_name, data, cache_comment, addition_total=0, delet
     raise Exception('recursive_loc() has failed with a', request.status_code, request.text, QUERY_COUNT)
 
 
+def authored_by_me(author):
+    """
+    True when a commit is mine. GitHub only links a commit to an account when
+    the author email is verified on that account, so commits written with an
+    unregistered email (an old machine, a bare `Yuuki` with no domain) come back
+    with a null user and silently vanish from the count. AUTHOR_EMAILS is the
+    escape hatch: any literal author email listed there counts as mine.
+    """
+    if author is None:
+        return False
+    if author.get('user') == OWNER_ID:
+        return True
+    return (author.get('email') or '').lower() in AUTHOR_EMAILS
+
+
 def loc_counter_one_repo(owner, repo_name, data, cache_comment, history, addition_total, deletion_total, my_commits):
     """
     Recursively call recursive_loc (since GraphQL can only search 100 commits at a time) 
     only adds the LOC value of commits authored by me
     """
     for node in history['edges']:
-        if node['node']['author']['user'] == OWNER_ID:
+        if authored_by_me(node['node']['author']):
             my_commits += 1
             addition_total += node['node']['additions']
             deletion_total += node['node']['deletions']
@@ -235,79 +254,87 @@ def cache_builder(edges, comment_size, force_cache, loc_add=0, loc_del=0):
     Checks each repository in edges to see if it has been updated since the last time it was cached
     If it has, run recursive_loc on that repository to update the LOC count
     """
-    cached = True # Assume all repositories are cached
     filename = 'cache/'+hashlib.sha256(USER_NAME.encode('utf-8')).hexdigest()+'.txt' # Create a unique filename for each user
     try:
         with open(filename, 'r') as f:
-            data = f.readlines()
-    except FileNotFoundError: # If the cache file doesn't exist, create it
-        data = []
-        if comment_size > 0:
-            for _ in range(comment_size): data.append('This line is a comment block. Write whatever you want here.\n')
-        with open(filename, 'w') as f:
-            f.writelines(data)
+            stored = f.readlines()
+    except FileNotFoundError:
+        stored = []
 
-    if len(data)-comment_size != len(edges) or force_cache: # If the number of repos has changed, or force_cache is True
+    cache_comment = stored[:comment_size]
+    cache_comment += ['This line is a comment block. Write whatever you want here.\n'] * (comment_size - len(cache_comment))
+
+    # Keyed by repo hash, never by line position. GraphQL returns repositories
+    # in whatever order it likes, so the old positional lookup let a reorder or
+    # a rename knock every line out of alignment — and since the mismatch had no
+    # else branch, the affected repos silently kept stale numbers forever.
+    known = {}
+    for line in stored[comment_size:]:
+        fields = line.split()
+        if len(fields) == 5:
+            known[fields[0]] = fields[1:]
+
+    cached = True # Assume all repositories are cached
+    rows = []
+    for edge in edges:
+        name = edge['node']['nameWithOwner']
+        repo_hash = hashlib.sha256(name.encode('utf-8')).hexdigest()
+        branch = edge['node']['defaultBranchRef']
+        if branch is None: # empty repository, nothing to walk
+            rows.append((repo_hash, 0, 0, 0, 0))
+            continue
+        total_commits = branch['target']['history']['totalCount']
+        previous = known.get(repo_hash)
+        if previous is not None and not force_cache and int(previous[0]) == total_commits:
+            rows.append((repo_hash, total_commits, int(previous[1]), int(previous[2]), int(previous[3])))
+            continue
         cached = False
-        flush_cache(edges, filename, comment_size)
-        with open(filename, 'r') as f:
-            data = f.readlines()
+        owner, repo_name = name.split('/')
+        loc = recursive_loc(owner, repo_name, serialize_cache(rows), cache_comment)
+        additions, deletions, my_commits = (0, 0, 0) if loc == 0 else loc
+        rows.append((repo_hash, total_commits, my_commits, additions, deletions))
 
-    cache_comment = data[:comment_size] # save the comment block
-    data = data[comment_size:] # remove those lines
-    for index in range(len(edges)):
-        repo_hash, commit_count, *__ = data[index].split()
-        if repo_hash == hashlib.sha256(edges[index]['node']['nameWithOwner'].encode('utf-8')).hexdigest():
-            try:
-                if int(commit_count) != edges[index]['node']['defaultBranchRef']['target']['history']['totalCount']:
-                    # if commit count has changed, update loc for that repo
-                    owner, repo_name = edges[index]['node']['nameWithOwner'].split('/')
-                    loc = recursive_loc(owner, repo_name, data, cache_comment)
-                    data[index] = repo_hash + ' ' + str(edges[index]['node']['defaultBranchRef']['target']['history']['totalCount']) + ' ' + str(loc[2]) + ' ' + str(loc[0]) + ' ' + str(loc[1]) + '\n'
-            except TypeError: # If the repo is empty
-                data[index] = repo_hash + ' 0 0 0 0\n'
     with open(filename, 'w') as f:
         f.writelines(cache_comment)
-        f.writelines(data)
-    for line in data:
-        loc = line.split()
-        loc_add += int(loc[3])
-        loc_del += int(loc[4])
+        f.writelines(serialize_cache(rows))
+    for repo_hash, total_commits, my_commits, additions, deletions in rows:
+        loc_add += additions
+        loc_del += deletions
     return [loc_add, loc_del, loc_add - loc_del, cached]
 
 
-def flush_cache(edges, filename, comment_size):
+def serialize_cache(rows):
     """
-    Wipes the cache file
-    This is called when the number of repositories changes or when the file is first created
+    Renders cache rows back to their on-disk form: one repo per line, as
+    `hash total_commits my_commits additions deletions`.
     """
-    with open(filename, 'r') as f:
-        data = []
-        if comment_size > 0:
-            data = f.readlines()[:comment_size] # only save the comment
-    with open(filename, 'w') as f:
-        f.writelines(data)
-        for node in edges:
-            f.write(hashlib.sha256(node['node']['nameWithOwner'].encode('utf-8')).hexdigest() + ' 0 0 0 0\n')
+    return [' '.join(str(field) for field in row) + '\n' for row in rows]
 
 
 def add_archive():
     """
-    Several repositories I have contributed to have since been deleted.
-    This function adds them using their last known data
+    Repositories I contributed to that no longer exist on GitHub cannot be
+    walked by the API, so their last known numbers are kept by hand in
+    cache/repository_archive.txt — one repo per line, same shape as the live
+    cache (`name total_commits my_commits additions deletions`), `#` for
+    comments. Returns [additions, deletions, net, commits, repos]; all zeros
+    when the file is absent, which is the normal case.
     """
-    with open('cache/repository_archive.txt', 'r') as f:
-        data = f.readlines()
-    old_data = data
-    data = data[7:len(data)-3] # remove the comment block    
-    added_loc, deleted_loc, added_commits = 0, 0, 0
-    contributed_repos = len(data)
-    for line in data:
-        repo_hash, total_commits, my_commits, *loc = line.split()
-        added_loc += int(loc[0])
-        deleted_loc += int(loc[1])
-        if (my_commits.isdigit()): added_commits += int(my_commits)
-    added_commits += int(old_data[-1].split()[4][:-1])
+    try:
+        with open('cache/repository_archive.txt', 'r') as f:
+            lines = f.readlines()
+    except FileNotFoundError:
+        return [0, 0, 0, 0, 0]
+    added_loc, deleted_loc, added_commits, contributed_repos = 0, 0, 0, 0
+    for line in lines:
+        fields = line.split('#', 1)[0].split()
+        if len(fields) != 5:
+            continue
+        __, __, my_commits, additions, deletions = fields
+        added_loc += int(additions)
+        deleted_loc += int(deletions)
+        added_commits += int(my_commits)
+        contributed_repos += 1
     return [added_loc, deleted_loc, added_loc - deleted_loc, added_commits, contributed_repos]
 
 def force_close_file(data, cache_comment):
@@ -649,6 +676,11 @@ if __name__ == '__main__':
     total_loc, loc_time = perf_counter(loc_query, ['OWNER', 'COLLABORATOR', 'ORGANIZATION_MEMBER'], 7)
     formatter('LOC (cached)', loc_time) if total_loc[-1] else formatter('LOC (no cache)', loc_time)
     commit_data, commit_time = perf_counter(commit_counter, 7)
+    # Deleted repositories cannot be walked, so their last known numbers are
+    # folded back in here; a no-op when the archive file is absent.
+    archive_data = add_archive()
+    commit_data += archive_data[3]
+    total_loc = [total_loc[0] + archive_data[0], total_loc[1] + archive_data[1], total_loc[2] + archive_data[2], total_loc[3]]
     calendar_data, calendar_time = perf_counter(graph_contribution_calendar)
     formatter('contribution calendar', calendar_time)
     card_data, card_time = perf_counter(gitfut_card)
