@@ -174,8 +174,37 @@ class Scene:
         return at + dur
 
 
-def row(y: int, cols: list[tuple[int, str, str]]) -> str:
-    return f'<text y="{y}">' + "".join(f'<tspan x="{x}" fill="{c}">{esc(t)}</tspan>' for x, t, c in cols) + "</text>"
+def row(y: int, cols: list[tuple[int, str, str] | tuple[int, str, str, str]]) -> str:
+    out = []
+    for x, t, c, *cls in cols:
+        klass = f' class="{cls[0]}"' if cls and cls[0] else ""
+        out.append(f'<tspan x="{x}" fill="{c}"{klass}>{esc(t)}</tspan>')
+    return f'<text y="{y}">' + "".join(out) + "</text>"
+
+
+SPIN = "⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏"
+
+
+def spinner(x: int, y: int, color: str) -> str:
+    """Braille spinner: one glyph per frame, each visible 1/len(SPIN) of the loop."""
+    return "".join(f'<text x="{x}" y="{y}" fill="{color}" class="sp{i}">{ch}</text>' for i, ch in enumerate(SPIN))
+
+
+def status_cell(x: int, y: int, name: str, st: str, c: str) -> str:
+    """Dot for idle agents, spinner for working ones."""
+    if st == "working":
+        return spinner(x, y, c)
+    return row(y, [(x, "●", c)])
+
+
+def status_css() -> str:
+    step = 100 / len(SPIN)
+    css = ["@keyframes wk{50%{opacity:.35}}.wk{animation:wk 1.4s ease-in-out infinite}"]
+    for i in range(len(SPIN)):
+        a, b = i * step, (i + 1) * step
+        css.append(f"@keyframes sp{i}{{0%,{a:.1f}%{{opacity:0}}{a + .01:.2f}%,{b - .01:.2f}%{{opacity:1}}{b:.1f}%,100%{{opacity:0}}}}"
+                   f".sp{i}{{animation:sp{i} .9s linear infinite}}")
+    return "".join(css)
 
 
 # -------------------------------------------------------------- layout ------
@@ -205,8 +234,9 @@ def sidebar(s: dict) -> str:
     out.append(row(y, [(18, "agents", KEY), (SIDEBAR - 68, "grouped", DIM)]))
     y += 28
     for name, st, c in AGENTS:
-        out.append(row(y, [(18, "●", c), (34, name, "#9a9a9a")]))
-        out.append(row(y + 17, [(34, "claude", DIM), (110, st, c)]))
+        out.append(status_cell(18, y, name, st, c))
+        out.append(row(y, [(34, name, "#9a9a9a")]))
+        out.append(row(y + 17, [(34, "claude", DIM), (110, st, c, "wk" if st == "working" else "")]))
         y += 42
     return "".join(out)
 
@@ -235,8 +265,8 @@ def build(s: dict) -> str:
 
     y += 34
     t += 0.5
-    sc.appear(t, row(y, [(x0 - 12, "●", TXT), (x0 + 6, "Fullstack developer. Linux only, terminal first, vanta black. I build", TXT)]))
-    sc.appear(t, row(y + 20, [(x0 + 6, "things where a model does part of the thinking: agents, LLM apps, CLI tools.", TXT)]))
+    sc.appear(t, row(y, [(x0 - 12, "●", TXT), (x0 + 6, "Fullstack developer. Linux, terminal first. Hobby: studying LLMs and agents", TXT)]))
+    sc.appear(t, row(y + 20, [(x0 + 6, "and building CLI tools, so a model does part of the thinking and a shell the rest.", TXT)]))
 
     y += 54
     t += 0.6
@@ -258,15 +288,15 @@ def build(s: dict) -> str:
     for name, st, c in AGENTS:
         y += 22
         t += 0.2
-        sc.appear(t, row(y, [(x0 + 6, "⎿", DIM), (x0 + 24, name, TXT), (x0 + 190, st, c), (x0 + 290, "claude", DIM)]))
+        sc.appear(t, row(y, [(x0 + 6, "⎿", DIM), (x0 + 24, name, TXT), (x0 + 190, st, c, "wk" if st == "working" else ""), (x0 + 290, "claude", DIM)]))
 
     y += 36
     t += 0.6
     sc.appear(t, row(y, [(x0 - 12, "●", TXT), (x0 + 6, "Bash", TXT), (x0 + 46, "(cat ~/.config/yuuki/stack.toml)", DIM)]))
     stack = [
-        ("python", '["langgraph", "fastapi", "xgboost", "shap", "chroma", "ollama"]'),
-        ("web", '["typescript", "javascript"]'),
-        ("systems", '["go", "rust", "c++"]'),
+        ("love", '["go"]'),
+        ("use", '["typescript", "react", "nextjs"]'),
+        ("know", '["python", "langgraph", "fastapi", "xgboost", "shap"]'),
     ]
     for k, v in stack:
         y += 22
@@ -287,7 +317,7 @@ def build(s: dict) -> str:
     )
 
     return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" font-family="JetBrains Mono,Fira Code,Cascadia Code,SF Mono,Menlo,Consolas,monospace" font-size="14" fill="{TXT}">
-<style>text{{white-space:pre}}{''.join(sc.css)}</style>
+<style>text{{white-space:pre}}{status_css()}{''.join(sc.css)}</style>
 <clipPath id="win"><rect width="{W}" height="{H}" rx="12"/></clipPath>
 <g clip-path="url(#win)">
 <rect width="{W}" height="{H}" fill="{BG}"/>
