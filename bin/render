@@ -1,0 +1,179 @@
+#!/usr/bin/env python3
+"""Render header.svg: an animated, vanta-black "agent runtime" terminal.
+
+Public numbers (repos, followers, top languages) come from the GitHub
+API so the card stays honest without a token; GITHUB_TOKEN is used when set
+only to raise the rate limit.
+
+    bin/render            # writes header.svg
+    bin/render --offline  # skip the API, keep placeholder numbers
+"""
+from __future__ import annotations
+
+import json
+import os
+import sys
+import urllib.request
+from collections import Counter
+from pathlib import Path
+
+USER = os.environ.get("USER_NAME", "YuukiFST")
+OUT = Path(__file__).resolve().parent.parent / "header.svg"
+
+W, H = 900, 470
+CYCLE = 18.0  # seconds per loop
+
+# palette: vanta black, bone text, violet accent, mint ok
+BG, FRAME, TXT, DIM, KEY, ACC, OK, WARN = (
+    "#000000", "#161616", "#d4d4d4", "#3d3d3d", "#6a6a6a", "#b48cff", "#7dd3a0", "#f0b86e",
+)
+
+
+def github(path: str) -> dict | list:
+    req = urllib.request.Request(f"https://api.github.com{path}", headers={"User-Agent": USER})
+    token = os.environ.get("GITHUB_TOKEN") or os.environ.get("ACCESS_TOKEN")
+    if token:
+        req.add_header("Authorization", f"Bearer {token}")
+    with urllib.request.urlopen(req, timeout=20) as r:
+        return json.load(r)
+
+
+def stats() -> dict:
+    if "--offline" in sys.argv:
+        return {"repos": 0, "followers": 0, "langs": ["Python", "TypeScript", "Go"]}
+    user = github(f"/users/{USER}")
+    repos = github(f"/users/{USER}/repos?per_page=100&type=owner")
+    langs = Counter(r["language"] for r in repos if r.get("language") and not r["fork"])
+    return {
+        "repos": user["public_repos"],
+                "followers": user["followers"],
+        "langs": [l for l, _ in langs.most_common(3)],
+    }
+
+
+def pct(t: float) -> str:
+    return f"{100 * t / CYCLE:.2f}%"
+
+
+class Scene:
+    """Collects lines with a timeline; every animation shares one CYCLE so the loop restarts in sync."""
+
+    def __init__(self) -> None:
+        self.css: list[str] = []
+        self.body: list[str] = []
+        self.n = 0
+        self.fade_at = CYCLE - 1.2
+
+    def _id(self) -> str:
+        self.n += 1
+        return f"a{self.n}"
+
+    def appear(self, at: float, svg: str) -> None:
+        i = self._id()
+        self.css.append(
+            f"@keyframes {i}{{0%,{pct(at)}{{opacity:0}}{pct(at + .01)},{pct(self.fade_at)}{{opacity:1}}"
+            f"{pct(self.fade_at + .6)},100%{{opacity:0}}}}.{i}{{animation:{i} {CYCLE}s linear infinite}}"
+        )
+        self.body.append(f'<g class="{i}">{svg}</g>')
+
+    def typed(self, at: float, y: int, cmd: str, chars_per_s: float = 22) -> float:
+        """Prompt + command revealed by a shrinking black mask, like keystrokes. Returns finish time."""
+        dur = len(cmd) / chars_per_s
+        i = self._id()
+        width = 9.2 * len(cmd) + 8
+        self.css.append(
+            f"@keyframes {i}{{0%,{pct(at)}{{width:{width}px}}{pct(at + dur)},100%{{width:0}}}}"
+            f".{i}{{animation:{i} {CYCLE}s steps({len(cmd)}) infinite}}"
+        )
+        self.appear(
+            at,
+            f'<text x="24" y="{y}"><tspan fill="{ACC}">❯</tspan> {esc(cmd)}</text>'
+            f'<rect class="{i}" x="{44 + 9.2 * len(cmd) + 8 - width}" y="{y - 15}" height="20" fill="{BG}" '
+            f'style="transform-origin:right center;transform-box:fill-box"/>',
+        )
+        return at + dur
+
+
+def esc(s: str) -> str:
+    return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
+def row(y: int, cols: list[tuple[int, str, str]]) -> str:
+    return f'<text y="{y}">' + "".join(f'<tspan x="{x}" fill="{c}">{esc(t)}</tspan>' for x, t, c in cols) + "</text>"
+
+
+def build(s: dict) -> str:
+    sc = Scene()
+    t = sc.typed(0.6, 68, "yuuki boot --profile github")
+    facts = [
+        ("kernel", "linux", "daily driver, no exceptions"),
+        ("theme", "vanta-black", "#000000 · light mode not found"),
+        ("shell", "terminal-first", "GUI is a fallback"),
+        ("runtime", "herdr", "agents keep working after I detach"),
+    ]
+    y = 98
+    for k, v, note in facts:
+        t += 0.28
+        sc.appear(t, row(y, [(24, "✓", OK), (44, k, KEY), (150, v, TXT), (300, note, DIM)]))
+        y += 24
+
+    t = sc.typed(t + 0.7, y + 14, "yuuki agents ls")
+    y += 40
+    sc.appear(t + 0.25, row(y, [(44, "NAME", KEY), (210, "STATUS", KEY), (300, "TASK", KEY)]))
+    agents = [
+        ("omoikane", "working", OK, "llm-maintained wiki, ingests sources on its own"),
+        ("credit-guard", "working", OK, "xgboost + shap, decisions explained by an llm"),
+        ("support-bot", "idle", KEY, "langgraph supervisor · rag over chroma · fastapi"),
+        ("human", "blocked", WARN, "waiting for coffee"),
+    ]
+    for name, st, c, task in agents:
+        y += 24
+        t += 0.22
+        sc.appear(t, row(y, [(44, name, TXT), (210, st, c), (300, task, TXT)]))
+
+    t = sc.typed(t + 0.7, y + 40, "yuuki stats")
+    y += 64
+    langs = "  ".join(s["langs"])
+    sc.appear(
+        t + 0.3,
+        row(y, [(44, "repos", KEY), (110, str(s["repos"]), TXT), (170, "followers", KEY), (260, str(s["followers"]), TXT),
+                (320, "top", KEY), (360, langs, ACC)]),
+    )
+
+    # context bar fills while the scene holds, then the cursor keeps blinking
+    y += 34
+    bar_x, bar_w = 64, 300
+    start, end = t + 0.6, sc.fade_at - 1.5
+    sc.css.append(
+        f"@keyframes ctx{{0%,{pct(start)}{{width:0}}{pct(end)},100%{{width:{bar_w}px}}}}"
+        f".ctx{{animation:ctx {CYCLE}s cubic-bezier(.2,.8,.2,1) infinite}}"
+        "@keyframes blink{50%{opacity:0}}.cur{animation:blink 1s steps(1) infinite}"
+    )
+    sc.appear(
+        t + 0.6,
+        f'<text y="{y}"><tspan x="24" fill="{KEY}">ctx</tspan></text>'
+        f'<rect x="{bar_x}" y="{y - 9}" width="{bar_w}" height="6" rx="3" fill="{FRAME}"/>'
+        f'<rect class="ctx" x="{bar_x}" y="{y - 9}" height="6" rx="3" fill="url(#g)"/>'
+        f'<text y="{y}"><tspan x="{bar_x + bar_w + 14}" fill="{DIM}">building things where a model does part of the thinking</tspan></text>',
+    )
+    sc.appear(t + 0.9, f'<text y="{y + 32}"><tspan x="24" fill="{ACC}">❯</tspan><tspan x="40" class="cur" fill="{ACC}">▍</tspan></text>')
+
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" font-family="JetBrains Mono,Fira Code,Cascadia Code,SF Mono,Menlo,Consolas,monospace" font-size="15" fill="{TXT}">
+<style>text{{white-space:pre}}{''.join(sc.css)}</style>
+<defs>
+  <linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="{ACC}"/><stop offset="1" stop-color="{OK}"/></linearGradient>
+  <linearGradient id="hair" x1="0" x2="1"><stop offset="0" stop-color="{ACC}" stop-opacity="0"/><stop offset=".5" stop-color="{ACC}"/><stop offset="1" stop-color="{ACC}" stop-opacity="0"/></linearGradient>
+</defs>
+<rect width="{W}" height="{H}" rx="12" fill="{BG}"/>
+<rect x=".5" y=".5" width="{W - 1}" height="{H - 1}" rx="12" fill="none" stroke="{FRAME}"/>
+<rect x="120" y="0" width="{W - 240}" height="1" fill="url(#hair)"/>
+<circle cx="22" cy="22" r="5" fill="#1c1c1c"/><circle cx="40" cy="22" r="5" fill="#1c1c1c"/><circle cx="58" cy="22" r="5" fill="#1c1c1c"/>
+<text x="{W / 2}" y="27" text-anchor="middle" fill="{DIM}" font-size="13">yuuki@linux — herdr — ~</text>
+{''.join(sc.body)}
+</svg>
+"""
+
+
+if __name__ == "__main__":
+    OUT.write_text(build(stats()), encoding="utf-8", newline="\n")
+    print(f"wrote {OUT}")
