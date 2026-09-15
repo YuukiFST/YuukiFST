@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Render header.svg: an animated, vanta-black "agent runtime" terminal.
+"""Render header.svg: the HERDR dashboard (https://herdr.dev) redrawn in vanta black,
+with a coding-agent session in the main pane that reports live GitHub numbers.
 
-Public numbers (repos, followers, top languages) come from the GitHub
-API so the card stays honest without a token; GITHUB_TOKEN is used when set
-only to raise the rate limit.
+Numbers come from the GitHub GraphQL contributions collection plus the REST
+contributor stats of every owned repository. A token is required; it is read
+from ACCESS_TOKEN, GITHUB_TOKEN or `gh auth token`, in that order.
 
     bin/render            # writes header.svg
     bin/render --offline  # skip the API, keep placeholder numbers
@@ -12,61 +13,139 @@ from __future__ import annotations
 
 import json
 import os
+import subprocess
 import sys
+import time
 import urllib.request
-from collections import Counter
+from datetime import date, timedelta
 from pathlib import Path
 
 USER = os.environ.get("USER_NAME", "YuukiFST")
 OUT = Path(__file__).resolve().parent.parent / "header.svg"
 
-W, H = 900, 760
-CYCLE = 26.0  # seconds per loop
+W, H = 900, 640
+SIDEBAR = 214
+CYCLE = 24.0  # seconds per loop
 
-# palette: vanta black, bone text, violet accent, mint ok
-BG, FRAME, TXT, DIM, KEY, ACC, OK, WARN = (
-    "#000000", "#161616", "#d4d4d4", "#3d3d3d", "#6a6a6a", "#b48cff", "#7dd3a0", "#f0b86e",
+BG, PANE, LINE, TXT, DIM, KEY, ACC, OK, WARN, SEL = (
+    "#000000", "#050505", "#171717", "#d4d4d4", "#3a3a3a", "#6a6a6a", "#b48cff", "#7dd3a0", "#f0b86e", "#141021",
 )
 
 
-def github(path: str) -> dict | list:
-    req = urllib.request.Request(f"https://api.github.com{path}", headers={"User-Agent": USER})
-    token = os.environ.get("GITHUB_TOKEN") or os.environ.get("ACCESS_TOKEN")
-    if token:
-        req.add_header("Authorization", f"Bearer {token}")
-    with urllib.request.urlopen(req, timeout=20) as r:
-        return json.load(r)
+# ---------------------------------------------------------------- data ------
+def token() -> str:
+    for name in ("ACCESS_TOKEN", "GITHUB_TOKEN"):
+        if os.environ.get(name):
+            return os.environ[name]
+    out = subprocess.run(["gh", "auth", "token"], capture_output=True, text=True)
+    if out.returncode:
+        sys.exit("no token: set ACCESS_TOKEN or run `gh auth login`")
+    return out.stdout.strip()
+
+
+def request(url: str, body: dict | None = None) -> tuple[int, object]:
+    data = json.dumps(body).encode() if body else None
+    req = urllib.request.Request(url, data=data, headers={"User-Agent": USER, "Authorization": f"Bearer {token()}"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        return r.status, (json.load(r) if r.status != 204 else None)
+
+
+QUERY = """
+query($login:String!){ user(login:$login){ contributionsCollection{
+  totalCommitContributions totalPullRequestContributions totalIssueContributions
+  totalPullRequestReviewContributions restrictedContributionsCount
+  contributionCalendar{ totalContributions weeks{ contributionDays{ date contributionCount } } }
+  commitContributionsByRepository(maxRepositories:5){ repository{ name } contributions{ totalCount } }
+}}}"""
+
+
+def streaks(days: list[dict]) -> tuple[int, int]:
+    today = date.today()
+    counts = {date.fromisoformat(d["date"]): d["contributionCount"] for d in days}
+    current, best, run = 0, 0, 0
+    for d in sorted(counts):
+        run = run + 1 if counts[d] else 0
+        best = max(best, run)
+    d = today
+    if not counts.get(d):
+        d -= timedelta(days=1)  # today may still be empty; the streak is alive until midnight
+    while counts.get(d):
+        current += 1
+        d -= timedelta(days=1)
+    return current, best
+
+
+def lines_changed() -> tuple[int, int]:
+    """Sum additions/deletions authored by USER across owned repos. GitHub computes
+    contributor stats lazily and answers 202 meanwhile, hence the retry."""
+    _, repos = request(f"https://api.github.com/users/{USER}/repos?per_page=100&type=owner")
+    added = removed = 0
+    for repo in repos:
+        if repo["fork"]:
+            continue
+        for _ in range(4):
+            status, stats = request(f"https://api.github.com/repos/{USER}/{repo['name']}/stats/contributors")
+            if status == 200 and stats:
+                break
+            time.sleep(3)
+        else:
+            continue
+        for c in stats:
+            if c["author"] and c["author"]["login"].lower() == USER.lower():
+                added += sum(w["a"] for w in c["weeks"])
+                removed += sum(w["d"] for w in c["weeks"])
+    return added, removed
 
 
 def stats() -> dict:
     if "--offline" in sys.argv:
-        return {"repos": 0, "followers": 0, "langs": ["Python", "TypeScript", "Go"]}
-    user = github(f"/users/{USER}")
-    repos = github(f"/users/{USER}/repos?per_page=100&type=owner")
-    langs = Counter(r["language"] for r in repos if r.get("language") and not r["fork"])
+        return {"contributions": 0, "commits": 0, "private": 0, "prs": 0, "issues": 0, "reviews": 0,
+                "streak": 0, "longest": 0, "added": 0, "removed": 0, "repos": [("agent-dotfiles", 0)]}
+    _, res = request("https://api.github.com/graphql", {"query": QUERY, "variables": {"login": USER}})
+    c = res["data"]["user"]["contributionsCollection"]
+    days = [d for w in c["contributionCalendar"]["weeks"] for d in w["contributionDays"]]
+    current, best = streaks(days)
+    added, removed = lines_changed()
     return {
-        "repos": user["public_repos"],
-                "followers": user["followers"],
-        "langs": [l for l, _ in langs.most_common(3)],
+        "contributions": c["contributionCalendar"]["totalContributions"],
+        "commits": c["totalCommitContributions"],
+        "private": c["restrictedContributionsCount"],
+        "prs": c["totalPullRequestContributions"],
+        "issues": c["totalIssueContributions"],
+        "reviews": c["totalPullRequestReviewContributions"],
+        "streak": current,
+        "longest": best,
+        "added": added,
+        "removed": removed,
+        "repos": [(r["repository"]["name"], r["contributions"]["totalCount"]) for r in c["commitContributionsByRepository"]],
     }
 
 
+# --------------------------------------------------------------- scene ------
 def pct(t: float) -> str:
     return f"{100 * t / CYCLE:.2f}%"
 
 
+def esc(s: str) -> str:
+    return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
+def n(v: int) -> str:
+    return f"{v:,}"
+
+
 class Scene:
-    """Collects lines with a timeline; every animation shares one CYCLE so the loop restarts in sync."""
+    """Every animation shares one CYCLE so the loop restarts in sync."""
 
     def __init__(self) -> None:
         self.css: list[str] = []
         self.body: list[str] = []
-        self.n = 0
+        self.k = 0
         self.fade_at = CYCLE - 1.2
 
     def _id(self) -> str:
-        self.n += 1
-        return f"a{self.n}"
+        self.k += 1
+        return f"a{self.k}"
 
     def appear(self, at: float, svg: str) -> None:
         i = self._id()
@@ -76,127 +155,146 @@ class Scene:
         )
         self.body.append(f'<g class="{i}">{svg}</g>')
 
-    def typed(self, at: float, y: int, cmd: str, chars_per_s: float = 22) -> float:
-        """Prompt + command revealed by a shrinking black mask, like keystrokes. Returns finish time."""
+    def typed(self, at: float, x: int, y: int, cmd: str, chars_per_s: float = 22) -> float:
+        """Text revealed by a shrinking mask, like keystrokes. Returns finish time."""
         dur = len(cmd) / chars_per_s
         i = self._id()
-        width = 9.2 * len(cmd) + 8
+        width = 9.2 * len(cmd) + 10
         self.css.append(
             f"@keyframes {i}{{0%,{pct(at)}{{width:{width}px}}{pct(at + dur)},100%{{width:0}}}}"
             f".{i}{{animation:{i} {CYCLE}s steps({len(cmd)}) infinite}}"
         )
         self.appear(
             at,
-            f'<text x="24" y="{y}"><tspan fill="{ACC}">❯</tspan> {esc(cmd)}</text>'
-            f'<rect class="{i}" x="{44 + 9.2 * len(cmd) + 8 - width}" y="{y - 15}" height="20" fill="{BG}" '
-            f'style="transform-origin:right center;transform-box:fill-box"/>',
+            f'<text x="{x}" y="{y}" fill="{TXT}">{esc(cmd)}</text>'
+            f'<rect class="{i}" x="{x}" y="{y - 15}" height="20" fill="{SEL}" style="transform-origin:right center;transform-box:fill-box"/>',
         )
         return at + dur
-
-
-def esc(s: str) -> str:
-    return s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
 def row(y: int, cols: list[tuple[int, str, str]]) -> str:
     return f'<text y="{y}">' + "".join(f'<tspan x="{x}" fill="{c}">{esc(t)}</tspan>' for x, t, c in cols) + "</text>"
 
 
+# -------------------------------------------------------------- layout ------
+AGENTS = [
+    ("omoikane", "working", OK),
+    ("credit-guard", "working", OK),
+    ("support-bot", "idle", KEY),
+    ("stackradar", "idle", KEY),
+    ("agent-dotfiles", "working", OK),
+]
+
+
+def sidebar(s: dict) -> str:
+    out = [f'<rect width="{SIDEBAR}" height="{H}" fill="{BG}"/>', f'<rect x="{SIDEBAR}" y="0" width="1" height="{H}" fill="{LINE}"/>']
+    out.append(f'<text x="18" y="30" fill="{KEY}" font-size="13">spaces</text>')
+    y = 58
+    for i, (name, commits) in enumerate(s["repos"]):
+        if i == 0:
+            out.append(f'<rect x="8" y="{y - 16}" width="{SIDEBAR - 16}" height="40" rx="4" fill="{SEL}"/>')
+        out.append(row(y, [(18, "●", OK if i % 2 == 0 else DIM), (34, name, TXT if i == 0 else "#9a9a9a")]))
+        out.append(row(y + 17, [(34, "main", DIM), (78, f"↑{commits}", ACC)]))
+        y += 44
+    y += 10
+    out.append(f'<rect x="0" y="{y}" width="{SIDEBAR}" height="1" fill="{LINE}"/>')
+    out.append(row(y + 24, [(18, "new", DIM), (SIDEBAR - 50, "menu", DIM)]))
+    y += 52
+    out.append(row(y, [(18, "agents", KEY), (SIDEBAR - 68, "grouped", DIM)]))
+    y += 28
+    for name, st, c in AGENTS:
+        out.append(row(y, [(18, "●", c), (34, name, "#9a9a9a")]))
+        out.append(row(y + 17, [(34, "claude", DIM), (110, st, c)]))
+        y += 42
+    return "".join(out)
+
+
 def build(s: dict) -> str:
     sc = Scene()
-    t = sc.typed(0.6, 68, "yuuki boot --profile github")
-    facts = [
-        ("kernel", "linux", "daily driver, no exceptions"),
-        ("theme", "vanta-black", "#000000 · light mode not found"),
-        ("shell", "terminal-first", "GUI is a fallback"),
-        ("runtime", "herdr", "agents keep working after I detach"),
-    ]
-    y = 98
-    for k, v, note in facts:
-        t += 0.28
-        sc.appear(t, row(y, [(24, "✓", OK), (44, k, KEY), (150, v, TXT), (300, note, DIM)]))
-        y += 24
-
-    t = sc.typed(t + 0.7, y + 14, "cat ~/.config/yuuki/profile.toml")
-    y += 40
-    STR = "#c9b8ff"
-    toml = [
-        [("[human]", ACC)],
-        [("name", KEY), ('= "Yuuki"', STR), ("· fullstack developer", DIM)],
-        [("focus", KEY), ('= ["ai/ml", "llms", "agents", "cli tooling"]', STR)],
-        [("editors", KEY), ('= ["neovim", "coding agents"]', STR)],
-        [],
-        [("[stack]", ACC)],
-        [("python", KEY), ('= ["langgraph", "fastapi", "xgboost", "shap", "chroma", "ollama"]', STR)],
-        [("web", KEY), ('= ["typescript", "javascript"]', STR)],
-        [("systems", KEY), ('= ["go", "rust", "c++"]', STR)],
-    ]
-    for line in toml:
-        if line:
-            cols = [(44, line[0][0], line[0][1])]
-            if len(line) > 1:
-                cols.append((130, line[1][0], line[1][1]))
-            if len(line) > 2:
-                cols.append((300, line[2][0], line[2][1]))
-            t += 0.16
-            sc.appear(t, row(y, cols))
-        y += 22
-
-    t = sc.typed(t + 0.7, y + 14, "yuuki agents ls")
-    y += 40
-    sc.appear(t + 0.25, row(y, [(44, "NAME", KEY), (210, "STATUS", KEY), (300, "TASK", KEY)]))
-    agents = [
-        ("omoikane", "working", OK, "llm-maintained wiki, ingests sources on its own"),
-        ("credit-guard", "working", OK, "xgboost + shap, decisions explained by an llm"),
-        ("support-bot", "idle", KEY, "langgraph supervisor · rag over chroma · fastapi"),
-        ("stackradar", "idle", KEY, "job-market tech rankings · local rag with ollama"),
-        ("agent-dotfiles", "working", OK, "skills, agents and workflows for coding agents"),
-        ("human", "blocked", WARN, "waiting for coffee"),
-    ]
-    for name, st, c, task in agents:
-        y += 24
-        t += 0.22
-        sc.appear(t, row(y, [(44, name, TXT), (210, st, c), (300, task, TXT)]))
-
-    t = sc.typed(t + 0.7, y + 40, "yuuki stats")
-    y += 64
-    langs = "  ".join(s["langs"])
-    sc.appear(
-        t + 0.3,
-        row(y, [(44, "repos", KEY), (110, str(s["repos"]), TXT), (170, "followers", KEY), (260, str(s["followers"]), TXT),
-                (320, "top", KEY), (360, langs, ACC)]),
+    x0 = SIDEBAR + 22
+    chrome = (
+        f'<rect x="{SIDEBAR + 1}" width="{W - SIDEBAR - 1}" height="{H}" fill="{PANE}"/>'
+        f'<rect x="{SIDEBAR + 1}" y="0" width="{W - SIDEBAR - 1}" height="34" fill="{BG}"/>'
+        f'<rect x="{SIDEBAR + 1}" y="34" width="{W - SIDEBAR - 1}" height="1" fill="{LINE}"/>'
+        f'<rect x="{SIDEBAR + 12}" y="8" width="44" height="20" rx="3" fill="{ACC}"/>'
+        f'<text x="{SIDEBAR + 34}" y="22" text-anchor="middle" fill="{BG}" font-size="13">1</text>'
+        f'<text x="{SIDEBAR + 68}" y="22" fill="{DIM}">+</text>'
+        f'<text x="{W - 16}" y="22" text-anchor="end" fill="{DIM}" font-size="12">yuuki@linux · herdr</text>'
     )
 
-    # context bar fills while the scene holds, then the cursor keeps blinking
+    y = 66
+    sc.body.append(f'<rect x="{SIDEBAR + 8}" y="{y - 17}" width="{W - SIDEBAR - 16}" height="24" rx="3" fill="{SEL}"/>')
+    sc.body.append(f'<text x="{SIDEBAR + 16}" y="{y}" fill="{ACC}">❯</text>')
+    t = sc.typed(0.5, x0 + 12, y, "who are you and what have you been doing")
+
+    y += 40
+    t += 0.5
+    sc.appear(t, row(y, [(x0, "Ran 3 shell commands", DIM)]))
+
     y += 34
-    bar_x, bar_w = 64, 300
-    start, end = t + 0.6, sc.fade_at - 1.5
-    sc.css.append(
-        f"@keyframes ctx{{0%,{pct(start)}{{width:0}}{pct(end)},100%{{width:{bar_w}px}}}}"
-        f".ctx{{animation:ctx {CYCLE}s cubic-bezier(.2,.8,.2,1) infinite}}"
-        "@keyframes blink{50%{opacity:0}}.cur{animation:blink 1s steps(1) infinite}"
-    )
-    sc.appear(
-        t + 0.6,
-        f'<text y="{y}"><tspan x="24" fill="{KEY}">ctx</tspan></text>'
-        f'<rect x="{bar_x}" y="{y - 9}" width="{bar_w}" height="6" rx="3" fill="{FRAME}"/>'
-        f'<rect class="ctx" x="{bar_x}" y="{y - 9}" height="6" rx="3" fill="url(#g)"/>'
-        f'<text y="{y}"><tspan x="{bar_x + bar_w + 14}" fill="{DIM}">building things where a model does part of the thinking</tspan></text>',
-    )
-    sc.appear(t + 0.9, f'<text y="{y + 32}"><tspan x="24" fill="{ACC}">❯</tspan><tspan x="40" class="cur" fill="{ACC}">▍</tspan></text>')
+    t += 0.5
+    sc.appear(t, row(y, [(x0 - 12, "●", TXT), (x0 + 6, "Fullstack developer. Linux only, terminal first, vanta black. I build", TXT)]))
+    sc.appear(t, row(y + 20, [(x0 + 6, "things where a model does part of the thinking: agents, LLM apps, CLI tools.", TXT)]))
 
-    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" font-family="JetBrains Mono,Fira Code,Cascadia Code,SF Mono,Menlo,Consolas,monospace" font-size="15" fill="{TXT}">
+    y += 54
+    t += 0.6
+    sc.appear(t, row(y, [(x0 - 12, "●", TXT), (x0 + 6, "Bash", TXT), (x0 + 46, "(gh api graphql · contributions, last 365 days)", DIM)]))
+    stats_rows = [
+        ("contributions", n(s["contributions"]), "commits", n(s["commits"]), "private", n(s["private"])),
+        ("pull requests", n(s["prs"]), "issues", n(s["issues"]), "reviews", n(s["reviews"])),
+        ("lines added", "+" + n(s["added"]), "lines removed", "-" + n(s["removed"]), "streak", f"{s['streak']}d · best {s['longest']}d"),
+    ]
+    colors = [(ACC, ACC, ACC), (ACC, ACC, ACC), (OK, WARN, ACC)]
+    for (k1, v1, k2, v2, k3, v3), (c1, c2, c3) in zip(stats_rows, colors):
+        y += 22
+        t += 0.25
+        sc.appear(t, row(y, [(x0 + 6, "⎿", DIM), (x0 + 24, k1, KEY), (x0 + 150, v1, c1), (x0 + 250, k2, KEY), (x0 + 376, v2, c2), (x0 + 470, k3, KEY), (x0 + 540, v3, c3)]))
+
+    y += 34
+    t += 0.6
+    sc.appear(t, row(y, [(x0 - 12, "●", TXT), (x0 + 6, "Bash", TXT), (x0 + 46, "(herdr agents ls)", DIM)]))
+    for name, st, c in AGENTS:
+        y += 22
+        t += 0.2
+        sc.appear(t, row(y, [(x0 + 6, "⎿", DIM), (x0 + 24, name, TXT), (x0 + 190, st, c), (x0 + 290, "claude", DIM)]))
+
+    y += 36
+    t += 0.6
+    sc.appear(t, row(y, [(x0 - 12, "●", TXT), (x0 + 6, "Bash", TXT), (x0 + 46, "(cat ~/.config/yuuki/stack.toml)", DIM)]))
+    stack = [
+        ("python", '["langgraph", "fastapi", "xgboost", "shap", "chroma", "ollama"]'),
+        ("web", '["typescript", "javascript"]'),
+        ("systems", '["go", "rust", "c++"]'),
+    ]
+    for k, v in stack:
+        y += 22
+        t += 0.2
+        sc.appear(t, row(y, [(x0 + 6, "⎿", DIM), (x0 + 24, k, KEY), (x0 + 100, "= " + v, "#c9b8ff")]))
+
+    y += 36
+    t += 0.8
+    sc.appear(t, row(y, [(x0 - 12, "✳", ACC), (x0 + 6, f"Cogitated for {int(t)}s · updated {date.today():%Y-%m-%d} · refreshes daily", DIM)]))
+
+    ib = H - 62
+    sc.css.append("@keyframes blink{50%{opacity:0}}.cur{animation:blink 1s steps(1) infinite}")
+    footer = (
+        f'<rect x="{SIDEBAR + 1}" y="{ib - 1}" width="{W - SIDEBAR - 1}" height="1" fill="{LINE}"/>'
+        f'<text x="{SIDEBAR + 16}" y="{ib + 22}" fill="{ACC}">❯</text><text x="{SIDEBAR + 32}" y="{ib + 22}" class="cur" fill="{ACC}">▍</text>'
+        f'<text y="{H - 14}" font-size="12"><tspan x="{SIDEBAR + 16}" fill="{OK}">[AGENT]</tspan><tspan fill="{KEY}"> claude · </tspan>'
+        f'<tspan fill="{TXT}">▶▶ auto mode on</tspan><tspan fill="{DIM}">  (shift+tab to cycle)</tspan></text>'
+    )
+
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" font-family="JetBrains Mono,Fira Code,Cascadia Code,SF Mono,Menlo,Consolas,monospace" font-size="14" fill="{TXT}">
 <style>text{{white-space:pre}}{''.join(sc.css)}</style>
-<defs>
-  <linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="{ACC}"/><stop offset="1" stop-color="{OK}"/></linearGradient>
-  <linearGradient id="hair" x1="0" x2="1"><stop offset="0" stop-color="{ACC}" stop-opacity="0"/><stop offset=".5" stop-color="{ACC}"/><stop offset="1" stop-color="{ACC}" stop-opacity="0"/></linearGradient>
-</defs>
-<rect width="{W}" height="{H}" rx="12" fill="{BG}"/>
-<rect x=".5" y=".5" width="{W - 1}" height="{H - 1}" rx="12" fill="none" stroke="{FRAME}"/>
-<rect x="120" y="0" width="{W - 240}" height="1" fill="url(#hair)"/>
-<circle cx="22" cy="22" r="5" fill="#1c1c1c"/><circle cx="40" cy="22" r="5" fill="#1c1c1c"/><circle cx="58" cy="22" r="5" fill="#1c1c1c"/>
-<text x="{W / 2}" y="27" text-anchor="middle" fill="{DIM}" font-size="13">yuuki@linux — herdr — ~</text>
+<clipPath id="win"><rect width="{W}" height="{H}" rx="12"/></clipPath>
+<g clip-path="url(#win)">
+<rect width="{W}" height="{H}" fill="{BG}"/>
+{sidebar(s)}
+{chrome}
 {''.join(sc.body)}
+{footer}
+</g>
+<rect x=".5" y=".5" width="{W - 1}" height="{H - 1}" rx="12" fill="none" stroke="{LINE}"/>
 </svg>
 """
 

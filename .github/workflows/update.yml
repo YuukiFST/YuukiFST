@@ -1,5 +1,9 @@
-# Re-renders header.svg once a day so the public numbers on the profile stay
-# honest without anyone remembering to run bin/render.
+# Re-renders header.svg once a day so the numbers on the profile stay honest
+# without anyone remembering to run bin/render.
+#
+# ACCESS_TOKEN (repository secret, classic PAT with `repo` + `read:user`) is
+# what makes private contributions and private-repo line counts visible; the
+# built-in GITHUB_TOKEN only sees this repository, so it is the fallback.
 name: update profile
 
 on:
@@ -24,7 +28,7 @@ jobs:
           python-version: '3.12'
       - name: Render
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN || secrets.GITHUB_TOKEN }}
         run: python bin/render
       - name: Publish when the numbers moved
         run: |
