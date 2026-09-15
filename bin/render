@@ -26,6 +26,7 @@ OUT = Path(__file__).resolve().parent.parent / "header.svg"
 W, H = 900, 640
 SIDEBAR = 214
 CYCLE = 24.0  # seconds per loop
+CH = 8.4  # advance per glyph at font-size 14 in the monospace stack above
 
 BG, PANE, LINE, TXT, DIM, KEY, ACC, OK, WARN, SEL = (
     "#000000", "#050505", "#171717", "#d4d4d4", "#3a3a3a", "#6a6a6a", "#b48cff", "#7dd3a0", "#f0b86e", "#141021",
@@ -158,20 +159,33 @@ class Scene:
         self.body.append(f'<g class="{i}">{svg}</g>')
 
     def typed(self, at: float, x: int, y: int, cmd: str, chars_per_s: float = 22) -> float:
-        """Text revealed by a shrinking mask, like keystrokes. Returns finish time."""
+        """Text revealed left to right, one glyph per step, with a block cursor and a
+        glowing trail riding the typing edge. Returns finish time."""
         dur = len(cmd) / chars_per_s
         i = self._id()
-        width = 9.2 * len(cmd) + 10
+        width = CH * len(cmd)
+        end = at + dur
+        # clip grows with the keystrokes; cursor and trail slide along the same track
         self.css.append(
-            f"@keyframes {i}{{0%,{pct(at)}{{width:{width}px}}{pct(at + dur)},100%{{width:0}}}}"
-            f".{i}{{animation:{i} {CYCLE}s steps({len(cmd)}) infinite}}"
+            f"@keyframes {i}c{{0%,{pct(at)}{{width:0}}{pct(end)},100%{{width:{width}px}}}}"
+            f".{i}c{{animation:{i}c {CYCLE}s steps({len(cmd)}) infinite}}"
+            f"@keyframes {i}x{{0%,{pct(at)}{{transform:translateX(0)}}{pct(end)},100%{{transform:translateX({width}px)}}}}"
+            f".{i}k{{animation:{i}x {CYCLE}s steps({len(cmd)}) infinite,{i}v {CYCLE}s steps(1) infinite}}"
+            f".{i}t{{animation:{i}x {CYCLE}s linear infinite,{i}v {CYCLE}s steps(1) infinite}}"
+            f"@keyframes {i}v{{0%,{pct(at)}{{opacity:1}}{pct(end + .15)},100%{{opacity:0}}}}"
+        )
+        self.body.append(
+            f'<linearGradient id="{i}g"><stop offset="0" stop-color="{ACC}" stop-opacity="0"/>'
+            f'<stop offset="1" stop-color="{ACC}" stop-opacity=".55"/></linearGradient>'
+            f'<clipPath id="{i}p"><rect class="{i}c" x="{x}" y="{y - 16}" height="22"/></clipPath>'
         )
         self.appear(
             at,
-            f'<text x="{x}" y="{y}" fill="{TXT}">{esc(cmd)}</text>'
-            f'<rect class="{i}" x="{x}" y="{y - 15}" height="20" fill="{SEL}" style="transform-origin:right center;transform-box:fill-box"/>',
+            f'<g clip-path="url(#{i}p)"><text x="{x}" y="{y}" fill="{TXT}">{esc(cmd)}</text></g>'
+            f'<rect class="{i}t" x="{x - 70}" y="{y - 13}" width="70" height="17" rx="2" fill="url(#{i}g)"/>'
+            f'<rect class="{i}k" x="{x}" y="{y - 13}" width="{CH}" height="17" fill="{ACC}"/>',
         )
-        return at + dur
+        return end
 
 
 def row(y: int, cols: list[tuple[int, str, str] | tuple[int, str, str, str]]) -> str:
@@ -210,7 +224,7 @@ def status_css() -> str:
 # -------------------------------------------------------------- layout ------
 AGENTS = [
     ("omoikane", "working", OK),
-    ("credit-guard", "working", OK),
+    ("credit-guard", "idle", KEY),
     ("support-bot", "idle", KEY),
     ("stackradar", "idle", KEY),
     ("agent-dotfiles", "working", OK),
