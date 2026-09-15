@@ -20,8 +20,8 @@ from pathlib import Path
 USER = os.environ.get("USER_NAME", "YuukiFST")
 OUT = Path(__file__).resolve().parent.parent / "header.svg"
 
-W, H = 900, 470
-CYCLE = 18.0  # seconds per loop
+W, H = 900, 760
+CYCLE = 26.0  # seconds per loop
 
 # palette: vanta black, bone text, violet accent, mint ok
 BG, FRAME, TXT, DIM, KEY, ACC, OK, WARN = (
@@ -117,6 +117,31 @@ def build(s: dict) -> str:
         sc.appear(t, row(y, [(24, "✓", OK), (44, k, KEY), (150, v, TXT), (300, note, DIM)]))
         y += 24
 
+    t = sc.typed(t + 0.7, y + 14, "cat ~/.config/yuuki/profile.toml")
+    y += 40
+    STR = "#c9b8ff"
+    toml = [
+        [("[human]", ACC)],
+        [("name", KEY), ('= "Yuuki"', STR), ("· fullstack developer", DIM)],
+        [("focus", KEY), ('= ["ai/ml", "llms", "agents", "cli tooling"]', STR)],
+        [("editors", KEY), ('= ["neovim", "coding agents"]', STR)],
+        [],
+        [("[stack]", ACC)],
+        [("python", KEY), ('= ["langgraph", "fastapi", "xgboost", "shap", "chroma", "ollama"]', STR)],
+        [("web", KEY), ('= ["typescript", "javascript"]', STR)],
+        [("systems", KEY), ('= ["go", "rust", "c++"]', STR)],
+    ]
+    for line in toml:
+        if line:
+            cols = [(44, line[0][0], line[0][1])]
+            if len(line) > 1:
+                cols.append((130, line[1][0], line[1][1]))
+            if len(line) > 2:
+                cols.append((300, line[2][0], line[2][1]))
+            t += 0.16
+            sc.appear(t, row(y, cols))
+        y += 22
+
     t = sc.typed(t + 0.7, y + 14, "yuuki agents ls")
     y += 40
     sc.appear(t + 0.25, row(y, [(44, "NAME", KEY), (210, "STATUS", KEY), (300, "TASK", KEY)]))
@@ -124,6 +149,8 @@ def build(s: dict) -> str:
         ("omoikane", "working", OK, "llm-maintained wiki, ingests sources on its own"),
         ("credit-guard", "working", OK, "xgboost + shap, decisions explained by an llm"),
         ("support-bot", "idle", KEY, "langgraph supervisor · rag over chroma · fastapi"),
+        ("stackradar", "idle", KEY, "job-market tech rankings · local rag with ollama"),
+        ("agent-dotfiles", "working", OK, "skills, agents and workflows for coding agents"),
         ("human", "blocked", WARN, "waiting for coffee"),
     ]
     for name, st, c, task in agents:
