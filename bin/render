@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Render header.svg: the HERDR dashboard (https://herdr.dev) redrawn in vanta black,
-with a coding-agent session in the main pane that reports live GitHub numbers.
+"""Render header.svg: a dot-lattice self-portrait on the left and a terminal on the
+right where a coding agent introduces me and reports live GitHub numbers.
 
 Numbers come from the GitHub GraphQL contributions collection plus the REST
 contributor stats of every owned repository. A token is required; it is read
@@ -23,8 +23,11 @@ from pathlib import Path
 USER = os.environ.get("USER_NAME", "YuukiFST")
 OUT = Path(__file__).resolve().parent.parent / "header.svg"
 
-W, H = 900, 640
-SIDEBAR = 214
+ROOT = Path(__file__).resolve().parent.parent
+PORTRAIT = ROOT / "assets" / "portrait.txt"  # '#' bright dot, '.' dim dot, from a photo
+
+W, H = 1000, 600
+SIDEBAR = 360  # portrait panel width
 CYCLE = 24.0  # seconds per loop
 CH = 8.4  # advance per glyph at font-size 14 in the monospace stack above
 
@@ -158,7 +161,7 @@ class Scene:
         )
         self.body.append(f'<g class="{i}">{svg}</g>')
 
-    def typed(self, at: float, x: int, y: int, cmd: str, chars_per_s: float = 22) -> float:
+    def typed(self, at: float, x: float, y: int, cmd: str, chars_per_s: float = 18) -> float:
         """Text revealed left to right, one glyph per step, with a block cursor and a
         glowing trail riding the typing edge. Returns finish time."""
         dur = len(cmd) / chars_per_s
@@ -188,154 +191,149 @@ class Scene:
         return end
 
 
-def row(y: int, cols: list[tuple[int, str, str] | tuple[int, str, str, str]]) -> str:
+def row(y: float, cols: list[tuple]) -> str:
+    """One line of text made of (x, text, color[, css class]) runs."""
     out = []
     for x, t, c, *cls in cols:
         klass = f' class="{cls[0]}"' if cls and cls[0] else ""
-        out.append(f'<tspan x="{x}" fill="{c}"{klass}>{esc(t)}</tspan>')
-    return f'<text y="{y}">' + "".join(out) + "</text>"
+        out.append(f'<tspan x="{x:g}" fill="{c}"{klass}>{esc(t)}</tspan>')
+    return f'<text y="{y:g}">' + "".join(out) + "</text>"
 
 
-SPIN = "⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏"
+def runs(x: float, y: float, parts: list[tuple[str, str]]) -> str:
+    """Inline colored runs on one line; tspans without x flow after each other, so the
+    spacing holds whatever monospace font the viewer falls back to."""
+    spans = "".join(f'<tspan fill="{color}">{esc(text)}</tspan>' for text, color in parts)
+    return f'<text x="{x:g}" y="{y:g}">{spans}</text>'
 
 
-def spinner(x: int, y: int, color: str) -> str:
-    """Braille spinner: one glyph per frame, each visible 1/len(SPIN) of the loop."""
-    return "".join(f'<text x="{x}" y="{y}" fill="{color}" class="sp{i}">{ch}</text>' for i, ch in enumerate(SPIN))
+# ------------------------------------------------------------ portrait ------
+def portrait_rows() -> list[str]:
+    """The dot map trimmed to its ink, so the face fills the panel instead of the dark hair above it."""
+    rows = PORTRAIT.read_text(encoding="utf-8").splitlines()
+    while rows and not rows[0].strip():
+        rows.pop(0)
+    while rows and not rows[-1].strip():
+        rows.pop()
+    left = min(len(r) - len(r.lstrip()) for r in rows if r.strip())
+    return [r[left:] for r in rows]
 
 
-def status_cell(x: int, y: int, name: str, st: str, c: str) -> str:
-    """Dot for idle agents, spinner for working ones."""
-    if st == "working":
-        return spinner(x, y, c)
-    return row(y, [(x, "●", c)])
-
-
-def status_css() -> str:
-    step = 100 / len(SPIN)
-    css = ["@keyframes wk{50%{opacity:.35}}.wk{animation:wk 1.4s ease-in-out infinite}"]
-    for i in range(len(SPIN)):
-        a, b = i * step, (i + 1) * step
-        css.append(f"@keyframes sp{i}{{0%,{a:.1f}%{{opacity:0}}{a + .01:.2f}%,{b - .01:.2f}%{{opacity:1}}{b:.1f}%,100%{{opacity:0}}}}"
-                   f".sp{i}{{animation:sp{i} .9s linear infinite}}")
-    return "".join(css)
+def portrait() -> tuple[str, str]:
+    """Returns (css, svg) for the left panel."""
+    rows = portrait_rows()
+    cols = max(map(len, rows))
+    pad, top, bottom = 24, 60, 92
+    # tall lattice cells (19 x 36 in the source engine) keep the photo's proportions
+    cw = min((SIDEBAR - 2 * pad) / cols, (H - top - bottom) / len(rows) * 19 / 36)
+    chh = cw * 36 / 19
+    ox = (SIDEBAR - cw * cols) / 2
+    oy = top + (H - top - bottom - chh * len(rows)) / 2
+    big, dim, drop = cw * .36, cw * .16, chh * .19
+    dots = []
+    for j, r in enumerate(rows):
+        for i, c in enumerate(r):
+            if c in "#.":
+                x, y = ox + (i + .5) * cw, oy + (j + .5) * chh + (drop if c == "." else 0)
+                fill, rad = ("#f2f2f0", big) if c == "#" else ("#70706e", dim)
+                dots.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{rad:.2f}" fill="{fill}"/>')
+    span = chh * len(rows)
+    # a scanline sweeps down the portrait, then rests off-screen until the next pass
+    css = (f"@keyframes scan{{0%{{transform:translateY(0);opacity:0}}5%{{opacity:1}}45%{{transform:translateY({span:.0f}px);opacity:1}}"
+           f"50%,100%{{transform:translateY({span:.0f}px);opacity:0}}}}.scan{{animation:scan 8s ease-in-out infinite}}")
+    scan = (
+        f'<linearGradient id="scan" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{ACC}" stop-opacity="0"/>'
+        f'<stop offset="1" stop-color="{ACC}" stop-opacity=".3"/></linearGradient>'
+        f'<g class="scan"><rect x="0" y="{oy - 40:.0f}" width="{SIDEBAR}" height="40" fill="url(#scan)"/>'
+        f'<rect x="0" y="{oy:.0f}" width="{SIDEBAR}" height="1" fill="{ACC}" opacity=".7"/></g>'
+    )
+    label = (
+        f'<text x="20" y="34" fill="{KEY}" font-size="12">~/portrait.dots</text>'
+        f'<text x="{SIDEBAR - 20}" y="34" text-anchor="end" fill="{DIM}" font-size="12">{cols}x{len(rows)}</text>'
+        f'<text x="20" y="{H - 50}" fill="{TXT}" font-size="22" font-weight="bold">Yuuki</text>'
+        f'<text x="20" y="{H - 26}" fill="{KEY}" font-size="13">fullstack developer'
+        f'<tspan fill="{ACC}"> · </tspan>go<tspan fill="{ACC}"> · </tspan>agents</text>'
+    )
+    panel = f'<rect width="{SIDEBAR}" height="{H}" fill="{BG}"/><rect x="{SIDEBAR}" width="1" height="{H}" fill="{LINE}"/>'
+    return css, panel + f'<g>{"".join(dots)}</g>' + scan + label
 
 
 # -------------------------------------------------------------- layout ------
-AGENTS = [
-    ("omoikane", "working", OK),
-    ("credit-guard", "idle", KEY),
-    ("support-bot", "idle", KEY),
-    ("stackradar", "idle", KEY),
-    ("agent-dotfiles", "working", OK),
-]
-
-
-def sidebar(s: dict) -> str:
-    out = [f'<rect width="{SIDEBAR}" height="{H}" fill="{BG}"/>', f'<rect x="{SIDEBAR}" y="0" width="1" height="{H}" fill="{LINE}"/>']
-    out.append(f'<text x="18" y="30" fill="{KEY}" font-size="13">spaces</text>')
-    y = 58
-    for i, (name, commits) in enumerate(s["repos"]):
-        if i == 0:
-            out.append(f'<rect x="8" y="{y - 16}" width="{SIDEBAR - 16}" height="40" rx="4" fill="{SEL}"/>')
-        out.append(row(y, [(18, "●", OK if i % 2 == 0 else DIM), (34, name, TXT if i == 0 else "#9a9a9a")]))
-        out.append(row(y + 17, [(34, "main", DIM), (78, f"↑{commits}", ACC)]))
-        y += 44
-    y += 10
-    out.append(f'<rect x="0" y="{y}" width="{SIDEBAR}" height="1" fill="{LINE}"/>')
-    out.append(row(y + 24, [(18, "new", DIM), (SIDEBAR - 50, "menu", DIM)]))
-    y += 52
-    out.append(row(y, [(18, "agents", KEY), (SIDEBAR - 68, "grouped", DIM)]))
-    y += 28
-    for name, st, c in AGENTS:
-        out.append(status_cell(18, y, name, st, c))
-        out.append(row(y, [(34, name, "#9a9a9a")]))
-        out.append(row(y + 17, [(34, "claude", DIM), (110, st, c, "wk" if st == "working" else "")]))
-        y += 42
-    return "".join(out)
-
-
 def build(s: dict) -> str:
     sc = Scene()
-    x0 = SIDEBAR + 22
+    x0 = SIDEBAR + 34
     chrome = (
         f'<rect x="{SIDEBAR + 1}" width="{W - SIDEBAR - 1}" height="{H}" fill="{PANE}"/>'
         f'<rect x="{SIDEBAR + 1}" y="0" width="{W - SIDEBAR - 1}" height="34" fill="{BG}"/>'
         f'<rect x="{SIDEBAR + 1}" y="34" width="{W - SIDEBAR - 1}" height="1" fill="{LINE}"/>'
-        f'<rect x="{SIDEBAR + 12}" y="8" width="44" height="20" rx="3" fill="{ACC}"/>'
-        f'<text x="{SIDEBAR + 34}" y="22" text-anchor="middle" fill="{BG}" font-size="13">1</text>'
-        f'<text x="{SIDEBAR + 68}" y="22" fill="{DIM}">+</text>'
-        f'<text x="{W - 16}" y="22" text-anchor="end" fill="{DIM}" font-size="12">yuuki@linux · herdr</text>'
+        + "".join(f'<circle cx="{SIDEBAR + 22 + 18 * i}" cy="17" r="5" fill="{c}"/>' for i, c in enumerate((DIM, DIM, ACC)))
+        + f'<text x="{W - 16}" y="22" text-anchor="end" fill="{DIM}" font-size="12">yuuki@dev: ~</text>'
     )
 
-    y = 66
-    sc.body.append(f'<rect x="{SIDEBAR + 8}" y="{y - 17}" width="{W - SIDEBAR - 16}" height="24" rx="3" fill="{SEL}"/>')
-    sc.body.append(f'<text x="{SIDEBAR + 16}" y="{y}" fill="{ACC}">❯</text>')
-    t = sc.typed(0.5, x0 + 12, y, "who are you and what have you been doing")
+    y = 68
+    sc.body.append(f'<rect x="{SIDEBAR + 10}" y="{y - 17}" width="{W - SIDEBAR - 20}" height="24" rx="3" fill="{SEL}"/>')
+    sc.body.append(f'<text x="{SIDEBAR + 18}" y="{y}" fill="{ACC}">❯</text>')
+    t = sc.typed(0.5, x0, y, "who are you?")
 
     y += 40
     t += 0.5
-    sc.appear(t, row(y, [(x0, "Ran 3 shell commands", DIM)]))
-
-    y += 34
-    t += 0.5
-    sc.appear(t, row(y, [(x0 - 12, "●", TXT), (x0 + 6, "Fullstack developer. Linux, terminal first. Hobby: studying LLMs and agents", TXT)]))
-    sc.appear(t, row(y + 20, [(x0 + 6, "and building CLI tools, so a model does part of the thinking and a shell the rest.", TXT)]))
-
-    y += 54
-    t += 0.6
-    sc.appear(t, row(y, [(x0 - 12, "●", TXT), (x0 + 6, "Bash", TXT), (x0 + 46, "(gh api graphql · contributions, last 365 days)", DIM)]))
-    stats_rows = [
-        ("contributions", n(s["contributions"]), "commits", n(s["commits"]), "private", n(s["private"])),
-        ("pull requests", n(s["prs"]), "issues", n(s["issues"]), "reviews", n(s["reviews"])),
-        ("lines added", "+" + n(s["added"]), "lines removed", "-" + n(s["removed"]), "streak", f"{s['streak']}d · best {s['longest']}d"),
+    bio = [
+        [("Hi, I'm Yuuki, a ", TXT), ("fullstack developer", ACC), (".", TXT)],
+        [("I build things end to end, from the database to the UI.", TXT)],
+        [("Favorite language: ", TXT), ("Go", OK), (". These days I study", TXT)],
+        [("AI agents", ACC), (" and ", TXT), ("LLMs", ACC), (": how models reason and use tools.", TXT)],
     ]
-    colors = [(ACC, ACC, ACC), (ACC, ACC, ACC), (OK, WARN, ACC)]
-    for (k1, v1, k2, v2, k3, v3), (c1, c2, c3) in zip(stats_rows, colors):
-        y += 22
-        t += 0.25
-        sc.appear(t, row(y, [(x0 + 6, "⎿", DIM), (x0 + 24, k1, KEY), (x0 + 150, v1, c1), (x0 + 250, k2, KEY), (x0 + 376, v2, c2), (x0 + 470, k3, KEY), (x0 + 540, v3, c3)]))
+    sc.appear(t, row(y, [(x0 - 12, "●", TXT)]) + "".join(runs(x0 + 6, y + 20 * k, line) for k, line in enumerate(bio)))
 
-    y += 34
-    t += 0.6
-    sc.appear(t, row(y, [(x0 - 12, "●", TXT), (x0 + 6, "Bash", TXT), (x0 + 46, "(herdr agents ls)", DIM)]))
-    for name, st, c in AGENTS:
-        y += 22
-        t += 0.2
-        sc.appear(t, row(y, [(x0 + 6, "⎿", DIM), (x0 + 24, name, TXT), (x0 + 190, st, c, "wk" if st == "working" else ""), (x0 + 290, "claude", DIM)]))
-
-    y += 36
-    t += 0.6
+    y += 104
+    t += 0.7
     sc.appear(t, row(y, [(x0 - 12, "●", TXT), (x0 + 6, "Bash", TXT), (x0 + 46, "(cat ~/.config/yuuki/stack.toml)", DIM)]))
     stack = [
         ("love", '["go"]'),
         ("use", '["typescript", "react", "nextjs"]'),
-        ("know", '["python", "langgraph", "fastapi", "xgboost", "shap"]'),
+        ("study", '["agents", "llms", "langgraph"]'),
+        ("know", '["python", "fastapi", "xgboost", "shap"]'),
     ]
     for k, v in stack:
         y += 22
         t += 0.2
-        sc.appear(t, row(y, [(x0 + 6, "⎿", DIM), (x0 + 24, k, KEY), (x0 + 100, "= " + v, "#c9b8ff")]))
+        sc.appear(t, row(y, [(x0 + 6, "⎿", DIM), (x0 + 24, k, KEY), (x0 + 84, "= " + v, "#c9b8ff")]))
 
-    y += 36
+    y += 38
+    t += 0.6
+    sc.appear(t, row(y, [(x0 - 12, "●", TXT), (x0 + 6, "Bash", TXT), (x0 + 46, "(gh api graphql · last 365 days)", DIM)]))
+    grid = [
+        ("contributions", n(s["contributions"]), ACC, "commits", n(s["commits"]), ACC),
+        ("pull requests", n(s["prs"]), ACC, "reviews", n(s["reviews"]), ACC),
+        ("issues", n(s["issues"]), ACC, "private", n(s["private"]), ACC),
+        ("lines added", "+" + n(s["added"]), OK, "lines removed", "-" + n(s["removed"]), WARN),
+        ("streak", f"{s['streak']}d", ACC, "best streak", f"{s['longest']}d", ACC),
+    ]
+    for k1, v1, c1, k2, v2, c2 in grid:
+        y += 22
+        t += 0.25
+        sc.appear(t, row(y, [(x0 + 6, "⎿", DIM), (x0 + 24, k1, KEY), (x0 + 150, v1, c1), (x0 + 290, k2, KEY), (x0 + 416, v2, c2)]))
+
+    y += 38
     t += 0.8
-    sc.appear(t, row(y, [(x0 - 12, "✳", ACC), (x0 + 6, f"Cogitated for {int(t)}s · updated {date.today():%Y-%m-%d} · refreshes daily", DIM)]))
+    sc.appear(t, row(y, [(x0 - 12, "✳", ACC), (x0 + 6, f"updated {date.today():%Y-%m-%d} · refreshes daily", DIM)]))
 
     ib = H - 62
     sc.css.append("@keyframes blink{50%{opacity:0}}.cur{animation:blink 1s steps(1) infinite}")
     footer = (
         f'<rect x="{SIDEBAR + 1}" y="{ib - 1}" width="{W - SIDEBAR - 1}" height="1" fill="{LINE}"/>'
-        f'<text x="{SIDEBAR + 16}" y="{ib + 22}" fill="{ACC}">❯</text><text x="{SIDEBAR + 32}" y="{ib + 22}" class="cur" fill="{ACC}">▍</text>'
-        f'<text y="{H - 14}" font-size="12"><tspan x="{SIDEBAR + 16}" fill="{OK}">[AGENT]</tspan><tspan fill="{KEY}"> claude · </tspan>'
-        f'<tspan fill="{TXT}">▶▶ auto mode on</tspan><tspan fill="{DIM}">  (shift+tab to cycle)</tspan></text>'
+        f'<text x="{SIDEBAR + 18}" y="{ib + 22}" fill="{ACC}">❯</text><text x="{SIDEBAR + 34}" y="{ib + 22}" class="cur" fill="{ACC}">▍</text>'
+        f'<text y="{H - 14}" font-size="12"><tspan x="{SIDEBAR + 18}" fill="{OK}">[GO]</tspan><tspan fill="{KEY}"> fullstack · </tspan>'
+        f'<tspan fill="{TXT}">agents &amp; llms</tspan><tspan fill="{DIM}">  github.com/{USER}</tspan></text>'
     )
+    pcss, pbody = portrait()
 
     return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" font-family="JetBrains Mono,Fira Code,Cascadia Code,SF Mono,Menlo,Consolas,monospace" font-size="14" fill="{TXT}">
-<style>text{{white-space:pre}}{status_css()}{''.join(sc.css)}</style>
+<style>text{{white-space:pre}}{pcss}{''.join(sc.css)}</style>
 <clipPath id="win"><rect width="{W}" height="{H}" rx="12"/></clipPath>
 <g clip-path="url(#win)">
 <rect width="{W}" height="{H}" fill="{BG}"/>
-{sidebar(s)}
+{pbody}
 {chrome}
 {''.join(sc.body)}
 {footer}

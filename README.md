@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://github.com/YuukiFST">
-    <img src="https://raw.githubusercontent.com/YuukiFST/YuukiFST/main/header.svg" alt="yuuki — agent runtime" width="900">
+    <img src="https://raw.githubusercontent.com/YuukiFST/YuukiFST/main/header.svg" alt="Yuuki: dot portrait, fullstack developer, Go, agents and LLMs, live GitHub stats" width="1000">
   </a>
   <br>
   <sub>
